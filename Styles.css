@@ -1,0 +1,166 @@
+/* Reset básico para asegurar consistencia en los navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Comic Sans MS, sans-serif;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Asegura que el contenedor principal se estire verticalmente */
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, rgb(28, 255, 8), rgb(255, 230, 0)); /* Degradado lineal de verde lima a amarillo, de arriba hacia abajo */
+}
+
+.container {
+    width: 80vw;
+    max-width: 1200px; /* Limita el ancho máximo para pantallas grandes */
+    aspect-ratio: 4 / 3; /* Mantiene la relación de aspecto 4:3 */
+    background-color: #ffffff; /* Color de fondo para el contenedor */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añade una sombra sutil */
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #008b13;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilos para el logo */
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+/* Estilos para la barra de navegación */
+nav {
+    background-color: #206400; /* Color de fondo gris oscuro para la barra de navegación */
+    padding: 10px 0; /* Espacio arriba y abajo de los enlaces */
+}
+
+nav ul {
+    list-style-type: none; /* Sin viñetas para la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinear los elementos en una fila */
+    justify-content: center; /* Centrar los elementos dentro de la barra */
+}
+
+nav ul li {
+    margin: 0 10px; /* Espaciado entre los elementos */
+}
+
+nav a {
+    color: #ffffff; /* Color del texto de los enlaces */
+    text-decoration: none; /* Sin subrayado en los enlaces */
+    padding: 5px 10px; /* Añade un poco de espacio alrededor del texto */
+}
+
+nav a:hover {
+    background-color: #7bc700; /* Cambia el fondo del enlace al pasar el cursor */
+    border-radius: 4px; /* Bordes redondeados en el hover */
+}
+
+main {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+section {
+    flex: 3; /* Ocupa más espacio en el contenedor principal */
+    margin-right: 20px;
+}
+
+aside {
+    flex: 1; /* Ocupa menos espacio que la sección principal */
+    background-color: #e0e0e0; /* Color de fondo del aside */
+    padding: 15px;
+    border: 1px solid #ccc; /* Borde sutil alrededor del aside */
+}
+
+aside ul {
+    margin-left: 20px;
+}
+
+footer {
+    background-color: #008b13;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+}
+
+footer p {
+    margin: 0;
+}
+
+.youtube-video {
+    display: flex;
+    justify-content: center; /* Centra el video horizontalmente */
+    margin-top: 20px;
+}
+
+.social-media {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.social-item {
+    text-align: center;
+    margin: 10px;
+    padding-bottom: 40px; /* Aumenta el espacio para el texto de "Clickeame!" */
+    position: relative; /* Necesario para posicionar el texto de manera absoluta */
+}
+
+.social-item img {
+    max-width: 100px;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+/* Añadido para el efecto de "Clickeame!" */
+.social-item .click-me {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px; /* Tamaño de fuente aumentado */
+    color: #000; /* Color inicial negro */
+    animation: pulseRed 2s infinite; /* Aplicar animación de pulso */
+    opacity: 0; /* Inicialmente oculto */
+}
+
+/* Animación de pulso negro a rojo */
+@keyframes pulseRed {
+    0% {
+        color: #000; /* Negro al inicio */
+        opacity: 0; /* Comienza invisible */
+    }
+    50% {
+        color: #f00; /* Rojo en el punto medio */
+        opacity: 1; /* Visible en el punto medio */
+    }
+    100% {
+        color: #000; /* Regresa a negro al final */
+        opacity: 0; /* Invisible al final */
+    }
+}
+
+/* Aplica el texto "Clickeame!" a los íconos seleccionados */
+.social-item.twitter .click-me,
+.social-item.youtube .click-me,
+.social-item.instagram .click-me,
+.social-item.newgrounds .click-me,
+.social-item.spacehey .click-me {
+    opacity: 1; /* Asegúrate de que sea visible */
+}
