@@ -3,20 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesion</title>
+    <title>Document</title>
     <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <header>
-
+        <img src="" alt="logo de la pagina">
+        <form class="search-bar" action="/buscar.html" method="get">
+            <input type="text" placeholder="Buscar..." name="q">
+            <button type="submit">Buscar</button>
+        </form>
+        <img src="img/ahorro.png" alt="icono de ahorro">
+        <img src="img/categorias.png" alt="icono de categorias">
+        <img src="img/carrito-de-compras.png" alt="icono de carrito de presupuesto">
+        <img src="img/iniciar-sesion.png" alt="icono de iniciar-sesion">
     </header>
 
     <main>
-
+        <div class="inicio_sesion">
+            <h1>iniciar sesion</h1>
+            <div class="datos">
+                <h2>Bienvenido a Cacique del Ahorro</h2>
+                <p>por favor ingresa tus datos para iniciar sesion</p>
+                <form action="" method="post">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit">Crear cuenta</button>
+                </form>
+                <a href="">¿olvidaste tu contraseña?</a>
+                <a href="">Registrarse</a>
+            </div>  
+        </div>
     </main>
 
     <footer>
-
+        <img src="" alt="logo de la pagina">
+        <p>&reg; Cacique del ahorro</p>
+        <a href="">ir al inicio</a>
     </footer>
 
     <script src="login.js"></script>
