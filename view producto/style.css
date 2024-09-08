@@ -16,19 +16,21 @@ body {
 }
 
 header {
-    background-color: #d9d8f2;
+    background-color:  #D0B8A8;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    height: 5%;
 }
 
 header img {
-    height: 5rem;
     cursor: pointer;
+    padding-left: 1%;
+    background-color: #C5705D;
+
 }
 
-nav a {
+header nav a {
     margin: 0 1rem;
     text-decoration: none;
     color: rgb(255, 255, 255);
@@ -40,64 +42,111 @@ nav a {
 main {
     display: flex;
     flex-grow: 1; /* Ocupa todo el espacio disponible */
-}
-
-.column {
-    padding: 2rem;
-}
-
-/* Estilos para la columna de imagen (20%) */
-.product-image {
-    flex-basis: 20%; /* La columna ocupa el 20% del espacio */
-    background-color: #b0b16d;
-    display: flex;
+    background-color: #F8EDE3;
+    align-items: center;
     justify-content: center;
+
 }
 
-.product-image img {
-    max-width: 100%;
-    height: auto;
+section{
+    display: flex;
+    background-color: #DFD3C3;
+    width: 95%;
+    height: 90%;
+    border-radius: 10px;
 }
 
-/* Estilos para la columna de información (50%) */
-.product-info {
-    flex-basis: 50%; /* La columna ocupa el 50% del espacio */
-    background-color: #e0e0e0;
+
+.producto{
     display: flex;
     flex-direction: column;
-    
+    width: 40%;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
-.product-info h1 {
-    font-size: 2.4rem;
-    margin-bottom: 1rem;
+.producto .imagen{
+    background-color: #F8EDE3;
+    width: 70%;
+    height: 40%;
+    display: flex;
+    border: 0.5rem solid;
+    border-color: #C5705D;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+
+}
+.producto.imagen img{
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    align-items: center;
 }
 
-.product-info p {
-    font-size: 1.6rem;
-}
-
-/* Estilos para la columna de precios (30%) */
-.product-price {
-    flex-basis: 30%; /* La columna ocupa el 30% del espacio */
-    background-color: #c0c0c0;
+.producto .informacion{
+    background-color: #D0B8A8;
+    width: 70%;
+    height: 40%;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+}
+.producto .informacion h1{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.segundo-apartado{
+    background-color: #DFD3C3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60%;
+    height: 100%;
+    align-items: center; 
+}
+.segundo-apartado .precios{
+    background-color: #D0B8A8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    width: 90%;
+    height: 90%;
+}
+.precios .titulo{
+    height: 10%;
+    padding-top: 5%;
+}
+
+.precios .productos{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 90%;
+    align-items: center;
+    justify-content: space-evenly;
 
 }
 
-.product-price h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
+footer{
+    background-color: #D0B8A8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5%;
+}
+footer img {
+    cursor: pointer;
+    padding-left: 1%;
+    background-color: #C5705D;
 }
 
-.product-price ul {
-
-    list-style-type: none;
-    font-size: 1.6rem;
-}
-
-.product-price ul li {
-    margin-bottom: 0.5rem;
-    border: #b0b16d;
+footer a{
+    margin: 0 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }
