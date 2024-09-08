@@ -10,6 +10,7 @@
         .cart { margin-top: 20px; }
         .total { font-weight: bold; }
         .proposal { color: green; cursor: pointer; text-decoration: underline; }
+        .remove { color: red; cursor: pointer; margin-left: 10px; }
     </style>
 </head>
 <body>
@@ -48,13 +49,20 @@
             'Arroz': { price: 2500, cheaperOption: null },
             'Azúcar': { price: 1500, cheaperOption: { name: 'Azúcar (económico)', price: 1000 } },
             'Pansito': { price: 2500, cheaperOption: { name: 'Pan Luchito (económico)', price: 1500 } }
-
         };
 
         function addToCart(productName, price) {
             cart.push({ name: productName, price: price });
             updateCart();
             proposeCheaperOption(productName);
+        }
+
+        function removeFromCart(productName) {
+            const index = cart.findIndex(item => item.name === productName);
+            if (index > -1) {
+                cart.splice(index, 1); // Eliminar el producto del carrito
+                updateCart(); // Actualizar el carrito
+            }
         }
 
         function updateCart() {
@@ -67,6 +75,14 @@
                 total += item.price;
                 const li = document.createElement('li');
                 li.textContent = `${item.name}: $${item.price}`;
+                
+                // Botón para eliminar producto
+                const removeBtn = document.createElement('span');
+                removeBtn.textContent = 'Eliminar';
+                removeBtn.classList.add('remove');
+                removeBtn.onclick = () => removeFromCart(item.name);
+
+                li.appendChild(removeBtn);
                 cartItems.appendChild(li);
             });
 
