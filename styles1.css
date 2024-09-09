@@ -103,3 +103,41 @@ p {
 .admin-card a:hover {
     background-color: #b47461;
 }
+
+
+/* Estilos para la tabla de usuarios */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.user-table th {
+    background-color: #d58b72;
+    color: white;
+}
+
+.user-table td {
+    background-color: #f9f9f9;
+}
+
+.user-table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.user-table a {
+    color: #d58b72;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.user-table a:hover {
+    color: #b47461;
+    text-decoration: underline;
+}
