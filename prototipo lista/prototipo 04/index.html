@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Lista de Compras</h1>
+    <div>
+        <label for="categoria">Categoría:</label>
+        <select id="categoria">
+            <option value="frutas">Frutas</option>
+            <option value="verduras">Verduras</option>
+            <option value="lacteos">Lácteos</option>
+        </select>
+    </div>
+    <div>
+        <label for="articulo">Artículo:</label>
+        <select id="articulo">
+            <option value="manzana">Manzana</option>
+            <option value="platano">Plátano</option>
+            <option value="lechuga">Lechuga</option>
+            <option value="tomate">Tomate</option>
+            <option value="leche">Leche</option>
+            <option value="queso">Queso</option>
+        </select>
+    </div>
+    <div>
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" min="1" value="1">
+    </div>
+    <button onclick="agregarArticulo()">Agregar</button>
+    <ul id="lista"></ul>
+    <script src="scriptss1.js"></script>
+</body>
+</html>
