@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador de Ahorro</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="">
     <style>
         body { font-family: Arial, sans-serif; }
         .product { margin: 10px 0; }
@@ -19,22 +19,7 @@
 
     <div>
         <h3>Productos</h3>
-        <div class="product">
-            <span>Fideos: $3000</span>
-            <button onclick="addToCart('Fideos', 3000)">Agregar al carrito</button>
-        </div>
-        <div class="product">
-            <span>Arroz: $2500</span>
-            <button onclick="addToCart('Arroz', 2500)">Agregar al carrito</button>
-        </div>
-        <div class="product">
-            <span>Azúcar: $1500</span>
-            <button onclick="addToCart('Azúcar', 1500)">Agregar al carrito</button>
-        </div>
-        <div class="product">
-            <span>Pansito: $2500</span>
-            <button onclick="addToCart('Pansito', 2500)">Agregar al carrito</button>
-        </div>
+        <div id="product-list"></div> <!-- Aquí se cargarán los productos dinámicamente -->
     </div>
 
     <div class="cart">
@@ -45,24 +30,43 @@
 
     <script>
         const cart = [];
-        const products = {
-            'Fideos': { price: 3000, cheaperOption: { name: 'Fideos (económicos)', price: 2000 } },
-            'Arroz': { price: 2500, cheaperOption: null },
-            'Azúcar': { price: 1500, cheaperOption: { name: 'Azúcar (económico)', price: 1000 } },
-            'Pansito': { price: 2500, cheaperOption: { name: 'Pan Luchito (económico)', price: 1500 } }
-        };
+        const products = {};  // Almacenará los productos de la base de datos
+
+        // Función para cargar los productos desde el backend (PHP)
+        async function loadProducts() {
+            try {
+                const response = await fetch('getProducts.php');  // Llama al PHP que obtiene los productos
+                const data = await response.json();
+
+                const productList = document.getElementById('product-list');
+                productList.innerHTML = ''; // Limpiar cualquier producto anterior
+
+                data.forEach(product => {
+                    // Añadir cada producto al objeto 'products'
+                    products[product.name] = { price: product.price, category: product.category };
+
+                    // Crear el elemento HTML para cada producto
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+                    productDiv.innerHTML = `<span>${product.name}: $${product.price}</span> 
+                        <button onclick="addToCart('${product.name}', ${product.price})">Agregar al carrito</button>`;
+                    productList.appendChild(productDiv);
+                });
+            } catch (error) {
+                console.error('Error al cargar los productos:', error);
+            }
+        }
 
         function addToCart(productName, price) {
             cart.push({ name: productName, price: price });
             updateCart();
-            proposeCheaperOption(productName);
         }
 
         function removeFromCart(productName) {
             const index = cart.findIndex(item => item.name === productName);
             if (index > -1) {
-                cart.splice(index, 1); // Eliminar el producto del carrito
-                updateCart(); // Actualizar el carrito
+                cart.splice(index, 1);  // Eliminar el producto del carrito
+                updateCart();  // Actualizar el carrito
             }
         }
 
@@ -90,26 +94,8 @@
             totalDisplay.textContent = total;
         }
 
-        function proposeCheaperOption(productName) {
-            const product = products[productName];
-            if (product && product.cheaperOption) {
-                const cartItems = document.getElementById('cart-items');
-                const cheaperOption = document.createElement('li');
-                cheaperOption.classList.add('proposal');
-                cheaperOption.textContent = `¿Quieres cambiar a ${product.cheaperOption.name} por $${product.cheaperOption.price}?`;
-                cheaperOption.onclick = () => switchToCheaper(productName);
-                cartItems.appendChild(cheaperOption);
-            }
-        }
-
-        function switchToCheaper(productName) {
-            const cheaperOption = products[productName].cheaperOption;
-            const index = cart.findIndex(item => item.name === productName);
-            if (index > -1) {
-                cart[index] = { name: cheaperOption.name, price: cheaperOption.price };
-                updateCart();
-            }
-        }
+        // Llamar a la función para cargar productos cuando la página cargue
+        window.onload = loadProducts;
     </script>
 </body>
 </html>
