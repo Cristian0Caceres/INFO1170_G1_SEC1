@@ -95,6 +95,14 @@ h2 {
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     font-size: 22px; /* Texto más grande */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    color: #333; /* Color del texto */
+    transition: background-color 0.3s, transform 0.3s; /* Efecto de transición al hacer hover */
+}
+
+.grid-item:hover {
+    background-color: #ddd; /* Cambia el color de fondo al pasar el cursor */
+    transform: translateY(-5px); /* Añade un pequeño movimiento */
 }
 
 .grid-item img {
