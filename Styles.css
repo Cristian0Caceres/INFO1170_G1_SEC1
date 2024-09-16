@@ -8,7 +8,7 @@
 body {
     font-family: 'Comic Sans MS', sans-serif;
     color: #333;
-    background: linear-gradient(to bottom, rgb(243, 153, 153), rgb(243, 214, 153));
+    background: linear-gradient(to bottom, #F8EDE3, #DFD3C3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,28 +18,28 @@ body {
 }
 
 .container {
-    width: 100vw; /* Se agranda el ancho de la ventana */
-    max-width: 1800px; /* Aumenta el límite máximo */
+    width: 100vw;
+    max-width: 1800px;
     background-color: #ffffff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     position: relative;
-    padding: 40px; /* Mayor espacio interno */
+    padding: 40px;
 }
 
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px; /* Aumenta el relleno del header */
-    background-color: #aa6262;
+    padding: 20px;
+    background-color: #C5705D;
     position: relative;
-    font-size: 1.2em; /* Aumenta el tamaño del texto */
+    font-size: 1.2em;
 }
 
 .logo {
-    width: 150px; /* Aumenta el tamaño del logo */
+    width: 150px;
     height: auto;
 }
 
@@ -50,16 +50,17 @@ header {
 
 .search-bar input {
     padding: 10px;
-    font-size: 20px; /* Mayor tamaño del texto de búsqueda */
+    font-size: 20px;
     border: none;
     border-radius: 4px;
     margin-right: 10px;
+    background-color: #DFD3C3;
 }
 
 .search-bar button {
     padding: 10px 15px;
-    font-size: 20px; /* Botón más grande */
-    background-color: #630303;
+    font-size: 20px;
+    background-color: #D0B8A8;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -67,62 +68,118 @@ header {
 }
 
 .cart-icon img {
-    width: 50px; /* Icono del carrito más grande */
+    width: 50px;
     margin-left: 20px;
     cursor: pointer;
 }
 
 main {
-    padding: 40px; /* Más espacio en el contenido */
-    font-size: 1.2em; /* Tamaño de texto del contenido más grande */
+    padding: 40px;
+    font-size: 1.2em;
 }
 
 h2 {
-    font-size: 36px; /* Aumenta tamaño del encabezado */
+    font-size: 36px;
     margin-bottom: 25px;
+    color: #C5705D;
 }
 
+/* Sección de Ofertas */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 40px; /* Espacio mayor entre elementos */
+    gap: 40px;
 }
 
 .grid-item {
-    background-color: #f8f8f8;
-    padding: 30px; /* Espacio más amplio en cada oferta */
+    background-color: #F8EDE3;
+    padding: 30px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    font-size: 22px; /* Texto más grande */
-    text-decoration: none; /* Elimina el subrayado del enlace */
-    color: #333; /* Color del texto */
-    transition: background-color 0.3s, transform 0.3s; /* Efecto de transición al hacer hover */
+    font-size: 22px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s, transform 0.3s;
+    border: 3px solid #F8EDE3;
 }
 
 .grid-item:hover {
-    background-color: #ddd; /* Cambia el color de fondo al pasar el cursor */
-    transform: translateY(-5px); /* Añade un pequeño movimiento */
+    background-color: #DFD3C3;
+    transform: translateY(-5px);
+}
+
+.grid-item .image-container {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    border: 8px solid #C5705D;
+    border-radius: 10px;
 }
 
 .grid-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 250px; /* Imagen más grande */
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 15px;
 }
 
-.section-divider {
-    margin: 50px 0; /* Mayor separación entre secciones */
-    border: 1px solid #ccc;
+/* Sección de Categorías Populares */
+.popular-categories {
+    margin-top: 60px;
 }
 
-footer {
-    background-color: #3b0404;
-    color: #ffffff;
+.popular-categories h2 {
+    font-size: 36px;
+    color: #C5705D;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
-    font-size: 1.1em; /* Aumenta tamaño del texto en el footer */
+    margin-bottom: 40px;
 }
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.category-item {
+    background-color: #DFD3C3;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    transition: transform 0.3s;
+    border: 3px solid #C5705D;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+}
+
+.category-item .category-image {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 3px solid #C5705D;
+}
+
+.category-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-item h3 {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #333;
+}
+
