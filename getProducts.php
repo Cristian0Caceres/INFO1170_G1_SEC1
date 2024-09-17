@@ -14,10 +14,11 @@ if ($conn->connect_error) {
 }
 
 // Consulta para obtener los productos con sus precios
-$sql = "SELECT producto.Nombre_producto AS name, precios.coste AS price, categoria.Nombre_Categoria AS category
+$sql = "SELECT producto.ID_Producto AS id, producto.Nombre_producto AS name, precios.coste AS price, categoria.Nombre_Categoria AS category
         FROM producto
         JOIN precios ON producto.ID_Producto = precios.ID_Productos
-        JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria";
+        JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
+        ORDER BY producto.Nombre_producto, precios.coste DESC";  // Ordenar por nombre de producto y precio descendente
 
 $result = $conn->query($sql);
 

@@ -207,6 +207,7 @@ ALTER TABLE `temp_producto`
   ADD CONSTRAINT `temp_producto_ibfk_1` FOREIGN KEY (`ID_Precios`) REFERENCES `precios` (`ID_Precios`),
   ADD CONSTRAINT `temp_producto_ibfk_2` FOREIGN KEY (`ID_Proveedor`) REFERENCES `proveedor` (`ID_Proveedor`),
   ADD CONSTRAINT `temp_producto_ibfk_3` FOREIGN KEY (`ID_Categoria`) REFERENCES `categoria` (`ID_Categoria`);
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
