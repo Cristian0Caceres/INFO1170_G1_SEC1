@@ -122,6 +122,7 @@ main{
     align-items: center; 
     justify-content: center;
     padding-top: 5%;
+    color: #1500FF;
 }
 
 .datos form {
