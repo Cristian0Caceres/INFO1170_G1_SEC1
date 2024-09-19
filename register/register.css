@@ -78,3 +78,61 @@ header {
     height: 50%;
     cursor: pointer;
 }
+
+
+main{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+footer{
+    height: 5%;
+    width: 100%;
+    background-color: #d6b8a5;
+}
+
+.barra-inferior {
+    display: flex;
+    height: 100%;
+    align-items: center; 
+}
+
+.logo-footer-texto {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+}
+
+.logo-footer {
+    display: flex;
+    width: 8%;
+    height: 100%;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2%
+}
+
+.logo-footer img {
+    height: 100%;
+}
+
+.barra-inferior p {
+    margin-left: 10px; 
+}    
+
+.link-inicio {
+    margin-left: auto; 
+    padding-right: 2%; 
+}
+
+.link-inicio a {
+    text-decoration: none;
+    color: #000; 
+}
+
+.link-inicio a:hover {
+    text-decoration: underline; 
+}
