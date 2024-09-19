@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="../img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="../img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <img src="../img/ahorro.png" alt="Ahorro">
+                <img src="../img/categorias.png" alt="Categorias">
+                <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                <img src="../img/tienda.png" alt="Tienda">
+                <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <div class="inicio_sesion">
+            <h1>iniciar sesion</h1>
+
+            <!-- seccion de ingreso de datos -->
+            <div class="datos">
+                <h2>Bienvenido a Cacique del Ahorro</h2>
+                <p>por favor ingresa tus datos para iniciar sesion</p>
+                <!-- formulario para los datos-->
+                <form action="" method="post">
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="password" id="password" placeholder="Contraseña" required>
+                    <button type="submit">Iniciar Sesion</button>
+                </form>
+                <a href="">¿olvidaste tu contraseña?</a>
+                <a href="../register/register.html">Registrarse</a>
+            </div>  
+        </div>
+    </main>
+
+    <footer>
+        <img src="../img/logoECDA.png" alt="logo de la pagina">
+        <p>&reg; Cacique del ahorro</p>
+        <a href="">ir al inicio</a>
+    </footer>
+
+    <script src="login.js"></script>
+</body>
+</html>
