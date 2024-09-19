@@ -14,7 +14,7 @@ body, html {
 header {
     height: 5%;
     width: 100%;
-    background-color: #d6b8a5; /* Cambia el color si lo deseas */
+    background-color: #d6b8a5; 
 }
 
 .barra-superior {
@@ -48,7 +48,7 @@ header {
     height: 80%;
     border: none;
     outline: none;
-    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    border-radius: 30px; 
     padding-left: 2%;
 }                   
 
@@ -135,7 +135,6 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-left: 5%;
     margin: 2% auto;
 }
 
