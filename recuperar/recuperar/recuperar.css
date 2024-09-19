@@ -81,9 +81,86 @@ header {
 
 
 main{
-    min-height: 100%;
+    min-height: 90%;
     display: flex;
     flex-direction: column;
+    background-color: #F8EDE3;
+}
+
+.recuperar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 70%;
+    background-color: #C5705D;
+    border-radius: 5%;
+}
+
+.recuperar h1{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 5%
+}
+
+.datos{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    background-color: #D0B8A8;
+    margin-top: 5%;
+    border-radius: 5%;
+}
+
+.datos h3{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.datos form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos form input{
+    padding: 1.5% 5%;
+    margin-top: 4%;
+    text-align: center;
+}
+
+.datos form button{
+    padding: 2% 6%;
+    margin-top: 3%;
+    text-align: center;
+    background-color: #C5705D;
+    cursor: pointer;
+    border: 2px solid #D0B8A8;
+}
+
+.datos form button:hover{
+    text-decoration: underline;
+    border: 2px solid;
+}
+.datos a{
+    margin-top: 1.5%;
+    display: flex;
+    justify-content: center;
+}
+
+.datos a{
+    text-decoration: none;
+}
+
+.datos a:hover {
+    text-decoration: underline; 
 }
 
 
