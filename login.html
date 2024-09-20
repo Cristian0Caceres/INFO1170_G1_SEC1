@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
     <link rel="stylesheet" href="assets/css/login.css">
+    <script src="assets/js/login.js" defer></script>
 </head>
 <body>
     <header>
@@ -37,9 +38,9 @@
                 <h2>Bienvenido a Cacique del Ahorro</h2>
                 <p>por favor ingresa tus datos para iniciar sesion</p>
                 <!-- formulario para los datos-->
-                <form action="" method="post">
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="password" id="password" placeholder="Contraseña" required>
+                <form action="" method="post" id="formulario" autocomplete="off">
+                    <input type="email" id="email" placeholder="Email" required value="">
+                    <input type="password" id="password" placeholder="Contraseña" required value="">
                     <button type="submit"><b>Iniciar Sesion</b></button>
                 </form>
                 <a href="assets/pages/recuperar.html">¿olvidaste tu contraseña?</a>
@@ -62,6 +63,5 @@
         </section>
     </footer>
 
-    <script src="login.js"></script>
 </body>
 </html>

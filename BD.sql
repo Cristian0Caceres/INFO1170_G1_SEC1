@@ -140,14 +140,14 @@ CREATE TABLE `Usuario` (
   `ID_Usuario` int(11) AUTO_INCREMENT NOT NULL,
   `Nombre_Usuario` Varchar(60) NOT NULL,
   `correo_Usuario` Varchar(120) NOT NULL,
-  `Contraseña_Usuario` Varchar(255) NOT NULL,
+  `Contrasena_Usuario` Varchar(255) NOT NULL,
   PRIMARY KEY (`ID_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Volcado de datos para la tabla `Usuario`
 --
 
-INSERT INTO `Usuario` (`Nombre_Usuario`, `correo_Usuario`, `Contraseña_Usuario`) VALUES
+INSERT INTO `Usuario` (`Nombre_Usuario`, `correo_Usuario`, `Contrasena_Usuario`) VALUES
 ('Admin 1', 'Admin1@gmail.com','123456789'),
 ('Admin 2', 'Admin2@gmail.com','123456789'),
 ('Admin 3', 'Admin3@gmail.com','123456789'),
