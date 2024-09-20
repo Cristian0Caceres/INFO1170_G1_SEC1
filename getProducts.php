@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";  // Cambia esto si tienes otro usuario
 $password = "";  // Cambia esto si tienes otra contraseña
-$dbname = "base_de_datos_cacique_del_ahorro";
+$dbname = "BD";
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
