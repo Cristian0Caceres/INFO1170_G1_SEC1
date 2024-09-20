@@ -3,51 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-    <link rel="stylesheet" href="register.css">
+    <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 <body>
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="../img/logoECDA.png" alt="Logo">
+                <img src="assets/img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="../img/buscar.png" alt="Buscar">
+                    <img src="assets/img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
-                <img src="../img/ahorro.png" alt="Ahorro">
-                <img src="../img/categorias.png" alt="Categorias">
-                <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
-                <img src="../img/tienda.png" alt="Tienda">
-                <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                <img src="assets/img/ahorro.png" alt="Ahorro">
+                <img src="assets/img/categorias.png" alt="Categorias">
+                <img src="assets/img/carrito-de-compras.png" alt="Carrito de Compras">
+                <img src="assets/img/tienda.png" alt="Tienda">
+                <img src="assets/img/iniciar-sesion.png" alt="Iniciar Sesion">
             </div>
         </section>
     </header>
 
     <main>
-        <div class="registrarse">
-            <h1>Registrarse</h1>
+        <div class="inicio-sesion">
+            <h1>iniciar sesion</h1>
 
             <!-- seccion de ingreso de datos -->
             <div class="datos">
                 <h2>Bienvenido a Cacique del Ahorro</h2>
-                <p>por favor ingresa tus datos para crear tu cuenta</p>
-
+                <p>por favor ingresa tus datos para iniciar sesion</p>
                 <!-- formulario para los datos-->
-                <form>
-                    <input type="nombre" id="nombre" placeholder="Nombre" required>
+                <form action="" method="post">
                     <input type="email" id="email" placeholder="Email" required>
                     <input type="password" id="password" placeholder="Contraseña" required>
-                    <input type="password" id="password" placeholder="Confirma tu Contraseña" required>
-                    <button type="submit">Crear cuenta</button>
+                    <button type="submit"><b>Iniciar Sesion</b></button>
                 </form>
-                <a href="../login/login.html">Iniciar Sesion</a>
-            </div>
-
+                <a href="assets/pages/recuperar.html">¿olvidaste tu contraseña?</a>
+                <a href="assets/pages/register.html">Registrarse</a>
+            </div>  
         </div>
     </main>
 
@@ -55,7 +52,7 @@
         <section class="barra-inferior">
             <div class="logo-footer-texto">
                 <div class="logo-footer">
-                    <img src="../img/logoECDA.png" alt="logo">
+                    <img src="assets/img/logoECDA.png" alt="logo">
                 </div>
                 <p>&reg; Derechos Reservados</p>
             </div>
