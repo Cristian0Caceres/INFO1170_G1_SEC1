@@ -1,42 +1,90 @@
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+body, html {
+    margin: 0;
+    padding: 0;
     height: 100%;
-}
-
-body {
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
 }
 
 header {
-    background-color:  #D0B8A8;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 5%;
+    width: 100%;
+  background-color: #d6b8a5 /* Cambia el color si lo deseas */
 }
 
-header img {
+.barra-superior {
+    display: flex;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2%
+}
+
+.logo img {
+    height: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 60%;
+    height: 100%;
+}
+
+.search-bar input {
+    background-color: #E8DEF8;
+    width: 80%;
+    height: 80%;
+    border: none;
+    outline: none;
+    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    padding-left: 2%;
+}                   
+
+.search-bar button {
+    width: 5%;
+    height: 80%;
+    border: none;
+    background: none;
     cursor: pointer;
-    padding-left: 1%;
-    background-color: #C5705D;
-
+    padding-left: 4px;
 }
 
-header nav a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-size: 1.6rem;
-    font-weight: 700;
+.search-bar button img {
+    height: 60%;
 }
+
+.icons {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icons a{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icons a img{
+    height: 50%;
+    cursor: pointer;
+}
+
 
 /* Configuración de las columnas en el main */
 main {
@@ -45,15 +93,16 @@ main {
     background-color: #F8EDE3;
     align-items: center;
     justify-content: center;
-
+    height: 90%;
 }
 
-section{
+.principal{
     display: flex;
     background-color: #DFD3C3;
     width: 95%;
     height: 90%;
     border-radius: 10px;
+
 }
 
 
@@ -77,7 +126,7 @@ section{
     justify-content: center;
 
 }
-.producto.imagen img{
+.producto .imagen img{
     display: flex;
     width: 95%;
     justify-content: center;
@@ -92,15 +141,17 @@ section{
     flex-direction: column;
     align-items: center;
     border-radius: 10px;
+    padding-top: 1%;
 }
-.producto .informacion h1{
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+.producto.informacion h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color :#5e2e23;
 }
 
 
 .segundo-apartado{
-    background-color: #DFD3C3;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -140,9 +191,9 @@ footer{
     height: 5%;
 }
 footer img {
-    cursor: pointer;
-    padding-left: 1%;
-    background-color: #C5705D;
+    padding-left: 2%;
+    height: 100%;
+
 }
 
 footer a{
