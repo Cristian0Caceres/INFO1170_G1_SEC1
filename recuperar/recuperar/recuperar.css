@@ -93,7 +93,7 @@ main{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 40%;
-    height: 70%;
+    height: 50%;
     background-color: #C5705D;
     border-radius: 5%;
 }
@@ -133,7 +133,7 @@ main{
 
 .datos form input{
     padding: 1.5% 5%;
-    margin-top: 4%;
+    margin-top: 5%;
     text-align: center;
 }
 
@@ -151,7 +151,7 @@ main{
     border: 2px solid;
 }
 .datos a{
-    margin-top: 1.5%;
+    padding-top: 3%;
     display: flex;
     justify-content: center;
 }
