@@ -3,54 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Presupuesto - Cacique del Ahorro</title>
+    <title>Carrito de presupuesto</title>
     <link rel="stylesheet" href="carrito_styles.css">
-    <link rel="icon" href="ico.ico" type="image/x-icon">
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="logo.png" alt="Cacique del ahorro" class="logo">
-            <div class="header-right">
-                <a href="index.html" class="btn-volver">Volver a la tienda</a>
-            </div>
+            <h1>Carrito de presupuesto</h1>
         </header>
+
         <main>
-            <h2>Carrito de Presupuesto</h2>
-            <div class="carrito-container">
-                <table class="carrito-tabla">
-                    <thead>
-                        <tr>
-                            <th>Producto</th>
-                            <th>Precio Unitario</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Producto 1</td>
-                            <td>$1,000</td>
-                            <td>2</td>
-                            <td>$2,000</td>
-                        </tr>
-                        <tr>
-                            <td>Producto 2</td>
-                            <td>$500</td>
-                            <td>3</td>
-                            <td>$1,500</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="total-carrito">
-                    <h3>Total: $3,500</h3>
-                    <button class="btn-comprar">Generar Presupuesto</button>
+            <div>
+                <h2>Productos</h2>
+                <div class="product">
+                    <span>Fideos: $3000</span>
+                    <button onclick="addToCart('Fideos', 3000)">Agregar al carrito</button>
+                </div>
+                <div class="product">
+                    <span>Arroz: $2500</span>
+                    <button onclick="addToCart('Arroz', 2500)">Agregar al carrito</button>
+                </div>
+                <div class="product">
+                    <span>Azúcar: $1500</span>
+                    <button onclick="addToCart('Azúcar', 1500)">Agregar al carrito</button>
+                </div>
+                <div class="product">
+                    <span>Pansito: $2500</span>
+                    <button onclick="addToCart('Pansito', 2500)">Agregar al carrito</button>
                 </div>
             </div>
+
+            <div class="cart">
+                <h2>Carrito</h2>
+                <ul id="cart-items" class="cart-items"></ul>
+                <p class="total">Total: $<span id="total">0</span></p>
+            </div>
         </main>
-        <footer>
-            <p>&copy; 2024 Cacique del ahorro. Todos los derechos reservados.</p>
-        </footer>
     </div>
+
+    <script>
+        const cart = [];
+        const products = {
+            'Fideos': { price: 3000, cheaperOption: { name: 'Fideos (económicos)', price: 2000 } },
+            'Arroz': { price: 2500, cheaperOption: null },
+            'Azúcar': { price: 1500, cheaperOption: { name: 'Azúcar (económico)', price: 1000 } },
+            'Pansito': { price: 2500, cheaperOption: { name: 'Pan Luchito (económico)', price: 1500 } }
+        };
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            updateCart();
+            proposeCheaperOption(productName);
+        }
+
+        function removeFromCart(productName) {
+            const index = cart.findIndex(item => item.name === productName);
+            if (index > -1) {
+                cart.splice(index, 1); // Eliminar el producto del carrito
+                updateCart(); // Actualizar el carrito
+            }
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('total');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price;
+                const li = document.createElement('li');
+                li.classList.add('cart-item');
+                li.textContent = `${item.name}: $${item.price}`;
+                
+                // Botón para eliminar producto
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Eliminar';
+                removeBtn.classList.add('remove');
+                removeBtn.onclick = () => removeFromCart(item.name);
+
+                li.appendChild(removeBtn);
+                cartItems.appendChild(li);
+            });
+
+            totalDisplay.textContent = total;
+        }
+
+        function proposeCheaperOption(productName) {
+            const product = products[productName];
+            if (product && product.cheaperOption) {
+                const cartItems = document.getElementById('cart-items');
+                const cheaperOption = document.createElement('li');
+                cheaperOption.classList.add('cart-item');
+                cheaperOption.classList.add('proposal');
+                cheaperOption.textContent = `¿Quieres cambiar a ${product.cheaperOption.name} por $${product.cheaperOption.price}?`;
+                cheaperOption.onclick = () => switchToCheaper(productName);
+                cartItems.appendChild(cheaperOption);
+            }
+        }
+
+        function switchToCheaper(productName) {
+            const cheaperOption = products[productName].cheaperOption;
+            const index = cart.findIndex(item => item.name === productName);
+            if (index > -1) {
+                cart[index] = { name: cheaperOption.name, price: cheaperOption.price };
+                updateCart();
+            }
+        }
+    </script>
 </body>
 </html>
