@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
     <link rel="stylesheet" href="../css/register.css">
-    <script src="../js/register.js" defer></script>
+    <script src="../js/reg.js" defer></script>
 </head>
 <body>
     <header>
@@ -39,9 +39,9 @@
                 <p>por favor ingresa tus datos para crear tu cuenta</p>
 
                 <!-- formulario para los datos-->
-                <form action="../../php/registro.php" method="POST" id="registroForm" autocomplete="off">
-                    <input type="nombre" id="nombre" placeholder="Nombre" required name="nombre" value="">
-                    <input type="email" id="email" placeholder="Email" required name="correo" value="">
+                <form action="../../php/registro.php" method="POST" id="registroForm">
+                    <input type="text" id="nombre" placeholder="Nombre" required name="nombre" value="">
+                    <input type="email" id="correo" placeholder="Email" required name="correo" value="">
                     <input type="password" id="password" placeholder="Contraseña" required name="contrasena" value="">
                     <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" required name="confirmacion_contrasena" value="">
                     <button type="submit">Crear cuenta</button>
