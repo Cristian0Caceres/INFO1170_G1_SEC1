@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoria` (
   `ID_Categoria` int(11) AUTO_INCREMENT NOT NULL,
-  `Nombre_Categoria` char(60) DEFAULT NULL,
+  `Nombre_Categoria` char(60) NOT NULL,
   `Descripcion_Categoria` text DEFAULT NULL,
   PRIMARY KEY (`ID_Categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -56,8 +56,8 @@ INSERT INTO `categoria` (`Nombre_Categoria`, `Descripcion_Categoria`) VALUES
 
 CREATE TABLE `precios` (
   `ID_Precios` int(11) AUTO_INCREMENT NOT NULL,
-  `ID_Productos` int(11) DEFAULT NULL,
-  `coste` int(11) DEFAULT NULL,
+  `ID_Productos` int(11) NOT NULL,
+  `coste` int(11) NOT NULL,
   PRIMARY KEY (`ID_Precios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -65,21 +65,21 @@ CREATE TABLE `precios` (
 -- Volcado de datos para la tabla `precios`
 --
 
-INSERT INTO `precios` (`ID_Precios`, `ID_Productos`, `coste`) VALUES
-(1, 1, 1000),
-(2, 1, 850),
-(3, 2, 15000),
-(4, 3, 5000),
-(5, 1, 650),
-(6, 1, 750),
-(7, 2, 20000),
-(8, 3, 3000),
-(9, 2, 22000),
-(10, 3, 2500),
-(11, 2, 21000),
-(12, 1, 900),
-(13, 3, 4000),
-(14, 1, 4500);
+INSERT INTO `precios` (`ID_Productos`, `coste`) VALUES
+(1, 1000),
+(1, 850),
+(2, 15000),
+(3, 5000),
+(1, 650),
+(1, 750),
+(2, 20000),
+(3, 3000),
+(2, 22000),
+(3, 2500),
+(2, 21000),
+(1, 900),
+(3, 4000),
+(1, 4500);
 
 -- --------------------------------------------------------
 
@@ -89,11 +89,13 @@ INSERT INTO `precios` (`ID_Precios`, `ID_Productos`, `coste`) VALUES
 
 CREATE TABLE `producto` (
   `ID_Producto` int(11) AUTO_INCREMENT NOT NULL,
-  `ID_Proveedor` int(11) DEFAULT NULL,
-  `ID_Categoria` int(11) DEFAULT NULL,
-  `Nombre_producto` char(60) DEFAULT NULL,
-  `CANTIDAD` int(11) DEFAULT NULL,
+  `ID_Proveedor` int(11) NOT NULL,
+  `ID_Categoria` int(11) NOT   NULL,
+  `Nombre_producto` char(60) NOT NULL,
+  `CANTIDAD` int(11) NOT NULL,
   `Descripcion_Producto` text DEFAULT NULL,
+  `link_producto` VARCHAR(2083) NOT NULL,
+  `imagen_producto` VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`ID_Producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -101,12 +103,12 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`ID_Producto`, `ID_Proveedor`, `ID_Categoria`, `Nombre_producto`, `CANTIDAD`, `Descripcion_Producto`) VALUES
-(1, 1, 1, 'tallarines tarola', 100, 'Fideos largos y delgados, ideales para sopas y platos principales.'),
-(2, 3, 2, 'posta paleta', 101, 'Corte de carne de res, perfecto para guisos y asados.'),
-(3, 2, 3, 'palta hass', 102, 'Aguacate de variedad Hass, conocido por su sabor y textura cremosa.'),
-(4, 1, 2, 'tapa pecho', 103, 'Corte de carne de res, ideal para estofados y cocciones lentas.'),
-(5, 2, 3, 'tomate la crianza', 104, 'Tomates frescos y jugosos, perfectos para ensaladas y salsas.');
+INSERT INTO `producto` (`ID_Proveedor`, `ID_Categoria`, `Nombre_producto`, `CANTIDAD`, `Descripcion_Producto`) VALUES
+(1, 1, 'tallarines tarola', 100, 'Fideos largos y delgados, ideales para sopas y platos principales.'),
+(3, 2, 'posta paleta', 101, 'Corte de carne de res, perfecto para guisos y asados.'),
+(2, 3, 'palta hass', 102, 'Aguacate de variedad Hass, conocido por su sabor y textura cremosa.'),
+(1, 2, 'tapa pecho', 103, 'Corte de carne de res, ideal para estofados y cocciones lentas.'),
+(2, 3, 'tomate la crianza', 104, 'Tomates frescos y jugosos, perfectos para ensaladas y salsas.');
 
 -- --------------------------------------------------------
 
@@ -116,7 +118,7 @@ INSERT INTO `producto` (`ID_Producto`, `ID_Proveedor`, `ID_Categoria`, `Nombre_p
 
 CREATE TABLE `proveedor` (
   `ID_Proveedor` int(11) AUTO_INCREMENT NOT NULL,
-  `Nombre_Proveedor` char(60) DEFAULT NULL,
+  `Nombre_Proveedor` char(60) NOT NULL,
   PRIMARY KEY (`ID_Proveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -140,14 +142,14 @@ CREATE TABLE `Usuario` (
   `ID_Usuario` int(11) AUTO_INCREMENT NOT NULL,
   `Nombre_Usuario` Varchar(60) NOT NULL,
   `correo_Usuario` Varchar(120) NOT NULL,
-  `Contraseña_Usuario` Varchar(255) NOT NULL,
+  `Contrasena_Usuario` Varchar(255) NOT NULL,
   PRIMARY KEY (`ID_Usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Volcado de datos para la tabla `Usuario`
 --
 
-INSERT INTO `Usuario` (`Nombre_Usuario`, `correo_Usuario`, `Contraseña_Usuario`) VALUES
+INSERT INTO `Usuario` (`Nombre_Usuario`, `correo_Usuario`, `Contrasena_Usuario`) VALUES
 ('Admin 1', 'Admin1@gmail.com','123456789'),
 ('Admin 2', 'Admin2@gmail.com','123456789'),
 ('Admin 3', 'Admin3@gmail.com','123456789'),
@@ -183,13 +185,15 @@ INSERT INTO `Lista_De_Compra` (`ID_Producto`, `ID_Usuario`) VALUES
 
 CREATE TABLE `temp_producto` (
   `ID_Producto` int(11) NOT NULL,
-  `ID_Proveedor` int(11) DEFAULT NULL,
-  `ID_Categoria` int(11) DEFAULT NULL,
-  `ID_Precios` int(11) DEFAULT NULL,
-  `Nombre_producto` char(60) DEFAULT NULL,
+  `ID_Proveedor` int(11) NOT NULL,
+  `ID_Categoria` int(11) NOT NULL,
+  `ID_Precios` int(11) NOT NULL,
+  `Nombre_producto` char(60) NOT NULL,
   `CANTIDAD` int(11) DEFAULT NULL,
   `Descripcion_Producto` text DEFAULT NULL,
   `Actualizacion_Productos` timestamp NOT NULL DEFAULT current_timestamp()
+  `link_producto` VARCHAR(2083) NOT NULL,
+  `imagen_producto` VARCHAR(255) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
