@@ -1,33 +1,40 @@
 const data = [
-    "Super Mario Bros",
-    "The Legend of Zelda",
-    "Minecraft",
-    "Fortnite",
-    "Call of Duty",
-    "Overwatch",
-    "League of Legends",
-    "Apex Legends",
-    "Valorant",
-    "Cyberpunk 2077"
+    "papa",
+    "lechuga",
+    "tomate",
+    "fideos",
+    "tapapecho",
+    "wuachalomo",
+    "Lasaña pre cocinada",
+    "pate",
+    "queso",
+    "pollo"
 ];
 
-function search() {
-    const query = document.getElementById('search-input').value.toLowerCase();
-    const results = data.filter(item => item.toLowerCase().includes(query));
-    displayResults(results);
-}
-
-function displayResults(results) {
+function displayAllItems() {
     const resultsContainer = document.getElementById('results');
     resultsContainer.innerHTML = '';
 
-    if (results.length > 0) {
-        results.forEach(result => {
-            const div = document.createElement('div');
-            div.textContent = result;
-            resultsContainer.appendChild(div);
-        });
-    } else {
-        resultsContainer.textContent = 'No se encontraron resultados';
-    }
+    data.forEach(item => {
+        const div = document.createElement('div');
+        div.textContent = item;
+        div.classList.add('item');
+        resultsContainer.appendChild(div);
+    });
 }
+
+function search() {
+    const query = document.getElementById('search-input').value.toLowerCase();
+    const items = document.querySelectorAll('.item');
+
+    items.forEach(item => {
+        if (item.textContent.toLowerCase().includes(query)) {
+            item.classList.remove('hidden');
+        } else {
+            item.classList.add('hidden');
+        }
+    });
+}
+
+// Mostrar todos los elementos al cargar la página
+window.onload = displayAllItems;
