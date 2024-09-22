@@ -11,31 +11,40 @@ if ($conn->connect_error) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Actualizar producto
-    $id = $_POST['id'];
+    $id = $_POST['id']; // ID del producto
+    $id_precio = $_POST['id_precio']; // ID del precio
     $nombre = $_POST['nombre'];
     $categoria = $_POST['categoria'];
     $precio = $_POST['precio'];
 
+    // Actualización de la tabla producto y precios, usando también el ID_Precios
     $sql = "UPDATE producto 
             JOIN precios ON producto.ID_Producto = precios.ID_Productos
-            SET producto.Nombre_producto='$nombre', producto.ID_Categoria='$categoria', precios.coste='$precio' 
-            WHERE producto.ID_Producto=$id";
+            SET producto.Nombre_producto = ?, producto.ID_Categoria = ?, precios.coste = ?
+            WHERE producto.ID_Producto = ? AND precios.ID_Precios = ?";
 
-    if ($conn->query($sql) === TRUE) {
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('siiii', $nombre, $categoria, $precio, $id, $id_precio); // s: string, i: integer
+    if ($stmt->execute()) {
         header('Location: lista_productos.php'); 
         exit();
     } else {
         echo "Error al actualizar: " . $conn->error;
     }
 } else {
-    // Obtener datos del producto
+    // Obtener datos del producto para mostrar en el formulario
     $id = $_GET['id'];
-    $sql = "SELECT producto.Nombre_producto, categoria.ID_Categoria, precios.coste
+    $id_precio = $_GET['id_precio'];
+
+    $sql = "SELECT producto.Nombre_producto, producto.ID_Categoria, precios.coste, precios.ID_Precios
             FROM producto
             JOIN precios ON producto.ID_Producto = precios.ID_Productos
-            JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
-            WHERE producto.ID_Producto=$id";
-    $result = $conn->query($sql);
+            WHERE producto.ID_Producto = ? AND precios.ID_Precios = ? LIMIT 1"; // Selecciona solo un precio relacionado con el producto
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ii', $id, $id_precio); // i: integer
+    $stmt->execute();
+    $result = $stmt->get_result();
     $producto = $result->fetch_assoc();
 }
 $conn->close();
@@ -50,13 +59,18 @@ $conn->close();
 <body>
     <h2>Editar Producto</h2>
     <form method="post">
-        <input type="hidden" name="id" value="<?php echo $producto['ID_Producto']; ?>">
+        <input type="hidden" name="id" value="<?php echo $id; ?>">
+        <input type="hidden" name="id_precio" value="<?php echo $producto['ID_Precios']; ?>"> <!-- ID del precio -->
+        
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" value="<?php echo $producto['Nombre_producto']; ?>" required>
+        
         <label for="categoria">Categoría:</label>
         <input type="number" name="categoria" value="<?php echo $producto['ID_Categoria']; ?>" required>
+        
         <label for="precio">Precio:</label>
         <input type="number" name="precio" value="<?php echo $producto['coste']; ?>" required>
+        
         <button type="submit">Actualizar</button>
     </form>
 </body>

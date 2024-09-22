@@ -1,8 +1,7 @@
 <?php
-// Conexión a la base de datos
 $servername = "localhost";
-$username = "root";  // Cambia esto si tienes otro usuario
-$password = "";  // Cambia esto si tienes otra contraseña
+$username = "root"; 
+$password = ""; 
 $dbname = "BD";
 
 // Crear conexión
