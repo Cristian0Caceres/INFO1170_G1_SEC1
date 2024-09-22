@@ -101,12 +101,12 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`ID_Proveedor`, `ID_Categoria`, `Nombre_producto`, `CANTIDAD`, `Descripcion_Producto`) VALUES
-(1, 1, 'tallarines tarola', 100, 'Fideos largos y delgados, ideales para sopas y platos principales.'),
-(3, 2, 'posta paleta', 101, 'Corte de carne de res, perfecto para guisos y asados.'),
-(2, 3, 'palta hass', 102, 'Aguacate de variedad Hass, conocido por su sabor y textura cremosa.'),
-(1, 2, 'tapa pecho', 103, 'Corte de carne de res, ideal para estofados y cocciones lentas.'),
-(2, 3, 'tomate la crianza', 104, 'Tomates frescos y jugosos, perfectos para ensaladas y salsas.');
+INSERT INTO `producto` (`ID_Producto`, `ID_Proveedor`, `ID_Categoria`, `Nombre_producto`, `CANTIDAD`, `Descripcion_Producto`) VALUES
+(1, 1, 1, 'tallarines tarola', 100, 'Fideos largos y delgados, ideales para sopas y platos principales.'),
+(2, 3, 2, 'posta paleta', 101, 'Corte de carne de res, perfecto para guisos y asados.'),
+(3, 2, 3, 'palta hass', 102, 'Aguacate de variedad Hass, conocido por su sabor y textura cremosa.'),
+(4, 1, 2, 'tapa pecho', 103, 'Corte de carne de res, ideal para estofados y cocciones lentas.'),
+(5, 2, 3, 'tomate la crianza', 104, 'Tomates frescos y jugosos, perfectos para ensaladas y salsas.');
 
 -- --------------------------------------------------------
 
