@@ -1,16 +1,6 @@
 <?php
-$servername = "localhost";
-$username = "root"; 
-$password = ""; 
-$dbname = "BD";
+include "conector.php";
 
-// Crear conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
-}
 
 // Consulta para obtener los productos con sus precios
 $sql = "SELECT producto.ID_Producto AS id, producto.Nombre_producto AS name, precios.coste AS price, categoria.Nombre_Categoria AS category

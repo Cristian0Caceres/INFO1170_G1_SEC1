@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos - Cacique del Ahorro</title>
-    <link rel="stylesheet" href="styles1.css">
+    <link rel="stylesheet" href="/INFO1170_G1_SEC1/CSS/styles1.css">
 </head>
 <body>
 
@@ -13,10 +13,10 @@
 </header>
 
 <nav>
-    <a href="admin_home.html">Volver</a>
+    <a href="/INFO1170_G1_SEC1/HTML/admin_home.html">Volver</a>
     <a href="#">Inicio</a>
-    <a href="lista_productos.php">Productos</a>
-    <a href="lista_usuarios.php">Usuarios</a>
+    <a href="/INFO1170_G1_SEC1/PHP/lista_productos.php">Productos</a>
+    <a href="/INFO1170_G1_SEC1/PHP/lista_usuarios.php">Usuarios</a>
     <a href="#">Salir</a>
 </nav>
 

@@ -1,4 +1,6 @@
 <?php
+
+/*Aun no me atrevo a cambiar este archivo */
 $host = 'localhost'; 
 $usuario = 'root'; 
 $contraseña = ''; 

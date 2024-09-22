@@ -1,13 +1,6 @@
 <?php
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$dbname = "BD"; 
+include "conector.php";
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
 
 if (isset($_GET['id']) && isset($_GET['id_precio'])) {
     $id_producto = $_GET['id'];

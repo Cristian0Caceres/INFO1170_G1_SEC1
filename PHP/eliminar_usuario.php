@@ -1,13 +1,5 @@
 <?php
-$servername = "localhost"; 
-$username = "root"; 
-$password = ""; 
-$dbname = "bd"; 
-/* CUIDADO, ESTE CODIGO ELIMINA DE MANERA PERMANENTE EL USUARIO QUE SE AGREGE */
-$conn = new mysqli($servername, $username, $password, $dbname);
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
+include "conector.php";
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
