@@ -14,7 +14,7 @@ body, html {
 header {
     height: 5%;
     width: 100%;
-    background-color: #d6b8a5; /* Cambia el color si lo deseas */
+    background-color: #d6b8a5; 
 }
 
 .barra-superior {
@@ -48,7 +48,7 @@ header {
     height: 80%;
     border: none;
     outline: none;
-    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    border-radius: 30px; 
     padding-left: 2%;
 }                   
 
@@ -157,20 +157,6 @@ main{
     text-decoration: underline;
     border: 2px solid;
 }
-.datos a{
-    padding-top: 3%;
-    display: flex;
-    justify-content: center;
-}
-
-.datos a{
-    text-decoration: none;
-}
-
-.datos a:hover {
-    text-decoration: underline; 
-}
-
 
 footer{
     height: 5%;

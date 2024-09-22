@@ -134,13 +134,19 @@ main{
 
 .datos form {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     align-items: center;
 }
 
+.datos form .num {
+    display: flex;
+    justify-content: center;
+    margin: 10%; 
+}
+
 .datos form input{
-    padding: 1.5% 5%;
-    margin-top: 5%;
+    padding: 1% 1%;
+    margin: 2%;
     text-align: center;
 }
 
@@ -157,20 +163,6 @@ main{
     text-decoration: underline;
     border: 2px solid;
 }
-.datos a{
-    padding-top: 3%;
-    display: flex;
-    justify-content: center;
-}
-
-.datos a{
-    text-decoration: none;
-}
-
-.datos a:hover {
-    text-decoration: underline; 
-}
-
 
 footer{
     height: 5%;

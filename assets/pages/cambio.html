@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-    <link rel="stylesheet" href="../css/recuperar.css">
+    <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="../css/cambio.css">
 </head>
 <body>
     <header>
@@ -15,7 +15,7 @@
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="../img/buscar.png" alt="Buscar">
+                    <img src="assets/img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
@@ -34,16 +34,15 @@
 
             <!-- seccion de ingreso de datos -->
             <div class="datos">
-                <h3>¿Olvidaste tu Contraseña?</h3>
-                <p>por favor ingresa tu correo asociado a tu cuenta</p>
-                <form>
-                    <input type="email" id="email" placeholder="Email" required>
-                    <button type="submit">Recuperar Contraseña</button>
+                <h3>Introduzca su Contraseña</h3>
+                <p>Porfavor ingresa tu nueva contraseña</p>
+                <!-- formulario para los datos-->
+                <form >
+                    <input type="password" id="password" placeholder="Contraseña" value="" required >
+                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" value="" required >
+                    <button type="submit"><b>Cambiar Contraseña</b></button>
                 </form>
-                <a href="../../login.html">Inicio de Sesion</a>
-                <a href="register.html">Registrarse</a>
-            </div>
-
+            </div>  
         </div>
     </main>
 
@@ -60,5 +59,6 @@
             </div>
         </section>
     </footer>
+
 </body>
 </html>

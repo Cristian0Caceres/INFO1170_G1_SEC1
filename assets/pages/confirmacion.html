@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
-    <link rel="stylesheet" href="../css/recuperar.css">
+    <link rel="stylesheet" href="../css/confirmacion.css">
 </head>
 <body>
     <header>
@@ -34,14 +34,18 @@
 
             <!-- seccion de ingreso de datos -->
             <div class="datos">
-                <h3>¿Olvidaste tu Contraseña?</h3>
-                <p>por favor ingresa tu correo asociado a tu cuenta</p>
+                <h3>Correo Enviado</h3>
+                <p>por favor ingresa el codigo que se te ha enviado al correo</p>
                 <form>
-                    <input type="email" id="email" placeholder="Email" required>
+                    <div class="num">
+                        <input type="number" id="numero1" min="1" max="9" value="" required >
+                        <input type="number" id="numero2" min="0" max="9" value="" required>
+                        <input type="number" id="numero3" min="0" max="9" value="" required>
+                        <input type="number" id="numero4" min="0" max="9" value="" required>
+                        <input type="number" id="numero5" min="0" max="9" value="" required>
+                    </div>
                     <button type="submit">Recuperar Contraseña</button>
                 </form>
-                <a href="../../login.html">Inicio de Sesion</a>
-                <a href="register.html">Registrarse</a>
             </div>
 
         </div>
