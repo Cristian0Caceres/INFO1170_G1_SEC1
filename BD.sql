@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categoria` (
   `ID_Categoria` int(11) AUTO_INCREMENT NOT NULL,
-  `Nombre_Categoria` char(60) DEFAULT NULL,
+  `Nombre_Categoria` char(60) NOT NULL,
   `Descripcion_Categoria` text DEFAULT NULL,
   PRIMARY KEY (`ID_Categoria`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -56,8 +56,8 @@ INSERT INTO `categoria` (`Nombre_Categoria`, `Descripcion_Categoria`) VALUES
 
 CREATE TABLE `precios` (
   `ID_Precios` int(11) AUTO_INCREMENT NOT NULL,
-  `ID_Productos` int(11) DEFAULT NULL,
-  `coste` int(11) DEFAULT NULL,
+  `ID_Productos` int(11) NOT NULL,
+  `coste` int(11) NOT NULL,
   PRIMARY KEY (`ID_Precios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -89,11 +89,13 @@ INSERT INTO `precios` (`ID_Productos`, `coste`) VALUES
 
 CREATE TABLE `producto` (
   `ID_Producto` int(11) AUTO_INCREMENT NOT NULL,
-  `ID_Proveedor` int(11) DEFAULT NULL,
-  `ID_Categoria` int(11) DEFAULT NULL,
-  `Nombre_producto` char(60) DEFAULT NULL,
-  `CANTIDAD` int(11) DEFAULT NULL,
+  `ID_Proveedor` int(11) NOT NULL,
+  `ID_Categoria` int(11) NOT   NULL,
+  `Nombre_producto` char(60) NOT NULL,
+  `CANTIDAD` int(11) NOT NULL,
   `Descripcion_Producto` text DEFAULT NULL,
+  `link_producto` VARCHAR(2083) NOT NULL,
+  `imagen_producto` VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`ID_Producto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -116,7 +118,7 @@ INSERT INTO `producto` (`ID_Proveedor`, `ID_Categoria`, `Nombre_producto`, `CANT
 
 CREATE TABLE `proveedor` (
   `ID_Proveedor` int(11) AUTO_INCREMENT NOT NULL,
-  `Nombre_Proveedor` char(60) DEFAULT NULL,
+  `Nombre_Proveedor` char(60) NOT NULL,
   PRIMARY KEY (`ID_Proveedor`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -183,13 +185,15 @@ INSERT INTO `Lista_De_Compra` (`ID_Producto`, `ID_Usuario`) VALUES
 
 CREATE TABLE `temp_producto` (
   `ID_Producto` int(11) NOT NULL,
-  `ID_Proveedor` int(11) DEFAULT NULL,
-  `ID_Categoria` int(11) DEFAULT NULL,
-  `ID_Precios` int(11) DEFAULT NULL,
-  `Nombre_producto` char(60) DEFAULT NULL,
+  `ID_Proveedor` int(11) NOT NULL,
+  `ID_Categoria` int(11) NOT NULL,
+  `ID_Precios` int(11) NOT NULL,
+  `Nombre_producto` char(60) NOT NULL,
   `CANTIDAD` int(11) DEFAULT NULL,
   `Descripcion_Producto` text DEFAULT NULL,
   `Actualizacion_Productos` timestamp NOT NULL DEFAULT current_timestamp()
+  `link_producto` VARCHAR(2083) NOT NULL,
+  `imagen_producto` VARCHAR(255) DEFAULT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
