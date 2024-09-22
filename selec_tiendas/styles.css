@@ -1,0 +1,259 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    height: 5%;
+    width: 100%;
+  background-color: #d6b8a5 /* Cambia el color si lo deseas */
+}
+
+.barra-superior {
+    display: flex;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2%
+}
+
+.logo img {
+    height: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 60%;
+    height: 100%;
+}
+
+.search-bar input {
+    background-color: #E8DEF8;
+    width: 80%;
+    height: 80%;
+    border: none;
+    outline: none;
+    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    padding-left: 2%;
+}                   
+
+.search-bar button {
+    width: 5%;
+    height: 80%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding-left: 4px;
+}
+
+.search-bar button img {
+    height: 60%;
+}
+
+.icons {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icons a{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icons a img{
+    height: 50%;
+    cursor: pointer;
+}
+
+
+
+main {
+    background-color: #F8EDE3;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.principal{
+    display: flex;
+    background-color: #DFD3C3;
+    width: 95%;
+    height: 90%;
+    border-radius: 10px;
+    flex-direction: column;
+}
+
+.principal .encabezado{
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: center;    
+    align-items: center;
+
+}
+
+.encabezado .boton-enviar{
+ 
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: lemon;
+}
+
+.boton-enviar button{
+    display: flex;
+    background-color: #65558F;
+    color: white;
+    font-size: 1rem;
+    font-family: lemon;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 2px solid black;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.boton-enviar img{
+    width: 2rem;
+}
+
+.encabezado .titulo{
+    background-color: #C5705D;
+    display: flex;
+    width: 30%;
+    height: 60%;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    border-radius: 50px;
+    font-family: lemon;
+}
+
+.encabezado .busqueda {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    height: 100%;
+}
+
+.busqueda input {
+    background-color: #E8DEF8;
+    width: 70%;
+    height: 30%;
+    border: none;
+    outline: none;
+    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    padding-left: 2%;
+}            
+
+.principal .segunda_seccion{
+    display: flex;
+    width: 100%;
+    height: 85%;
+    justify-content: center;
+    align-items: center;
+}
+
+.segunda_seccion .tiendas{
+ 
+    display: flex;
+    width: 90%;
+    height: 90%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tiendas .tienda{
+    background-color: #C5705D;
+    display: flex;
+    width: 10rem;
+    height: 5rem;
+    margin: 1%;
+    border-radius: 10px;
+    border-color: black;
+    border: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-family: lemon;
+    color: white;
+}
+
+/* Oculta la checkbox original */
+.tiendas .tienda input[type="checkbox"] {
+    appearance: none;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* Estilo de la checkbox cuando está marcada */
+.tiendas .tienda input[type="checkbox"]:checked {
+    background-color:#65558F;
+    border-color: #65558F;
+    position: relative;
+}
+
+/* Añadir un check o una marca al estar marcada (opcional) */
+.tiendas .tienda input[type="checkbox"]:checked::after {
+    content: "✔"; /* Añade un check o una marca */
+    color: white;
+    font-size: 1.5rem;
+    position: absolute;
+    top: -2px;
+    left: 3px;
+}
+
+
+
+footer{
+    background-color: #D0B8A8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5%;
+}
+footer img {
+    padding-left: 2%;
+    height: 100%;
+
+}
+
+footer a{
+    margin: 0 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
