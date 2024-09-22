@@ -1,0 +1,228 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0e5d8;
+    margin: 0;
+    padding: 0;
+    color: #3f2a21;
+}
+
+/* Encabezado */
+header {
+    background-color: #d58b72;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #b47461;
+}
+
+/* Navegación */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #b47461;
+    padding: 15px;
+    border-bottom: 2px solid #d58b72;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #e8c0ab;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #d58b72;
+}
+
+/* Sección principal */
+section {
+    padding: 40px;
+}
+
+h1, h2, h3 {
+    text-align: center;
+    color: #3f2a21;
+}
+
+p {
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Botones */
+button, .add-btn, .admin-card a {
+    background-color: #d58b72;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+button:hover, .add-btn:hover, .admin-card a:hover {
+    background-color: #b47461;
+}
+
+/* Layout */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.product-list, .cart-list, .login-section {
+    background-color: #f5d6c6;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 80%;
+    max-width: 600px;
+}
+
+/* Productos */
+.product {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+.cart {
+    background-color: #e8c0ab;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.cart ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.cart li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #d58b72;
+}
+
+.total {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+}
+
+.proposal {
+    color: green;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.remove {
+    color: red;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Tarjetas de administración */
+.admin-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.admin-card {
+    background-color: #f5d6c6;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    width: 30%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.admin-card:hover {
+    transform: translateY(-10px);
+}
+
+.admin-card h3 {
+    font-size: 22px;
+    color: #3f2a21;
+    margin-bottom: 20px;
+}
+
+.admin-card p {
+    font-size: 16px;
+    color: #5a3e35;
+    margin-bottom: 25px;
+}
+
+/* Estilos para la tabla de usuarios */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.user-table th {
+    background-color: #d58b72;
+    color: white;
+}
+
+.user-table td {
+    background-color: #f9f9f9;
+}
+
+.user-table tr:hover {
+    background-color: #f2f2f2;
+}
+
+.user-table a {
+    color: #d58b72;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.user-table a:hover {
+    color: #b47461;
+    text-decoration: underline;
+}
+
+/* Sección de login */
+.login-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-section input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #d58b72;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #d58b72;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

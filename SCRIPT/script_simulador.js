@@ -4,7 +4,7 @@ const products = {};  // Almacenará los productos
 // Función para cargar los productos desde el backend (PHP)
 async function loadProducts() {
     try {
-        const response = await fetch('getProducts.php');
+        const response = await fetch('/INFO1170_G1_SEC1/PHP/getProducts.php');
         const data = await response.json();
         
         const productList = document.getElementById('product-list');

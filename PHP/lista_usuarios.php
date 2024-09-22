@@ -17,6 +17,7 @@
     <a href="#">Inicio</a>
     <a href="/INFO1170_G1_SEC1/PHP/lista_productos.php">Productos</a>
     <a href="/INFO1170_G1_SEC1/PHP/lista_usuarios.php">Usuarios</a>
+    <a href="/INFO1170_G1_SEC1/HTML/Test_Simulador.html">Simulador</a>
     <a href="#">Salir</a>
 </nav>
 
