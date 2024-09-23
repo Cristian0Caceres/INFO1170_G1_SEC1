@@ -24,6 +24,9 @@
     <h2>Productos Registrados</h2>
     <p>A continuación, se muestra la lista de productos registrados en el sistema:</p>
 
+    <!-- Botón para añadir un nuevo producto -->
+    <a href="/INFO1170_G1_SEC1/PHP/añadir_producto.php" class="button">Añadir Producto</a>
+
     <table class="user-table">
         <thead>
             <tr>
@@ -31,6 +34,7 @@
                 <th>Nombre</th>
                 <th>Categoría</th>
                 <th>Precio</th>
+                <th>Proveedor</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -40,6 +44,7 @@
             include 'productos.php'; 
             ?>
         </tbody>
+    
     </table>
 </section>
 

@@ -89,6 +89,7 @@ p {
     margin-bottom: 25px;
 }
 
+/* Estilos para el botón en las tarjetas */
 .admin-card a {
     display: inline-block;
     padding: 12px 25px;
@@ -104,8 +105,26 @@ p {
     background-color: #b47461;
 }
 
+/* Botón para añadir producto */
+.button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 12px 25px;
+    background-color: #d58b72;
+    color: white;
+    text-decoration: none;
+    border: 2px solid #d58b72; /* Borde del botón */
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s; /* Agregar transición para el borde */
+}
 
-/* Estilos para la tabla de usuarios */
+.button:hover {
+    background-color: #b47461;
+    border-color: #b47461; /* Cambia el color del borde al hacer hover */
+}
+
+/* Estilos para la tabla de productos y usuarios */
 .user-table {
     width: 100%;
     border-collapse: collapse;

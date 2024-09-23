@@ -28,12 +28,13 @@ label {
     font-weight: bold;
 }
 
-input[type="text"], input[type="number"] {
+input[type="text"], input[type="number"], select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #d58b72;
     border-radius: 5px;
+    background-color: white; /* Fondo blanco para campos de entrada */
 }
 
 button {
