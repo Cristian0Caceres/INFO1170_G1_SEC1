@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar</title>
     <link rel="stylesheet" href="../css/recuperar.css">
+    <script src="../js/rec.js" defer></script>
 </head>
 <body>
     <header>
@@ -36,7 +37,7 @@
             <div class="datos">
                 <h3>¿Olvidaste tu Contraseña?</h3>
                 <p>por favor ingresa tu correo asociado a tu cuenta</p>
-                <form>
+                <form action="../../php/correo.php" method="POST">
                     <input type="email" id="email" placeholder="Email" required>
                     <button type="submit">Recuperar Contraseña</button>
                 </form>
