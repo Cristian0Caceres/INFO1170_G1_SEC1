@@ -1,7 +1,6 @@
 <?php
 include "conector.php";
 
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Actualizar usuario
     $id = $_POST['id'];
@@ -30,6 +29,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Editar Usuario</title>
+    <link rel="stylesheet" href="/INFO1170_G1_SEC1/CSS/styles4.css"> <!-- Cambia la ruta según la ubicación de tu archivo CSS -->
 </head>
 <body>
     <h2>Editar Usuario</h2>

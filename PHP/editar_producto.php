@@ -48,6 +48,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Editar Producto</title>
+    <link rel="stylesheet" href="/INFO1170_G1_SEC1/CSS/styles4.css"> <!-- Cambia la ruta según dónde esté tu archivo CSS -->
 </head>
 <body>
     <h2>Editar Producto</h2>
