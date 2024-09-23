@@ -9,12 +9,23 @@
 <body>
     <div class="container">
         <header>
-            <h1>Carrito de presupuesto</h1>
+            <img src="logo.png" alt="Cacique del ahorro" class="logo">
+            <div class="header-right">
+                <form class="search-bar" action="/buscar.html" method="get">
+                    <input type="text" placeholder="Buscar..." name="q">
+                    <button type="submit">Buscar</button>
+                </form>
+                <div class="cart-icon">
+                    <a href="/Carrito.html">
+                        <img src="carrito.png" alt="Carrito de Presupuesto">
+                    </a>
+                </div>
+            </div>
         </header>
 
         <main>
-            <div>
-                <h2>Productos</h2>
+            <div class="carrito-container"> <!-- Contenedor para el carrito -->
+                <h2>Carrito de presupuesto</h2>
                 <div class="product">
                     <span>Fideos: $3000</span>
                     <button onclick="addToCart('Fideos', 3000)">Agregar al carrito</button>
@@ -31,14 +42,20 @@
                     <span>Pansito: $2500</span>
                     <button onclick="addToCart('Pansito', 2500)">Agregar al carrito</button>
                 </div>
-            </div>
 
-            <div class="cart">
-                <h2>Carrito</h2>
-                <ul id="cart-items" class="cart-items"></ul>
-                <p class="total">Total: $<span id="total">0</span></p>
-            </div>
+                <div class="cart">
+                    <h2>Carrito</h2>
+                    <ul id="cart-items" class="cart-items"></ul>
+                    <p class="total">Total: $<span id="total">0</span></p>
+                </div>
+            </div> <!-- Fin del contenedor -->
         </main>
+
+        <footer>
+            <img src="logo.png" alt="Logo">
+            <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
+            <a href="Iniciocda.html" class="inicio-btn">Ir a Inicio</a>
+        </footer>
     </div>
 
     <script>
@@ -59,8 +76,8 @@
         function removeFromCart(productName) {
             const index = cart.findIndex(item => item.name === productName);
             if (index > -1) {
-                cart.splice(index, 1); // Eliminar el producto del carrito
-                updateCart(); // Actualizar el carrito
+                cart.splice(index, 1);
+                updateCart();
             }
         }
 
@@ -76,7 +93,6 @@
                 li.classList.add('cart-item');
                 li.textContent = `${item.name}: $${item.price}`;
                 
-                // Botón para eliminar producto
                 const removeBtn = document.createElement('button');
                 removeBtn.textContent = 'Eliminar';
                 removeBtn.classList.add('remove');
