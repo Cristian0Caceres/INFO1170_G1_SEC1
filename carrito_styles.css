@@ -1,203 +1,195 @@
-@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
-/* Estilos generales */
-body {
-    font-family: 'Lemon', sans-serif; /* Cambiado a la fuente Lemon */
-    background-color: #f0e8dc;
-    color: #000000;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
 
-/* Contenedor gigante */
-.giant-container {
-    width: 100%;
-    max-width: 1300px; /* Aumenta el ancho del contenedor */
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #e3d5c6;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Encabezado */
 header {
+    background-color: #D0B8A8; /* Cambia el color de fondo según lo necesites */
+    padding: 10px 20px; /* Espaciado interno del header */
+}
+
+.barra-superior {
+    display: flex; /* Para alinear los elementos en una fila */
+    justify-content: space-between; /* Espacio entre los elementos */
+    align-items: center; /* Centrar los elementos verticalmente */
+}
+
+.logo {
     display: flex;
-    justify-content: space-between;
+    width: 5%;
     align-items: center;
-    padding: 1px;
-    background-color: #D0B8A8;
-    width: 100vw;
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    justify-content: flex-start; /* Cambia 'left' por 'flex-start' */
+    padding-left: 2%;
 }
 
-header .logo {
-    width: 50px; 
-    height: auto;
-    margin-right: 10px; 
-    margin-left: 21px; 
+.logo img {
+    max-width: 100%; /* Asegúrate de que la imagen se ajuste al contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
 }
 
-.header-right {
-    display: flex;
-    align-items: center;
-}
 
+.search-bar {
+    display: flex; /* Alinea el input y el botón en una fila */
+    align-items: center; /* Centrar verticalmente */
+}
 
 .search-bar input {
-    padding: 10px;
-    font-size: 20px;
+    background-color: #E8DEF8;
+    width: 80%;
+    height: 80%;
     border: none;
-    border-radius: 4px;
-    margin-right: 10px;
-    background-color: #DFD3C3;
+    outline: none;
+    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    padding-left: 2%;
 }
 
 .search-bar button {
-    padding: 10px 15px;
-    font-size: 20px;
-    background-color: #D0B8A8;
-    color: #fff;
+    width: 5%;
+    height: 80%;
     border: none;
-    border-radius: 4px;
+    background: none;
     cursor: pointer;
+    padding-left: 4px;
 }
 
-.cart-icon img {
-    width: 50px;
-    margin-left: 20px;
-    cursor: pointer;
+.search-bar button img {
+    max-height: 30px; /* Altura máxima para la imagen del botón de búsqueda */
+    width: auto; /* Mantiene la proporción de la imagen */
 }
 
-/* Contenedor de tiendas */
-.store-container {
-    background-color: #C5705D;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 8px;
-    color: white;
+.icons {
+    display: flex; /* Para alinear los íconos en una fila */
+    gap: 15px; /* Espacio entre íconos */
 }
-
-.store-container h3 {
-    margin: 0;
-}
-
-/* Producto */
-.product {
+.icons a {
+    height: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: #8673a1;
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-    color: white;
-    font-size: 1em;
+    justify-content: space-evenly;
 }
 
-.product button {
-    background-color: #DFD3C3;
-    color: black;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+.icons img {
+    max-width: 30px; /* Ajusta el tamaño de los íconos */
+    height: auto; /* Mantiene la proporción de los íconos */
 }
 
-.product button:hover {
-    background-color: #C5705D;
+main {
+    padding: 80px 20px; /* Ajusta el padding para dar espacio al header fijo */
+    font-size: 1.2em;
 }
 
-/* Botón Ir a tienda */
-.go-to-store {
-    display: block;
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #8673a1;
-    color: white;
+/* Estilo para el título del carrito */
+.titulo-carrito {
     text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para las tiendas y productos */
+.tienda {
+    margin-bottom: 30px;
+}
+
+.productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Espaciado entre productos */
+}
+
+.producto {
+    border: 1px solid #3b111a;
     border-radius: 5px;
-    text-decoration: none;
-}
-
-.go-to-store:hover {
-    background-color: #6a5c88;
-}
-
-/* Carrito */
-
-
-.cart {
-    background-color: #e3d5c6;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.cart h2 {
+    padding: 10px;
+    margin: 10px;
+    background-color: #C5705D; /* Fondo blanco para los productos */
     text-align: center;
-    font-size: 1.8em; /* Tamaño original del h2 */
-    margin-bottom: 20px; /* Espaciado inferior */
+    width: 200px; /* Ancho de cada producto */
 }
 
-.cart-items {
-    list-style-type: none;
+.producto img {
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    height: auto;
+}
+
+.precio {
+    font-weight: bold; /* Negrita para ambos precios */
+}
+.tienda-container {
+    background-color: #D0B8A8; /* Color de fondo del contenedor gigante */
+    
+    border-radius: 10px; /* Esquinas redondeadas */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 30px; /* Espaciado entre contenedores */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+.agregar-btn {
+    background-color: #8786D9; /* Cambia este color por el que desees */
+    color: rgb(0, 0, 0); /* Color del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.agregar-btn:hover {
+    background-color: #49454F; /* Cambia este color para el efecto hover */
+}
+/* Estilo para el precio normal */
+.precio.normal {
+    color: #333; /* Color oscuro para el precio normal */
+    text-decoration: line-through; /* Tacha el precio normal */
+    font-size: 16px; /* Tamaño del texto del precio normal */
+}
+
+/* Estilo para el precio de oferta */
+.precio.oferta {
+    color: #D32F2F; /* Color rojo para el precio de oferta */
+    font-size: 20px; /* Tamaño más grande para el precio de oferta */
+    font-weight: bold; /* Negrita para resaltar */
+}
+
+/* Estilos para el carrito */
+#cart-items {
+    
+    list-style-type: none; /* Sin viñetas en la lista */
     padding: 0;
 }
 
 .cart-item {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 5px 0;
+    
 }
-
-.cart-item button {
-    background-color: #DFD3C3;
-    color: rgb(122, 89, 89);
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.cart-item button:hover {
-    background-color: #C5705D;
-}
-
-.total {
-    font-weight: bold;
-    text-align: center;
-    margin-top: 10px;
-}
-
 
 footer {
     background-color: #D0B8A8;
     color: #fff;
-    padding: 15px; /* Ajusta este valor según necesites */
+    padding: 15px; 
     font-size: 16px;
-    position: relative; /* Cambiado a 'relative' */
-    width: 100%; /* Cambia a '100%' para ocupar todo el ancho disponible */
-    left: 0; /* Asegura que esté alineado a la izquierda */
-    margin-top: auto; /* Empuja el footer al final */
+    position: relative; 
+    width: 100%; 
+    left: 0; 
+    margin-top: auto; 
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+    justify-content: flex-start; 
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
 footer img {
-    width: 50px; /* Ajusta el tamaño del logo */
+    width: 50px; 
     height: auto;
 }
 
@@ -206,7 +198,7 @@ footer p {
 }
 
 footer .inicio-btn {
-    margin-left: auto; /* Alinea el botón a la derecha */
+    margin-left: auto; 
     padding: 10px 20px;
     background-color: #C5705D;
     color: white;
@@ -214,9 +206,18 @@ footer .inicio-btn {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Evita subrayado */
+    text-decoration: none; 
 }
 
 footer .inicio-btn:hover {
-    background-color: #A4564A; /* Cambia el color al pasar el ratón */
+    background-color: #A4564A; 
+}
+
+.inicio-btn {
+    background-color: #D0B8A8; /* Color del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    text-decoration: none; /* Sin subrayado */
 }
