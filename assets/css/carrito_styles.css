@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
-/* Reset básico */
 * {
     margin: 0;
     padding: 0;
@@ -93,121 +91,96 @@ header {
     width: auto; /* Mantiene la proporción de la imagen */
 }
 
+
 main {
     padding: 80px 20px; /* Ajusta el padding para dar espacio al header fijo */
     font-size: 1.2em;
 }
 
-.ofertas-container, .categorias-container {
-    background-color: #DFD3C3; 
-    border-radius: 10px; 
-    padding: 20px; 
-    margin-bottom: 20px; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
-    text-align: center; 
-}
-
-/* Estilos para los títulos de Mejores Ofertas y Categorías Populares */
-h2 {
-    font-size: 36px;
-    color: #000000;
-    background-color: #C5705D; 
-    padding: 10px 20px;
-    border-radius: 40px; 
-    display: inline-block; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 3px solid #C5705D; 
-    margin-bottom: 25px; 
-    font-family: 'Lemon', sans-serif; 
-}
-
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-}
-
-.grid-item {
-    background-color: #F8EDE3;
-    padding: 30px;
+/* Estilo para el título del carrito */
+.titulo-carrito {
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    font-size: 22px;
-    text-decoration: none;
-    color: #333;
-    transition: background-color 0.3s, transform 0.3s;
-    border: 3px solid #F8EDE3;
-}
-
-.grid-item:hover {
-    background-color: #DFD3C3;
-    transform: translateY(-5px);
-}
-
-.grid-item .image-container {
-    width: 100%;
-    padding-top: 100%;
-    position: relative;
-    border: 8px solid #C5705D;
-    border-radius: 10px;
-}
-
-.grid-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.popular-categories {
-    margin-top: 60px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-}
-
-.category-item {
-    background-color: #DFD3C3;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
-    transition: transform 0.3s;
-    border: 3px solid #C5705D;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.category-item:hover {
-    transform: translateY(-5px);
-}
-
-.category-item .category-image {
-    width: 100%;
-    padding-top: 100%;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 3px solid #C5705D;
-}
-
-.category-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.category-item h3 {
-    margin-top: 20px;
     font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Estilos para las tiendas y productos */
+.tienda {
+    margin-bottom: 30px;
+}
+
+.productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Espaciado entre productos */
+}
+
+.producto {
+    border: 1px solid #3b111a;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #C5705D; /* Fondo blanco para los productos */
+    text-align: center;
+    width: 200px; /* Ancho de cada producto */
+}
+
+.producto img {
+    max-width: 100%; /* Asegura que la imagen no se desborde */
+    height: auto;
+}
+
+.precio {
+    font-weight: bold; /* Negrita para ambos precios */
+}
+.tienda-container {
+    background-color: #D0B8A8; /* Color de fondo del contenedor gigante */
+    
+    border-radius: 10px; /* Esquinas redondeadas */
+    padding: 20px; /* Espaciado interno */
+    margin-bottom: 30px; /* Espaciado entre contenedores */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+}
+.agregar-btn {
+    background-color: #8786D9; /* Cambia este color por el que desees */
+    color: rgb(0, 0, 0); /* Color del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.agregar-btn:hover {
+    background-color: #49454F; /* Cambia este color para el efecto hover */
+}
+/* Estilo para el precio normal */
+.precio.normal {
+    color: #333; /* Color oscuro para el precio normal */
+    text-decoration: line-through; /* Tacha el precio normal */
+    font-size: 16px; /* Tamaño del texto del precio normal */
+}
+
+/* Estilo para el precio de oferta */
+.precio.oferta {
+    color: #D32F2F; /* Color rojo para el precio de oferta */
+    font-size: 20px; /* Tamaño más grande para el precio de oferta */
+    font-weight: bold; /* Negrita para resaltar */
+}
+
+/* Estilos para el carrito */
+#cart-items {
+    
+    list-style-type: none; /* Sin viñetas en la lista */
+    padding: 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+    
 }
 
 footer {
@@ -248,4 +221,13 @@ footer .inicio-btn {
 
 footer .inicio-btn:hover {
     background-color: #A4564A; 
+}
+
+.inicio-btn {
+    background-color: #D0B8A8; /* Color del botón */
+    color: white; /* Color del texto del botón */
+    border: none; /* Sin borde */
+    padding: 5px 10px; /* Espaciado interno */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    text-decoration: none; /* Sin subrayado */
 }

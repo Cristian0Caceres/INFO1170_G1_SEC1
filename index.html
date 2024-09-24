@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <title>Cacique del Ahorro</title>
+    <link rel="stylesheet" href="Styles.css">
+    <link rel="icon" href="images/ico.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <script>
+        // Función que realiza la búsqueda
+        function realizarBusqueda() {
+            let query = document.getElementById("searchInput").value;
+            if (query) {
+                alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
+            }
+        }
+
+        // Detectar cuando se presiona Enter en el campo de búsqueda
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
+                    realizarBusqueda(); // Llamar a la función de búsqueda
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="images/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="images/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <a href="LINK">
+                    <img src="images/ahorro.png" href= alt="Ahorro">
+                </a>
+                <a href="LINK">
+                    <img src="images/categorias.png" alt="Categorias">
+                </a>
+                <a href="LINK">
+                    <img src="images/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="LINK">
+                    <img src="images/tienda.png" alt="Tienda">
+                <a href="LINK">
+                    <img src="images/iniciar-sesion.png" alt="Iniciar Sesion">
+                </a>    
+            </div>
+        </section>
+    </header>
+
+        <main>
+            <div class="ofertas-container">
+                <section class="mejores-ofertas">
+                    <h2>Mejores Ofertas</h2>
+                    <div class="grid-container">
+                        <div class="grid-item">
+                            <div class="image-container">
+                                <img src="images/oferta1.png" alt="Oferta 1">
+                            </div>
+                            <p>Oferta Supermercado A</p>
+                        </div>
+                        <div class="grid-item">
+                            <div class="image-container">
+                                <img src="images/oferta1.png" alt="Oferta 2">
+                            </div>
+                            <p>Oferta Supermercado B</p>
+                        </div>
+                        <div class="grid-item">
+                            <div class="image-container">
+                                <img src="images/oferta1.png" alt="Oferta 3">
+                            </div>
+                            <p>Oferta Supermercado C</p>
+                        </div>
+                        <div class="grid-item">
+                            <div class="image-container">
+                                <img src="images/oferta1.png" alt="Oferta 4">
+                            </div>
+                            <p>Oferta Supermercado D</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="categorias-container">
+                <hr class="section-divider">
+                <section class="popular-categories">
+                    <h2>Categorías Populares</h2>
+                    <div class="category-grid">
+                        <div class="category-item">
+                            <div class="category-image">
+                                <img src="images/carne.jpg" alt="Carne">
+                            </div>
+                            <h3>Carne</h3>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-image">
+                                <img src="images/frutas.jpg" alt="Frutas">
+                            </div>
+                            <h3>Frutas</h3>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-image">
+                                <img src="images/verduras.jpg" alt="Verduras">
+                            </div>
+                            <h3>Verduras</h3>
+                        </div>
+                        <div class="category-item">
+                            <div class="category-image">
+                                <img src="images/lacteos.jpg" alt="Lácteos">
+                            </div>
+                            <h3>Lácteos</h3>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <footer>
+            <img src="images/logo.png" alt="Logo">
+            <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
+            <a href="Iniciocda.html" class="inicio-btn">Ir a Inicio</a> <!-- Botón de ir a inicio -->
+        </footer>
+    </div>
+</body>
+</html>
