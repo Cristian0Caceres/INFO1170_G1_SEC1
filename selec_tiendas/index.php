@@ -37,7 +37,7 @@
                     </a>
                 </div>
             </section>
-        </header>
+        </header>   
 
         <main>
             <section class="principal">
