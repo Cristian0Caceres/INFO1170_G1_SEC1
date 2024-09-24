@@ -152,7 +152,17 @@ h2 {
     border: 8px solid #C5705D;
     border-radius: 10px;
 }
-
+.precio-oferta {
+    position: absolute;
+    bottom: 10px; /* Ajusta la posición vertical */
+    left: 10px; /* Ajusta la posición horizontal */
+    background-color: rgba(31, 14, 14, 0.7); /* Fondo semitransparente */
+    color: #ff0000; /* Color del texto */
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    font-size: 1.2em; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+}
 .grid-item img {
     position: absolute;
     top: 0;
@@ -231,7 +241,7 @@ h2 {
 
 footer {
     background-color: #D0B8A8;
-    color: #fff;
+    color: #000000;
     padding: 15px; 
     font-size: 16px;
     position: relative; 
