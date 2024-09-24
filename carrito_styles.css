@@ -1,26 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
-
-
-/* Reset básico */
-* {
+/* Estilos generales */
+body {
+    font-family: 'Lemon', sans-serif; /* Cambiado a la fuente Lemon */
+    background-color: #f0e8dc;
+    color: #000000;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    font-family: 'Comic Sans MS', sans-serif;
-    color: #333;
-    background: linear-gradient(to bottom, #F8EDE3, #DFD3C3);
-    display: flex;
-    flex-direction: column; /* Cambiado a columna para que el header esté arriba */
-    justify-content: flex-start; /* Alinea el contenido hacia arriba */
-    min-height: 100vh;
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
-    font-size: 20px; /* Ajustar fuente base */
 }
 
+/* Contenedor gigante */
+.giant-container {
+    width: 100%;
+    max-width: 1300px; /* Aumenta el ancho del contenedor */
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #e3d5c6;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado */
 header {
     display: flex;
     justify-content: space-between;
@@ -28,24 +35,25 @@ header {
     padding: 1px;
     background-color: #D0B8A8;
     width: 100vw;
-    position: fixed; /* Cambiado a 'fixed' para que esté siempre en la parte superior */
-    top: 0; /* Mantiene el header en la parte superior */
-    left: 0; /* Asegúrate de que esté alineado a la izquierda */
+    position: fixed; 
+    top: 0; 
+    left: 0; 
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 }
 
 header .logo {
-    width: 50px; /* Ajusta el tamaño del logo */
+    width: 50px; 
     height: auto;
-    margin-right: 10px; /* Espacio entre el logo y el texto */
-    margin-left: 21px; /* Agrega un pequeño margen a la izquierda */
+    margin-right: 10px; 
+    margin-left: 21px; 
 }
 
 .header-right {
     display: flex;
     align-items: center;
 }
+
 
 .search-bar input {
     padding: 10px;
@@ -72,140 +80,106 @@ header .logo {
     cursor: pointer;
 }
 
-
-main {
-    padding: 80px 20px; /* Ajusta el padding para dar espacio al header fijo */
-    font-size: 1.2em;
+/* Contenedor de tiendas */
+.store-container {
+    background-color: #C5705D;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    color: white;
 }
 
-.ofertas-container, .categorias-container {
-    background-color: #DFD3C3; /* Fondo del contenedor */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espacio interno */
-    margin-bottom: 20px; /* Espacio entre los contenedores */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
-    text-align: center; /* Centrar el contenido */
+.store-container h3 {
+    margin: 0;
 }
 
-/* Estilos para los títulos de Mejores Ofertas y Categorías Populares */
-h2 {
-    font-size: 36px;
-    color: #000000;
-    background-color: #C5705D; /* Fondo del contenedor */
-    padding: 10px 20px;
-    border-radius: 40px; /* Esquinas circulares */
-    display: inline-block; /* Para que el título no ocupe todo el ancho */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
-    border: 3px solid #C5705D; /* Borde */
-    margin-bottom: 25px; /* Espacio debajo del título */
-    font-family: 'Lemon', sans-serif; /* Aplicar la fuente Lemon */
+/* Producto */
+.product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #8673a1;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    color: white;
+    font-size: 1em;
 }
 
-.carrito-title {
-    text-align: center; /* Centra el texto */
-    font-size: 36px; /* Ajusta el tamaño de la fuente */
-    margin-bottom: 20px; /* Espacio debajo del título */
-    color: #C5705D; /* Color del texto */
-    font-family: 'Lemon', sans-serif; /* Aplicar la fuente Lemon */
+.product button {
+    background-color: #DFD3C3;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.carrito-container {
-    background-color: #DFD3C3; /* Color de fondo del contenedor */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    margin-top: 20px; /* Espacio superior */
-    text-align: center; /* Asegura que el contenido esté centrado */
+.product button:hover {
+    background-color: #C5705D;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-}
-
-.grid-item {
-    background-color: #F8EDE3;
-    padding: 30px;
+/* Botón Ir a tienda */
+.go-to-store {
+    display: block;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #8673a1;
+    color: white;
     text-align: center;
-    border-radius: 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    font-size: 22px;
+    border-radius: 5px;
     text-decoration: none;
-    color: #333;
-    transition: background-color 0.3s, transform 0.3s;
-    border: 3px solid #F8EDE3;
 }
 
-.grid-item:hover {
-    background-color: #DFD3C3;
-    transform: translateY(-5px);
+.go-to-store:hover {
+    background-color: #6a5c88;
 }
 
-.grid-item .image-container {
-    width: 100%;
-    padding-top: 100%;
-    position: relative;
-    border: 8px solid #C5705D;
-    border-radius: 10px;
-}
+/* Carrito */
 
-.grid-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
 
-.popular-categories {
-    margin-top: 60px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
-}
-
-.category-item {
-    background-color: #DFD3C3;
+.cart {
+    background-color: #e3d5c6;
     padding: 20px;
+    border-radius: 10px;
+}
+
+.cart h2 {
     text-align: center;
-    border-radius: 10px;
-    transition: transform 0.3s;
-    border: 3px solid #C5705D;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.8em; /* Tamaño original del h2 */
+    margin-bottom: 20px; /* Espaciado inferior */
 }
 
-.category-item:hover {
-    transform: translateY(-5px);
+.cart-items {
+    list-style-type: none;
+    padding: 0;
 }
 
-.category-item .category-image {
-    width: 100%;
-    padding-top: 100%;
-    position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 3px solid #C5705D;
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
 }
 
-.category-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.cart-item button {
+    background-color: #DFD3C3;
+    color: rgb(122, 89, 89);
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.category-item h3 {
-    margin-top: 20px;
-    font-size: 24px;
+.cart-item button:hover {
+    background-color: #C5705D;
 }
+
+.total {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+}
+
 
 footer {
     background-color: #D0B8A8;
