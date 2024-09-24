@@ -28,7 +28,10 @@ label {
     font-weight: bold;
 }
 
-input[type="text"], input[type="number"], select {
+input[type="text"],
+input[type="number"],
+input[type="email"], /* Añadido para campos de email */
+select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
