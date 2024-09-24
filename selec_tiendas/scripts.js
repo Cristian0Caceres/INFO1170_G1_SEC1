@@ -1,5 +1,5 @@
 // Función que realiza la búsqueda de el header
-function realizarBusqueda() {
+function realizarBusquedaHeader() {
     let query = document.getElementById("searchInput").value;
     if (query) {
         alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
@@ -11,14 +11,14 @@ document.addEventListener("DOMContentLoaded", function() {
     let searchInput = document.getElementById("searchInput");
     searchInput.addEventListener("keydown", function(event) {
         if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
-            realizarBusqueda(); // Llamar a la función de búsqueda
+            realizarBusquedaHeader(); // Llamar a la función de búsqueda
         }
     });
 });
 
 
 // Función que realiza la búsqueda de el main
-function realizarBusqueda() {
+function realizarBusquedaMain() {
     let query = document.getElementById("searchTiendaInput").value;
     if (query) {
         alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let searchInput = document.getElementById("searchTiendaInput");
     searchInput.addEventListener("keydown", function(event) {
         if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
-            realizarBusqueda(); // Llamar a la función de búsqueda
+            realizarBusquedaMain(); // Llamar a la función de búsqueda
         }
     });
 });

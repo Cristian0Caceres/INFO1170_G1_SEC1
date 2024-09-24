@@ -128,7 +128,7 @@ main {
 }
 .producto .imagen img{
     display: flex;
-    width: 95%;
+    width: 50%;
     justify-content: center;
     align-items: center;
 }
