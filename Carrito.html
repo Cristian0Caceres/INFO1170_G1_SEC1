@@ -40,7 +40,7 @@
             </div>
             <div class="icons">
                 <a href="LINK">
-                    <img src="images/ahorro.png" href= alt="Ahorro">
+                    <img src="images/ahorro.png" alt="Ahorro">
                 </a>
                 <a href="LINK">
                     <img src="images/categorias.png" alt="Categorias">
@@ -50,6 +50,7 @@
                 </a>
                 <a href="LINK">
                     <img src="images/tienda.png" alt="Tienda">
+                </a>
                 <a href="LINK">
                     <img src="images/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
@@ -65,14 +66,20 @@
                 <h2>Gumbo</h2>
                 <div class="productos-container">
                     <div class="producto">
-                        <img src="images/Carne.jpg" alt="Producto 1">
+                        <div class="image-container">
+                            <img src="images/Asiento.jpg" alt="Producto 1">
+                            <span class="tooltip">Asiento Al Vacío: Un corte premium de carne.</span>
+                        </div>
                         <p>Asiento Al Vacío</p>
                         <p class="precio normal">$13.690</p>
                         <p class="precio oferta">$12.000</p>
                         <button class="agregar-btn" onclick="addToCart('Asiento Al Vacío', 12000)">Agregar al carrito</button>
                     </div>
                     <div class="producto">
-                        <img src="images/Paltas.jpg" alt="Paltas">
+                        <div class="image-container">
+                            <img src="images/Paltas.jpg" alt="Paltas">
+                            <span class="tooltip">Palta: Fruta rica en grasas saludables.</span>
+                        </div>
                         <p>1Kl Palta</p>
                         <p class="precio normal">$6.990</p>
                         <p class="precio oferta">$6.000</p>
@@ -85,18 +92,24 @@
                 <h2>Unismarc</h2>
                 <div class="productos-container">
                     <div class="producto">
-                        <img src="ruta/a/imagen3.jpg" alt="Producto 3">
-                        <p>Producto 3</p>
-                        <p class="precio normal">$1500</p>
+                        <div class="image-container">
+                            <img src="images/Leche Colun.jpg" alt="Leche Colun">
+                            <span class="tooltip">Leche Colun: Producto lácteo fresco.</span>
+                        </div>
+                        <p>Leche Colun</p>
+                        <p class="precio normal">$1380</p>
                         <p class="precio oferta">$1200</p>
-                        <button class="agregar-btn" onclick="addToCart('Producto 3', 1200)">Agregar al carrito</button>
+                        <button class="agregar-btn" onclick="addToCart('Leche Colun', 1200)">Agregar al carrito</button>
                     </div>
                     <div class="producto">
-                        <img src="ruta/a/imagen4.jpg" alt="Producto 4">
-                        <p>Producto 4</p>
-                        <p class="precio normal">$3500</p>
-                        <p class="precio oferta">$3000</p>
-                        <button class="agregar-btn" onclick="addToCart('Producto 4', 3000)">Agregar al carrito</button>
+                        <div class="image-container">
+                            <img src="images/Platanos.jpg" alt="Plátano granel 500 g">
+                            <span class="tooltip">Plátano granel: Ideal para tu desayuno.</span>
+                        </div>
+                        <p>Plátano granel 500 g</p>
+                        <p class="precio normal">$725</p>
+                        <p class="precio oferta">$580</p>
+                        <button class="agregar-btn" onclick="addToCart('Plátano 500g', 580)">Agregar al carrito</button>
                     </div>
                 </div>
             </div>
@@ -158,6 +171,8 @@
 
             totalDisplay.textContent = total;
         }
+        
     </script>
+
 </body>
 </html>
