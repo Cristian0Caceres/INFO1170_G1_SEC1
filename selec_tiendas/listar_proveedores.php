@@ -12,11 +12,11 @@
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        // Listar los proveedores como checkboxes
+        // Listar los proveedores como checkboxes marcadas
         while($row = $result->fetch_assoc()) {
             echo '<div class="tienda">';
             echo '<label>';
-            echo '<input type="checkbox" class="tienda-checkbox" value="'.$row['Nombre_Proveedor'].'">';
+            echo '<input type="checkbox" class="tienda-checkbox" value="'.$row['Nombre_Proveedor'].'" checked>'; 
             echo $row['Nombre_Proveedor'];
             echo '</label>';
             echo '</div>';
