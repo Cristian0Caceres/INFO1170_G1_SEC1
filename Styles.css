@@ -23,13 +23,14 @@ header {
 .barra-superior {
     display: flex;
     height: 100%;
+    justify-content: space-between; /* Cambiar a 'space-between' para que el logo esté a la izquierda y los íconos a la derecha */
 }
 
 .logo {
     display: flex;
     width: 20%;
     align-items: center;
-    justify-content: left;
+    justify-content: flex-start; /* Cambia 'left' por 'flex-start' */
     padding-left: 2%;
 }
 
@@ -42,10 +43,11 @@ header {
 .search-bar {
     display: flex;
     align-items: center;
-    justify-content: right;
-    width: 60%;
+    justify-content: flex-end; /* Asegúrate de que los elementos dentro de la barra de búsqueda estén a la derecha */
+    width: 60%; /* Si quieres que ocupe más espacio, ajusta este valor */
     height: 100%;
 }
+
 
 .search-bar input {
     background-color: #E8DEF8;
@@ -76,7 +78,7 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: flex-end; /* Cambiar 'space-evenly' por 'flex-end' */
 }
 
 .icons a {
