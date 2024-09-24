@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <header>
-            <img src="logo.png" alt="Cacique del ahorro" class="logo">
+            <img src="images/Logo.png" alt="Cacique del ahorro" class="logo">
             <div class="header-right">
                 <form class="search-bar" action="/buscar.html" method="get">
                     <input type="text" placeholder="Buscar..." name="q">
@@ -17,30 +17,48 @@
                 </form>
                 <div class="cart-icon">
                     <a href="/Carrito.html">
-                        <img src="carrito.png" alt="Carrito de Presupuesto">
+                        <img src="images/carrito-de-compras.png" alt="Carrito de Presupuesto">
                     </a>
                 </div>
             </div>
         </header>
 
         <main>
-            <div class="carrito-container"> <!-- Contenedor para el carrito -->
+            <div class="giant-container"> <!-- Contenedor gigante -->
                 <h2>Carrito de presupuesto</h2>
-                <div class="product">
-                    <span>Fideos: $3000</span>
-                    <button onclick="addToCart('Fideos', 3000)">Agregar al carrito</button>
+
+                <div class="store-container">
+                    <h3>Tienda 1</h3>
+                    <div class="product">
+                        <span>Producto 1: $3000 <strong>(Oferta: $2500)</strong></span>
+                        <button onclick="addToCart('Producto 1', 3000)">Agregar al carrito</button>
+                    </div>
+                    <div class="product">
+                        <span>Producto 2: $2500 <strong>(Oferta: $2000)</strong></span>
+                        <button onclick="addToCart('Producto 2', 2500)">Agregar al carrito</button>
+                    </div>
+                    <div class="product">
+                        <span>Producto 3: $1500 <strong>(Oferta: $1200)</strong></span>
+                        <button onclick="addToCart('Producto 3', 1500)">Agregar al carrito</button>
+                    </div>
+                    <a href="tienda1.html" class="go-to-store">Ir a Tienda 1</a>
                 </div>
-                <div class="product">
-                    <span>Arroz: $2500</span>
-                    <button onclick="addToCart('Arroz', 2500)">Agregar al carrito</button>
-                </div>
-                <div class="product">
-                    <span>Azúcar: $1500</span>
-                    <button onclick="addToCart('Azúcar', 1500)">Agregar al carrito</button>
-                </div>
-                <div class="product">
-                    <span>Pansito: $2500</span>
-                    <button onclick="addToCart('Pansito', 2500)">Agregar al carrito</button>
+
+                <div class="store-container">
+                    <h3>Tienda 2</h3>
+                    <div class="product">
+                        <span>Producto A: $3500 <strong>(Oferta: $3000)</strong></span>
+                        <button onclick="addToCart('Producto A', 3500)">Agregar al carrito</button>
+                    </div>
+                    <div class="product">
+                        <span>Producto B: $2800 <strong>(Oferta: $2500)</strong></span>
+                        <button onclick="addToCart('Producto B', 2800)">Agregar al carrito</button>
+                    </div>
+                    <div class="product">
+                        <span>Producto C: $1800 <strong>(Oferta: $1500)</strong></span>
+                        <button onclick="addToCart('Producto C', 1800)">Agregar al carrito</button>
+                    </div>
+                    <a href="tienda2.html" class="go-to-store">Ir a Tienda 2</a>
                 </div>
 
                 <div class="cart">
@@ -48,11 +66,11 @@
                     <ul id="cart-items" class="cart-items"></ul>
                     <p class="total">Total: $<span id="total">0</span></p>
                 </div>
-            </div> <!-- Fin del contenedor -->
+            </div> <!-- Fin del contenedor gigante -->
         </main>
 
         <footer>
-            <img src="logo.png" alt="Logo">
+            <img src="images/logoECDA.png" alt="Logo">
             <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
             <a href="Iniciocda.html" class="inicio-btn">Ir a Inicio</a>
         </footer>
@@ -61,16 +79,17 @@
     <script>
         const cart = [];
         const products = {
-            'Fideos': { price: 3000, cheaperOption: { name: 'Fideos (económicos)', price: 2000 } },
-            'Arroz': { price: 2500, cheaperOption: null },
-            'Azúcar': { price: 1500, cheaperOption: { name: 'Azúcar (económico)', price: 1000 } },
-            'Pansito': { price: 2500, cheaperOption: { name: 'Pan Luchito (económico)', price: 1500 } }
+            'Producto 1': { price: 3000 },
+            'Producto 2': { price: 2500 },
+            'Producto 3': { price: 1500 },
+            'Producto A': { price: 3500 },
+            'Producto B': { price: 2800 },
+            'Producto C': { price: 1800 }
         };
 
         function addToCart(productName, price) {
             cart.push({ name: productName, price: price });
             updateCart();
-            proposeCheaperOption(productName);
         }
 
         function removeFromCart(productName) {
@@ -103,28 +122,6 @@
             });
 
             totalDisplay.textContent = total;
-        }
-
-        function proposeCheaperOption(productName) {
-            const product = products[productName];
-            if (product && product.cheaperOption) {
-                const cartItems = document.getElementById('cart-items');
-                const cheaperOption = document.createElement('li');
-                cheaperOption.classList.add('cart-item');
-                cheaperOption.classList.add('proposal');
-                cheaperOption.textContent = `¿Quieres cambiar a ${product.cheaperOption.name} por $${product.cheaperOption.price}?`;
-                cheaperOption.onclick = () => switchToCheaper(productName);
-                cartItems.appendChild(cheaperOption);
-            }
-        }
-
-        function switchToCheaper(productName) {
-            const cheaperOption = products[productName].cheaperOption;
-            const index = cart.findIndex(item => item.name === productName);
-            if (index > -1) {
-                cart[index] = { name: cheaperOption.name, price: cheaperOption.price };
-                updateCart();
-            }
         }
     </script>
 </body>
