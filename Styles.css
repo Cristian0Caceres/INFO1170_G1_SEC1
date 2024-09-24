@@ -210,6 +210,25 @@ h2 {
     font-size: 24px;
 }
 
+.category-btn {
+    padding: 8px 16px; /* Botones más pequeños */
+    background-color: #C5705D; /* Color de fondo del botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Fuente más pequeña para las categorías */
+    text-decoration: none; 
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px; /* Espacio encima del botón */
+}
+
+.category-btn:hover {
+    background-color: #A4564A; /* Cambia el color de fondo al pasar el mouse */
+    transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
+}
+
 footer {
     background-color: #D0B8A8;
     color: #fff;
