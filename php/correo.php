@@ -14,6 +14,8 @@
         
         // Si el usuario existe
         if (mysqli_num_rows($validar) > 0) {
+            session_start(); // Iniciar la sesión para guardar el código de recuperación y el correo
+
             // Obtener los datos del usuario
             $usuario = mysqli_fetch_assoc($validar);
 
@@ -23,8 +25,13 @@
                 exit();
             }
 
-            // Para otros correos generar un código de recuperación
-            $codigo = rand(10000, 99999);
+            // Generar el código como una cadena de 5 dígitos
+            $codigo = strval(rand(10000, 99999));
+
+            // Guardar el código en la sesión como cadena
+            $_SESSION['codigo_recuperacion'] = $codigo;
+            // Guardar el correo en la sesión
+            $_SESSION['correo_usuario'] = $correo;
 
             $asunto = "Código de recuperación de cuenta";
             $mensaje = "Tu código de recuperación es: $codigo";
@@ -39,14 +46,14 @@
                 // Si falla el envío del correo
                 header('Location: ../assets/pages/recuperar.html?error=error');
             }
-            exit();
         } else {
             // Si no se encuentra el correo en la base de datos
             header('Location: ../assets/pages/recuperar.html?error=credenciales_invalidas');
-            exit();
         }
     }
 
-    // Cerrar la conexión
-    mysqli_close($conn);
+    // Cerrar la conexión solo si está abierta
+    if ($conn) {
+        mysqli_close($conn);
+    }
 ?>

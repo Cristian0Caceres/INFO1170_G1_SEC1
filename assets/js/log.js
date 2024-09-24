@@ -12,6 +12,12 @@ function mostrarAlerta() {
     if (error === 'credenciales_invalidas') {
         alert('Las credenciales que ingresaste son incorrectas. Por favor, verifica tu correo y contraseña.');
     }
+
+    const confirmacion = urlParams.get('confirmacion');
+    if (confirmacion === 'exito') {
+        alert('Contraseña cambiada con exito');
+    }
+    
 }
 
 // Llama a la función cuando se carga la página

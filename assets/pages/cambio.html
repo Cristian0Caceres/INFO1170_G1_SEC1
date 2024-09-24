@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar</title>
     <link rel="stylesheet" href="../css/cambio.css">
+    <script src="../js/camb.js" defer></script>
 </head>
 <body>
     <header>
@@ -37,9 +38,9 @@
                 <h3>Introduzca su Contraseña</h3>
                 <p>Porfavor ingresa tu nueva contraseña</p>
                 <!-- formulario para los datos-->
-                <form >
-                    <input type="password" id="password" placeholder="Contraseña" value="" required >
-                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" value="" required >
+                <form action="../../php/cambio.php" method="POST">
+                    <input type="password" id="password" placeholder="Contraseña" value="" required name="password">
+                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" value="" required name="confirm_password">
                     <button type="submit"><b>Cambiar Contraseña</b></button>
                 </form>
             </div>  
