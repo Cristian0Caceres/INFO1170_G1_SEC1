@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
-
-
 /* Reset básico */
 * {
     margin: 0;
@@ -9,67 +7,88 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Comic Sans MS', sans-serif;
-    color: #333;
-    background: linear-gradient(to bottom, #F8EDE3, #DFD3C3);
-    display: flex;
-    flex-direction: column; /* Cambiado a columna para que el header esté arriba */
-    justify-content: flex-start; /* Alinea el contenido hacia arriba */
-    min-height: 100vh;
-    padding: 20px;
-    font-size: 20px; /* Ajustar fuente base */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1px;
-    background-color: #D0B8A8;
-    width: 100vw;
-    position: fixed; /* Cambiado a 'fixed' para que esté siempre en la parte superior */
-    top: 0; /* Mantiene el header en la parte superior */
-    left: 0; /* Asegúrate de que esté alineado a la izquierda */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    height: 5%;
+    width: 100%;
+    background-color: #d6b8a5; /* Cambia el color si lo deseas */
 }
 
-header .logo {
-    width: 50px; /* Ajusta el tamaño del logo */
-    height: auto;
-    margin-right: 10px; /* Espacio entre el logo y el texto */
-    margin-left: 21px; /* Agrega un pequeño margen a la izquierda */
+.barra-superior {
+    display: flex;
+    height: 100%;
 }
 
-.header-right {
+.logo {
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2%;
+}
+
+.logo img {
+    height: 100%;
+    max-height: 50px; /* Ajusta la altura máxima de la imagen del logo */
+    width: auto; /* Mantiene la proporción de la imagen */
+}
+
+.search-bar {
     display: flex;
     align-items: center;
+    justify-content: right;
+    width: 60%;
+    height: 100%;
 }
 
 .search-bar input {
-    padding: 10px;
-    font-size: 20px;
+    background-color: #E8DEF8;
+    width: 80%;
+    height: 80%;
     border: none;
-    border-radius: 4px;
-    margin-right: 10px;
-    background-color: #DFD3C3;
+    outline: none;
+    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    padding-left: 2%;
 }
 
 .search-bar button {
-    padding: 10px 15px;
-    font-size: 20px;
-    background-color: #D0B8A8;
-    color: #fff;
+    width: 5%;
+    height: 80%;
     border: none;
-    border-radius: 4px;
+    background: none;
     cursor: pointer;
+    padding-left: 4px;
 }
 
-.cart-icon img {
-    width: 50px;
-    margin-left: 20px;
-    cursor: pointer;
+.search-bar button img {
+    max-height: 30px; /* Altura máxima para la imagen del botón de búsqueda */
+    width: auto; /* Mantiene la proporción de la imagen */
+}
+
+.icons {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icons a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.icons a img {
+    max-height: 30px; /* Altura máxima para las imágenes de los íconos */
+    width: auto; /* Mantiene la proporción de la imagen */
 }
 
 main {
@@ -78,35 +97,26 @@ main {
 }
 
 .ofertas-container, .categorias-container {
-    background-color: #DFD3C3; /* Fondo del contenedor */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espacio interno */
-    margin-bottom: 20px; /* Espacio entre los contenedores */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
-}
-
-/* Contenedores de Mejores Ofertas y Categorías Populares */
-.ofertas-container, .categorias-container {
-    background-color: #DFD3C3; /* Fondo del contenedor */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espacio interno */
-    margin-bottom: 20px; /* Espacio entre los contenedores */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
-    text-align: center; /* Centrar el contenido */
+    background-color: #DFD3C3; 
+    border-radius: 10px; 
+    padding: 20px; 
+    margin-bottom: 20px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
 }
 
 /* Estilos para los títulos de Mejores Ofertas y Categorías Populares */
 h2 {
     font-size: 36px;
     color: #000000;
-    background-color:#C5705D; /* Fondo del contenedor */
+    background-color: #C5705D; 
     padding: 10px 20px;
-    border-radius: 40px; /* Esquinas circulares */
-    display: inline-block; /* Para que el título no ocupe todo el ancho */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
-    border: 3px solid #C5705D; /* Borde */
-    margin-bottom: 25px; /* Espacio debajo del título */
-    font-family: 'Lemon', sans-serif; /* Aplicar la fuente Lemon */
+    border-radius: 40px; 
+    display: inline-block; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid #C5705D; 
+    margin-bottom: 25px; 
+    font-family: 'Lemon', sans-serif; 
 }
 
 .grid-container {
@@ -201,20 +211,20 @@ h2 {
 footer {
     background-color: #D0B8A8;
     color: #fff;
-    padding: 15px; /* Ajusta este valor según necesites */
+    padding: 15px; 
     font-size: 16px;
-    position: relative; /* Cambiado a 'relative' */
-    width: 100%; /* Cambia a '100%' para ocupar todo el ancho disponible */
-    left: 0; /* Asegura que esté alineado a la izquierda */
-    margin-top: auto; /* Empuja el footer al final */
+    position: relative; 
+    width: 100%; 
+    left: 0; 
+    margin-top: auto; 
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Alinea el contenido a la izquierda */
+    justify-content: flex-start; 
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
 footer img {
-    width: 50px; /* Ajusta el tamaño del logo */
+    width: 50px; 
     height: auto;
 }
 
@@ -223,7 +233,7 @@ footer p {
 }
 
 footer .inicio-btn {
-    margin-left: auto; /* Alinea el botón a la derecha */
+    margin-left: auto; 
     padding: 10px 20px;
     background-color: #C5705D;
     color: white;
@@ -231,9 +241,9 @@ footer .inicio-btn {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    text-decoration: none; /* Evita subrayado */
+    text-decoration: none; 
 }
 
 footer .inicio-btn:hover {
-    background-color: #A4564A; /* Cambia el color al pasar el ratón */
+    background-color: #A4564A; 
 }
