@@ -130,6 +130,33 @@ main {
     height: auto;
 }
 
+/* Estilo del tooltip */
+.image-container {
+    position: relative; /* Posiciona el contenedor de la imagen */
+    display: inline-block; /* Asegura que el tooltip esté alineado con la imagen */
+}
+
+.tooltip {
+    visibility: hidden; /* Inicialmente oculto */
+    width: 200px; /* Ancho del tooltip */
+    background-color: #555; /* Fondo del tooltip */
+    color: #fff; /* Color del texto */
+    text-align: center; /* Centrar texto */
+    border-radius: 6px; /* Esquinas redondeadas */
+    padding: 5px; /* Espaciado interno */
+    position: absolute; /* Posiciona el tooltip */
+    z-index: 1; /* Asegura que esté por encima */
+    bottom: 125%; /* Posiciona por encima de la imagen */
+    left: 50%; /* Centrado horizontalmente */
+    margin-left: -100px; /* Centrado basado en el ancho del tooltip */
+    opacity: 0; /* Inicialmente transparente */
+    transition: opacity 0.3s; /* Efecto de transición */
+}
+
+.image-container:hover .tooltip {
+    visibility: visible; /* Muestra el tooltip al pasar el ratón */
+    opacity: 1; /* Hace que el tooltip sea visible */
+}
 .titulo-carrito, .carrito-titulo {
     font-size: 36px;
     color: #000000;
