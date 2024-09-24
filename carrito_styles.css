@@ -116,7 +116,7 @@ main {
 }
 
 .producto {
-    border: 1px solid #3b111a;
+    border: 1px solid #33292b;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
@@ -128,6 +128,29 @@ main {
 .producto img {
     max-width: 100%; /* Asegura que la imagen no se desborde */
     height: auto;
+}
+
+.titulo-carrito, .carrito-titulo {
+    font-size: 36px;
+    color: #000000;
+    background-color: #C5705D; 
+    padding: 10px 20px;
+    border-radius: 40px; 
+    display: inline-block; /* Cambiado a inline-block para que no ocupe todo el ancho */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 3px solid #C5705D; 
+    margin: 0 auto; /* Centrado horizontal */
+    margin-bottom: 25px; 
+    font-family: 'Lemon', sans-serif; 
+    text-align: center; /* Asegura que el texto esté centrado dentro del bloque */
+}
+
+.contenedor-principal {
+    max-width: 5000px; /* Ajusta este valor según lo que necesites */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para el contenedor */
+    background-color: #DFD3C3; /* Fondo blanco para el contenedor */
+    border-radius: 10px; /* Esquinas redondeadas */
 }
 
 .precio {
@@ -168,6 +191,21 @@ main {
     font-weight: bold; /* Negrita para resaltar */
 }
 
+/*Eliminar */
+.remove {
+    background-color: #8786D9; /* Color del fondo del botón */
+    color: rgb(0, 0, 0); /* Color del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.remove:hover {
+    background-color: #49454F; /* Cambia este color para el efecto hover */
+}
+
 /* Estilos para el carrito */
 #cart-items {
     
@@ -183,9 +221,10 @@ main {
     
 }
 
+
 footer {
     background-color: #D0B8A8;
-    color: #fff;
+    color: #000000;
     padding: 15px; 
     font-size: 16px;
     position: relative; 
