@@ -2,28 +2,52 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.2">
-    <title>Cacique del ahorro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <title>Cacique del Ahorro</title>
     <link rel="stylesheet" href="Styles.css">
-    <link rel="icon" href="ico.ico" type="image/x-icon">
+    <link rel="icon" href="images/ico.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <script>
+        // Función que realiza la búsqueda
+        function realizarBusqueda() {
+            let query = document.getElementById("searchInput").value;
+            if (query) {
+                alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
+            }
+        }
 
+        // Detectar cuando se presiona Enter en el campo de búsqueda
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
+                    realizarBusqueda(); // Llamar a la función de búsqueda
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
         <header>
-            <img src="logo.png" alt="Cacique del ahorro" class="logo">
-            <div class="header-right">
-                <form class="search-bar" action="/buscar.html" method="get">
-                    <input type="text" placeholder="Buscar..." name="q">
-                    <button type="submit">Buscar</button>
-                </form>
-                <div class="cart-icon">
-                    <a href="/Carrito.html">
-                        <img src="carrito.png" alt="Carrito de Presupuesto">
-                    </a>
+            <section class="barra-superior">
+                <div class="logo">
+                    <img src="images/logoECDA.png" alt="Logo">
                 </div>
-            </div>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Buscar...">
+                    <button onclick="realizarBusqueda()">
+                        <img src="images/buscar.png" alt="Buscar">
+                    </button>
+                </div>
+                <div class="icons">
+                    <a href="LINK"><img src="images/ahorro.png" alt="Ahorro"></a>
+                    <a href="LINK"><img src="images/categorias.png" alt="Categorías"></a>
+                    <a href="LINK"><img src="images/carrito-de-compras.png" alt="Carrito de Compras"></a>
+                    <a href="LINK"><img src="images/tienda.png" alt="Tienda"></a>
+                    <a href="LINK"><img src="images/iniciar-sesion.png" alt="Iniciar Sesión"></a>
+                </div>
+            </section>
         </header>
         <main>
             <div class="ofertas-container">
@@ -32,25 +56,25 @@
                     <div class="grid-container">
                         <div class="grid-item">
                             <div class="image-container">
-                                <img src="oferta1.png" alt="Oferta 1">
+                                <img src="images/oferta1.png" alt="Oferta 1">
                             </div>
                             <p>Oferta Supermercado A</p>
                         </div>
                         <div class="grid-item">
                             <div class="image-container">
-                                <img src="oferta1.png" alt="Oferta 2">
+                                <img src="images/oferta1.png" alt="Oferta 2">
                             </div>
                             <p>Oferta Supermercado B</p>
                         </div>
                         <div class="grid-item">
                             <div class="image-container">
-                                <img src="oferta1.png" alt="Oferta 3">
+                                <img src="images/oferta1.png" alt="Oferta 3">
                             </div>
                             <p>Oferta Supermercado C</p>
                         </div>
                         <div class="grid-item">
                             <div class="image-container">
-                                <img src="oferta1.png" alt="Oferta 4">
+                                <img src="images/oferta1.png" alt="Oferta 4">
                             </div>
                             <p>Oferta Supermercado D</p>
                         </div>
@@ -65,25 +89,25 @@
                     <div class="category-grid">
                         <div class="category-item">
                             <div class="category-image">
-                                <img src="carne.jpg" alt="Carne">
+                                <img src="images/carne.jpg" alt="Carne">
                             </div>
                             <h3>Carne</h3>
                         </div>
                         <div class="category-item">
                             <div class="category-image">
-                                <img src="frutas.jpg" alt="Frutas">
+                                <img src="images/frutas.jpg" alt="Frutas">
                             </div>
                             <h3>Frutas</h3>
                         </div>
                         <div class="category-item">
                             <div class="category-image">
-                                <img src="verduras.jpg" alt="Verduras">
+                                <img src="images/verduras.jpg" alt="Verduras">
                             </div>
                             <h3>Verduras</h3>
                         </div>
                         <div class="category-item">
                             <div class="category-image">
-                                <img src="lacteos.jpg" alt="Lácteos">
+                                <img src="images/lacteos.jpg" alt="Lácteos">
                             </div>
                             <h3>Lácteos</h3>
                         </div>
@@ -92,7 +116,7 @@
             </div>
         </main>
         <footer>
-            <img src="logo.png" alt="Logo">
+            <img src="images/logo.png" alt="Logo">
             <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
             <a href="Iniciocda.html" class="inicio-btn">Ir a Inicio</a> <!-- Botón de ir a inicio -->
         </footer>
