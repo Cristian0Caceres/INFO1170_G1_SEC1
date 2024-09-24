@@ -56,20 +56,21 @@ p {
 }
 
 /* Botones */
-button, .add-btn, .admin-card a {
-    background-color: #d58b72;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s;
+button, .add-btn, .admin-card a, .remove {
+    background-color: #d58b72; /* Color de fondo */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cursor en forma de mano */
+    font-weight: bold; /* Texto en negrita */
+    transition: background-color 0.3s; /* Transición suave para hover */
+    text-align: center; /* Centrar texto */
 }
 
-button:hover, .add-btn:hover, .admin-card a:hover {
-    background-color: #b47461;
+/* Efecto hover para botones */
+button:hover, .add-btn:hover, .admin-card a:hover, .remove:hover {
+    background-color: #b47461; /* Color de fondo al pasar el mouse */
 }
 
 /* Layout */
@@ -94,6 +95,24 @@ button:hover, .add-btn:hover, .admin-card a:hover {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #d58b72;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.product:hover {
+    background-color: #f0e5d8;
+}
+
+.product span {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.product button {
+    margin-left: 10px; /* Espaciado entre botones */
 }
 
 .cart {
@@ -115,6 +134,10 @@ button:hover, .add-btn:hover, .admin-card a:hover {
     border-bottom: 1px solid #d58b72;
 }
 
+.cart li:last-child {
+    border-bottom: none; /* Sin borde en el último elemento */
+}
+
 .total {
     font-weight: bold;
     text-align: right;
@@ -125,12 +148,6 @@ button:hover, .add-btn:hover, .admin-card a:hover {
     color: green;
     cursor: pointer;
     text-decoration: underline;
-}
-
-.remove {
-    color: red;
-    cursor: pointer;
-    margin-left: 10px;
 }
 
 /* Tarjetas de administración */

@@ -1,5 +1,4 @@
-const cart = [];
-const products = {};  // Almacenará los productos
+const cart = {};  // Cambiar a un objeto para almacenar la cantidad de cada producto
 
 // Función para cargar los productos desde el backend (PHP)
 async function loadProducts() {
@@ -23,7 +22,7 @@ async function loadProducts() {
         // Iterar sobre el mapa de productos
         Object.keys(productMap).forEach(productName => {
             const prices = productMap[productName];
-            const mostExpensiveProduct = prices[0];  // El primer producto siempre será el más caro (debido al ORDER BY en la consulta SQL)
+            const mostExpensiveProduct = prices[0];  // El primer producto siempre será el más caro
             const cheapestProduct = prices[prices.length - 1];  // El último producto será el más barato
 
             const productDiv = document.createElement('div');
@@ -45,29 +44,40 @@ async function loadProducts() {
 
 // Función para agregar al carrito
 function addToCart(productName, price) {
-    cart.push({ name: productName, price: price });
+    if (!cart[productName]) {
+        cart[productName] = { price: price, quantity: 1 }; // Agrega el producto con cantidad 1
+    } else {
+        cart[productName].quantity++; // Incrementa la cantidad si ya existe
+    }
     updateCart();
 }
 
 // Función para mostrar alerta si hay un producto más barato
 function alertCheaperProduct(productName, cheaperPrice) {
     if (confirm(`Hay una versión más barata de ${productName} por $${cheaperPrice}. ¿Deseas cambiarlo?`)) {
-        const productIndex = cart.findIndex(item => item.name === productName);
-        if (productIndex !== -1) {
-            cart[productIndex].price = cheaperPrice;
+        // Solo cambia el precio del producto si está en el carrito
+        if (cart[productName]) {
+            cart[productName].price = cheaperPrice;
             updateCart();
         }
     }
 }
 
-// Función para eliminar del carrito
-function removeFromCart(productName) {
-    const newCart = cart.filter(item => item.name !== productName);
-    if (cart.length > newCart.length) {
-        cart.length = 0; // Limpiar el carrito actual
-        cart.push(...newCart); // Reemplazarlo con el nuevo carrito
-        updateCart(); // Actualizar la vista del carrito
+// Función para eliminar un solo producto del carrito
+function removeOneFromCart(productName) {
+    if (cart[productName]) {
+        cart[productName].quantity--;
+        if (cart[productName].quantity <= 0) {
+            delete cart[productName]; // Eliminar el producto si la cantidad es 0
+        }
+        updateCart();
     }
+}
+
+// Función para eliminar todos los productos de un tipo del carrito
+function removeAllFromCart(productName) {
+    delete cart[productName]; // Elimina el producto completamente
+    updateCart();
 }
 
 // Función para actualizar el carrito
@@ -77,18 +87,26 @@ function updateCart() {
     cartItems.innerHTML = '';
     let total = 0;
 
-    cart.forEach(item => {
-        total += item.price;
+    Object.keys(cart).forEach(productName => {
+        const item = cart[productName];
+        total += item.price * item.quantity; // Calcular el total basado en la cantidad
         const li = document.createElement('li');
-        li.textContent = `${item.name}: $${item.price}`;
+        li.textContent = `${productName}: $${item.price} (Cantidad: ${item.quantity})`;
 
-        // Botón para eliminar
-        const removeBtn = document.createElement('span');
-        removeBtn.textContent = 'Eliminar';
-        removeBtn.classList.add('remove');
-        removeBtn.onclick = () => removeFromCart(item.name);
+        // Botón para eliminar uno
+        const removeOneBtn = document.createElement('span');
+        removeOneBtn.textContent = 'Eliminar uno';
+        removeOneBtn.classList.add('remove');
+        removeOneBtn.onclick = () => removeOneFromCart(productName);
 
-        li.appendChild(removeBtn);
+        // Botón para eliminar todos
+        const removeAllBtn = document.createElement('span');
+        removeAllBtn.textContent = 'Eliminar todos';
+        removeAllBtn.classList.add('remove');
+        removeAllBtn.onclick = () => removeAllFromCart(productName);
+
+        li.appendChild(removeOneBtn);
+        li.appendChild(removeAllBtn);
         cartItems.appendChild(li);
     });
 
