@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar</title>
+    <link rel="stylesheet" href="../css/recuperar.css">
+    <script src="../js/rec.js" defer></script>
+</head>
+<body>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="../img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="../img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <img src="../img/ahorro.png" alt="Ahorro">
+                <img src="../img/categorias.png" alt="Categorias">
+                <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                <img src="../img/tienda.png" alt="Tienda">
+                <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <div class="recuperar">
+            <h1>Recuperar Contraseña</h1>
+
+            <!-- seccion de ingreso de datos -->
+            <div class="datos">
+                <h3>¿Olvidaste tu Contraseña?</h3>
+                <p>por favor ingresa tu correo asociado a tu cuenta</p>
+                <form action="../../php/correo.php" method="POST">
+                    <input type="email" id="email" placeholder="Email" name="correo" required>
+                    <button type="submit">Recuperar Contraseña</button>
+                </form>
+                <a href="../../login.html">Inicio de Sesion</a>
+                <a href="register.html">Registrarse</a>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <section class="barra-inferior">
+            <div class="logo-footer-texto">
+                <div class="logo-footer">
+                    <img src="../img/logoECDA.png" alt="logo">
+                </div>
+                <p>&reg; Derechos Reservados</p>
+            </div>
+            <div class="link-inicio">
+                <a href="">ir al inicio</a>
+            </div>
+        </section>
+    </footer>
+</body>
+</html>

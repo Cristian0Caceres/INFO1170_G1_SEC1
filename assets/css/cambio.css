@@ -1,0 +1,209 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    height: 5%;
+    width: 100%;
+    background-color: #d6b8a5; 
+}
+
+.barra-superior {
+    display: flex;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    width: 20%;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2%
+}
+
+.logo img {
+    height: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: 60%;
+    height: 100%;
+}
+
+.search-bar input {
+    background-color: #E8DEF8;
+    width: 80%;
+    height: 80%;
+    border: none;
+    outline: none;
+    border-radius: 30px; 
+    padding-left: 2%;
+}                   
+
+.search-bar button {
+    width: 5%;
+    height: 80%;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding-left: 4px;
+}
+
+.search-bar button img {
+    height: 60%;
+
+}
+
+.icons {
+    display: flex;
+    width: 20%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.icons img {
+    height: 50%;
+    cursor: pointer;
+}
+
+
+main{
+    min-height: 90%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8EDE3;
+}
+
+.recuperar{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    height: 50%;
+    background-color: #C5705D;
+    border-radius: 5%;
+}
+
+.recuperar h1{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 5%
+}
+
+.datos{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 70%;
+    background-color: #D0B8A8;
+    margin-top: 5%;
+    border-radius: 5%;
+}
+
+.datos h3{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 5%;
+    color: #1500FF;
+}
+
+.datos p{
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 1%;
+}
+
+.datos form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos form input{
+    padding: 1.5% 5%;
+    margin-top: 5%;
+    text-align: center;
+}
+
+.datos form button{
+    padding: 2% 6%;
+    margin-top: 3%;
+    text-align: center;
+    background-color: #C5705D;
+    cursor: pointer;
+    border: 2px solid #D0B8A8;
+}
+
+.datos form button:hover{
+    text-decoration: underline;
+    border: 2px solid;
+}
+
+footer{
+    height: 5%;
+    width: 100%;
+    background-color: #d6b8a5;
+}
+
+.barra-inferior {
+    display: flex;
+    height: 100%;
+    align-items: center; 
+}
+
+.logo-footer-texto {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center; 
+}
+
+.logo-footer {
+    display: flex;
+    width: 8%;
+    height: 100%;
+    align-items: center;
+    justify-content: left;
+    padding-left: 2%
+}
+
+.logo-footer img {
+    height: 100%;
+}
+
+.barra-inferior p {
+    margin-left: 10px; 
+}    
+
+.link-inicio {
+    margin-left: auto; 
+    padding-right: 2%; 
+}
+
+.link-inicio a {
+    text-decoration: none;
+    color: #000; 
+}
+
+.link-inicio a:hover {
+    text-decoration: underline; 
+}
