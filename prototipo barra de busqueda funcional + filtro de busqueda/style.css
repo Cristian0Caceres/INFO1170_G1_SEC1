@@ -8,9 +8,10 @@ body {
     margin-top: 50px;
 }
 
-input[type="text"] {
-    width: 300px;
+input[type="text"], input[type="number"], select {
+    width: 200px;
     padding: 10px;
+    margin-right: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }

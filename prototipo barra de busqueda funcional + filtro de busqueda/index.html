@@ -9,6 +9,13 @@
 <body>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Buscar..." oninput="search()">
+        <select id="category-filter" onchange="search()">
+            <option value="">Todas las categorías</option>
+            <option value="vegetales">Vegetales</option>
+            <option value="carnes">Carnes</option>
+            <option value="lácteos">Lácteos</option>
+            <option value="otros">Otros</option>
+        </select>
         <button onclick="search()">Buscar</button>
     </div>
     <div id="results"></div>
