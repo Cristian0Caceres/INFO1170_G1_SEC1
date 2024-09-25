@@ -51,7 +51,7 @@ header {
     height: 80%;
     border: none;
     outline: none;
-    border-radius: 30px;
+    border-radius: 30px; /* Deja espacio para el botón dentro del input */
     padding-left: 2%;
 }                   
 
@@ -88,11 +88,10 @@ header {
     cursor: pointer;
 }
 
-main{
-    min-height: 90%;
-    display: flex;
-    flex-direction: column;
-    background-color: #F8EDE3;
+
+main {
+    padding: 80px 20px; /* Ajusta el padding para dar espacio al header fijo */
+    font-size: 1.2em;
 }
 
 .ofertas-container, .categorias-container {
@@ -149,7 +148,17 @@ h2 {
     border: 8px solid #C5705D;
     border-radius: 10px;
 }
-
+.precio-oferta {
+    position: absolute;
+    bottom: 10px; /* Ajusta la posición vertical */
+    left: 10px; /* Ajusta la posición horizontal */
+    background-color: rgba(31, 14, 14, 0.7); /* Fondo semitransparente */
+    color: #ff0000; /* Color del texto */
+    padding: 5px 10px; /* Espaciado interno */
+    border-radius: 20px; /* Bordes redondeados */
+    font-size: 1.2em; /* Tamaño de fuente */
+    font-weight: bold; /* Negrita */
+}
 .grid-item img {
     position: absolute;
     top: 0;
@@ -205,6 +214,25 @@ h2 {
 .category-item h3 {
     margin-top: 20px;
     font-size: 24px;
+}
+
+.category-btn {
+    padding: 8px 16px; /* Botones más pequeños */
+    background-color: #C5705D; /* Color de fondo del botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Fuente más pequeña para las categorías */
+    text-decoration: none; 
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-top: 15px; /* Espacio encima del botón */
+}
+
+.category-btn:hover {
+    background-color: #A4564A; /* Cambia el color de fondo al pasar el mouse */
+    transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
 }
 
 footer{

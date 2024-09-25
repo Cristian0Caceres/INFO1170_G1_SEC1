@@ -52,55 +52,68 @@
                 </a>    
             </div>
         </section>
-    </header>
-
+    </header>   
 
     <main>
-        <h2 class="titulo-carrito">Carrito de Presupuesto</h2>
+        <div class="contenedor-principal"> <!-- Contenedor adicional -->
+            <h2 class="titulo-carrito">Carrito de Presupuesto</h2>
     
-        <div class="tienda-container"> <!-- Contenedor gigante para Tienda 1 -->
-            <h2>Tienda 1</h2>
-            <div class="productos-container">
-                <div class="producto">
-                    <img src="ruta/a/imagen1.jpg" alt="Producto 1">
-                    <p>Producto 1</p>
-                    <p class="precio normal">$3000</p> <!-- Precio normal -->
-                    <p class="precio oferta">$2500</p> <!-- Precio en oferta -->
-                    <button class="agregar-btn" onclick="addToCart('Producto 1', 2500)">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="ruta/a/imagen2.jpg" alt="Producto 2">
-                    <p>Producto 2</p>
-                    <p class="precio normal">$2500</p> <!-- Precio normal -->
-                    <p class="precio oferta">$2000</p> <!-- Precio en oferta -->
-                    <button class="agregar-btn" onclick="addToCart('Producto 2', 2000)">Agregar al carrito</button>
+            <div class="tienda-container"> <!-- Contenedor gigante para Tienda 1 -->
+                <h2>Gumbo</h2>
+                <div class="productos-container">
+                    <div class="producto">
+                        <div class="image-container">
+                            <img src="../img/Asiento.jpg" alt="Producto 1">
+                            <span class="tooltip">Asiento Al Vacío: Un corte premium de carne.</span>
+                        </div>
+                        <p>Asiento Al Vacío</p>
+                        <p class="precio normal">$13.690</p>
+                        <p class="precio oferta">$12.000</p>
+                        <button class="agregar-btn" onclick="addToCart('Asiento Al Vacío', 12000)">Agregar al carrito</button>
+                    </div>
+                    <div class="producto">
+                        <div class="image-container">
+                            <img src="../img/Paltas.jpg" alt="Paltas">
+                            <span class="tooltip">Palta: Fruta rica en grasas saludables.</span>
+                        </div>
+                        <p>1Kl Palta</p>
+                        <p class="precio normal">$6.990</p>
+                        <p class="precio oferta">$6.000</p>
+                        <button class="agregar-btn" onclick="addToCart('Kilo ( Palta )', 6000)">Agregar al carrito</button>
+                    </div>
                 </div>
             </div>
-        </div>
     
-        <div class="tienda-container"> <!-- Contenedor gigante para Tienda 2 -->
-            <h2>Tienda 2</h2>
-            <div class="productos-container">
-                <div class="producto">
-                    <img src="ruta/a/imagen3.jpg" alt="Producto 3">
-                    <p>Producto 3</p>
-                    <p class="precio normal">$1500</p> <!-- Precio normal -->
-                    <p class="precio oferta">$1200</p> <!-- Precio en oferta -->
-                    <button class="agregar-btn" onclick="addToCart('Producto 3', 1200)">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                    <img src="ruta/a/imagen4.jpg" alt="Producto 4">
-                    <p>Producto 4</p>
-                    <p class="precio normal">$3500</p> <!-- Precio normal -->
-                    <p class="precio oferta">$3000</p> <!-- Precio en oferta -->
-                    <button class="agregar-btn" onclick="addToCart('Producto 4', 3000)">Agregar al carrito</button>
+            <div class="tienda-container"> <!-- Contenedor gigante para Tienda 2 -->
+                <h2>Unismarc</h2>
+                <div class="productos-container">
+                    <div class="producto">
+                        <div class="image-container">
+                            <img src="../img/Leche Colun.jpg" alt="Leche Colun">
+                            <span class="tooltip">Leche Colun: Producto lácteo fresco.</span>
+                        </div>
+                        <p>Leche Colun</p>
+                        <p class="precio normal">$1.380</p>
+                        <p class="precio oferta">$1.200</p>
+                        <button class="agregar-btn" onclick="addToCart('Leche Colun', 1200)">Agregar al carrito</button>
+                    </div>
+                    <div class="producto">
+                        <div class="image-container">
+                            <img src="../img/Platanos.jpg" alt="Plátano granel 500 g">
+                            <span class="tooltip">Plátano granel: Ideal para tu desayuno.</span>
+                        </div>
+                        <p>Plátano granel 500 g</p>
+                        <p class="precio normal">$725</p>
+                        <p class="precio oferta">$580</p>
+                        <button class="agregar-btn" onclick="addToCart('Plátano 500g', 580)">Agregar al carrito</button>
+                    </div>
                 </div>
             </div>
-        </div>
     
-        <h2>Carrito</h2>
-        <ul id="cart-items"></ul>
-        <p>Total: $<span id="total">0</span></p>
+            <h2 class="carrito-titulo">Carrito</h2>
+            <ul id="cart-items"></ul>
+            <p>Total: $<span id="total">0</span></p>
+        </div> <!-- Fin del contenedor principal -->
     </main>
 
     <footer>
@@ -154,6 +167,8 @@
 
             totalDisplay.textContent = total;
         }
+        
     </script>
+
 </body>
 </html>

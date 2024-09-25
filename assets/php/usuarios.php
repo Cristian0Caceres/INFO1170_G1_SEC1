@@ -24,8 +24,8 @@ try {
                     <td>{$fila['Nombre_Usuario']}</td>
                     <td>{$fila['correo_Usuario']}</td>
                     <td>
-                        <a href='editar_usuario.php?id={$fila['ID_Usuario']}'>Editar</a> | 
-                        <a href='eliminar_usuario.php?id={$fila['ID_Usuario']}'>Eliminar</a>
+                        <a href='../php/editar_usuario.php?id={$fila['ID_Usuario']}'>Editar</a> | 
+                        <a href='../php/eliminar_usuario.php?id={$fila['ID_Usuario']}'>Eliminar</a>
                     </td>
                   </tr>";
         }

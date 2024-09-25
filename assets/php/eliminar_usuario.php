@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $sql = "DELETE FROM Usuario WHERE ID_Usuario=$id";
 
     if ($conn->query($sql) === TRUE) {
-        header('Location: lista_usuarios.php'); 
+        header('Location: ../html/lista_usuarios.php'); 
         exit();
     } else {
         echo "Error al eliminar: " . $conn->error;

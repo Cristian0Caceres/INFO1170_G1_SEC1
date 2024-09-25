@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "UPDATE Usuario SET Nombre_Usuario='$nombre', correo_Usuario='$correo' WHERE ID_Usuario=$id";
     if ($conn->query($sql) === TRUE) {
-        header('Location: lista_usuarios.php'); 
+        header('Location: ../html/lista_usuarios.php'); 
         exit();
     } else {
         echo "Error al actualizar: " . $conn->error;

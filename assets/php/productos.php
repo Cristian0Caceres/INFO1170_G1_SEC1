@@ -21,8 +21,8 @@ if ($result->num_rows > 0) {
         echo "<td>$" . number_format($row['price'], 2) . "</td>";
         echo "<td>" . $row['provider'] . "</td>";
         echo "<td>
-                <a href='editar_producto.php?id=" . $row['id'] . "&id_precio=" . $row['id_precio'] . "'>Editar</a> | 
-                <a href='eliminar_producto.php?id=" . $row['id'] . "&id_precio=" . $row['id_precio'] . "'>Eliminar</a>
+                <a href='../php/editar_producto.php?id=" . $row['id'] . "&id_precio=" . $row['id_precio'] . "'>Editar</a> | 
+                <a href='../php/eliminar_producto.php?id=" . $row['id'] . "&id_precio=" . $row['id_precio'] . "'>Eliminar</a>
               </td>";
         echo "</tr>";
     }

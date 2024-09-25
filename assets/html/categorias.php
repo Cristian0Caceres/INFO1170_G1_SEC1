@@ -77,7 +77,7 @@
         <img src="../img/logoECDA.png" alt="Logo de la empresa">
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="LINK DEL HOME">Ir al Inicio</a>
+            <a href="../../index.html">Ir al Inicio</a>
         </nav>
     </footer>
 </body>

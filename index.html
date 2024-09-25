@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.2">
     <title>Cacique del Ahorro</title>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="icon" href="images/ico.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <script>
         // Función que realiza la búsqueda
@@ -40,7 +39,7 @@
                 </button>
             </div>
             <div class="icons">
-                <a href="assets/php/productos_categoria.php">
+                <a href="assets/html/categorias.php">
                     <img src="assets/img/categorias.png" alt="Categorias">
                 </a>
                 <a href="assets/html/Carrito.html">
@@ -55,77 +54,91 @@
         </section>
     </header>
 
-        <main>
-            <div class="ofertas-container">
-                <section class="mejores-ofertas">
-                    <h2>Mejores Ofertas</h2>
-                    <div class="grid-container">
-                        <div class="grid-item">
-                            <div class="image-container">
-                                <img src="assets/img/oferta1.png" alt="Oferta 1">
-                            </div>
-                            <p>Oferta Supermercado A</p>
+    <main>
+        <div class="ofertas-container">
+            <section class="mejores-ofertas">
+                <h2>Mejores Ofertas</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="image-container">
+                            <img src="assets/img/Asiento.jpg" alt="Oferta 1">
+                            <div class="precio-oferta">$12.000</div> <!-- Precio sobre la imagen -->
                         </div>
-                        <div class="grid-item">
-                            <div class="image-container">
-                                <img src="assets/img/oferta1.png" alt="Oferta 2">
-                            </div>
-                            <p>Oferta Supermercado B</p>
-                        </div>
-                        <div class="grid-item">
-                            <div class="image-container">
-                                <img src="assets/img/oferta1.png" alt="Oferta 3">
-                            </div>
-                            <p>Oferta Supermercado C</p>
-                        </div>
-                        <div class="grid-item">
-                            <div class="image-container">
-                                <img src="assets/img/oferta1.png" alt="Oferta 4">
-                            </div>
-                            <p>Oferta Supermercado D</p>
-                        </div>
+                        <p>Oferta Supermercado Gumbo</p>
+                        <a href="assets/html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
                     </div>
-                </section>
-            </div>
+                    <div class="grid-item">
+                        <div class="image-container">
+                            <img src="assets/img/Paltas.jpg" alt="Oferta 2">
+                            <div class="precio-oferta">$6.000</div> <!-- Precio sobre la imagen -->
+                        </div>
+                        <p>Oferta Supermercado Gumbo</p>
+                        <a href="assets/html/vista_producto.phpl" class="category-btn">Ir a la Oferta</a>
+                    </div>
+                    <div class="grid-item">
+                        <div class="image-container">
+                            <img src="assets/img/Leche Colun.jpg" alt="Oferta 3">
+                            <div class="precio-oferta">$1.200</div> <!-- Precio sobre la imagen -->
+                        </div>
+                        <p>Oferta Supermercado Unismarc</p>
+                        <a href="assets/html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
+                    </div>
+                    <div class="grid-item">
+                        <div class="image-container">
+                            <img src="assets/img/Platanos.jpg" alt="Oferta 4">
+                            <div class="precio-oferta">$580</div> <!-- Precio sobre la imagen -->
+                        </div>
+                        <p>Oferta Supermercado Unismarc</p>
+                        <a href="assets/html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-            <div class="categorias-container">
-                <hr class="section-divider">
-                <section class="popular-categories">
-                    <h2>Categorías Populares</h2>
-                    <div class="category-grid">
-                        <div class="category-item">
-                            <div class="category-image">
-                                <img src="assets/img/carne.jpg" alt="Carne">
-                            </div>
-                            <h3>Carne</h3>
+        <div class="categorias-container">
+            <hr class="section-divider">
+            <section class="popular-categories">
+                <h2>Categorías Populares</h2>
+                <div class="category-grid">
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="assets/img/carne.jpg" alt="Carne">
                         </div>
-                        <div class="category-item">
-                            <div class="category-image">
-                                <img src="assets/img/frutas.jpg" alt="Frutas">
-                            </div>
-                            <h3>Frutas</h3>
-                        </div>
-                        <div class="category-item">
-                            <div class="category-image">
-                                <img src="assets/img/verduras.jpg" alt="Verduras">
-                            </div>
-                            <h3>Verduras</h3>
-                        </div>
-                        <div class="category-item">
-                            <div class="category-image">
-                                <img src="assets/img/lacteos.jpg" alt="Lácteos">
-                            </div>
-                            <h3>Lácteos</h3>
-                        </div>
+                        <h3>Carne</h3>
+                        <a href="assets/html/categorias.php" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
                     </div>
-                </section>
-            </div>
-        </main>
-        <footer>
-            <img src="assets/img/logoECDA.png" alt="Logo">
-            <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
-            <a href="index.html" class="inicio-btn">Ir a Inicio</a> <!-- Botón de ir a inicio -->
-        </footer>
-    </div>
+                    
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="assets/img/frutas.jpg" alt="Frutas">
+                        </div>
+                        <h3>Frutas</h3>
+                        <a href="assets/html/categorias.php" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
+                    </div>
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="assets/img/verduras.jpg" alt="Verduras">
+                        </div>
+                        <h3>Verduras</h3>
+                           <a href="assets/html/categorias.php" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
+                    </div>
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="assets/img/lacteos.jpg" alt="Lácteos">
+                        </div>
+                        <h3>Lacteos</h3>
+                        <a href="assets/html/categorias.php" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
+                        </h3>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <img src="assets/img/logoECDA.png" alt="Logo">
+        <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
+        <a href="index.html" class="inicio-btn">Ir a Inicio</a> <!-- Botón de ir a inicio -->
+    </footer>
 </body>
 </html>

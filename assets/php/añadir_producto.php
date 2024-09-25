@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt_precio->bind_param('id', $id_producto, $precio);
 
             if ($stmt_precio->execute()) {
-                header('Location: lista_productos.php');
+                header('Location: ../html/lista_productos.php');
                 exit();
             } else {
                 echo "Error al insertar el precio: " . $conn->error;

@@ -18,7 +18,7 @@ if (isset($_GET['id']) && isset($_GET['id_precio'])) {
     $stmt_producto->bind_param('i', $id_producto);
     
     if ($stmt_producto->execute()) {
-        header('Location: lista_productos.php'); 
+        header('Location: ../html/lista_productos.php'); 
         exit();
     } else {
         echo "Error al eliminar el producto: " . $conn->error;

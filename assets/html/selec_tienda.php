@@ -40,7 +40,7 @@
                 <section class="encabezado">
                     <div class="boton-enviar">
                         <button onclick="obtenerTiendasSeleccionadas()">Guardar Selección
-                            <img src="images/save-info.png" alt="Guardar">
+                            <img src="../img/save-info.png" alt="Guardar">
                         </button>
                     </div>
                     <div class="titulo">
@@ -67,7 +67,7 @@
             <img src="../img/logoECDA.png" alt="Logo de la empresa">
             <p>&copy; Derechos Reservados</p>
             <nav>
-                <a href="LINK DEL HOME">Ir al Inicio</a>
+                <a href="../../index.html">Ir al Inicio</a>
             </nav>
         </footer>
     </body>

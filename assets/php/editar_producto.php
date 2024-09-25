@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('siiiii', $nombre, $categoria, $proveedor, $precio, $id, $id_precio);
     if ($stmt->execute()) {
-        header('Location: lista_productos.php');
+        header('Location: ../html/lista_productos.php');
         exit();
     } else {
         echo "Error al actualizar: " . $conn->error;
