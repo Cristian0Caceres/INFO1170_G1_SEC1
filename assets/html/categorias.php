@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/styles0.css">
+    <link rel="stylesheet" href="../css/categorias.css">
     <title>Vista Producto</title>
     <script>
         // Función que realiza la búsqueda
@@ -34,32 +34,29 @@
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="images/buscar.png" alt="Buscar">
+                    <img src="../img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
-                <a href="LINK">
-                    <img src="images/ahorro.png" alt="Ahorro">
+                <a href="../html/categorias.php">
+                    <img src="../img/categorias.png" alt="Categorias">
                 </a>
-                <a href="LINK">
-                    <img src="images/categorias.png" alt="Categorias">
+                <a href="../html/Carrito.html">
+                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="LINK">
-                    <img src="images/carrito-de-compras.png" alt="Carrito de Compras">
-                </a>
-                <a href="LINK">
-                    <img src="images/tienda.png" alt="Tienda">
-                </a>
-                <a href="LINK">
-                    <img src="images/iniciar-sesion.png" alt="Iniciar Sesion">
+                <a href="../html/selec_tienda.php">
+                    <img src="../img/tienda.png" alt="Tienda">
+                <a href="../html/login.html">
+                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
     </header>
+
     <main>
         <!-- Sección flotante para la categoría -->
         <section class="nombre-categoria">
-             <?php include 'categoria.php'; ?>
+             <?php include '../php/categoria.php'; ?>
         </section>
         <section class="productos">
             <section class="encabezado">
@@ -77,7 +74,7 @@
     </main>
 
     <footer>
-        <img src="images/logoECDA.png" alt="Logo de la empresa">
+        <img src="../img/logoECDA.png" alt="Logo de la empresa">
         <p>&copy; Derechos Reservados</p>
         <nav>
             <a href="LINK DEL HOME">Ir al Inicio</a>

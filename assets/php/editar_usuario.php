@@ -29,7 +29,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Editar Usuario</title>
-    <link rel="stylesheet" href="/AdminHomeAll/CSS/styles4.css"> <!-- Cambia la ruta según la ubicación de tu archivo CSS -->
+    <link rel="stylesheet" href="../css/styles4.css"> <!-- Cambia la ruta según la ubicación de tu archivo CSS -->
 </head>
 <body>
     <h2>Editar Usuario</h2>

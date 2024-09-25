@@ -56,7 +56,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Editar Producto</title>
-    <link rel="stylesheet" href="/AdminHomeAll/CSS/styles4.css">
+    <link rel="stylesheet" href="../css/styles4.css">
 </head>
 <body>
     <h2>Editar Producto</h2>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos - Cacique del Ahorro</title>
-    <link rel="stylesheet" href="/AdminHomeAll/CSS/styles1.css">
+    <link rel="stylesheet" href="../css/styles1.css">
 </head>
 <body>
 
@@ -13,11 +13,11 @@
 </header>
 
 <nav>
-    <a href="/AdminHomeAll/HTML/admin_home.html">Inicio</a>
-    <a href="/AdminHomeAll/PHP/lista_productos.php">Productos</a>
-    <a href="/AdminHomeAll/HTML/Test_Simulador.html">Simulador</a>
-    <a href="/AdminHomeAll/PHP/lista_usuarios.php">Usuarios</a>
-    <a href="#">Salir</a>
+    <a href="admin_home.html">Inicio</a>
+    <a href="lista_productos.php">Productos</a>
+    <a href="Test_Simulador.html">Simulador</a>
+    <a href="lista_usuarios.php">Usuarios</a>
+    <a href="../../index.html">Salir</a>
 </nav>
 
 <section>
@@ -25,7 +25,7 @@
     <p>A continuación, se muestra la lista de productos registrados en el sistema:</p>
 
     <!-- Botón para añadir un nuevo producto -->
-    <a href="/AdminHomeAll/PHP/añadir_producto.php" class="button">Añadir Producto</a>
+    <a href="../php/añadir_producto.php" class="button">Añadir Producto</a>
 
     <table class="user-table">
         <thead>
@@ -41,7 +41,7 @@
         <tbody>
             <?php 
             error_reporting(E_ALL); // Mostrar todos los errores
-            include 'productos.php'; 
+            include '../php/productos.php'; 
             ?>
         </tbody>
     

@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -15,37 +14,33 @@ body, html {
 header {
     height: 5%;
     width: 100%;
-    background-color: #d6b8a5; /* Cambia el color si lo deseas */
+  background-color: #d6b8a5 
 }
 
 .barra-superior {
     display: flex;
     height: 100%;
-    justify-content: space-between; /* Cambiar a 'space-between' para que el logo esté a la izquierda y los íconos a la derecha */
 }
 
 .logo {
     display: flex;
     width: 20%;
     align-items: center;
-    justify-content: flex-start; /* Cambia 'left' por 'flex-start' */
-    padding-left: 2%;
+    justify-content: left;
+    padding-left: 2%
 }
 
 .logo img {
     height: 100%;
-    max-height: 50px; /* Ajusta la altura máxima de la imagen del logo */
-    width: auto; /* Mantiene la proporción de la imagen */
 }
 
 .search-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Asegúrate de que los elementos dentro de la barra de búsqueda estén a la derecha */
-    width: 60%; /* Si quieres que ocupe más espacio, ajusta este valor */
+    justify-content: right;
+    width: 60%;
     height: 100%;
 }
-
 
 .search-bar input {
     background-color: #E8DEF8;
@@ -53,9 +48,9 @@ header {
     height: 80%;
     border: none;
     outline: none;
-    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    border-radius: 30px;
     padding-left: 2%;
-}
+}                   
 
 .search-bar button {
     width: 5%;
@@ -67,8 +62,7 @@ header {
 }
 
 .search-bar button img {
-    max-height: 30px; /* Altura máxima para la imagen del botón de búsqueda */
-    width: auto; /* Mantiene la proporción de la imagen */
+    height: 60%;
 }
 
 .icons {
@@ -76,25 +70,26 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Cambiar 'space-evenly' por 'flex-end' */
+    justify-content: space-evenly;
 }
 
-.icons a {
+.icons a{
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.icons a img {
-    max-height: 30px; /* Altura máxima para las imágenes de los íconos */
-    width: auto; /* Mantiene la proporción de la imagen */
+.icons a img{
+    height: 50%;
+    cursor: pointer;
 }
 
-
-main {
-    padding: 80px 20px; /* Ajusta el padding para dar espacio al header fijo */
-    font-size: 1.2em;
+main{
+    min-height: 90%;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8EDE3;
 }
 
 /* Estilo para el título del carrito */
@@ -183,51 +178,21 @@ main {
     
 }
 
-footer {
+footer{
     background-color: #D0B8A8;
-    color: #fff;
-    padding: 15px; 
-    font-size: 16px;
-    position: relative; 
-    width: 100%; 
-    left: 0; 
-    margin-top: auto; 
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: flex-start; 
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    height: 5%;
 }
-
 footer img {
-    width: 50px; 
-    height: auto;
+    padding-left: 2%;
+    height: 100%;
+
 }
 
-footer p {
-    font-size: 14px;
-}
-
-footer .inicio-btn {
-    margin-left: auto; 
-    padding: 10px 20px;
-    background-color: #C5705D;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    text-decoration: none; 
-}
-
-footer .inicio-btn:hover {
-    background-color: #A4564A; 
-}
-
-.inicio-btn {
-    background-color: #D0B8A8; /* Color del botón */
-    color: white; /* Color del texto del botón */
-    border: none; /* Sin borde */
-    padding: 5px 10px; /* Espaciado interno */
-    cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    text-decoration: none; /* Sin subrayado */
+footer a{
+    margin: 0 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="vista_producto.css">
+    <link rel="stylesheet" href="../css/vista_producto.css">
     <title>Vista Producto</title>
     <script>
         // Función que realiza la búsqueda

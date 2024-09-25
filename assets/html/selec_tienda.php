@@ -11,25 +11,25 @@
         <header>
             <section class="barra-superior">
                 <div class="logo">
-                    <img src="assets/img/logoECDA.png" alt="Logo">
+                    <img src="../img/logoECDA.png" alt="Logo">
                 </div>
                 <div class="search-bar">
                     <input type="text" id="searchInput" placeholder="Buscar...">
                     <button onclick="realizarBusqueda()">
-                        <img src="assets/img/buscar.png" alt="Buscar">
+                        <img src="../img/buscar.png" alt="Buscar">
                     </button>
                 </div>
                 <div class="icons">
-                    <a href="assets/html/categorias.php">
-                        <img src="assets/img/categorias.png" alt="Categorias">
+                    <a href="../html/categorias.php">
+                        <img src="../img/categorias.png" alt="Categorias">
                     </a>
-                    <a href="assets/html/Carrito.html">
-                        <img src="assets/img/carrito-de-compras.png" alt="Carrito de Compras">
+                    <a href="../html/Carrito.html">
+                        <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
                     </a>
-                    <a href="assets/html/selec_tienda.php">
-                        <img src="assets/img/tienda.png" alt="Tienda">
-                    <a href="assets/html/login.html">
-                        <img src="assets/img/iniciar-sesion.png" alt="Iniciar Sesion">
+                    <a href="../html/selec_tienda.php">
+                        <img src="../img/tienda.png" alt="Tienda">
+                    <a href="../html/login.html">
+                        <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
                     </a>    
                 </div>
             </section>
