@@ -9,7 +9,7 @@
 
     // Verificar que la contraseña y su confirmación coincidan
     if ($contrasena !== $conf) {
-        header('Location: ../assets/pages/register.html?error=contrasenas_no_coinciden');
+        header('Location: ../html/register.html?error=contrasenas_no_coinciden');
         exit();
     }
 
@@ -17,7 +17,7 @@
     $query = "SELECT * FROM Usuario WHERE correo_Usuario = '$correo'";
     $result = mysqli_query($conn, $query);
     if (mysqli_num_rows($result) > 0) {
-        header('Location: ../assets/pages/register.html?error=correo_existente');
+        header('Location: ../html/register.html?error=correo_existente');
         exit();
     }
 
@@ -29,9 +29,9 @@
     $ejecutar = mysqli_query($conn, $query);
 
     if ($ejecutar) {
-        header('Location: ../login.html?registro=exitoso');
+        header('Location: ../html/login.html?registro=exitoso');
     } else {
-        header('Location: ../assets/pages/register.html?error=no_exitoso');
+        header('Location: ../html/register.html?error=no_exitoso');
     }
 
     // Cerrar la conexión

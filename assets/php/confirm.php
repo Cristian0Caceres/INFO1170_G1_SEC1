@@ -6,9 +6,9 @@
 
     // Verificar si el código ingresado es igual al código almacenado en la sesión
     if (isset($_SESSION['codigo_recuperacion']) && $numeroConcatenado === $_SESSION['codigo_recuperacion']) {
-        header('Location: ../assets/pages/cambio.html');
+        header('Location: ../html/cambio.html');
     } else {
-        header('Location: ../assets/pages/recuperar.html?error=codigo');
+        header('Location: ../html/recuperar.html?error=codigo');
         exit();
     }
 ?>

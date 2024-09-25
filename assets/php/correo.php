@@ -21,7 +21,7 @@
 
             // Redirigir según el correo si es uno de los admins
             if (in_array($usuario['correo_Usuario'], ['Admin1@gmail.com', 'Admin2@gmail.com', 'Admin3@gmail.com'])) {
-                header('Location: ../assets/pages/recuperar.html?error=admin');
+                header('Location: ../html/recuperar.html?error=admin');
                 exit();
             }
 
@@ -41,14 +41,14 @@
             // Enviar el correo
             if (mail($correo, $asunto, $mensaje, $cabeceras)) {
                 // Si el correo se envía correctamente
-                header('Location: ../assets/pages/confirmacion.html');
+                header('Location: ../html/confirmacion.html');
             } else {
                 // Si falla el envío del correo
-                header('Location: ../assets/pages/recuperar.html?error=error');
+                header('Location: ../html/recuperar.html?error=error');
             }
         } else {
             // Si no se encuentra el correo en la base de datos
-            header('Location: ../assets/pages/recuperar.html?error=credenciales_invalidas');
+            header('Location: ../html/recuperar.html?error=credenciales_invalidas');
         }
     }
 

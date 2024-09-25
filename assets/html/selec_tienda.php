@@ -3,41 +3,37 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="../css/tienda_selesc.css">
         <title>Selección de Tiendas</title>
-        <script src="scripts.js"></script> <!-- Llamada al archivo de scripts externo -->
+        <script src="../js/tienda_selec.js"></script> <!-- Llamada al archivo de scripts externo -->
     </head>
     <body>
         <header>
             <section class="barra-superior">
                 <div class="logo">
-                    <img src="images/logoECDA.png" alt="Logo">
+                    <img src="assets/img/logoECDA.png" alt="Logo">
                 </div>
                 <div class="search-bar">
                     <input type="text" id="searchInput" placeholder="Buscar...">
-                    <button onclick="realizarBusquedaHeader()">
-                        <img src="images/buscar.png" alt="Buscar">
+                    <button onclick="realizarBusqueda()">
+                        <img src="assets/img/buscar.png" alt="Buscar">
                     </button>
                 </div>
                 <div class="icons">
-                    <a href="LINK">
-                        <img src="images/ahorro.png" alt="Ahorro">
+                    <a href="assets/html/categorias.php">
+                        <img src="assets/img/categorias.png" alt="Categorias">
                     </a>
-                    <a href="LINK">
-                        <img src="images/categorias.png" alt="Categorías">
+                    <a href="assets/html/Carrito.html">
+                        <img src="assets/img/carrito-de-compras.png" alt="Carrito de Compras">
                     </a>
-                    <a href="LINK">
-                        <img src="images/carrito-de-compras.png" alt="Carrito de Compras">
-                    </a>
-                    <a href="LINK">
-                        <img src="images/tienda.png" alt="Tienda">
-                    </a>
-                    <a href="LINK">
-                        <img src="images/iniciar-sesion.png" alt="Iniciar Sesión">
-                    </a>
+                    <a href="assets/html/selec_tienda.php">
+                        <img src="assets/img/tienda.png" alt="Tienda">
+                    <a href="assets/html/login.html">
+                        <img src="assets/img/iniciar-sesion.png" alt="Iniciar Sesion">
+                    </a>    
                 </div>
             </section>
-        </header>   
+        </header>
 
         <main>
             <section class="principal">
@@ -60,7 +56,7 @@
                 <section class="segunda_seccion">
                     <section class="tiendas">
                         <!-- Aquí se incluirá el archivo listar_proveedores.php -->
-                        <?php include 'listar_proveedores.php'; ?>
+                        <?php include '../php/listar_proveedores.php'; ?>
                     </section>
                 </section>
             </section>
@@ -68,7 +64,7 @@
     
 
         <footer>
-            <img src="images/logoECDA.png" alt="Logo de la empresa">
+            <img src="../img/logoECDA.png" alt="Logo de la empresa">
             <p>&copy; Derechos Reservados</p>
             <nav>
                 <a href="LINK DEL HOME">Ir al Inicio</a>

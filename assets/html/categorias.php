@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="vista_producto.css">
+    <link rel="stylesheet" href="../css/styles0.css">
     <title>Vista Producto</title>
     <script>
         // Función que realiza la búsqueda
@@ -29,7 +29,7 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="images/logoECDA.png" alt="Logo">
+                <img src="../img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
@@ -52,47 +52,27 @@
                 </a>
                 <a href="LINK">
                     <img src="images/iniciar-sesion.png" alt="Iniciar Sesion">
-                </a>
+                </a>    
             </div>
         </section>
     </header>
-
     <main>
-        <section class="principal">
-            <div class="column producto">
-                <div class="column imagen">
-                    <!-- Aquí se mostrará la imagen del producto -->
-                    <?php include 'mostrar_producto_imagen.php'; ?>
-                </div>           
-                <div class="column informacion">
-                    <!-- Aquí se mostrará el nombre del producto -->
-                    <?php include 'mostrar_producto_nombre.php'; ?>
+        <!-- Sección flotante para la categoría -->
+        <section class="nombre-categoria">
+             <?php include 'categoria.php'; ?>
+        </section>
+        <section class="productos">
+            <section class="encabezado">
+                <div class="titulo">
+                    <h1>Productos</h1>
                 </div>
-            </div>
-
-            <!-- Mantener la estructura de productos y precios -->
-            <div class="column segundo-apartado">
-                <div class="precios">
-                    <div class="column titulo">
-                        <h2>Precios</h2>
-                    </div>
-                    <div class="column productos">
-                        <!-- Aquí puedes incluir los precios de productos o cualquier información adicional -->
-                        <div>
-                            <h3>Nombre del producto</h3>
-                            <p>Precio del producto</p>
-                        </div>
-                        <div>
-                            <h3>Nombre del producto</h3>
-                            <p>Precio del producto</p>
-                        </div>
-                        <div>
-                            <h3>Nombre del producto</h3>
-                            <p>Precio del producto</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </section>
+            <section class="presentacion-producto">
+                <section class="producto">
+                    <?php include '../php/productos_categoria.php'; ?>
+                </section>
+                
+            </section>
         </section>
     </main>
 

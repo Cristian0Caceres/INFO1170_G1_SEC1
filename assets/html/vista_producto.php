@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-    <link rel="stylesheet" href="../css/register.css">
-    <script src="../js/reg.js" defer></script>
+    <link rel="stylesheet" href="vista_producto.css">
+    <title>Vista Producto</title>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -26,6 +25,7 @@
         });
     </script>
 </head>
+<body>
     <header>
         <section class="barra-superior">
             <div class="logo">
@@ -54,30 +54,46 @@
     </header>
 
     <main>
-        <div class="registrarse">
-            <h1>Registrarse</h1>
-
-            <!-- seccion de ingreso de datos -->
-            <div class="datos">
-                <h2>Bienvenido a Cacique del Ahorro</h2>
-                <p>por favor ingresa tus datos para crear tu cuenta</p>
-
-                <!-- formulario para los datos-->
-                <form action="../php/registro.php" method="POST" id="registroForm">
-                    <input type="text" id="nombre" placeholder="Nombre" required name="nombre" value="">
-                    <input type="email" id="correo" placeholder="Email" required name="correo" value="">
-                    <input type="password" id="password" placeholder="Contraseña" required name="contrasena" value="">
-                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" required name="confirmacion_contrasena" value="">
-                    <button type="submit">Crear cuenta</button>
-                </form>
-                <a href="login.html">Iniciar Sesion</a>
+        <section class="principal">
+            <div class="column producto">
+                <div class="column imagen">
+                    <!-- Aquí se mostrará la imagen del producto -->
+                    <?php include '../php/mostrar_producto_imagen.php'; ?>
+                </div>           
+                <div class="column informacion">
+                    <!-- Aquí se mostrará el nombre del producto -->
+                    <?php include '../php/mostrar_producto_nombre.php'; ?>
+                </div>
             </div>
 
-        </div>
+            <!-- Mantener la estructura de productos y precios -->
+            <div class="column segundo-apartado">
+                <div class="precios">
+                    <div class="column titulo">
+                        <h2>Precios</h2>
+                    </div>
+                    <div class="column productos">
+                        <!-- Aquí puedes incluir los precios de productos o cualquier información adicional -->
+                        <div>
+                            <h3>Nombre del producto</h3>
+                            <p>Precio del producto</p>
+                        </div>
+                        <div>
+                            <h3>Nombre del producto</h3>
+                            <p>Precio del producto</p>
+                        </div>
+                        <div>
+                            <h3>Nombre del producto</h3>
+                            <p>Precio del producto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <img src="../img/logoECDA.png" alt="Logo de la empresa">
         <p>&copy; Derechos Reservados</p>
         <nav>
             <a href="../../index.html">Ir al Inicio</a>
