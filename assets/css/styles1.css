@@ -160,3 +160,26 @@ p {
     color: #b47461;
     text-decoration: underline;
 }
+
+/* Estilos para el campo de búsqueda y el botón */
+.search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #d58b72;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #b47461;
+}

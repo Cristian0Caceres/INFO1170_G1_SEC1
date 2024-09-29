@@ -27,6 +27,14 @@
     <!-- Botón para añadir un nuevo producto -->
     <a href="../php/añadir_producto.php" class="button">Añadir Producto</a>
 
+    <!-- Formulario de búsqueda con estilo -->
+    <div class="search-container">
+        <form method="GET" action="lista_productos.php">
+            <input type="text" name="search" class="search-input" placeholder="Buscar producto por nombre...">
+            <button type="submit" class="search-button">Buscar</button>
+        </form>
+    </div>
+
     <table class="user-table">
         <thead>
             <tr>
@@ -44,7 +52,6 @@
             include '../php/productos.php'; 
             ?>
         </tbody>
-    
     </table>
 </section>
 
