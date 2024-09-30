@@ -24,6 +24,14 @@
     <h2>Usuarios Registrados</h2>
     <p>A continuación, se muestra la lista de usuarios registrados en el sistema:</p>
 
+    <!-- Formulario de búsqueda con estilo -->
+    <div class="search-container">
+        <form method="GET" action="lista_usuarios.php">
+            <input type="text" name="search" class="search-input" placeholder="Buscar usuario por nombre...">
+            <button type="submit" class="search-button">Buscar</button>
+        </form>
+    </div>
+
     <table class="user-table">
         <thead>
             <tr>
