@@ -205,3 +205,31 @@ p {
     display: inline-block;
     margin-top: 10px;
 }
+
+/* Nueva sección: Descripción del producto en la tabla */
+.user-table .description {
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+    color: #5a3e35;
+}
+
+/* Nueva sección: Imágenes en la tabla */
+.user-table .product-image {
+    padding: 10px;
+}
+
+.user-table .product-image img {
+    max-width: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Asegurar que las columnas de descripción e imagen se alineen correctamente */
+.user-table td.description {
+    width: 30%; /* Ajusta según el espacio disponible */
+}
+
+.user-table td.product-image {
+    width: 10%; /* Ajusta según el tamaño de las imágenes */
+}

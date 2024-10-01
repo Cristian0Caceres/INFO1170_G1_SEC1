@@ -4,9 +4,10 @@ include "conector.php";
 // Verifica si se ha enviado una búsqueda
 $search = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Modifica la consulta SQL para incluir el criterio de búsqueda si se proporciona
-$sql = "SELECT producto.ID_Producto AS id, producto.Nombre_producto AS name, precios.coste AS price, 
-        precios.ID_Precios AS id_precio, categoria.Nombre_Categoria AS category, proveedor.Nombre_Proveedor AS provider
+// Modifica la consulta SQL para incluir la descripción y la imagen
+$sql = "SELECT producto.ID_Producto AS id, producto.Nombre_producto AS name, producto.Descripcion_Producto AS description, 
+        producto.imagen_producto AS image, precios.coste AS price, precios.ID_Precios AS id_precio, 
+        categoria.Nombre_Categoria AS category, proveedor.Nombre_Proveedor AS provider
         FROM producto
         JOIN precios ON producto.ID_Producto = precios.ID_Productos
         JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
@@ -29,6 +30,8 @@ if ($result->num_rows > 0) {
         echo "<td>" . $row['category'] . "</td>";
         echo "<td>$" . number_format($row['price'], 2) . "</td>";
         echo "<td>" . $row['provider'] . "</td>";
+        echo "<td>" . $row['description'] . "</td>";  // Mostrar la descripción
+        echo "<td><img src='" . $row['image'] . "' alt='" . $row['name'] . "' style='width:100px;'></td>"; // Mostrar la imagen
         echo "<td>
                 <a href='../php/editar_producto.php?id=" . $row['id'] . "&id_precio=" . $row['id_precio'] . "'>Editar</a> | 
                 <a href='../php/eliminar_producto.php?id=" . $row['id'] . "&id_precio=" . $row['id_precio'] . "'>Eliminar</a>
@@ -36,7 +39,7 @@ if ($result->num_rows > 0) {
         echo "</tr>";
     }
 } else {
-    echo "<tr><td colspan='6'>No se encontraron productos</td></tr>";
+    echo "<tr><td colspan='8'>No se encontraron productos</td></tr>";
 }
 
 $conn->close();
