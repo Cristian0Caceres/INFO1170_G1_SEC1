@@ -13,34 +13,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_producto = $_POST['id_producto'];
     $nombre = $_POST['nombre'];
     $categoria = $_POST['categoria'];
-    $proveedor = $_POST['proveedor']; // Nuevo campo de proveedor
+    $proveedor = $_POST['proveedor'];
     $precio = $_POST['precio'];
+    $descripcion = $_POST['descripcion'];
+    $imagen = $_POST['imagen'];
 
-    // Comprobar si el producto ya existe
-    $sql_check_producto = "SELECT * FROM producto WHERE ID_Producto = ? AND Nombre_producto = ? AND ID_Categoria = ?";
-    $stmt_check = $conn->prepare($sql_check_producto);
-    $stmt_check->bind_param('isi', $id_producto, $nombre, $categoria);
-    $stmt_check->execute();
-    $result_check = $stmt_check->get_result();
-
-    if ($result_check->num_rows > 0) {
-        // Actualizar el precio si el producto ya existe
-        $sql_update_precio = "UPDATE precios SET coste = ? WHERE ID_Productos = ?";
-        $stmt_update_precio = $conn->prepare($sql_update_precio);
-        $stmt_update_precio->bind_param('di', $precio, $id_producto);
-
-        if ($stmt_update_precio->execute()) {
-            echo "Precio actualizado exitosamente.";
-            header('Location: lista_productos.php');
-            exit();
-        } else {
-            echo "Error al actualizar el precio: " . $conn->error;
-        }
+    // Validar que la descripción no esté vacía
+    if (empty($descripcion)) {
+        echo "La descripción no puede estar vacía.";
+    }
+    // Validar que el precio no sea 0 o negativo
+    elseif ($precio <= 0) {
+        echo "El precio debe ser mayor que 0.";
     } else {
         // Inserción del nuevo producto
-        $sql_producto = "INSERT INTO producto (ID_Producto, Nombre_producto, ID_Categoria, ID_Proveedor) VALUES (?, ?, ?, ?)";
+        $sql_producto = "INSERT INTO producto (ID_Producto, Nombre_producto, ID_Categoria, ID_Proveedor, Descripcion_Producto, imagen_producto) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt_producto = $conn->prepare($sql_producto);
-        $stmt_producto->bind_param('isii', $id_producto, $nombre, $categoria, $proveedor);
+        $stmt_producto->bind_param('isiiis', $id_producto, $nombre, $categoria, $proveedor, $descripcion, $imagen);
 
         if ($stmt_producto->execute()) {
             // Inserción del precio relacionado
@@ -59,8 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $stmt_check->close();
-    $stmt_update_precio->close();
     $stmt_producto->close();
     $stmt_precio->close();
 }
@@ -114,6 +101,12 @@ $conn->close();
 
         <label for="precio">Precio:</label>
         <input type="number" id="precio" name="precio" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+
+        <label for="imagen">Imagen (URL):</label>
+        <input type="text" id="imagen" name="imagen" required>
 
         <button type="submit">Añadir Producto</button>
     </form>

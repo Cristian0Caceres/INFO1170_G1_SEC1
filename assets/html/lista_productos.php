@@ -43,6 +43,8 @@
                 <th>Categoría</th>
                 <th>Precio</th>
                 <th>Proveedor</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
                 <th>Acciones</th>
             </tr>
         </thead>
