@@ -1,0 +1,16 @@
+{
+  "name": "webscraing-pre-alpha",
+  "version": "1.0.0",
+  "main": "Webscraper.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "puppeteer": "^23.4.1"
+  }
+}
