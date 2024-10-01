@@ -61,15 +61,7 @@
                 </div>
             </section>
             <section class="segundo-apartado">
-                <section class="categorias">
-                    <a class="img-categoria" href="Link">
-                        <div>
-                            <img src="LINK" alt="Imagen Categoria">
-                        </div>
-                    </a>
-                    <div class="nombre-categoria">
-                        <h>Categoria 1</h>
-                </section>
+                <?php include 'obtener_categorias.php'; ?>                    
             </section>
         </section>
 

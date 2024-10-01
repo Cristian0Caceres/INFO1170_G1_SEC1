@@ -124,18 +124,23 @@ main {
     font-family: lemon;
 }
 
-.segundo-apartado{
-    background-color: aqua;
+.segundo-apartado {
     width: 95%;
     height: 80%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    overflow-y: auto; /* Permitir desplazamiento vertical */
+    scrollbar-width: thin; /* Reduce el tamaño del scrollbar */
+    scrollbar-color: transparent transparent; /* Invisible por defecto */
+}
 
-}  
+/* Mostrar la barra de desplazamiento al hacer hover sobre .segundo-apartado */
+.segundo-apartado:hover {
+    scrollbar-color: darkgrey lightgrey; /* Mostrar scrollbar */
+}
 
 .segundo-apartado .categorias{
-    background-color: blueviolet;
     width: 100%;
     height: 20%;
     display: flex;
@@ -149,6 +154,32 @@ main {
     height: 80%;
     border: solid 1px black;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.img-categoria div img{
+    width: 50%;
+}
+
+
+.categorias .nombre-categoria{
+    background-color: #D0B8A8;
+    width: 20%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    border-radius: 50px 0 0 50PX;
+    font-family: lemon;
+}
+
+.nombre-categoria h2{
+    color: #000000;
+    text-decoration: none;
+    font-family: Lemon;
 }
 
 

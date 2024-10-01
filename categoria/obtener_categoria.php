@@ -31,7 +31,7 @@ if ($result_categoria->num_rows > 0) {
 }
 
 // Mostrar el nombre de la categoría
-echo "<h1>" . $nombre_categoria . "</h1>";
+echo "<h>" . $nombre_categoria . "</h>";
 
 // Cerrar la conexión
 $conn->close();
