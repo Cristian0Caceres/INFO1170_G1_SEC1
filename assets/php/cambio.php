@@ -13,7 +13,7 @@
         // Verificar que las contraseñas coincidan
         if ($contrasena !== $confirmarContrasena) {
             // Redirigir con el mensaje de que no coinciden
-            header('Location: ../assets/pages/cambio.html?confirmacion=contrasenas_no_coinciden');
+            header('Location: ../html/cambio.html?confirmacion=contrasenas_no_coinciden');
             exit();
         }
 
@@ -21,14 +21,14 @@
         $actualizar = mysqli_query($conn, "UPDATE Usuario SET contrasena_Usuario = '$contrasena' WHERE correo_Usuario = '$correo'");
 
         if ($actualizar) {
-            header('Location: ../login.html?confirmacion=exito');
+            header('Location: ../html/login.html?confirmacion=exito');
         } else {
             // Si ocurre un error durante la actualización
-            header('Location: ../assets/pages/cambio.html?confirmacion=error');
+            header('Location: ../html/cambio.html?confirmacion=error');
         }
     } else {
         // Si no hay correo en la sesión, redirigir a la página de recuperación
-        header('Location: ../assets/pages/recuperar.html?confirmacion=sesion_expirada');
+        header('Location: ../html/recuperar.html?confirmacion=sesion_expirada');
         exit();
     }
 

@@ -6,8 +6,26 @@
     <title>Registrarse</title>
     <link rel="stylesheet" href="../css/register.css">
     <script src="../js/reg.js" defer></script>
+    <script>
+        // Función que realiza la búsqueda
+        function realizarBusqueda() {
+            let query = document.getElementById("searchInput").value;
+            if (query) {
+                alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
+            }
+        }
+
+        // Detectar cuando se presiona Enter en el campo de búsqueda
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
+                    realizarBusqueda(); // Llamar a la función de búsqueda
+                }
+            });
+        });
+    </script>
 </head>
-<body>
     <header>
         <section class="barra-superior">
             <div class="logo">
@@ -20,11 +38,17 @@
                 </button>
             </div>
             <div class="icons">
-                <img src="../img/ahorro.png" alt="Ahorro">
-                <img src="../img/categorias.png" alt="Categorias">
-                <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
-                <img src="../img/tienda.png" alt="Tienda">
-                <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                <a href="../html/categorias.php">
+                    <img src="../img/categorias.png" alt="Categorias">
+                </a>
+                <a href="../html/Carrito.html">
+                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="../html/selec_tienda.php">
+                    <img src="../img/tienda.png" alt="Tienda">
+                <a href="../html/login.html">
+                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                </a>    
             </div>
         </section>
     </header>
@@ -39,31 +63,25 @@
                 <p>por favor ingresa tus datos para crear tu cuenta</p>
 
                 <!-- formulario para los datos-->
-                <form action="../../php/registro.php" method="POST" id="registroForm">
+                <form action="../php/registro.php" method="POST" id="registroForm">
                     <input type="text" id="nombre" placeholder="Nombre" required name="nombre" value="">
                     <input type="email" id="correo" placeholder="Email" required name="correo" value="">
                     <input type="password" id="password" placeholder="Contraseña" required name="contrasena" value="">
                     <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" required name="confirmacion_contrasena" value="">
                     <button type="submit">Crear cuenta</button>
                 </form>
-                <a href="../../login.html">Iniciar Sesion</a>
+                <a href="login.html">Iniciar Sesion</a>
             </div>
 
         </div>
     </main>
 
     <footer>
-        <section class="barra-inferior">
-            <div class="logo-footer-texto">
-                <div class="logo-footer">
-                    <img src="../img/logoECDA.png" alt="logo">
-                </div>
-                <p>&reg; Derechos Reservados</p>
-            </div>
-            <div class="link-inicio">
-                <a href="">ir al inicio</a>
-            </div>
-        </section>
+        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <p>&copy; Derechos Reservados</p>
+        <nav>
+            <a href="../../index.html">Ir al Inicio</a>
+        </nav>
     </footer>
 </body>
 </html>

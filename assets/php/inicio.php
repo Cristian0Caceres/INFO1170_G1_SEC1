@@ -16,20 +16,20 @@
         // Redirigir según el correo
         // Si el correo es alguno de los 3 admis, redirigir a la página de administrador
         if ($usuario['correo_Usuario'] == 'Admin1@gmail.com') {
-            header('Location: ../admin.html');
+            header('Location: ../html/admin_home.html');
         } elseif ($usuario['correo_Usuario'] == 'Admin2@gmail.com') {        
-            header('Location: ../admin.html'); //reemplazar la direccion por la de inicio de admin
+            header('Location: ../html/admin_home.html'); //reemplazar la direccion por la de inicio de admin
         } elseif ($usuario['correo_Usuario'] == 'Admin3@gmail.com') {
-            header('Location: ../admin.html');
+            header('Location: ../html/admin_home.html');
         }
         // Para otros correos, redirigir a la pagina general
         else {
-            header('Location: ../usuario.html'); //reemplazar la direccion por la de incio de usuario
+            header('Location: ../../index.html'); //reemplazar la direccion por la de incio de usuario
         }
         exit();
     } else {
         // Si las credenciales no son correctas, redirigir al login con un error
-        header('Location: ../login.html?error=credenciales_invalidas');
+        header('Location: ../html/login.html?error=credenciales_invalidas');
         exit();
     }
 
