@@ -150,11 +150,8 @@ CREATE TABLE `Usuario` (
 --
 
 INSERT INTO `Usuario` (`Nombre_Usuario`, `correo_Usuario`, `Contrasena_Usuario`) VALUES
-('Admin 1', 'Admin1@gmail.com','123456789'),
-('Admin 2', 'Admin2@gmail.com','123456789'),
-('Admin 3', 'Admin3@gmail.com','123456789'),
-('usuario1', 'usuario1@gmail.com','123456789'),
-('usuario2', 'usuario2@gmail.com','123456789');
+('Admin', 'caciquedelahorro@gmail.com','123456789');
+
 -- --------------------------------------------------------
 
 --

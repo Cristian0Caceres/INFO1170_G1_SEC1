@@ -44,11 +44,11 @@ app.post('/login', async (req, res) => {
         res.redirect('/admin_home');
       } else {
         req.session.isAdmin = false;
-        res.redirect('../../confirmacion.html');
+        res.redirect('/user_home');
       }
     } else {
       // Si las credenciales no son correctas, redirigir con error
-      res.redirect('/login?error=credenciales_invalidas');
+      alert('Las credenciales que ingresaste son incorrectas. Por favor, verifica tu correo y contraseña.');
     }
 
     // Cerrar la conexión

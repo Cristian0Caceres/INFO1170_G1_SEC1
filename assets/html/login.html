@@ -61,9 +61,21 @@
             <!-- seccion de ingreso de datos -->
             <div class="datos">
                 <h2>Bienvenido a Cacique del Ahorro</h2>
-                <p>por favor ingresa tus datos para iniciar sesion</p>
-                <!-- formulario para los datos-->
-                <form action="../php/inicio.php" method="post" id="formulario" autocomplete="off">
+                <p>Por favor ingresa tus datos para iniciar sesión</p>
+                
+                <!-- Mostrar mensajes de error si los hay -->
+                <div id="error" style="color: red;">
+                    <!-- Mensaje de error que se muestra si hay un parámetro en la URL indicando credenciales inválidas -->
+                    <script>
+                        const params = new URLSearchParams(window.location.search);
+                        if (params.has('error')) {
+                            document.getElementById('error').textContent = 'Credenciales incorrectas. Inténtalo de nuevo.';
+                        }
+                    </script>
+                </div>
+                
+                <!-- Formulario para los datos -->
+                <form action="/login" method="post" id="formulario" autocomplete="off">
                     <input type="email" id="correo" placeholder="Email" required value="" name="correo">
                     <input type="password" id="password" placeholder="Contraseña" required value="" name="password">
                     <button type="submit"><b>Iniciar Sesion</b></button>
