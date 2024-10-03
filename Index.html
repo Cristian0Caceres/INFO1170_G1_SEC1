@@ -8,54 +8,31 @@
     <link rel="icon" href="images/ico.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <script>
-        // Función que realiza la búsqueda
-        function realizarBusqueda() {
-            let query = document.getElementById("searchInput").value;
-            if (query) {
-                alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
+        // Función para cargar los productos desde la base de datos
+        async function cargarProductos() {
+            try {
+                const response = await fetch('/productos');  // Obtén los productos de la ruta del servidor
+                const productos = await response.json();  // Convierte la respuesta en JSON
+                const productosContainer = document.getElementById('productosContainer');
+                
+                // Recorre cada producto y agrégalo al contenedor
+                productos.forEach(producto => {
+                    const productItem = document.createElement('div');
+                    productItem.classList.add('product-item');
+                    productItem.innerHTML = `
+                        <h3>${producto.nombre_producto}</h3>
+                        <p>Precio: ${producto.precio}</p>
+                        <p>Proveedor: ${producto.proveedor}</p>
+                    `;
+                    productosContainer.appendChild(productItem);
+                });
+            } catch (error) {
+                console.error('Error al cargar productos:', error);
             }
         }
 
-        // Detectar cuando se presiona Enter en el campo de búsqueda
-        document.addEventListener("DOMContentLoaded", function() {
-            let searchInput = document.getElementById("searchInput");
-            searchInput.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    realizarBusqueda();
-                }
-            });
-        });
-
-        let currentIndex = 0;
-
-        // Función para actualizar la vista de categorías
-        function actualizarCategorias() {
-            const categories = document.querySelectorAll('.category-item');
-            categories.forEach((category, index) => {
-                category.style.display = (index >= currentIndex && index < currentIndex + 4) ? 'block' : 'none';
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            actualizarCategorias();
-
-            // Botón de desplazamiento a la derecha
-            document.getElementById('scrollRightBtn').addEventListener('click', function() {
-                const categories = document.querySelectorAll('.category-item');
-                if (currentIndex + 4 < categories.length) {
-                    currentIndex++;
-                    actualizarCategorias();
-                }
-            });
-
-            // Botón de desplazamiento a la izquierda
-            document.getElementById('scrollLeftBtn').addEventListener('click', function() {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    actualizarCategorias();
-                }
-            });
-        });
+        // Cargar los productos cuando la página esté lista
+        document.addEventListener('DOMContentLoaded', cargarProductos);
     </script>
 </head>
 <body>
