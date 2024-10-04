@@ -1,7 +1,7 @@
 <?php
 // Datos de conexión a la base de datos
 $host = 'localhost';
-$db = 'bd';
+$db = 'bd_prueba';
 $user = 'root';
 $pass = '';
 

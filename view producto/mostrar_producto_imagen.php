@@ -1,7 +1,7 @@
 <?php
 // Datos de conexión a la base de datos
 $host = 'localhost'; // Servidor de la base de datos
-$db = 'bd'; // Nombre de la base de datos
+$db = 'bd_prueba'; // Nombre de la base de datos
 $user = 'root'; // Usuario de la base de datos (cambia si es necesario)
 $pass = ''; // Contraseña (cambia si es necesario)
 

@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bd";
+$dbname = "bd_prueba";
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -17,11 +17,10 @@ if ($conn->connect_error) {
 
 // Consulta SQL que selecciona los productos, el proveedor, el precio más bajo y la imagen
 $sql = "
-    SELECT Producto.Nombre_Producto, MIN(Precios.coste) as Precio_Minimo, Producto.imagen_producto
+    SELECT Nombre_producto, MIN(Costo) as Precio_Minimo, imagen_producto
     FROM Producto
-    JOIN Precios ON Producto.ID_Producto = Precios.ID_Productos
-    WHERE Producto.ID_Categoria = 2
-    GROUP BY Producto.Nombre_Producto, Producto.imagen_producto
+    WHERE ID_Categoria = 4
+    Group by Nombre_producto, imagen_producto
 ";
 
 // Ejecutar la consulta
@@ -32,8 +31,8 @@ if ($result->num_rows > 0) {
     // Recorrer los resultados y mostrarlos
     while ($row = $result->fetch_assoc()) {
         echo "<div>";
-        echo "<img src='" . $row["imagen_producto"] . "' alt='" . $row["Nombre_Producto"] . "'>"; // Mostrar la imagen del producto
-        echo "<p>" . $row["Nombre_Producto"] . "</p>"; // Mostrar el nombre del producto
+        echo "<img src='" . $row["imagen_producto"] . "' alt='" . $row["Nombre_producto"] . "'>"; // Mostrar la imagen del producto
+        echo "<p>" . $row["Nombre_producto"] . "</p>"; // Mostrar el nombre del producto
         echo "<p>Desde: $" . $row["Precio_Minimo"] . "</p>"; // Mostrar el precio más bajo
         echo "</div>";
     }

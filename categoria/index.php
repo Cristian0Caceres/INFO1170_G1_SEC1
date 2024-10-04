@@ -59,7 +59,7 @@
     <main>
         <!-- Sección flotante para la categoría -->
         <section class="nombre-categoria">
-             <?php include 'categoria.php'; ?>
+             <?php include 'obtener_categoria.php'; ?>
         </section>
         <section class="productos">
             <section class="encabezado">

@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "bd";
+$dbname = "bd_prueba";
 
 // Crear la conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -16,10 +16,10 @@ if ($conn->connect_error) {
 }
 
 // Definir el ID de la categoría (Carnes en este caso)
-$category_id = 2; // Cambia esto según la categoría que desees
+$category_id = 4; // Cambia esto según la categoría que desees
 
 // Consulta para obtener el nombre de la categoría
-$sql_categoria = "SELECT Nombre_Categoria FROM Categoria WHERE ID_Categoria = $category_id";
+$sql_categoria = "SELECT Nombre_Categoria FROM categoria WHERE ID_Categoria = $category_id";
 $result_categoria = $conn->query($sql_categoria);
 
 // Comprobar si se encontró la categoría
