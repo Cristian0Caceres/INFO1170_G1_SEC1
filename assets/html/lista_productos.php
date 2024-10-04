@@ -25,7 +25,7 @@
     <p>A continuación, se muestra la lista de productos registrados en el sistema:</p>
 
     <!-- Botón para añadir un nuevo producto -->
-    <a href="../php/añadir_producto.php" class="button">Añadir Producto</a>
+    <!-- href="../php/añadir_producto.php" class="button">Añadir Producto -->
 
     <!-- Formulario de búsqueda con estilo -->
     <div class="search-container">
@@ -43,7 +43,7 @@
                 <th>Categoría</th>
                 <th>Precio</th>
                 <th>Proveedor</th>
-                <th>Descripcion</th>
+                <th>Descripción</th>
                 <th>Imagen</th>
                 <th>Acciones</th>
             </tr>

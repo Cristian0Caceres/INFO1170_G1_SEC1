@@ -24,21 +24,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($descripcion)) {
         echo "La descripción no puede estar vacía.";
     } else {
-        // Actualización de la tabla producto y precios
+        // Actualización de la tabla producto
         $sql = "UPDATE producto 
-                JOIN precios ON producto.ID_Producto = precios.ID_Productos
-                SET producto.Nombre_producto = ?, 
-                    producto.ID_Categoria = ?, 
-                    producto.ID_Proveedor = ?, 
-                    producto.Descripcion_Producto = ?, 
-                    producto.imagen_producto = ?, 
-                    precios.coste = ?
-                WHERE producto.ID_Producto = ? 
-                AND precios.ID_Precios = ?";
+                SET Nombre_producto = ?, 
+                    ID_Categoria = ?, 
+                    ID_Proveedor = ?, 
+                    Descripcion_Producto = ?, 
+                    imagen_producto = ?, 
+                    Costo = ? 
+                WHERE ID_Producto = ?"; 
 
         $stmt = $conn->prepare($sql);
         // Asegúrate de que las columnas están correctamente vinculadas
-        $stmt->bind_param('siiissii', $nombre, $categoria, $proveedor, $descripcion, $imagen, $precio, $id, $id_precio);
+        $stmt->bind_param('siiissi', $nombre, $categoria, $proveedor, $descripcion, $imagen, $precio, $id);
         
         if ($stmt->execute()) {
             header('Location: ../html/lista_productos.php');
@@ -50,23 +48,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     // Obtener datos del producto para mostrar en el formulario
     $id = $_GET['id'];
-    $id_precio = $_GET['id_precio'];
 
-    $sql = "SELECT producto.Nombre_producto, 
-                   producto.ID_Categoria, 
-                   producto.ID_Proveedor, 
-                   producto.Descripcion_Producto, 
-                   producto.imagen_producto, 
-                   precios.coste, 
-                   precios.ID_Precios
+    $sql = "SELECT Nombre_producto, 
+                   ID_Categoria, 
+                   ID_Proveedor, 
+                   Descripcion_Producto, 
+                   imagen_producto, 
+                   Costo 
             FROM producto
-            JOIN precios ON producto.ID_Producto = precios.ID_Productos
-            WHERE producto.ID_Producto = ? 
-            AND precios.ID_Precios = ? 
+            WHERE ID_Producto = ? 
             LIMIT 1";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param('ii', $id, $id_precio);
+    $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();
     $producto = $result->fetch_assoc();
@@ -85,7 +79,6 @@ $conn->close();
     <h2>Editar Producto</h2>
     <form method="post">
         <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-        <input type="hidden" name="id_precio" value="<?php echo htmlspecialchars($producto['ID_Precios']); ?>">
 
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" value="<?php echo htmlspecialchars($producto['Nombre_producto'], ENT_QUOTES); ?>" required>
@@ -123,7 +116,7 @@ $conn->close();
         </select>
 
         <label for="precio">Precio:</label>
-        <input type="number" name="precio" value="<?php echo htmlspecialchars($producto['coste'], ENT_QUOTES); ?>" required>
+        <input type="number" name="precio" value="<?php echo htmlspecialchars($producto['Costo'], ENT_QUOTES); ?>" required>
 
         <label for="descripcion">Descripción:</label>
         <textarea name="descripcion" required><?php echo htmlspecialchars($producto['Descripcion_Producto'], ENT_QUOTES); ?></textarea>

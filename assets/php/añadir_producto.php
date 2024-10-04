@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = $_POST['nombre'];
     $categoria = $_POST['categoria'];
     $proveedor = $_POST['proveedor'];
+    $id_producto_proveedor = $_POST['id_producto_proveedor']; // Agregando este campo
     $precio = $_POST['precio'];
     $descripcion = $_POST['descripcion'];
     $imagen = $_POST['imagen'];
@@ -27,9 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "El precio debe ser mayor que 0.";
     } else {
         // Inserción del nuevo producto
-        $sql_producto = "INSERT INTO producto (ID_Producto, Nombre_producto, ID_Categoria, ID_Proveedor, Descripcion_Producto, imagen_producto) VALUES (?, ?, ?, ?, ?, ?)";
+        $sql_producto = "INSERT INTO producto (ID_Producto, ID_Producto_Proveedor, ID_Categoria, ID_Proveedor, Nombre_producto, Descripcion_Producto, imagen_producto) VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt_producto = $conn->prepare($sql_producto);
-        $stmt_producto->bind_param('isiiis', $id_producto, $nombre, $categoria, $proveedor, $descripcion, $imagen);
+        $stmt_producto->bind_param('iiississ', $id_producto, $id_producto_proveedor, $categoria, $proveedor, $nombre, $descripcion, $imagen);
 
         if ($stmt_producto->execute()) {
             // Inserción del precio relacionado
@@ -70,6 +71,9 @@ $conn->close();
 
         <label for="nombre">Nombre del Producto:</label>
         <input type="text" id="nombre" name="nombre" required>
+
+        <label for="id_producto_proveedor">ID del Producto Proveedor (numérico):</label>
+        <input type="number" id="id_producto_proveedor" name="id_producto_proveedor" required> <!-- Nuevo campo -->
 
         <label for="categoria">Selecciona Categoría:</label>
         <select id="categoria" name="categoria" required>
