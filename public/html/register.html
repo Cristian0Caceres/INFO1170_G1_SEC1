@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de Sesion</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/log.js" defer></script>
+    <title>Registrarse</title>
+    <link rel="stylesheet" href="../css/register.css">
+    <script src="../js/reg.js" defer></script>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -26,7 +26,6 @@
         });
     </script>
 </head>
-<body>
     <header>
         <section class="barra-superior">
             <div class="logo">
@@ -55,22 +54,25 @@
     </header>
 
     <main>
-        <div class="inicio-sesion">
-            <h1>iniciar sesion</h1>
+        <div class="registrarse">
+            <h1>Registrarse</h1>
 
             <!-- seccion de ingreso de datos -->
             <div class="datos">
                 <h2>Bienvenido a Cacique del Ahorro</h2>
-                <p>por favor ingresa tus datos para iniciar sesion</p>
+                <p>por favor ingresa tus datos para crear tu cuenta</p>
+
                 <!-- formulario para los datos-->
-                <form action="../php/inicio.php" method="post" id="formulario" autocomplete="off">
-                    <input type="email" id="correo" placeholder="Email" required value="" name="correo">
-                    <input type="password" id="password" placeholder="Contraseña" required value="" name="password">
-                    <button type="submit"><b>Iniciar Sesion</b></button>
+                <form action="../php/registro.php" method="POST" id="registroForm">
+                    <input type="text" id="nombre" placeholder="Nombre" required name="nombre" value="">
+                    <input type="email" id="correo" placeholder="Email" required name="correo" value="">
+                    <input type="password" id="password" placeholder="Contraseña" required name="contrasena" value="">
+                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" required name="confirmacion_contrasena" value="">
+                    <button type="submit">Crear cuenta</button>
                 </form>
-                <a href="recuperar.html">¿olvidaste tu contraseña?</a>
-                <a href="register.html">Registrarse</a>
-            </div>  
+                <a href="login.html">Iniciar Sesion</a>
+            </div>
+
         </div>
     </main>
 
@@ -78,9 +80,8 @@
         <img src="../img/logoECDA.png" alt="Logo de la empresa" >
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="../../index.html">Ir al Inicio</a>
+            <a href="../index.html">Ir al Inicio</a>
         </nav>
     </footer>
-
 </body>
 </html>

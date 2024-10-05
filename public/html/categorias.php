@@ -61,7 +61,7 @@
                 </div>
             </section>
             <section class="segundo-apartado">
-                <?php include 'obtener_categorias.php'; ?>                    
+                <?php include '../../php/obtener_categorias.php'; ?>                    
             </section>
         </section>
 

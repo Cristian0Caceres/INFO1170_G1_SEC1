@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar</title>
-    <link rel="stylesheet" href="../css/cambio.css">
-    <script src="../js/camb.js" defer></script>
+    <link rel="stylesheet" href="../css/categorias.css">
+    <title>Vista Producto</title>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -55,31 +54,31 @@
     </header>
 
     <main>
-        <div class="recuperar">
-            <h1>Recuperar Contraseña</h1>
-
-            <!-- seccion de ingreso de datos -->
-            <div class="datos">
-                <h3>Introduzca su Contraseña</h3>
-                <p>Porfavor ingresa tu nueva contraseña</p>
-                <!-- formulario para los datos-->
-                <form action="../php/cambio.php" method="POST">
-                    <input type="password" id="password" placeholder="Contraseña" value="" required name="password">
-                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" value="" required name="confirm_password">
-                    <button type="submit"><b>Cambiar Contraseña</b></button>
-                </form>
-            </div>  
-        </div>
+        <!-- Sección flotante para la categoría -->
+        <section class="nombre-categoria">
+             <?php include '../../php/categoria.php'; ?>
+        </section>
+        <section class="productos">
+            <section class="encabezado">
+                <div class="titulo">
+                    <h1>Productos</h1>
+                </div>
+            </section>
+            <section class="presentacion-producto">
+                <section class="producto">
+                    <?php include '../../php/productos_categoria.php'; ?>
+                </section>
+                
+            </section>
+        </section>
     </main>
 
     <footer>
-        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <img src="../img/logoECDA.png" alt="Logo de la empresa">
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="../../index.html">Ir al Inicio</a>
+            <a href="../index.html">Ir al Inicio</a>
         </nav>
     </footer>
-
-
 </body>
 </html>

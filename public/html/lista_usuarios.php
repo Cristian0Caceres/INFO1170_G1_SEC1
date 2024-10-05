@@ -17,7 +17,7 @@
     <a href="lista_productos.php">Productos</a>
     <a href="Test_Simulador.html">Simulador</a>
     <a href="lista_usuarios.php">Usuarios</a>
-    <a href="../../index.html">Salir</a>
+    <a href="../index.html">Salir</a>
 </nav>
 
 <section>
@@ -36,7 +36,7 @@
         <tbody>
             <?php 
             error_reporting(E_ALL); // Mostrar todos los errores
-            include '../php/usuarios.php'; 
+            include '../../php/usuarios.php'; 
             ?>
         </tbody>
     </table>

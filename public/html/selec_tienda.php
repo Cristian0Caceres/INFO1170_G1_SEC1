@@ -56,7 +56,7 @@
                 <section class="segunda_seccion">
                     <section class="tiendas">
                         <!-- Aquí se incluirá el archivo listar_proveedores.php -->
-                        <?php include '../php/listar_proveedores.php'; ?>
+                        <?php include '../../php/listar_proveedores.php'; ?>
                     </section>
                 </section>
             </section>
@@ -67,7 +67,7 @@
             <img src="../img/logoECDA.png" alt="Logo de la empresa">
             <p>&copy; Derechos Reservados</p>
             <nav>
-                <a href="../../index.html">Ir al Inicio</a>
+                <a href="../index.html">Ir al Inicio</a>
             </nav>
         </footer>
     </body>

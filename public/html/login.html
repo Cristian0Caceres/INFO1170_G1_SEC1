@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar</title>
-    <link rel="stylesheet" href="../css/confirmacion.css">
-    <script src="../js/confirm.js" defer></script>
+    <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/log.js" defer></script>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -55,25 +55,22 @@
     </header>
 
     <main>
-        <div class="recuperar">
-            <h1>Recuperar Contraseña</h1>
+        <div class="inicio-sesion">
+            <h1>iniciar sesion</h1>
 
             <!-- seccion de ingreso de datos -->
             <div class="datos">
-                <h3>Correo Enviado</h3>
-                <p>por favor ingresa el codigo que se te ha enviado al correo</p>
-                <form action="../php/confirm.php" method="POST">
-                    <div class="num">
-                        <input type="number" id="numero1" min="1" max="9" value="" required name="numero1">
-                        <input type="number" id="numero2" min="0" max="9" value="" required name="numero2">
-                        <input type="number" id="numero3" min="0" max="9" value="" required name="numero3">
-                        <input type="number" id="numero4" min="0" max="9" value="" required name="numero4">
-                        <input type="number" id="numero5" min="0" max="9" value="" required name="numero5">
-                    </div>
-                    <button type="submit">Recuperar Contraseña</button>
+                <h2>Bienvenido a Cacique del Ahorro</h2>
+                <p>por favor ingresa tus datos para iniciar sesion</p>
+                <!-- formulario para los datos-->
+                <form action="../php/inicio.php" method="post" id="formulario" autocomplete="off">
+                    <input type="email" id="correo" placeholder="Email" required value="" name="correo">
+                    <input type="password" id="password" placeholder="Contraseña" required value="" name="password">
+                    <button type="submit"><b>Iniciar Sesion</b></button>
                 </form>
-            </div>
-
+                <a href="recuperar.html">¿olvidaste tu contraseña?</a>
+                <a href="register.html">Registrarse</a>
+            </div>  
         </div>
     </main>
 
@@ -81,7 +78,7 @@
         <img src="../img/logoECDA.png" alt="Logo de la empresa" >
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="../../index.html">Ir al Inicio</a>
+            <a href="../index.html">Ir al Inicio</a>
         </nav>
     </footer>
 

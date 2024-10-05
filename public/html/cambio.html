@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-    <link rel="stylesheet" href="../css/register.css">
-    <script src="../js/reg.js" defer></script>
+    <title>Recuperar</title>
+    <link rel="stylesheet" href="../css/cambio.css">
+    <script src="../js/camb.js" defer></script>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -26,6 +26,7 @@
         });
     </script>
 </head>
+<body>
     <header>
         <section class="barra-superior">
             <div class="logo">
@@ -54,25 +55,20 @@
     </header>
 
     <main>
-        <div class="registrarse">
-            <h1>Registrarse</h1>
+        <div class="recuperar">
+            <h1>Recuperar Contraseña</h1>
 
             <!-- seccion de ingreso de datos -->
             <div class="datos">
-                <h2>Bienvenido a Cacique del Ahorro</h2>
-                <p>por favor ingresa tus datos para crear tu cuenta</p>
-
+                <h3>Introduzca su Contraseña</h3>
+                <p>Porfavor ingresa tu nueva contraseña</p>
                 <!-- formulario para los datos-->
-                <form action="../php/registro.php" method="POST" id="registroForm">
-                    <input type="text" id="nombre" placeholder="Nombre" required name="nombre" value="">
-                    <input type="email" id="correo" placeholder="Email" required name="correo" value="">
-                    <input type="password" id="password" placeholder="Contraseña" required name="contrasena" value="">
-                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" required name="confirmacion_contrasena" value="">
-                    <button type="submit">Crear cuenta</button>
+                <form action="../php/cambio.php" method="POST">
+                    <input type="password" id="password" placeholder="Contraseña" value="" required name="password">
+                    <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" value="" required name="confirm_password">
+                    <button type="submit"><b>Cambiar Contraseña</b></button>
                 </form>
-                <a href="login.html">Iniciar Sesion</a>
-            </div>
-
+            </div>  
         </div>
     </main>
 
@@ -80,8 +76,10 @@
         <img src="../img/logoECDA.png" alt="Logo de la empresa" >
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="../../index.html">Ir al Inicio</a>
+            <a href="../index.html">Ir al Inicio</a>
         </nav>
     </footer>
+
+
 </body>
 </html>
