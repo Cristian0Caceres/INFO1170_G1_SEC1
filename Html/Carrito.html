@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Css/carrito_styles.css">
+    <link rel="stylesheet" href="carrito_styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <title>Carrito de Presupuesto</title>
     <script>
@@ -30,29 +30,29 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="/images/logoECDA.png" alt="Logo">
+                <img src="images/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="/images/buscar.png" alt="Buscar">
+                    <img src="images/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
                 <a href="LINK">
-                    <img src="/images/ahorro.png" alt="Ahorro">
+                    <img src="images/ahorro.png" alt="Ahorro">
                 </a>
                 <a href="LINK">
-                    <img src="/images/categorias.png" alt="Categorias">
+                    <img src="images/categorias.png" alt="Categorias">
                 </a>
                 <a href="LINK">
-                    <img src="/images/carrito-de-compras.png" alt="Carrito de Compras">
+                    <img src="images/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
                 <a href="LINK">
-                    <img src="/images/tienda.png" alt="Tienda">
+                    <img src="images/tienda.png" alt="Tienda">
                 </a>
                 <a href="LINK">
-                    <img src="/images/iniciar-sesion.png" alt="Iniciar Sesion">
+                    <img src="images/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
@@ -63,14 +63,11 @@
             <h2 class="titulo-carrito">Carrito de Presupuesto</h2>
     
             <div class="tienda-container"> <!-- Contenedor gigante para Tienda 1 -->
-                <div class="nombre-tienda">
-                    <img src="/images/jumbo-icon.png" alt="Jumbo" class="icono-tienda">
-                    <h2>Jumbo</h2>
-                </div>
+                <h2>Gumbo</h2>
                 <div class="productos-container">
                     <div class="producto">
                         <div class="image-container">
-                            <img src="/images/Asiento.jpg" alt="Producto 1">
+                            <img src="images/Asiento.jpg" alt="Producto 1">
                             <span class="tooltip">Asiento Al Vacío: Un corte premium de carne.</span>
                         </div>
                         <p>Asiento Al Vacío</p>
@@ -80,7 +77,7 @@
                     </div>
                     <div class="producto">
                         <div class="image-container">
-                            <img src="/images/Paltas.jpg" alt="Paltas">
+                            <img src="images/Paltas.jpg" alt="Paltas">
                             <span class="tooltip">Palta: Fruta rica en grasas saludables.</span>
                         </div>
                         <p>1Kl Palta</p>
@@ -90,16 +87,13 @@
                     </div>
                 </div>
             </div>
-            
+    
             <div class="tienda-container"> <!-- Contenedor gigante para Tienda 2 -->
-                <div class="nombre-tienda">
-                    <img src="/images/unimarc-icon.png" alt="Unimarc" class="icono-tienda">
-                    <h2>Unimarc</h2>
-                </div>
+                <h2>Unismarc</h2>
                 <div class="productos-container">
                     <div class="producto">
                         <div class="image-container">
-                            <img src="/images/Leche Colun.jpg" alt="Leche Colun">
+                            <img src="images/Leche Colun.jpg" alt="Leche Colun">
                             <span class="tooltip">Leche Colun: Producto lácteo fresco.</span>
                         </div>
                         <p>Leche Colun</p>
@@ -109,7 +103,7 @@
                     </div>
                     <div class="producto">
                         <div class="image-container">
-                            <img src="/images/Platanos.jpg" alt="Plátano granel 500 g">
+                            <img src="images/Platanos.jpg" alt="Plátano granel 500 g">
                             <span class="tooltip">Plátano granel: Ideal para tu desayuno.</span>
                         </div>
                         <p>Plátano granel 500 g</p>
@@ -127,12 +121,58 @@
     </main>
 
     <footer>
-        <img src="/images/logo.png" alt="Logo">
+        <img src="images/logo.png" alt="Logo">
         <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
         <a href="Iniciocda.html" class="inicio-btn">Ir a Inicio</a> <!-- Botón de ir a inicio -->
     </footer>
 
-    
-    <script src="/Js/carrito.js"></script> <!-- Enlace al archivo JS -->
+    <script>
+        const cart = [];
+        const products = {
+            'Producto 1': { price: 2500 },
+            'Producto 2': { price: 2000 },
+            'Producto 3': { price: 1200 },
+            'Producto 4': { price: 3000 }
+        };
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            updateCart();
+        }
+
+        function removeFromCart(productName) {
+            const index = cart.findIndex(item => item.name === productName);
+            if (index > -1) {
+                cart.splice(index, 1);
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('total');
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price;
+                const li = document.createElement('li');
+                li.classList.add('cart-item');
+                li.textContent = `${item.name}: $${item.price}`;
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.textContent = 'Eliminar';
+                removeBtn.classList.add('remove');
+                removeBtn.onclick = () => removeFromCart(item.name);
+
+                li.appendChild(removeBtn);
+                cartItems.appendChild(li);
+            });
+
+            totalDisplay.textContent = total;
+        }
+        
+    </script>
+
 </body>
 </html>
