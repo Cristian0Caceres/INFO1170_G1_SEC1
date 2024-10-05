@@ -14,7 +14,7 @@ body, html {
 header {
     height: 5%;
     width: 100%;
-  background-color: #d6b8a5 /* Cambia el color si lo deseas */
+    background-color: #d6b8a5; /* Cambia el color si lo deseas */
 }
 
 .barra-superior {
@@ -27,7 +27,7 @@ header {
     width: 20%;
     align-items: center;
     justify-content: left;
-    padding-left: 2%
+    padding-left: 2%;
 }
 
 .logo img {
@@ -50,7 +50,7 @@ header {
     outline: none;
     border-radius: 30px; /* Deja espacio para el botón dentro del input */
     padding-left: 2%;
-}                   
+}
 
 .search-bar button {
     width: 5%;
@@ -73,29 +73,46 @@ header {
     justify-content: space-evenly;
 }
 
-.icons a{
+.icons a {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.icons a img{
+.icons a img {
     height: 50%;
     cursor: pointer;
 }
-
-
 
 main {
     background-color: #F8EDE3;
     height: 90%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
-.principal {
+.nombre-categoria {
+    background-color: #C5705D;
+    width: 15%;
+    height: 10%;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 1%;
+    color: rgb(0, 0, 0);
+    font-size: 80%;
+    position: absolute;
+    top: 11%; /* Ajusta la posición de la categoría */
+    left: 1px;
+    z-index: 1; /* Asegura que quede encima de los productos */
+}
+
+.productos {
     background-color: #DFD3C3;
     width: 95%;
     height: 90%;
@@ -103,20 +120,23 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative; /* Permite que la categoría quede por encima */
 }
 
-.titulo {
+.productos .encabezado{
+    display: flex;
     width: 100%;
     height: 15%;
-    display: flex;
-    justify-content: center;
+    justify-content: center;    
     align-items: center;
+
 }
-.titulo .nombre-titulo{
+
+.encabezado .titulo{
     background-color: #C5705D;
-    height: 60%;
-    width: 30%;
     display: flex;
+    width: 30%;
+    height: 60%;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
@@ -124,79 +144,70 @@ main {
     font-family: lemon;
 }
 
-.segundo-apartado {
-    width: 95%;
-    height: 80%;
+.presentacion-producto{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-y: auto; /* Permitir desplazamiento vertical */
-    scrollbar-width: thin; /* Reduce el tamaño del scrollbar */
-    scrollbar-color: transparent transparent; /* Invisible por defecto */
-}
-
-/* Mostrar la barra de desplazamiento al hacer hover sobre .segundo-apartado */
-.segundo-apartado:hover {
-    scrollbar-color: darkgrey lightgrey; /* Mostrar scrollbar */
-}
-
-.segundo-apartado .categorias{
     width: 100%;
-    height: 20%;
-    display: flex;
+    height: 85%;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
 }
 
-.categorias .img-categoria{
-    background-color: #C5705D;
-    width: 65%;
-    height: 80%;
-    border: solid 1px black;
+.presentacion-producto .producto {
+    display: flex;
+    width: 90%;
+    height: 90%;
+    flex-wrap: wrap;
+    justify-content: left;
+    overflow-y: auto; /* Añade scroll vertical si hay más elementos */
+    overflow-x: hidden; /* Evita el scroll horizontal innecesario */
+    padding-right: 10px; /* Espacio para que el scroll no cubra el contenido */
+}
+
+.producto div {
     border-radius: 10px;
+    background-color: #C5705D;
+    width: 200px;
+    height: 280px;
+    margin-top: 10px;
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-left: 30px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-
-}
-.img-categoria div img{
-    width: 50%;
 }
 
-
-.categorias .nombre-categoria{
-    background-color: #D0B8A8;
-    width: 20%;
-    height: 80%;
+.producto div img{
+    background: #F8EDE3;
+    width: 186px;
+    height: 186px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    border-radius: 50px 0 0 50PX;
+    align-self: center;
+    margin: 5%;
+}
+
+.producto div p{
+    color: #F8EDE3;
+    font-size: 100%;
     font-family: lemon;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.nombre-categoria h2{
-    color: #000000;
-    text-decoration: none;
-    font-family: Lemon;
-}
-
-
-footer{
+footer {
     background-color: #D0B8A8;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 5%;
 }
+
 footer img {
     padding-left: 2%;
     height: 100%;
-
 }
 
-footer a{
+footer a {
     margin: 0 1rem;
     text-decoration: none;
     color: rgb(0, 0, 0);

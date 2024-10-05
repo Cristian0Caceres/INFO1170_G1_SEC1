@@ -29,49 +29,55 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="images/logoECDA.png" alt="Logo">
+                <img src="../img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="images/buscar.png" alt="Buscar">
+                    <img src="../img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
-                <a href="LINK">
-                    <img src="images/categorias.png" alt="Categorias">
+                <a href="../html/categorias.php">
+                    <img src="../img/categorias.png" alt="Categorias">
                 </a>
-                <a href="LINK">
-                    <img src="images/carrito-de-compras.png" alt="Carrito de Compras">
+                <a href="../html/Carrito.html">
+                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="LINK">
-                    <img src="images/tienda.png" alt="Tienda">
-                <a href="LINK">
-                    <img src="images/iniciar-sesion.png" alt="Iniciar Sesion">
+                <a href="../html/selec_tienda.php">
+                    <img src="../img/tienda.png" alt="Tienda">
+                <a href="../html/login.html">
+                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
     </header>
 
     <main>
-        <section class="principal">
-            <section class="titulo">
-                <div class="nombre-titulo">
-                    <h1>Categorias</h1>
+        <!-- Sección flotante para la categoría -->
+        <section class="nombre-categoria">
+             <?php include '../php/categoria.php'; ?>
+        </section>
+        <section class="productos">
+            <section class="encabezado">
+                <div class="titulo">
+                    <h1>Productos</h1>
                 </div>
             </section>
-            <section class="segundo-apartado">
-                <?php include 'obtener_categorias.php'; ?>                    
+            <section class="presentacion-producto">
+                <section class="producto">
+                    <?php include '../php/productos_categoria.php'; ?>
+                </section>
+                
             </section>
         </section>
-
     </main>
 
     <footer>
-        <img src="images/logoECDA.png" alt="Logo de la empresa" >
+        <img src="../img/logoECDA.png" alt="Logo de la empresa">
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="LINK DEL HOME">Ir al Inicio</a>
+            <a href="../../index.html">Ir al Inicio</a>
         </nav>
     </footer>
 </body>

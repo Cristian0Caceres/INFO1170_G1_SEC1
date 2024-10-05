@@ -73,7 +73,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <title>Editar Producto</title>
-    <link rel="stylesheet" href="../css/styles4.css">
+    <link rel="stylesheet" href="../css/editar_productos.css">
 </head>
 <body>
     <h2>Editar Producto</h2>
