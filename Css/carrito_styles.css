@@ -114,7 +114,23 @@ main {
     flex-wrap: wrap;
     justify-content: space-around; /* Espaciado entre productos */
 }
+.nombre-tienda {
+    display: flex;
+    align-items: center; /* Asegura que el texto y la imagen estén alineados verticalmente */
+    margin-bottom: 10px; /* Añade un poco de espacio debajo del nombre de la tienda */
+}
 
+.icono-tienda {
+    width: 40px; /* Ajusta el tamaño de la imagen */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 10px; /* Espacio entre la imagen y el nombre de la tienda */
+}
+
+.nombre-tienda h2 {
+    font-size: 24px; /* Tamaño del texto del nombre de la tienda */
+    color: #000000; /* Color del texto */
+    margin: 0; /* Elimina el margen superior/inferior del título */
+}
 .producto {
     border: 1px solid #33292b;
     border-radius: 5px;
