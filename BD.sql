@@ -104,8 +104,8 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`ID_Proveedor`, `ID_Categoria`, `Nombre_producto`, `CANTIDAD`, `Descripcion_Producto`, `link_producto`, `imagen_producto`) VALUES
-(1, 1, 'tallarines tarola', 100, 'Fideos largos y delgados, ideales para sopas y platos principales.', 'www.google.com', 'url'),
-(3, 2, 'posta paleta', 101, 'Corte de carne de res, perfecto para guisos y asados.', 'www.google.com', 'url'),
+(1, 1, 'tallarines tarola', 100, 'Fideos largos y delgados, ideales para sopas y platos principales.', 'www.google.com', 'https://images.lider.cl/wmtcl?source=url%5Bfile%3A%2Fproductos%2F1358495a.jpg%5D&scale=size%5B2000x2000%5D&sink=format%5Bwebp%5D'),
+(3, 2, 'posta paleta', 101, 'Corte de carne de res, perfecto para guisos y asados.', 'www.google.com', 'https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRErUsHXJyc0OP5XJyGtm7WJ6UJqLJdOn-7u0VJC7L96eRorDsX5NTeKSeaDU0blGguRojLVsAziRNMUzzzo-fFaSUuab00&usqp=CAE'),
 (2, 3, 'palta hass', 102, 'Aguacate de variedad Hass, conocido por su sabor y textura cremosa.', 'www.google.com', 'url'),
 (1, 2, 'tapa pecho', 103, 'Corte de carne de res, ideal para estofados y cocciones lentas.', 'www.google.com', 'url'),
 (2, 3, 'tomate la crianza', 104, 'Tomates frescos y jugosos, perfectos para ensaladas y salsas.', 'www.google.com', 'url');
@@ -150,8 +150,11 @@ CREATE TABLE `Usuario` (
 --
 
 INSERT INTO `Usuario` (`Nombre_Usuario`, `correo_Usuario`, `Contrasena_Usuario`) VALUES
-('Admin', 'caciquedelahorro@gmail.com','123456789');
-
+('Admin 1', 'Admin1@gmail.com','123456789'),
+('Admin 2', 'Admin2@gmail.com','123456789'),
+('Admin 3', 'Admin3@gmail.com','123456789'),
+('usuario1', 'usuario1@gmail.com','123456789'),
+('usuario2', 'usuario2@gmail.com','123456789');
 -- --------------------------------------------------------
 
 --
