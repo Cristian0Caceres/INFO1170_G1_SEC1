@@ -1,42 +1,36 @@
 <?php
+include "conector.php";
 
-/*Aun no me atrevo a cambiar este archivo */
-$host = 'localhost'; 
-$usuario = 'root'; 
-$contraseña = ''; 
-$base_de_datos = 'bd'; 
+// Verifica si se ha enviado una búsqueda
+$search = isset($_GET['search']) ? $_GET['search'] : '';
 
-try {
-    $conexion = new mysqli($host, $usuario, $contraseña, $base_de_datos);
-    if ($conexion->connect_error) {
-        die("Error de conexión: " . $conexion->connect_error);
-    }
+// Modifica la consulta SQL para incluir el criterio de búsqueda si se proporciona
+$sql = "SELECT ID_Usuario, Nombre_Usuario, correo_Usuario FROM Usuario";
 
-    // Consultar la lista de usuarios
-    $consulta = "SELECT ID_Usuario, Nombre_Usuario, correo_Usuario FROM Usuario";
-    $resultado = $conexion->query($consulta);
-
-    // Mostrar los usuarios en la tabla
-    if ($resultado->num_rows > 0) {
-        while ($fila = $resultado->fetch_assoc()) {
-            echo "<tr>
-                    <td>{$fila['ID_Usuario']}</td>
-                    <td>{$fila['Nombre_Usuario']}</td>
-                    <td>{$fila['correo_Usuario']}</td>
-                    <td>
-                        <a href='../php/editar_usuario.php?id={$fila['ID_Usuario']}'>Editar</a> | 
-                        <a href='../php/eliminar_usuario.php?id={$fila['ID_Usuario']}'>Eliminar</a>
-                    </td>
-                  </tr>";
-        }
-    } else {
-        echo "<tr><td colspan='4'>No se encontraron usuarios registrados.</td></tr>";
-    }
-
-    // Cerrar la conexión
-    $conexion->close();
-
-} catch (mysqli_sql_exception $e) {
-    echo "Error: " . $e->getMessage();
+// Si el usuario ingresó algo en el buscador, agregar la condición de búsqueda
+if ($search) {
+    $sql .= " WHERE Nombre_Usuario LIKE '%" . $conn->real_escape_string($search) . "%'";
 }
+
+$sql .= " ORDER BY Nombre_Usuario ASC";
+
+$resultado = $conn->query($sql);
+
+if ($resultado->num_rows > 0) {
+    while ($fila = $resultado->fetch_assoc()) {
+        echo "<tr>
+                <td>{$fila['ID_Usuario']}</td>
+                <td>{$fila['Nombre_Usuario']}</td>
+                <td>{$fila['correo_Usuario']}</td>
+                <td>
+                    <a href='../php/editar_usuario.php?id={$fila['ID_Usuario']}'>Editar</a> | 
+                    <a href='../php/eliminar_usuario.php?id={$fila['ID_Usuario']}'>Eliminar</a>
+                </td>
+              </tr>";
+    }
+} else {
+    echo "<tr><td colspan='4'>No se encontraron usuarios registrados.</td></tr>";
+}
+
+$conn->close();
 ?>

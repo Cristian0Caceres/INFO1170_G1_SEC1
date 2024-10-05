@@ -160,3 +160,76 @@ p {
     color: #b47461;
     text-decoration: underline;
 }
+
+/* Estilos para el campo de búsqueda y el botón */
+.search-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-input {
+    padding: 10px 20px;
+    width: 300px;
+    border: 2px solid #d58b72;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f5d6c6;
+    color: #3f2a21;
+    transition: border-color 0.3s, background-color 0.3s;
+}
+
+.search-input:focus {
+    border-color: #b47461;
+    background-color: #f9f1ec;
+    outline: none;
+}
+
+.search-button {
+    padding: 10px 20px;
+    background-color: #d58b72;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #b47461;
+}
+
+/* Alineación de la barra de búsqueda con el botón */
+.search-container form {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Nueva sección: Descripción del producto en la tabla */
+.user-table .description {
+    text-align: left;
+    padding: 12px;
+    font-size: 14px;
+    color: #5a3e35;
+}
+
+/* Nueva sección: Imágenes en la tabla */
+.user-table .product-image {
+    padding: 10px;
+}
+
+.user-table .product-image img {
+    max-width: 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Asegurar que las columnas de descripción e imagen se alineen correctamente */
+.user-table td.description {
+    width: 30%; /* Ajusta según el espacio disponible */
+}
+
+.user-table td.product-image {
+    width: 10%; /* Ajusta según el tamaño de las imágenes */
+}

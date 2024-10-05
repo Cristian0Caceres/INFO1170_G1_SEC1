@@ -7,23 +7,31 @@
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <script>
-        // Función que realiza la búsqueda
-        function realizarBusqueda() {
-            let query = document.getElementById("searchInput").value;
-            if (query) {
-                alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
+        // Función para cargar los productos desde la base de datos
+        async function cargarProductos() {
+            try {
+                const response = await fetch('/productos');  // Obtén los productos de la ruta del servidor
+                const productos = await response.json();  // Convierte la respuesta en JSON
+                const productosContainer = document.getElementById('productosContainer');
+                
+                // Recorre cada producto y agrégalo al contenedor
+                productos.forEach(producto => {
+                    const productItem = document.createElement('div');
+                    productItem.classList.add('product-item');
+                    productItem.innerHTML = `
+                        <h3>${producto.nombre_producto}</h3>
+                        <p>Precio: ${producto.precio}</p>
+                        <p>Proveedor: ${producto.proveedor}</p>
+                    `;
+                    productosContainer.appendChild(productItem);
+                });
+            } catch (error) {
+                console.error('Error al cargar productos:', error);
             }
         }
 
-        // Detectar cuando se presiona Enter en el campo de búsqueda
-        document.addEventListener("DOMContentLoaded", function() {
-            let searchInput = document.getElementById("searchInput");
-            searchInput.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
-                    realizarBusqueda(); // Llamar a la función de búsqueda
-                }
-            });
-        });
+        // Cargar los productos cuando la página esté lista
+        document.addEventListener('DOMContentLoaded', cargarProductos);
     </script>
 </head>
 <body>
