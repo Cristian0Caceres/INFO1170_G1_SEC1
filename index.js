@@ -1,13 +1,19 @@
-// importar express
-const express = require("express");
-
-// llamar los métodos de express
+const express = require('express');
+const path = require('path');
 const app = express();
+const authRoutes = require('./routes/auth'); // Importar las rutas de autenticación
 
-// ruta de archivos estáticos
-app.use(express.static('public'));
+// Middleware para leer datos del formulario
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// configurar el puerto usando el servidor local
+// Archivos estáticos
+app.use(express.static(path.join(__dirname, 'public'))); // Modificado
+
+// Usar las rutas de autenticación
+app.use('/auth', authRoutes);
+
+// Configuración del servidor
 app.listen(3000, function(){
     console.log("El servidor está escuchando en http://localhost:3000");
 });

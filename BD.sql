@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `base_de_datos_cacique_del_ahorro`
+-- Base de datos: `db`
 --
 
 -- --------------------------------------------------------
