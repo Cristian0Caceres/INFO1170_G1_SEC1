@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `base_de_datos_cacique_del_ahorro`
+-- Base de datos: `db`
 --
 
 -- --------------------------------------------------------
@@ -93,7 +93,7 @@ CREATE TABLE `producto` (
   `ID_Categoria` int(11) NOT   NULL,
   `Nombre_producto` char(60) NOT NULL,
   `CANTIDAD` int(11) NOT NULL,
-  `Descripcion_Producto` VARCHAR(2000) DEFAULT NULL,
+  `Descripcion_Producto` text DEFAULT NULL,
   `link_producto` VARCHAR(2083) NOT NULL,
   `imagen_producto` VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`ID_Producto`)
