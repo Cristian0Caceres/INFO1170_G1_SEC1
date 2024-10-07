@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
 
 /* Reset básico */
 * {
@@ -17,37 +17,33 @@ body, html {
 header {
     height: 5%;
     width: 100%;
-    background-color: #d6b8a5; /* Cambia el color si lo deseas */
+  background-color: #d6b8a5 
 }
 
 .barra-superior {
     display: flex;
     height: 100%;
-    justify-content: space-between; /* Cambiar a 'space-between' para que el logo esté a la izquierda y los íconos a la derecha */
 }
 
 .logo {
     display: flex;
     width: 20%;
     align-items: center;
-    justify-content: flex-start; /* Cambia 'left' por 'flex-start' */
-    padding-left: 2%;
+    justify-content: left;
+    padding-left: 2%
 }
 
 .logo img {
     height: 100%;
-    max-height: 50px; /* Ajusta la altura máxima de la imagen del logo */
-    width: auto; /* Mantiene la proporción de la imagen */
 }
 
 .search-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Asegúrate de que los elementos dentro de la barra de búsqueda estén a la derecha */
-    width: 60%; /* Si quieres que ocupe más espacio, ajusta este valor */
+    justify-content: right;
+    width: 60%;
     height: 100%;
 }
-
 
 .search-bar input {
     background-color: #E8DEF8;
@@ -57,7 +53,7 @@ header {
     outline: none;
     border-radius: 30px; /* Deja espacio para el botón dentro del input */
     padding-left: 2%;
-}
+}                   
 
 .search-bar button {
     width: 5%;
@@ -69,8 +65,7 @@ header {
 }
 
 .search-bar button img {
-    max-height: 30px; /* Altura máxima para la imagen del botón de búsqueda */
-    width: auto; /* Mantiene la proporción de la imagen */
+    height: 60%;
 }
 
 .icons {
@@ -78,19 +73,19 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Cambiar 'space-evenly' por 'flex-end' */
+    justify-content: space-evenly;
 }
 
-.icons a {
+.icons a{
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
 }
 
-.icons a img {
-    max-height: 30px; /* Altura máxima para las imágenes de los íconos */
-    width: auto; /* Mantiene la proporción de la imagen */
+.icons a img{
+    height: 50%;
+    cursor: pointer;
 }
 
 main {
@@ -238,6 +233,7 @@ h2 {
     background-color: #A4564A; /* Cambia el color de fondo al pasar el mouse */
     transform: translateY(-3px); /* Efecto de elevación al pasar el mouse */
 }
+
 .popular-categories {
     margin-top: 60px;
     position: relative; /* Necesario para el botón flotante */
@@ -257,7 +253,51 @@ h2 {
     scroll-behavior: smooth; /* Hace el desplazamiento suave */
     width: 100%;
 }
+/* Contenedor principal de mejores ofertas */
+.ofertas-container {
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+    padding: 20px 0;
+    position: relative;
+}
 
+/* Barra de desplazamiento de las mejores ofertas */
+.ofertas-grid {
+    display: flex;
+    gap: 40px; /* Espacio entre los elementos */
+    overflow-x: scroll; /* Habilita el scroll horizontal */
+    scroll-behavior: smooth; /* Scroll suave */
+    width: 100%;
+}
+
+/* Estilo para cada oferta individual */
+.ofertas-item {
+    flex: 0 0 25%; /* Asegura que solo se muestren 4 elementos a la vez */
+    background-color: #F8EDE3;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-size: 22px;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.3s, transform 0.3s;
+    border: 3px solid #F8EDE3;
+}
+
+/* Efecto hover */
+.ofertas-item:hover {
+    background-color: #DFD3C3;
+    transform: translateY(-5px);
+}
+
+/* Imagen dentro de cada oferta */
+.ofertas-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 .scroll-btn {
     position: absolute;
     right: 0;
@@ -343,15 +383,6 @@ footer {
     outline: none;
 }
 
-/* Botón izquierdo */
-.scroll-left {
-    left: 0;
-}
-
-/* Botón derecho */
-.scroll-right {
-    right: 0;
-}
 /* Estilos para la sección de Categorías Populares */
 .categorias-populares {
     display: flex;
