@@ -62,6 +62,36 @@ header {
     padding-left: 4px;
 }
 
+/* Estilos para el item del carrito */
+.cart-item {
+    display: flex;
+    justify-content: space-between; /* Separa el texto y el botón */
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Añadir una línea divisoria */
+    margin-bottom: 10px;
+}
+
+/* Estilos para la información del producto */
+.product-info {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Botón de eliminar similar al de agregar */
+.eliminar-btn {
+    background-color: #8786D9; /* Cambia este color por el que desees */
+    color: rgb(0, 0, 0); /* Color del texto */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 5px; /* Esquinas redondeadas */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño de fuente */
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+.eliminar-btn:hover {
+    background-color: #49454F; /* Cambio de color al hacer hover */
+}
 .search-bar button img {
     height: 60%;
 }
@@ -119,7 +149,54 @@ main {
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 10px; /* Espacio entre la imagen y el nombre de la tienda */
 }
+/* Estilos del pop-out */
+.popup {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+}
 
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #D0B8A8; /* Color de fondo coherente con tu diseño */
+    color: #000000; /* Color de texto */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra más suave */
+    width: 80%; /* Ancho del pop-out */
+    max-width: 400px; /* Máximo ancho para el pop-out */
+}
+
+.close {
+    cursor: pointer;
+    font-size: 24px; /* Tamaño del botón de cerrar */
+    color: #000000; /* Color del botón de cerrar */
+    float: right;
+}
+
+button {
+    background-color: #C5705D; /* Color del botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Espaciado del botón */
+    margin: 10px; /* Margen entre botones */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-size: 16px; /* Tamaño del texto del botón */
+}
+
+button:hover {
+    background-color: #8b4e41; /* Color al pasar el mouse */
+    color: #000000; /* Color del texto al pasar el mouse */
+}
 .nombre-tienda h2 {
     font-size: 24px; /* Tamaño del texto del nombre de la tienda */
     color: #000000; /* Color del texto */
