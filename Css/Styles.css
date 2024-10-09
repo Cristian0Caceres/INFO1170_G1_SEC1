@@ -100,6 +100,7 @@ main {
     margin-bottom: 20px; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     text-align: center; 
+    border: 3px solid #C5705D; /* Agrega un borde fino */
 }
 
 /* Estilos para los títulos de Mejores Ofertas y Categorías Populares */
@@ -116,6 +117,7 @@ h2 {
     font-family: 'Lemon', sans-serif; 
 }
 
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -123,20 +125,22 @@ h2 {
 }
 
 .grid-item {
-    background-color: #F8EDE3;
+    background-color: #ffffff;
     padding: 30px;
     text-align: center;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
     font-size: 22px;
     text-decoration: none;
-    color: #333;
+    color: #000000;
     transition: background-color 0.3s, transform 0.3s;
-    border: 3px solid #F8EDE3;
+    border: 3px solid #C5705D;
+    font-weight: bold; /* Pone el texto en negrita */
+}
 }
 
 .grid-item:hover {
-    background-color: #DFD3C3;
+    background-color: #ffffff;
     transform: translateY(-5px);
 }
 
@@ -144,7 +148,7 @@ h2 {
     width: 100%;
     padding-top: 100%;
     position: relative;
-    border: 8px solid #C5705D;
+    border: 3px solid #C5705D;
     border-radius: 10px;
 }
 .precio-oferta {
@@ -424,4 +428,31 @@ footer .inicio-btn {
 
 footer .inicio-btn:hover {
     background-color: #A4564A; 
+}
+/* Personalización de la barra de desplazamiento */
+::-webkit-scrollbar {
+    width: 10px; /* Ancho de la barra de desplazamiento */
+}
+
+::-webkit-scrollbar-track {
+    background: #DFD3C3; /* Color de fondo de la pista */
+    border-radius: 10px; /* Bordes redondeados de la pista */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #C5705D; /* Color del "pulgar" de la barra de desplazamiento */
+    border-radius: 10px; /* Bordes redondeados del pulgar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #A4564A; /* Color del pulgar al pasar el mouse */
+}
+
+/* Asegúrate de que las secciones con scroll tengan el estilo aplicado */
+.ofertas-grid,
+.category-grid,
+.category-grid-container {
+    overflow-x: scroll; /* Permite el scroll horizontal */
+    scroll-behavior: smooth; /* Desplazamiento suave */
+    padding: 10px; /* Espaciado alrededor del contenido */
 }
