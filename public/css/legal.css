@@ -7,6 +7,11 @@ body {
     color: #3f2a21;
 }
 
+/* Contenedor principal */
+.container {
+    display: flex; /* Usar flexbox para alinear botones y contenido */
+}
+
 /* Encabezado */
 h1 {
     text-align: center;
@@ -14,23 +19,48 @@ h1 {
     margin: 20px 0;
 }
 
+/* Contenedor de botones de navegación */
+.nav-container {
+    position: fixed; /* Mantenerlo fijo en la izquierda */
+    left: 0; /* Alineado a la izquierda */
+    top: 20%; /* Margen desde la parte superior */
+    width: 200px; /* Ancho fijo para el contenedor */
+    overflow: auto; /* Permitir desplazamiento si es necesario */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
 /* Botones de navegación */
 .nav-button {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 15px;
-    background-color: #d58b72; /* Color de fondo */
+    display: block; /* Hacer que los botones ocupen todo el ancho */
+    width: 100%; /* Botones de ancho completo */
+    padding: 10px;
+    background-color: #d58b72; /* Color de fondo normal */
     color: white; /* Color del texto */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none; /* Sin subrayado */
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; /* Transición suave */
 }
 
 .nav-button:hover {
     background-color: #b47461; /* Color de fondo al pasar el ratón */
+}
+
+/* Clase activa para botones */
+.nav-button.active {
+    background-color: #b47461; /* Color de fondo cuando el botón está activo */
+}
+
+/* Contenido principal */
+.content {
+    margin-left: 220px; /* Margen para dejar espacio para los botones fijos */
+    padding: 10px;
+    flex-grow: 1; /* Para ocupar el espacio restante */
 }
 
 /* Sección principal */
