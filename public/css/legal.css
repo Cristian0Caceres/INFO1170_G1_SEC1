@@ -116,3 +116,23 @@ a:hover {
     text-decoration: underline;
     color: #b47461;
 }
+
+/* Footer */
+footer {
+    background-color: #D0B8A8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh; /* proporcional a la altura de la ventana */
+}
+
+footer img {
+    padding-left: 2%;
+    height: 100%;
+}
+
+footer a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
