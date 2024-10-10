@@ -1,0 +1,53 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f4ea; /* Fondo verde claro */
+    margin: 0;
+    padding: 0;
+    color: #1e4d2b; /* Verde oscuro */
+}
+
+/* Encabezado */
+header {
+    background-color: #2d8659; /* Verde medio */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #1e5e3d; /* Verde más oscuro */
+}
+
+/* Navegación */
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #1e5e3d; /* Verde oscuro */
+    padding: 15px;
+    border-bottom: 2px solid #2d8659; /* Verde medio */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: #73c495; /* Verde claro */
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #2d8659; /* Verde medio */
+}
+
+/* Sección principal */
+section {
+    padding: 40px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #1e4d2b; /* Verde oscuro */
+}
+

@@ -1,0 +1,103 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0e5d8;
+    margin: 0;
+    padding: 20px;
+    color: #3f2a21;
+}
+
+h2 {
+    text-align: center;
+    color: #3f2a21;
+}
+
+/* Estilo para el formulario */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #f5d6c6;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"], /* Añadido para campos de email */
+select {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #d58b72;
+    border-radius: 5px;
+    background-color: white; /* Fondo blanco para campos de entrada */
+}
+
+button {
+    background-color: #d58b72;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #b47461;
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #d58b72;
+    color: white;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+td a {
+    color: #d58b72;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: bold;
+}
+
+td a:hover {
+    color: #b47461;
+    text-decoration: underline;
+}
+
+tr:hover td {
+    background-color: #f2f2f2;
+}
+
+/* Estilo para acciones de editar y eliminar */
+.acciones a {
+    color: #d58b72;
+}
+
+.acciones a:hover {
+    color: #b47461;
+    text-decoration: underline;
+}
