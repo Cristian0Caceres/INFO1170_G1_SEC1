@@ -1,3 +1,4 @@
+/* Reseteo */
 * {
     margin: 0;
     padding: 0;
@@ -9,12 +10,14 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
+    background-color: #1E1E1E; /* Fondo oscuro para asemejarse al login */
 }
 
+/* Encabezado */
 header {
-    height: 5%;
+    height: 5vh;
     width: 100%;
-  background-color: #d6b8a5 
+    background-color: #d6b8a5;
 }
 
 .barra-superior {
@@ -26,18 +29,18 @@ header {
     display: flex;
     width: 20%;
     align-items: center;
-    justify-content: left;
-    padding-left: 2%
+    justify-content: flex-start;
+    padding-left: 2%;
 }
 
 .logo img {
-    height: 100%;
+    max-height: 100%;
 }
 
 .search-bar {
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: flex-end;
     width: 60%;
     height: 100%;
 }
@@ -48,9 +51,9 @@ header {
     height: 80%;
     border: none;
     outline: none;
-    border-radius: 30px; /* Deja espacio para el botón dentro del input */
+    border-radius: 30px;
     padding-left: 2%;
-}                   
+}
 
 .search-bar button {
     width: 5%;
@@ -73,117 +76,167 @@ header {
     justify-content: space-evenly;
 }
 
-.icons a{
+.icons a {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
-.icons a img{
-    height: 50%;
+.icons a img {
+    max-height: 50%;
     cursor: pointer;
 }
 
-main{
-    min-height: 90%;
+/* Estilos para la sección principal */
+main {
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     background-color: #F8EDE3;
+    padding: 2%;
 }
 
-.recuperar{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40%;
-    height: 50%;
+/* Modificación de la sección de confirmación */
+.recuperar {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
     background-color: #C5705D;
-    border-radius: 5%;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.recuperar h1{
+.recuperar h1 {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    padding-top: 5%
+    color: white;
+    padding-top: 5%;
 }
 
-.datos{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    height: 70%;
+.datos {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
     background-color: #D0B8A8;
     margin-top: 5%;
-    border-radius: 5%;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.datos h3{
+.datos h3 {
+    color: #1500FF;
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
     padding-top: 5%;
-    color: #1500FF;
 }
 
-.datos p{
+.datos p {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    padding-top: 1%;
+    padding-top: 3%;
 }
 
 .datos form {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
 }
 
 .datos form .num {
     display: flex;
     justify-content: center;
-    margin: 10%; 
+    margin: 10%;
 }
 
-.datos form input{
-    padding: 1% 1%;
+.datos form input {
+    padding: 12px;
     margin: 2%;
     text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    border-radius: 8px;
 }
 
-.datos form button{
-    padding: 2% 6%;
+.datos form input::placeholder {
+    color: #000000;
+}
+
+.datos form button {
+    padding: 12px;
     margin-top: 3%;
     text-align: center;
-    background-color: #C5705D;
+    background-color: #FF8C00;
+    color: white;
+    border-radius: 25px;
     cursor: pointer;
-    border: 2px solid #D0B8A8;
+    border: none;
 }
 
-.datos form button:hover{
+.datos form button:hover {
+    background-color: #FF7F00;
+}
+
+.datos a {
+    padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.datos a:hover {
+    color: white;
     text-decoration: underline;
-    border: 2px solid;
 }
 
-footer{
+/* Footer */
+footer {
     background-color: #D0B8A8;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 5%;
+    height: 5vh;
 }
+
 footer img {
     padding-left: 2%;
     height: 100%;
-
 }
 
-footer a{
+footer a {
     margin: 0 1rem;
     text-decoration: none;
     color: rgb(0, 0, 0);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .logo, .search-bar, .icons {
+        width: 100%;
+    }
+    .logo {
+        justify-content: center;
+    }
+    .search-bar input, .search-bar button {
+        width: 80%;
+    }
+    .recuperar, .datos {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .datos form input {
+        padding: 10px;
+    }
 }
