@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar</title>
-    <link rel="stylesheet" href="../css/confirmacion.css">
-    <script src="../js/confirm.js" defer></script>
+    <link rel="stylesheet" href="../css/categorias.css">
+    <title>Categorías</title>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -55,26 +54,16 @@
     </header>
 
     <main>
-        <div class="recuperar">
-            <h1>Recuperar Contraseña</h1>
-
-            <!-- seccion de ingreso de datos -->
-            <div class="datos">
-                <h3>Correo Enviado</h3>
-                <p>por favor ingresa el codigo que se te ha enviado al correo</p>
-                <form action="/auth/confirmar" method="POST">
-                    <div class="num">
-                        <input type="number" id="numero1" min="1" max="9" value="" required name="numero1">
-                        <input type="number" id="numero2" min="0" max="9" value="" required name="numero2">
-                        <input type="number" id="numero3" min="0" max="9" value="" required name="numero3">
-                        <input type="number" id="numero4" min="0" max="9" value="" required name="numero4">
-                        <input type="number" id="numero5" min="0" max="9" value="" required name="numero5">
-                    </div>
-                    <button type="submit">Recuperar Contraseña</button>
-                </form>
-            </div>
-
-        </div>
+        <section class="principal">
+            <section class="titulo">
+                <div class="nombre-titulo">
+                    <h1>Categorías</h1>
+                </div>
+            </section>
+            <section class="segundo-apartado" id="categorias-container">
+                <!-- Aquí se cargarán las categorías desde el servidor -->
+            </section>
+        </section>
     </main>
 
     <footer>
@@ -85,5 +74,47 @@
         </nav>
     </footer>
 
+    <script>
+        async function cargarCategorias() {
+            try {
+                const response = await fetch('/categorias');
+                if (!response.ok) {
+                    throw new Error('Error al cargar categorías');
+                }
+                const categorias = await response.json();
+
+                const container = document.getElementById('categorias-container');
+                container.innerHTML = ''; // Limpiar el contenedor
+
+                if (categorias.length > 0) {
+                    categorias.forEach(categoria => {
+                        const section = document.createElement('section');
+                        section.className = 'categorias';
+                        section.innerHTML = `
+                            <a class='img-categoria' href='#'>
+                                <div>
+                                    <img src='' alt='Imagen de ${categoria.Descripcion_Categoria}'>
+                                </div>
+                            </a>
+                            <a class='nombre-categoria' href='#'>
+                                <div>
+                                    <h2>${categoria.Nombre_Categoria}</h2>
+                                </div>
+                            </a>
+                        `;
+                        container.appendChild(section);
+                    });
+                } else {
+                    container.innerHTML = '<p>No se encontraron categorías.</p>';
+                }
+            } catch (error) {
+                console.error(error);
+                document.getElementById('categorias-container').innerHTML = '<p>Error al cargar categorías.</p>';
+            }
+        }
+
+        // Cargar categorías al iniciar la página
+        cargarCategorias();
+    </script>
 </body>
 </html>

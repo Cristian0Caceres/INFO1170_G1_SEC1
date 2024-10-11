@@ -10,14 +10,14 @@ const confirmarCodigo = (req, res) => {
         // Comparar el código ingresado con el código de la sesión
         if (numeroConcatenado === req.session.codigo_recuperacion) {
             // Redirigir a la página para cambiar la contraseña si el código es correcto
-            return res.redirect('/public/html/cambio.html');
+            return res.redirect('/html/cambio.html');
         } else {
             // Redirigir de nuevo a la página de recuperación si el código es incorrecto
-            return res.redirect('/public/html/recuperar.html?error=codigo');
+            return res.redirect('/html/recuperar.html?error=codigo');
         }
     } else {
         // Si no hay código en la sesión, redirigir con error
-        return res.redirect('/public/html/recuperar.html?error=sin_codigo');
+        return res.redirect('/html/recuperar.html?error=sin_codigo');
     }
 };
 

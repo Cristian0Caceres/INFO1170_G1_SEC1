@@ -1,8 +1,16 @@
 const express = require('express');
 const path = require('path');
-const session = require('express-session'); // Importar express-session
+const session = require('express-session');
 const app = express();
-const authRoutes = require('./routes/auth'); // Importar las rutas de autenticación
+const authRoutes = require('./routes/auth');
+const categoriasRoutes = require('./routes/categorias');
+const usuariosRoutes = require('./routes/usuarios'); 
+
+// Configuración del motor de plantillas EJS
+app.set('view engine', 'ejs');
+
+// Asegurarse de que la carpeta "views" esté configurada correctamente
+app.set('views', path.join(__dirname, 'views'));
 
 // Configuración de la sesión
 app.use(session({
@@ -17,10 +25,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Archivos estáticos
-app.use(express.static(path.join(__dirname, 'public'))); // Ruta de los archivos estáticos (HTML, CSS, JS, imágenes, etc.)
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Usar las rutas de autenticación
+// Usar las rutas
 app.use('/auth', authRoutes);
+app.use('/categorias', categoriasRoutes);
+app.use('/', usuariosRoutes); // Rutas de usuarios
 
 // Configuración del servidor
 app.listen(3000, function(){
