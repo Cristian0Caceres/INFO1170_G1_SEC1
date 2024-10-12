@@ -2,10 +2,6 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const app = express();
-const authRoutes = require('./routes/auth');
-const categoriasRoutes = require('./routes/categorias');
-const usuariosRoutes = require('./routes/usuarios'); 
-const productosRouter = require('./routes/productos');
 
 // Configuración del motor de plantillas EJS
 app.set('view engine', 'ejs');
@@ -29,10 +25,20 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Usar las rutas
+const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
+
+const categoriasRoutes = require('./routes/categorias');
 app.use('/', categoriasRoutes);
+
+const productosRouter = require('./routes/productos');
 app.use('/productos', productosRouter);
-app.use('/', usuariosRoutes); // Rutas de usuarios
+
+const usuariosRoutes = require('./routes/usuarios'); 
+app.use('/', usuariosRoutes); 
+
+const tiendasRouter = require('./routes/tiendas');
+app.use('/', tiendasRouter);
 
 // Configuración del servidor
 app.listen(3000, function(){

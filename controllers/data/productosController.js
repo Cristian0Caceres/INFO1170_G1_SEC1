@@ -1,31 +1,53 @@
-const db = require('../../config/db'); // Asegúrate de que esta ruta sea correcta
+const connection = require('../../config/db');
 
-// Controlador para mostrar productos por ID de categoría
-exports.mostrarProductosPorCategoria = (req, res) => {
-    const idCategoria = req.params.id_categoria; // Obtener ID de categoría de los parámetros
+// Función para obtener productos por ID de categoría
+const mostrarProductosPorCategoria = (req, res) => {
+    const idCategoria = req.params.id_categoria; // Obtener el ID de la categoría de los parámetros
 
-    // Consulta SQL que selecciona los productos, el proveedor, el precio más bajo y la imagen
     const sql = `
-        SELECT Producto.Nombre_Producto, MIN(Precios.coste) as Precio_Minimo, Producto.imagen_producto
-        FROM Producto
-        JOIN Precios ON Producto.ID_Producto = Precios.ID_Productos
-        WHERE Producto.ID_Categoria = ?
-        GROUP BY Producto.Nombre_Producto, Producto.imagen_producto
+        SELECT p.ID_Producto, p.Nombre_producto, MIN(pr.coste) as Precio_Minimo, p.imagen_producto
+        FROM producto p
+        JOIN precios pr ON p.ID_Producto = pr.ID_Productos
+        WHERE p.ID_Categoria = ?
+        GROUP BY p.ID_Producto, p.Nombre_producto, p.imagen_producto
     `;
 
-    db.query(sql, [idCategoria], (error, resultados) => {
+    connection.query(sql, [idCategoria], (error, productos) => {
         if (error) {
             console.error(error);
-            return res.status(500).send('Error en la base de datos');
+            return res.status(500).send('Error al obtener productos.');
         }
 
-        // Verificar si hay resultados
+        // Renderizar la vista con los productos y el ID de la categoría
+        res.render('productos', { productos, idCategoria });
+    });
+};
+
+// Función para obtener detalles del producto por ID
+const mostrarDetalleProducto = (req, res) => {
+    const idProducto = req.params.id_producto; // Obtener el ID del producto de los parámetros
+
+    const sql = `
+        SELECT p.Nombre_producto, p.Descripcion_Producto, p.imagen_producto, pr.coste AS Precio, t.Nombre_Proveedor
+        FROM producto p
+        JOIN precios pr ON p.ID_Producto = pr.ID_Productos
+        JOIN proveedor t ON p.ID_Proveedor = t.ID_Proveedor
+        WHERE p.ID_Producto = ?
+    `;
+
+    connection.query(sql, [idProducto], (error, resultados) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).send('Error al obtener los detalles del producto.');
+        }
+
         if (resultados.length > 0) {
-            // Renderizar la vista de productos y pasar los resultados
-            res.render('productos', { productos: resultados, idCategoria: idCategoria });
+            const producto = resultados[0]; // Obtener el primer resultado
+            res.render('vista_producto', { producto }); // Renderizar la vista con los detalles del producto
         } else {
-            // Si no hay productos, enviar un mensaje
-            res.render('productos', { productos: [], idCategoria: idCategoria });
+            res.status(404).send('Producto no encontrado.');
         }
     });
 };
+
+module.exports = { mostrarProductosPorCategoria, mostrarDetalleProducto };
