@@ -10,4 +10,7 @@ router.get('/', (req, res) => {
     res.status(404).send('Por favor, selecciona una categoría.'); // Mensaje informativo
 });
 
+// Ruta para obtener detalles del producto por ID
+router.get('/detalle/:id_producto', productosController.mostrarDetalleProducto);
+
 module.exports = router;
