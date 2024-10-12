@@ -3,24 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Productos - Categoría <%= idCategoria %></title>
     <link rel="stylesheet" href="/css/productos.css">
+    <title>Lista de Productos - Categoría <%= idCategoria %></title>
+    <script>
+        // Función que realiza la búsqueda
+        function realizarBusqueda() {
+            let query = document.getElementById("searchInput").value;
+            if (query) {
+                alert("Buscando: " + query); // Puedes reemplazar el alert por la lógica de búsqueda
+            }
+        }
+
+        // Detectar cuando se presiona Enter en el campo de búsqueda
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
+                    realizarBusqueda(); // Llamar a la función de búsqueda
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-    <h1>Lista de Productos - Categoría <%= idCategoria %></h1>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="/img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="/img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <a href="/categorias">
+                    <img src="/img/categorias.png" alt="Categorías">
+                </a>
+                <a href="/carrito">
+                    <img src="/img/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="/tienda">
+                    <img src="/img/tienda.png" alt="Tienda">
+                </a>
+                <a href="/auth/login">
+                    <img src="/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                </a>    
+            </div>
+        </section>
+    </header>
 
-    <div class="productos">
-        <% if (productos.length > 0) { %>
-            <% productos.forEach(function(producto) { %>
-                <div>
-                    <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_Producto %>">
-                    <p><%= producto.Nombre_Producto %></p>
-                    <p>Desde: $<%= producto.Precio_Minimo %></p>
+    <main>
+        <!-- Sección flotante para la categoría -->
+        <section class="nombre-categoria">
+            <h1>Productos de la Categoría: <%= idCategoria %></h1>
+        </section>
+
+        <section class="productos">
+            <section class="encabezado">
+                <div class="titulo">
+                    <h2>Lista de Productos</h2>
                 </div>
-            <% }); %>
-        <% } else { %>
-            <p>No se encontraron productos.</p>
-        <% } %>
-    </div>
+            </section>
+
+            <section class="presentacion-producto">
+                <!-- Comprobar si hay productos -->
+                <% if (productos.length > 0) { %>
+                    <% productos.forEach(function(producto) { %>
+                        <section class="producto">
+                            <div class="imagen-producto">
+                                <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_Producto %>">
+                                <h3><%= producto.Nombre_Producto %></h3>
+                                <p>Desde: $<%= producto.Precio_Minimo %></p>
+                            </div>
+                        </section>
+                    <% }); %>
+                <% } else { %>
+                    <p>No se encontraron productos para esta categoría.</p>
+                <% } %>
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <img src="/img/logoECDA.png" alt="Logo de la empresa">
+        <p>&copy; Derechos Reservados</p>
+        <nav>
+            <a href="/">Ir al Inicio</a>
+        </nav>
+    </footer>
 </body>
 </html>
