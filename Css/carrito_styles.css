@@ -149,49 +149,66 @@ main {
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 10px; /* Espacio entre la imagen y el nombre de la tienda */
 }
-/* Estilos del pop-out */
+/* Estilo del pop-out de confirmación */
 .popup {
-    display: none; /* Oculto por defecto */
     position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
-    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e98770; /* Fondo blanco */
+    border: 2px solid #D0B8A8; /* Color de borde similar al footer */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Bordes redondeados */
+    z-index: 1000; /* Asegúrate de que esté por encima de otros elementos */
+    width: 300px; /* Ancho del pop-out */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centra el texto */
+    display: none; /* Inicialmente oculto */
+    font-family: 'bold' /* Aplicar la tipografía */
+}
 }
 
 .popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #D0B8A8; /* Color de fondo coherente con tu diseño */
-    color: #000000; /* Color de texto */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Sombra más suave */
-    width: 80%; /* Ancho del pop-out */
-    max-width: 400px; /* Máximo ancho para el pop-out */
+    padding: 20px; /* Espaciado interno adicional */
+    font-family: 'bold' /* Aplicar la tipografía */
 }
 
 .close {
-    cursor: pointer;
-    font-size: 24px; /* Tamaño del botón de cerrar */
-    color: #000000; /* Color del botón de cerrar */
-    float: right;
+    color: #000000; /* Color del icono de cerrar */
+    font-size: 20px; /* Tamaño del icono */
+    float: right; /* Coloca el icono en la esquina superior derecha */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+    font-family: 'reboto' /* Aplicar la tipografía */
 }
 
 button {
-    background-color: #C5705D; /* Color del botón */
+    background-color: #8b4e41; /* Color de fondo del botón */
+    color: white; /* Color del texto */
     border: none; /* Sin borde */
     border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 20px; /* Espaciado del botón */
-    margin: 10px; /* Margen entre botones */
+    padding: 10px 15px; /* Espaciado interno */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    font-size: 16px; /* Tamaño del texto del botón */
+    transition: background-color 0.3s; /* Efecto de transición */
+    font-family: 'reboto' /* Aplicar la tipografía */
 }
+
+button:hover {
+    background-color: #8b4e41; /* Color al pasar el mouse */
+}
+
+/* Animación de entrada del pop-up */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Iniciar completamente transparente */
+    }
+    to {
+        opacity: 1; /* Finalizar completamente visible */
+    }
+}
+
+
+
+
 
 button:hover {
     background-color: #8b4e41; /* Color al pasar el mouse */
