@@ -1,16 +1,18 @@
-const db = require('../../config/db');
+const connection = require('../../config/db'); // Importar la conexión a la base de datos
 
-// Obtener la lista de categorías
-exports.obtenerCategorias = (req, res) => {
-    const sql = "SELECT Nombre_Categoria, Descripcion_Categoria FROM categoria";
+// Función para obtener categorías
+const obtenerCategorias = (req, res) => {
+    const sql = 'SELECT Nombre_Categoria, Descripcion_Categoria FROM categoria';
 
-    db.query(sql, (err, resultados) => {
-        if (err) {
-            console.error(err);
-            return res.status(500).send('Error en la consulta');
+    connection.query(sql, (error, categorias) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).send('Error al obtener categorías.');
         }
 
-        // Enviar resultados como JSON
-        res.json(resultados);
+        // Renderizar la vista con las categorías
+        res.render('categorias', { categorias }); 
     });
 };
+
+module.exports = { obtenerCategorias };

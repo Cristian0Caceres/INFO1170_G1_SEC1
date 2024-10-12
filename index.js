@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Usar las rutas
 app.use('/auth', authRoutes);
-app.use('/categorias', categoriasRoutes);
+app.use('/', categoriasRoutes);
 app.use('/', usuariosRoutes); // Rutas de usuarios
 
 // Configuración del servidor
