@@ -2,7 +2,7 @@ const connection = require('../../config/db'); // Importar la conexión a la bas
 
 // Función para obtener categorías
 const obtenerCategorias = (req, res) => {
-    const sql = 'SELECT Nombre_Categoria, Descripcion_Categoria FROM categoria';
+    const sql = 'SELECT ID_Categoria, Nombre_Categoria, Descripcion_Categoria FROM categoria'; // Incluye el ID de la categoría
 
     connection.query(sql, (error, categorias) => {
         if (error) {
@@ -14,5 +14,6 @@ const obtenerCategorias = (req, res) => {
         res.render('categorias', { categorias }); 
     });
 };
+
 
 module.exports = { obtenerCategorias };

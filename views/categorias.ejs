@@ -27,26 +27,25 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="/images/logoECDA.png" alt="Logo">
+                <img src="../img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="/images/buscar.png" alt="Buscar">
+                    <img src="../img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
-                <a href="LINK">
-                    <img src="/images/categorias.png" alt="Categorias">
+                <a href="/categorias">
+                    <img src="../img/categorias.png" alt="Categorias">
                 </a>
-                <a href="LINK">
-                    <img src="/images/carrito-de-compras.png" alt="Carrito de Compras">
+                <a href="../html/Carrito.html">
+                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="LINK">
-                    <img src="/images/tienda.png" alt="Tienda">
-                </a>
-                <a href="LINK">
-                    <img src="/images/iniciar-sesion.png" alt="Iniciar Sesion">
+                <a href="../html/selec_tienda.php">
+                    <img src="../img/tienda.png" alt="Tienda">
+                <a href="../html/login.html">
+                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
@@ -63,12 +62,12 @@
                 <% if (categorias.length > 0) { %>
                     <% categorias.forEach(categoria => { %>
                         <section class='categorias'>
-                            <a class='img-categoria' href='#'>
+                            <a class='img-categoria' href='/productos/<%= categoria.ID_Categoria %>'>
                                 <div>
                                     <img src='' alt='Imagen de <%= categoria.Descripcion_Categoria %>'>
                                 </div>
                             </a>
-                            <a class='nombre-categoria' href='#'>
+                            <a class='nombre-categoria' href='/productos/<%= categoria.ID_Categoria %>'>
                                 <div>
                                     <h2><%= categoria.Nombre_Categoria %></h2>
                                 </div>
@@ -78,7 +77,7 @@
                 <% } else { %>
                     <p>No se encontraron categorías.</p>
                 <% } %>
-            </section>
+            </section>                   
         </section>
     </main>
 
