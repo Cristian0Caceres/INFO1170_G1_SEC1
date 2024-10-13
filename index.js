@@ -40,6 +40,9 @@ app.use('/', usuariosRoutes);
 const tiendasRouter = require('./routes/tiendas');
 app.use('/', tiendasRouter);
 
+const productos_adminRouter = require('./routes/productos_admin');
+app.use('/productos_admin', productos_adminRouter);
+
 // Configuración del servidor
 app.listen(3000, function(){
     console.log("El servidor está escuchando en http://localhost:3000");
