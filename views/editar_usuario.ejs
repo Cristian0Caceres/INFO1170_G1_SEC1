@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" href="/css/editar_productos.css">
+</head>
+<body>
+
+    <h2>Editar Usuario</h2>
+    
+    <form id="editarUsuarioForm" method="post" action="/usuarios/actualizar">
+        <input type="hidden" name="id" value="<%= usuario.ID_Usuario %>">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" value="<%= usuario.Nombre_Usuario %>" required>
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" value="<%= usuario.correo_Usuario %>" required>
+        <button type="submit">Actualizar</button>
+    </form>
+
+</body>
+</html>

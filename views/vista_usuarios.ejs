@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Usuarios - Cacique del Ahorro</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+<header>
+    <h1>Lista de Usuarios - Cacique del Ahorro</h1>
+</header>
+
+<nav>
+    <a href="/html/admin_home.html">Inicio</a>
+    <a href="/productos_admin">Productos</a>
+    <a href="/html/Test_Simulador.html">Simulador</a>
+    <a href="/usuarios">Usuarios</a>
+    <a href="index.hmtl">Salir</a>
+</nav>
+
+<section>
+    <h2>Usuarios Registrados</h2>
+    <p>A continuación, se muestra la lista de usuarios registrados en el sistema:</p>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (usuarios.length > 0) { %>
+                <% usuarios.forEach(usuario => { %>
+                    <tr>
+                        <td><%= usuario.ID_Usuario %></td>
+                        <td><%= usuario.Nombre_Usuario %></td>
+                        <td><%= usuario.correo_Usuario %></td>
+                        <td>
+                            <a href="/usuarios/editar/<%= usuario.ID_Usuario %>">Editar</a> | 
+                            <a href="/usuarios/eliminar/<%= usuario.ID_Usuario %>">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr><td colspan="4">No se encontraron usuarios registrados.</td></tr>
+            <% } %>
+        </tbody>
+    </table>
+</section>
+
+</body>
+</html>

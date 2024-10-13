@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Producto</title>
+    <link rel="stylesheet" href="/css/editar_productos.css">
+</head>
+<body>
+    <header>
+        <h2>Editar Producto</h2>
+    </header>
+    
+    <section>
+        <form method="post" action="/productos_admin/editar">
+            <input type="hidden" name="id" value="<%= producto.id %>">
+            
+            <label for="nombre">Nombre:</label>
+            <input type="text" name="nombre" value="<%= producto.Nombre_producto %>" required>
+
+            <!-- Selección de Categoría -->
+            <label for="categoria">Categoría:</label>
+            <select name="categoria" required>
+                <option value="">Seleccionar categoría</option>
+                <% categorias.forEach(categoria => { %>
+                    <option value="<%= categoria.ID_Categoria %>" <%= categoria.ID_Categoria == producto.ID_Categoria ? 'selected' : '' %>><%= categoria.Nombre_Categoria %></option>
+                <% }); %>
+            </select>
+
+            <!-- Selección de Proveedor -->
+            <label for="proveedor">Proveedor:</label>
+            <select name="proveedor" required>
+                <option value="">Seleccionar proveedor</option>
+                <% proveedores.forEach(proveedor => { %>
+                    <option value="<%= proveedor.ID_Proveedor %>" <%= proveedor.ID_Proveedor == producto.ID_Proveedor ? 'selected' : '' %>><%= proveedor.Nombre_Proveedor %></option>
+                <% }); %>
+            </select>
+
+            <label for="precio">Precio:</label>
+            <input type="number" name="precio" value="<%= producto.Costo %>" required>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea name="descripcion" required><%= producto.Descripcion_Producto %></textarea>
+
+            <label for="imagen">Imagen (URL):</label>
+            <input type="text" name="imagen" value="<%= producto.imagen_producto %>" required>
+            
+            <button type="submit">Actualizar</button>
+        </form>
+    </section>
+</body>
+</html>
