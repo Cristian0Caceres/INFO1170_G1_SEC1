@@ -10,6 +10,7 @@ body {
 h2 {
     text-align: center;
     color: #3f2a21;
+    margin-bottom: 20px;
 }
 
 /* Estilo para el formulario */
@@ -31,23 +32,33 @@ label {
 input[type="text"],
 input[type="number"],
 input[type="email"], /* Añadido para campos de email */
+textarea, /* Añadido para el textarea */
 select {
     width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #d58b72;
     border-radius: 5px;
-    background-color: white; /* Fondo blanco para campos de entrada */
+    background-color: white;
+    font-size: 16px; /* Aumentado para mayor legibilidad */
+    color: #3f2a21; /* Color del texto */
+}
+
+textarea {
+    resize: vertical; 
+    height: 100px; 
 }
 
 button {
     background-color: #d58b72;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 12px 20px; /* Aumentado para mayor tamaño de botón */
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
     transition: background-color 0.3s;
+    width: 100%; /* Hacer que el botón ocupe todo el ancho del formulario */
 }
 
 button:hover {
@@ -100,4 +111,23 @@ tr:hover td {
 .acciones a:hover {
     color: #b47461;
     text-decoration: underline;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    form {
+        padding: 15px;
+        width: 100%;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+        width: 100%;
+    }
+    
+    button {
+        padding: 10px 0;
+    }
 }
