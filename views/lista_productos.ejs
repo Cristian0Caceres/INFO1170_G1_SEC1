@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos - Cacique del Ahorro</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<header>
+    <h1>Lista de Productos - Cacique del Ahorro</h1>
+</header>
+<nav>
+    <a href="/admin_home.html">Inicio</a>
+    <a href="/productos_admin">Productos</a>
+    <a href="html/Test_Simulador.html">Simulador</a>
+    <a href="/usuarios">Usuarios</a>
+    <a href="../../index.html">Salir</a>
+</nav>
+
+<section>
+    <h2>Productos Registrados</h2>
+    <p>A continuación, se muestra la lista de productos registrados en el sistema:</p>
+
+    <div class="search-container">
+        <form method="GET" action="/productos_admin">
+            <input type="text" name="search" class="search-input" placeholder="Buscar producto por nombre...">
+            <button type="submit" class="search-button">Buscar</button>
+        </form>
+    </div>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Precio</th>
+                <th>Proveedor</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (productos.length > 0) { %>
+                <% productos.forEach(producto => { %>
+                    <tr>
+                        <td><%= producto.id %></td>
+                        <td><%= producto.name %></td>
+                        <td><%= producto.category %></td>
+                        <td>$<%= producto.price.toFixed(2) %></td>
+                        <td><%= producto.provider %></td>
+                        <td><%= producto.description %></td>
+                        <td><img src="<%= producto.image %>" alt="<%= producto.name %>" style="width:100px;"></td>
+                        <td>
+                            <a href="/productos_admin/editar?id=<%= producto.id %>">Editar</a> | 
+                            <a href="/productos_admin/eliminar?id=<%= producto.id %>">Eliminar</a>
+                        </td>
+                    </tr>
+                <% }); %>
+            <% } else { %>
+                <tr><td colspan="8">No se encontraron productos</td></tr>
+            <% } %>
+        </tbody>
+    </table>
+</section>
+</body>
+</html>

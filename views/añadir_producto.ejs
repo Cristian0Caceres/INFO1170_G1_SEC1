@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Añadir Producto</title>
+    <link rel="stylesheet" href="/css/editar_productos.css">
+</head>
+<body>
+    <h2>Añadir Nuevo Producto</h2>
+    <form method="post" action="/productos/aadir">
+        <label for="id_producto">ID del Producto (numérico):</label>
+        <input type="number" id="id_producto" name="id_producto" required>
+
+        <label for="nombre">Nombre del Producto:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="id_producto_proveedor">ID del Producto Proveedor (numérico):</label>
+        <input type="number" id="id_producto_proveedor" name="id_producto_proveedor" required>
+
+        <label for="categoria">Selecciona Categoría:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">Seleccionar categoría</option>
+            <% categorias.forEach(categoria => { %>
+                <option value="<%= categoria.ID_Categoria %>"><%= categoria.Nombre_Categoria %></option>
+            <% }); %>
+        </select>
+
+        <label for="proveedor">Selecciona Proveedor:</label>
+        <select id="proveedor" name="proveedor" required>
+            <option value="">Seleccionar proveedor</option>
+            <% proveedores.forEach(proveedor => { %>
+                <option value="<%= proveedor.ID_Proveedor %>"><%= proveedor.Nombre_Proveedor %></option>
+            <% }); %>
+        </select>
+
+        <label for="precio">Precio:</label>
+        <input type="number" id="precio" name="precio" required>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+
+        <label for="imagen">Imagen (URL):</label>
+        <input type="text" id="imagen" name="imagen" required>
+
+        <button type="submit">Añadir Producto</button>
+    </form>
+</body>
+</html>
