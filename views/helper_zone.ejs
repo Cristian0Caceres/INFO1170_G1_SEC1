@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helper Zone</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Helper Zone - Consultas de Usuarios</h1>
+    </header>
+
+    <main>
+        <h2>Consultas Recibidas</h2>
+        
+        <% if (consultas.length > 0) { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Usuario</th>
+                        <th>Correo</th>
+                        <th>Asunto</th>
+                        <th>Mensaje</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% consultas.forEach(consulta => { %>
+                        <tr>
+                            <td><%= consulta.ID_Consulta %></td>
+                            <td><%= consulta.Nombre_Usuario %></td>
+                            <td><%= consulta.correo_Usuario %></td>
+                            <td><%= consulta.Asunto %></td>
+                            <td><%= consulta.Mensaje_Usuario %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p>No se han recibido consultas aún.</p>
+        <% } %>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 - Helper Zone</p>
+    </footer>
+
+</body>
+</html>

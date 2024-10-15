@@ -47,6 +47,11 @@ app.use('/productos_admin', productos_adminRouter);
 const contactoRouter = require('./routes/consultar');  // Usando el archivo de rutas consultar.js para el contacto
 app.use('/', contactoRouter);  // Registrar la ruta para el contacto
 
+// Otras rutas que ya tienes configuradas...
+const helperRoutes = require('./routes/helper');
+app.use('/', helperRoutes);
+
+
 // Configuración del servidor
 app.listen(3000, function(){
     console.log("El servidor está escuchando en http://localhost:3000");
