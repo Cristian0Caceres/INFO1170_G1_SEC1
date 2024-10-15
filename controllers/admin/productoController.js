@@ -7,19 +7,18 @@ const buscarProductos = (req, res) => {
                       producto.Nombre_producto AS name, 
                       producto.Descripcion_Producto AS description, 
                       producto.imagen_producto AS image, 
-                      precios.coste AS price,  -- Cambiado de Costo a coste
+                      producto.Costo AS price,  -- Campo actualizado a Costo
                       categoria.Nombre_Categoria AS category, 
                       proveedor.Nombre_Proveedor AS provider
                FROM producto
                JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
-               JOIN proveedor ON producto.ID_Proveedor = proveedor.ID_Proveedor
-               JOIN precios ON producto.ID_Producto = precios.ID_Productos`;  // Agregar JOIN para precios
+               JOIN proveedor ON producto.ID_Proveedor = proveedor.ID_Proveedor`;
 
     if (search) {
         sql += ` WHERE producto.Nombre_producto LIKE ?`;
     }
 
-    sql += ` ORDER BY producto.Nombre_producto, precios.coste DESC`;  // Cambiado de Costo a coste
+    sql += ` ORDER BY producto.Nombre_producto, producto.Costo DESC`;  // Ordenar por Costo
 
     db.query(sql, [`%${search}%`], (error, results) => {
         if (error) {
@@ -93,9 +92,9 @@ const actualizarProducto = (req, res) => {
             return res.status(500).send(error);
         }
 
-        const sqlPrecio = `UPDATE precios 
-                           SET coste = ? 
-                           WHERE ID_Productos = ?`;
+        const sqlPrecio = `UPDATE producto 
+                           SET Costo = ? 
+                           WHERE ID_Producto = ?`;
 
         db.query(sqlPrecio, [precio, id], (error) => {
             if (error) {
@@ -118,55 +117,33 @@ const eliminarProducto = (req, res) => {
             return res.status(500).send(error);
         }
 
-        // Luego eliminar de la tabla precios
-        const sqlEliminarPrecio = `DELETE FROM precios WHERE ID_Productos = ?`;
+        // Finalmente eliminar de la tabla producto
+        const sqlEliminarProducto = `DELETE FROM producto WHERE ID_Producto = ?`;
         
-        db.query(sqlEliminarPrecio, [id_producto], (error) => {
+        db.query(sqlEliminarProducto, [id_producto], (error) => {
             if (error) {
                 return res.status(500).send(error);
             }
-
-            // Finalmente eliminar de la tabla producto
-            const sqlEliminarProducto = `DELETE FROM producto WHERE ID_Producto = ?`;
-            
-            db.query(sqlEliminarProducto, [id_producto], (error) => {
-                if (error) {
-                    return res.status(500).send(error);
-                }
-                res.redirect('/productos_admin');
-            });
+            res.redirect('/productos_admin');
         });
     });
 };
-
 
 // Añadir producto
 const agregarProducto = (req, res) => {
     const { nombre, categoria, proveedor, precio, descripcion, imagen } = req.body;
 
     const sqlProducto = `INSERT INTO producto (Nombre_producto, ID_Categoria, ID_Proveedor, 
-                                               Descripcion_Producto, imagen_producto) 
-                         VALUES (?, ?, ?, ?, ?)`;
+                                               Descripcion_Producto, imagen_producto, Costo) 
+                         VALUES (?, ?, ?, ?, ?, ?)`;
 
-    db.query(sqlProducto, [nombre, categoria, proveedor, descripcion, imagen], (error, result) => {
+    db.query(sqlProducto, [nombre, categoria, proveedor, descripcion, imagen, precio], (error) => {
         if (error) {
             return res.status(500).send(error);
         }
-        
-        const id_producto = result.insertId;  // Obtiene el ID del producto recién creado
-
-        const sqlPrecio = `INSERT INTO precios (ID_Productos, coste) 
-                           VALUES (?, ?)`;
-
-        db.query(sqlPrecio, [id_producto, precio], (error) => {
-            if (error) {
-                return res.status(500).send(error);
-            }
-            res.redirect('/productos');
-        });
+        res.redirect('/productos');
     });
 };
-
 
 module.exports = {
     buscarProductos,
