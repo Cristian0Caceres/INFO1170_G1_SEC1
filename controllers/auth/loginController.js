@@ -1,4 +1,5 @@
 const db = require('../../config/db'); // Importar la conexión a la base de datos
+const bcrypt = require('bcrypt'); // Importar bcrypt
 
 // Controlador para manejar el login
 const login = (req, res) => {
@@ -22,12 +23,22 @@ const login = (req, res) => {
 
         const usuario = results[0];
 
-        if (password === usuario.Contrasena_Usuario) {
-            req.session.usuario = usuario;
-            return res.redirect(usuario.correo_Usuario === 'caciquedelahorro@gmail.com' ? '/html/admin_home.html' : '/index.html');
-        } else {
-            return res.redirect('/html/login.html?error=credenciales_invalidas');
-        }
+        // Comparar la contraseña ingresada con la almacenada usando bcrypt
+        bcrypt.compare(password, usuario.Contrasena_Usuario, (err, isMatch) => {
+            if (err) {
+                console.error('Error en la comparación de contraseñas: ' + err.stack);
+                return res.status(500).send('Error en el servidor');
+            }
+
+            if (isMatch) {
+                // Si las contraseñas coinciden, iniciar sesión y redirigir
+                req.session.usuario = usuario;
+                return res.redirect(usuario.correo_Usuario === 'caciquedelahorro@gmail.com' ? '/html/admin_home.html' : '/index.html');
+            } else {
+                // Si las contraseñas no coinciden, redirigir con un error
+                return res.redirect('/html/login.html?error=credenciales_invalidas');
+            }
+        });
     });
 };
 

@@ -1,4 +1,5 @@
 const db = require('../../config/db'); // Importar la conexión a la base de datos
+const bcrypt = require('bcrypt');
 
 const registerUser = (req, res) => {
     const { nombre, correo, contrasena, confirmacion_contrasena } = req.body;
@@ -20,16 +21,25 @@ const registerUser = (req, res) => {
             return res.redirect('/html/register.html?error=correo_existente');
         }
 
-        // Si no existe el correo, insertar el nuevo usuario
-        const insertUserQuery = 'INSERT INTO Usuario (Nombre_Usuario, correo_Usuario, Contrasena_Usuario) VALUES (?, ?, ?)';
-        db.query(insertUserQuery, [nombre, correo, contrasena], (err, result) => {
+        // Si el correo no existe, generar el hash de la contraseña
+        const saltRounds = 7; // valor de hash usado
+        bcrypt.hash(contrasena, saltRounds, (err, hash) => {
             if (err) {
-                console.error('Error en la consulta: ' + err.stack);
+                console.error('Error al hashear la contraseña: ' + err.stack);
                 return res.redirect('/html/register.html?error=no_exitoso');
             }
 
-            // Registro exitoso
-            return res.redirect('/html/login.html?registro=exitoso');
+            // Insertar el nuevo usuario con la contraseña hasheada
+            const insertUserQuery = 'INSERT INTO Usuario (Nombre_Usuario, correo_Usuario, Contrasena_Usuario) VALUES (?, ?, ?)';
+            db.query(insertUserQuery, [nombre, correo, hash], (err, result) => {
+                if (err) {
+                    console.error('Error en la consulta: ' + err.stack);
+                    return res.redirect('/html/register.html?error=no_exitoso');
+                }
+
+                // Registro exitoso
+                return res.redirect('/html/login.html?registro=exitoso');
+            });
         });
     });
 };
