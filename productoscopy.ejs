@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/vista_producto.css">
-    <title><%= producto.Nombre_Producto %></title>
+    <link rel="stylesheet" href="/css/productos-categoria.css">
+    <title>Lista de Productos - Categoría <%= idCategoria %></title>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
             let query = document.getElementById("searchInput").value;
             if (query) {
-                alert("Buscando: " + query);
+                alert("Buscando: " + query); // Puedes reemplazar el alert por la lógica de búsqueda
             }
         }
 
+        // Detectar cuando se presiona Enter en el campo de búsqueda
         document.addEventListener("DOMContentLoaded", function() {
             let searchInput = document.getElementById("searchInput");
             searchInput.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    realizarBusqueda();
+                if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
+                    realizarBusqueda(); // Llamar a la función de búsqueda
                 }
             });
         });
@@ -43,7 +44,7 @@
                 <a href="/carrito">
                     <img src="/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="/tiendas">
+                <a href="/tienda">
                     <img src="/img/tienda.png" alt="Tienda">
                 </a>
                 <a href="/auth/login">
@@ -51,38 +52,39 @@
                 </a>    
             </div>
         </section>
-    </header> 
+    </header>
 
     <main>
-        <section class="principal">
-            <div class="column producto">
-                <div class="column imagen">
-                    <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_Producto %>" style="width:50%; height:auto;">
-                </div>
-                <div class="column informacion">
-                    <h1><%= producto.Nombre_Producto %></h1>
-                    <p><%= producto.Descripcion_Producto %></p>
-                </div>
-            </div>
+        <!-- Sección flotante para la categoría -->
+        <a class="nombre-categoria" href="/categorias">
+            <h1>Productos de la Categoría: <%= idCategoria %></h1>
+        </a>
 
-            <div class="column segundo-apartado">
-                <div class="precios">
-                    <div class="column titulo">
-                        <h1>Precios</h1>
-                    </div>
-                    <div class="column productos">
-                        <div class="producto-item">
-                            <div class="producto-tienda"><%= producto.Nombre_Tienda %></div>
-                            <div class="producto-precios">
-                                <p>Precio: $<%= producto.Precio %></p>
-                            </div>
-                            <div class="producto-carrito">
-                                <img src="/img/carrito-de-compras.png" alt="Añadir al carrito">
-                            </div>
-                        </div>
-                    </div>
+        <section class="productos">
+            <section class="encabezado">
+                <div class="titulo">
+                    <h2>Lista de Productos</h2>
                 </div>
-            </div>
+            </section>
+
+            <section class="presentacion-producto">
+                <!-- Comprobar si hay productos -->
+                <% if (productos.length > 0) { %>
+                    <% productos.forEach(function(producto) { %>
+                        <section class="producto">
+                            <div class="imagen-producto">
+                                <a href="/productos/detalle/<%= producto.ID_Producto %>"> <!-- Enlace al detalle del producto -->
+                                    <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
+                                    <h3><%= producto.Nombre_producto %></h3>
+                                    <p>Desde: $<%= producto.Precio_Minimo %></p>
+                                </a>
+                            </div>
+                        </section>
+                    <% }); %>
+                <% } else { %>
+                    <p>No se encontraron productos para esta categoría.</p>
+                <% } %>
+            </section>
         </section>
     </main>
 

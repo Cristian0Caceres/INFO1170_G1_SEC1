@@ -56,9 +56,9 @@
 
     <main>
         <!-- Sección flotante para la categoría -->
-        <section class="nombre-categoria">
+        <a class="nombre-categoria" href="/categorias">
             <h1>Productos de la Categoría: <%= idCategoria %></h1>
-        </section>
+        </a>
 
         <section class="productos">
             <section class="encabezado">
@@ -66,24 +66,23 @@
                     <h2>Lista de Productos</h2>
                 </div>
             </section>
-
-            <section class="presentacion-producto">
-                <!-- Comprobar si hay productos -->
+            <section class="contenedor_productos">
                 <% if (productos.length > 0) { %>
                     <% productos.forEach(function(producto) { %>
-                        <section class="producto">
-                            <div class="imagen-producto">
-                                <a href="/productos/detalle/<%= producto.ID_Producto %>"> <!-- Enlace al detalle del producto -->
-                                    <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
-                                    <h3><%= producto.Nombre_producto %></h3>
-                                    <p>Desde: $<%= producto.Precio_Minimo %></p>
-                                </a>
-                            </div>
-                        </section>
+                        <a class="presentacion-producto" href="">
+                           <div class="contenedor_imagen">
+                            <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
+                           </div>
+                           <div class="contenedor_informacion">
+                                <h3><%= producto.Nombre_producto %></h3>
+                                <p>Desde: $<%= producto.Precio_Minimo %></p>
+                           </div>
+                        </a>   
                     <% }); %>
                 <% } else { %>
                     <p>No se encontraron productos para esta categoría.</p>
                 <% } %>
+                              
             </section>
         </section>
     </main>
