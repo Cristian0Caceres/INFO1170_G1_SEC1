@@ -6,15 +6,16 @@
     <link rel="stylesheet" href="../css/carrito_styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
     <title>Carrito de Presupuesto</title>
-
 </head>
 <body>
     <header>
-        
         <!-- Pop-out de confirmación -->
         <div id="productSuggestion" class="popup" style="display: none;">
             <div class="popup-content">
                 <span class="close" onclick="closePopup()">&times;</span>
+                <div class="logo-popup">
+                    <img src="/public/img/logoECDA.png" alt="Logo">
+                </div>
                 <p>¿Quieres agregar este producto de otra tienda donde está más económico?</p>
                 <button id="yesBtn" onclick="showAlternative()">Sí</button>
                 <button id="noBtn" onclick="closePopup()">No</button>
@@ -39,8 +40,9 @@
                 </a>
                 <a href="../html/selec_tienda.php">
                     <img src="../img/tienda.png" alt="Tienda">
+                </a>
                 <a href="../html/login.html">
-                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesión">
                 </a>    
             </div>
         </section>
@@ -49,7 +51,7 @@
     <main>
         <div class="tienda-container"> <!-- Contenedor gigante para Tienda 1 -->
             <div class="nombre-tienda">
-                <img src="../img/jumbo-icon.jpeg" alt="Jumbo" class="icono-tienda">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Logo_Jumbo_Cencosud.png" alt="Jumbo" class="icono-tienda">
                 <h2>Jumbo</h2>
             </div>
             <div class="productos-container">
@@ -59,8 +61,8 @@
                         <span class="tooltip">Asiento Al Vacío: Un corte premium de carne.</span>
                     </div>
                     <p>Asiento Al Vacío</p>
-                    
                     <p class="precio">$13.690</p>
+                    
                     <button class="agregar-btn" onclick="addProductToCart('Asiento Al Vacío')">Agregar al carrito</button>
                 </div>
                 <div class="producto">
@@ -68,10 +70,10 @@
                         <img src="https://jumbo.vtexassets.com/arquivos/ids/619369/Palta-fuerte-malla-1-kg.jpg?v=638089616188170000" alt="Paltas">
                         <span class="tooltip">Palta: Fruta rica en grasas saludables.</span>
                     </div>
-                    <p>1Kl Palta</p>
-                    
+                    <p>1Kg Palta</p>
                     <p class="precio">$6.000</p>
-                    <button class="agregar-btn" onclick="addProductToCart('Kilo ( Palta )', 6000)">Agregar al carrito</button>
+                    <button class="agregar-btn" onclick="addProductToCart('Kilo (Palta)')">Agregar al carrito</button>
+
                 </div>
                 <div class="producto">
                     <div class="image-container">
@@ -96,10 +98,9 @@
             </div>
         </div>
         
-    
         <div class="tienda-container"> <!-- Contenedor gigante para Tienda 2 -->
             <div class="nombre-tienda">
-                <img src="../img/unimarc-icon.png" alt="Unimarc" class="icono-tienda">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Unimarc_logo.svg" alt="Unimarc" class="icono-tienda">
                 <h2>Unimarc</h2>
             </div>
             <div class="productos-container">
@@ -139,9 +140,10 @@
                         <span class="tooltip">Mantequilla: Ideal para cocinar y untar.</span>
                     </div>
                     <p>Mantequilla 250g</p>
-                    <p class="precio normal">$1.950</p>
-                    <p class="precio oferta">$1.700</p>
-                    <button class="agregar-btn" onclick="addToCart('Mantequilla 250g', 1700)">Agregar al carrito</button>
+                    <p class="precio ">$1.950</p>
+                   
+                    <button class="agregar-btn" onclick="addProductToCart('Mantequilla 250g')">Agregar al carrito</button>
+
                 </div>
             </div>
         </div>
@@ -149,8 +151,8 @@
         <h2 class="carrito-titulo">Carrito</h2>
         <ul id="cart-items"></ul>
         <p>Total: $<span id="total">0</span></p>
-    </div> <!-- Fin del contenedor principal -->
-</main>
+    </main> <!-- Fin del contenedor principal -->
+
     <footer>
         <img src="../img/logoECDA.png" alt="Logo">
         <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
