@@ -166,8 +166,16 @@ main {
     display: none; /* Inicialmente oculto */
     font-family: 'bold' /* Aplicar la tipografía */
 }
+
+
+.logo-popup {
+    text-align: center; /* Centra el logo */
 }
 
+.logo-popup img {
+    width: 35%; /* Ajusta el tamaño del logo */
+    height: auto; /* Mantiene la proporción del logo */
+}
 .popup-content {
     padding: 20px; /* Espaciado interno adicional */
     font-family: 'bold' /* Aplicar la tipografía */
@@ -175,10 +183,10 @@ main {
 
 .close {
     color: #000000; /* Color del icono de cerrar */
-    font-size: 20px; /* Tamaño del icono */
+    font-size: 30px; /* Tamaño del icono */
     float: right; /* Coloca el icono en la esquina superior derecha */
     cursor: pointer; /* Cambia el cursor al pasar el mouse */
-    font-family: 'reboto' /* Aplicar la tipografía */
+    font-family: 'bold' /* Aplicar la tipografía */
 }
 
 button {
