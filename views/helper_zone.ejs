@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helper Zone</title>
-    <link rel="stylesheet" href="/css/helper.css">
+    <title>Helper Zone - Consultas de Contacto</title>
+    <link rel="stylesheet" href="../css/helper.css">
 </head>
 <body>
-
     <header>
-        <h1>Helper Zone - Consultas de Usuarios</h1>
+        <h1>Helper Zone</h1>
     </header>
-
+    <nav>
+        <a href="../html/admin_home.html">Inicio</a>
+        <a href="/productos_admin">Productos</a>
+        <a href="/usuarios">Usuarios</a>
+        <a href="/helper-zone">Helper Zone</a>
+        <a href="/contacto">Contacto</a>
+        <a href="../../index.html">Salir</a>
+    </nav>
     <main>
-        <h2>Consultas Recibidas</h2>
-        
-        <% if (consultas.length > 0) { %>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre Usuario</th>
-                        <th>Correo</th>
-                        <th>Asunto</th>
-                        <th>Mensaje</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID Consulta</th>
+                    <th>Nombre Usuario</th>
+                    <th>Correo Usuario</th>
+                    <th>Asunto</th>
+                    <th>Mensaje</th>
+                    <th>Respuesta</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (consultas.length > 0) { %>
                     <% consultas.forEach(consulta => { %>
                         <tr>
                             <td><%= consulta.ID_Consulta %></td>
@@ -34,19 +40,37 @@
                             <td><%= consulta.correo_Usuario %></td>
                             <td><%= consulta.Asunto %></td>
                             <td><%= consulta.Mensaje_Usuario %></td>
+                            <td>
+                                <% if (consulta.Respuesta_Cacique) { %>
+                                    <p><%= consulta.Respuesta_Cacique %></p>
+
+                                <% } else { %>
+                                    <form action="/responder-consulta/<%= consulta.ID_Consulta %>" method="POST">
+                                        <textarea name="respuesta" placeholder="Escribe la respuesta"></textarea>
+                                        <button type="submit">Responder</button>
+                                    </form>                                    
+                                <% } %>
+                            </td>
+                            <td>
+                                <% if (consulta.Respuesta_Cacique) { %>
+                                    <p>Respondida</p>
+                                <% } else { %>
+                                    <p>Pendiente de respuesta</p>
+                                <% } %>
+                            </td>
                         </tr>
                     <% }); %>
-                </tbody>
-            </table>
-        <% } else { %>
-            <p>No se han recibido consultas aún.</p>
-        <% } %>
-
+                <% } else { %>
+                    <tr>
+                        <td colspan="7">No hay consultas registradas.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
     </main>
-
+    
     <footer>
-        <p>&copy; 2024 - Helper Zone</p>
+        <p>&copy; Derechos Reservados</p>
     </footer>
-
 </body>
 </html>

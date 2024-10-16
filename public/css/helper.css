@@ -16,6 +16,10 @@ header {
     border-bottom: 4px solid #1e5e3d; /* Verde más oscuro */
 }
 
+h1 {
+    margin: 0;
+}
+
 /* Navegación */
 nav {
     display: flex;
@@ -33,21 +37,86 @@ nav a {
     padding: 10px 20px;
     border-radius: 8px;
     background-color: #73c495; /* Verde claro */
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
 }
 
 nav a:hover {
     background-color: #2d8659; /* Verde medio */
+    transform: scale(1.05); /* Efecto de hover */
 }
 
 /* Sección principal */
-section {
-    padding: 40px;
+main {
+    padding: 20px;
 }
 
-h2 {
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Fondo blanco para la tabla */
+}
+
+table, th, td {
+    border: 1px solid #1e5e3d; /* Borde verde oscuro */
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2d8659; /* Verde medio para encabezados */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Filas pares en gris claro */
+}
+
+tr:hover {
+    background-color: #d1e7dd; /* Efecto hover para las filas */
+}
+
+/* Botones y formularios */
+textarea {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #1e5e3d;
+    background-color: #f9f9f9;
+    resize: none;
+    font-family: inherit;
+    color: #1e4d2b;
+}
+
+button {
+    background-color: #2d8659; /* Verde medio */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #1e5e3d; /* Verde oscuro */
+}
+
+/* Mensajes */
+p {
+    margin: 0;
+    font-size: 14px;
+}
+
+em {
+    color: #1e5e3d; /* Texto en verde oscuro */
+}
+
+/* Footer */
+footer {
     text-align: center;
-    font-size: 24px;
-    color: #1e4d2b; /* Verde oscuro */
+    padding: 10px;
+    background-color: #2d8659; /* Verde medio */
+    color: white;
+    margin-top: 20px;
 }
-
