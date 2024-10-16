@@ -1,63 +1,35 @@
-import puppeteer from 'puppeteer';
-import fs from 'fs';
+import { exec } from 'child_process';
 
-async function scrapeAndCapture() {
-    try {
-        const browser = await puppeteer.launch({
-            headless: true,
-            slowMo: 5,
-        });
-        const page = await browser.newPage();
+// Definir los archivos a ejecutar
+const scripts = [
+    'Webscraping1',
+    'Webscraping2',
+    'Webscraping3',
+    'Webscraping4',
+    'Webscraping5'  // Reemplaza esto con el nombre de tu segundo script
+];
 
-        // Navigate to the page you want to scrape
-        await page.goto('https://www.santaisabel.cl/lacteos/leches', { waitUntil: 'networkidle2' });
-
-        // Extract the information you need
-        const data = await page.evaluate(() => {
-            let items = [];
-            document.querySelectorAll('.product-card').forEach(item => {
-                let name = item.querySelector('.product-card-name')?.innerText;
-                let price = item.querySelector('.prices-main-price')?.innerText;
-                let link = item.querySelector('a')?.href;
-                if (name && price && link) {
-                    items.push({
-                        name: name,
-                        price: price,
-                        link: link,
-                    });
-                }
-            });
-            return items;
-        });
-
-        console.log(data);
-
-        // Save the data to a text file
-        fs.writeFileSync('data.txt', JSON.stringify(data, null, 2));
-
-        // Capture screenshots at different stages
-        await page.screenshot({ path: 'initial.png' });
-
-        if (await page.$('.login')) {
-            await page.click('.login');
-            await page.waitForNavigation({ waitUntil: 'networkidle2' });
-            await page.screenshot({ path: 'after-login.png' });
-        } else {
-            console.log('Login button not found');
+// Función para ejecutar un archivo de web scraping
+function runWebScraping(script, callback) {
+    exec(`node ${script}`, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error ejecutando el script ${script}: ${error.message}`);
+            return;
         }
-
-        if (await page.$('.jumbo-icon-sisa-logo-vertical')) {
-            await page.click('.jumbo-icon-sisa-logo-vertical');
-            await page.waitForNavigation({ waitUntil: 'networkidle2' });
-            await page.screenshot({ path: 'after-click.png' });
-        } else {
-            console.log('Sisa logo not found');
+        if (stderr) {
+            console.error(`Error en el script ${script}: ${stderr}`);
+            return;
         }
-
-        await browser.close();
-    } catch (error) {
-        console.error('Error:', error);
-    }
+        console.log(`Salida del script ${script}:\n${stdout}`);
+        if (callback) callback();
+    });
 }
 
-scrapeAndCapture();
+// Ejecutar los scripts secuencialmente
+function runScriptsSequentially(scripts) {
+    if (scripts.length === 0) return;
+    const [firstScript, ...restScripts] = scripts;
+    runWebScraping(firstScript, () => runScriptsSequentially(restScripts));
+}
+
+runScriptsSequentially(scripts);
