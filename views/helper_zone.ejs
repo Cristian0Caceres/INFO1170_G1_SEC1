@@ -19,6 +19,7 @@
         <a href="../../index.html">Salir</a>
     </nav>
     <main>
+        <input type="text" id="searchInput" placeholder="Buscar por ID o Nombre de Usuario">
         <table border="1">
             <thead>
                 <tr>
@@ -31,7 +32,7 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="consultaTable">
                 <% if (consultas.length > 0) { %>
                     <% consultas.forEach(consulta => { %>
                         <tr>
@@ -43,7 +44,6 @@
                             <td>
                                 <% if (consulta.Respuesta_Cacique) { %>
                                     <p><%= consulta.Respuesta_Cacique %></p>
-
                                 <% } else { %>
                                     <form action="/responder-consulta/<%= consulta.ID_Consulta %>" method="POST">
                                         <textarea name="respuesta" placeholder="Escribe la respuesta"></textarea>
@@ -72,5 +72,6 @@
     <footer>
         <p>&copy; Derechos Reservados</p>
     </footer>
+<script src="../js/helperz.js"></script>
 </body>
 </html>

@@ -10,3 +10,4 @@ router.post('/responder-consulta/:idConsulta', helperController.responderConsult
 
 
 module.exports = router;
+
