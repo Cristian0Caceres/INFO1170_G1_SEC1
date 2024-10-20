@@ -29,7 +29,7 @@ exports.enviarFormularioContacto = (req, res) => {
             from: 'caciquedelahorro@gmail.com',
             to: email,
             subject: 'Confirmación de Consulta - Casique del Ahorro',
-            text: `Hola ${name},\n\nSu consulta fue enviada con éxito. Nos pondremos en contacto pronto.\n\nMensaje enviado: ${message}`
+            text: `Hola ${name},\n\nSu consulta fue enviada con éxito, nos pondremos en contacto pronto.\n\nMensaje enviado: ${message}`
         };
 
         let mailOptionsAdmin = {
