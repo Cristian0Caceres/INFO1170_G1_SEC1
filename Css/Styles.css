@@ -137,7 +137,7 @@ h2 {
     border: 3px solid #C5705D;
     font-weight: bold; /* Pone el texto en negrita */
 }
-}
+
 
 .grid-item:hover {
     background-color: #ffffff;
@@ -173,47 +173,54 @@ h2 {
 }
 
 .popular-categories {
-    margin-top: 60px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    overflow: hidden;
+    position: relative;
+    max-width: 90%; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor */
 }
 
 .category-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    display: flex;
+    gap: 20px; /* Espacio entre las categorías */
+    transition: transform 0.5s ease; /* Transición suave */
 }
 
 .category-item {
-    background-color: #DFD3C3;
-    padding: 20px;
+    flex: 1; /* Permite que los elementos crezcan y se encojan */
+    min-width: 150px; /* Ancho mínimo para evitar que se encojan demasiado */
+    max-width: 200px; /* Ancho máximo para evitar que se estiren demasiado */
     text-align: center;
-    border-radius: 10px;
-    transition: transform 0.3s;
-    border: 3px solid #C5705D;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #DFD3C3; /* Color de fondo */
+    padding: 15px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+    border: 3px solid #C5705D; /* Borde */
+    transition: transform 0.3s; /* Efecto de elevación suave */
 }
 
 .category-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Efecto hover */
 }
 
-.category-item .category-image {
-    width: 100%;
-    padding-top: 100%;
+.category-image {
+    width: 100%; /* Asegura que el contenedor de la imagen ocupe todo el ancho */
+    height: 150px; /* Establece una altura fija para asegurar un aspecto consistente */
     position: relative;
-    border-radius: 10px;
-    overflow: hidden;
-    border: 3px solid #C5705D;
+    overflow: hidden; /* Oculta el desbordamiento */
+    border-radius: 10px; /* Bordes redondeados */
 }
 
 .category-item img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    position: absolute; /* Permite posicionar la imagen dentro del contenedor */
+    top: 50%; /* Centra verticalmente la imagen */
+    left: 50%; /* Centra horizontalmente la imagen */
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
+    transform: translate(-50%, -50%); /* Centra la imagen */
 }
-
 .category-item h3 {
     margin-top: 20px;
     font-size: 24px;
