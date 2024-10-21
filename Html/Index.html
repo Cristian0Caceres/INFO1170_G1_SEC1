@@ -7,34 +7,9 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="images/ico.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
-    <script>
-        // Función para cargar los productos desde la base de datos
-        async function cargarProductos() {
-            try {
-                const response = await fetch('/productos');  // Obtén los productos de la ruta del servidor
-                const productos = await response.json();  // Convierte la respuesta en JSON
-                const productosContainer = document.getElementById('productosContainer');
-                
-                // Recorre cada producto y agrégalo al contenedor
-                productos.forEach(producto => {
-                    const productItem = document.createElement('div');
-                    productItem.classList.add('product-item');
-                    productItem.innerHTML = `
-                        <h3>${producto.nombre_producto}</h3>
-                        <p>Precio: ${producto.precio}</p>
-                        <p>Proveedor: ${producto.proveedor}</p>
-                    `;
-                    productosContainer.appendChild(productItem);
-                });
-            } catch (error) {
-                console.error('Error al cargar productos:', error);
-            }
-        }
 
-        // Cargar los productos cuando la página esté lista
-        document.addEventListener('DOMContentLoaded', cargarProductos);
-    </script>
 </head>
+
 <body>
     <header>
         <section class="barra-superior">
@@ -67,72 +42,8 @@
         <div class="ofertas-container">
             <section class="mejores-ofertas">
                 <h2>Mejores Ofertas</h2>
-                <div class="grid-container">
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="img/Asiento.jpg" alt="Oferta 1">
-                            <div class="precio-oferta">$12.000</div>
-                        </div>
-                        <p>Oferta Supermercado Jumbo</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="img/Paltas.jpg" alt="Oferta 2">
-                            <div class="precio-oferta">$6.000</div>
-                        </div>
-                        <p>Oferta Supermercado Jumbo</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="img/Leche Colun.jpg" alt="Oferta 3">
-                            <div class="precio-oferta">$1.200</div>
-                        </div>
-                        <p>Oferta Supermercado Unimarc</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="img/Platanos.jpg" alt="Oferta 4">
-                            <div class="precio-oferta">$580</div>
-                        </div>
-                        <p>Oferta Supermercado Unimarc</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
-                    
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcS73Kx6g07Jj6pmDWlRpk36MlmiBcnAIK7xqy4tLJ7FYPEdiPBH3CCk8uA1S5ZSEFJsqN33HqF-4qOCArmyzoIlz_SOol9A3Ea1-V86bU0&usqp=CAE" alt="Oferta 5">
-                            <div class="precio-oferta">$1.500</div>
-                        </div>
-                        <p>Oferta Supermercado Jumbo</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="https://dondelanegra.cl/wp-content/uploads/2020/09/JUGO-WATTS-NARANJA-1.5.jpg" alt="Oferta 6">
-                            <div class="precio-oferta">$800</div>
-                        </div>
-                        <p>Oferta Supermercado Jumbo</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="https://www.cocinista.es/download/bancorecursos/recetas/cocinar-la-carne-de-vacuno.jpg" alt="Oferta 7">
-                            <div class="precio-oferta">$5.000</div>
-                        </div>
-                        <p>Oferta Supermercado Unimarc</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
-                    <div class="grid-item">
-                        <div class="image-container">
-                            <img src="https://www.mercadocarozzi.cl/media/catalog/product/cache/7e6366646a99abfd85e17ed2a9ddf5d1/1/7/17df4cccadd5c349459e1c8d084f15.jpg" alt="Oferta 8">
-                            <div class="precio-oferta">$900</div>
-                        </div>
-                        <p>Oferta Supermercado Unimarc</p>
-                        <a href="html/vista_producto.php" class="category-btn">Ir a la Oferta</a>
-                    </div>
+                <div class="grid-container" id="ofertas-container">
+                    <!-- Las ofertas se agregarán aquí mediante JavaScript -->
                 </div>
             </section>
         </div>
@@ -203,5 +114,30 @@
         <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
         <a href="index.html" class="inicio-btn">Ir a Inicio</a>
     </footer>
+
+    <script src="js/scripts.js"></script> <!-- Enlace al archivo JS -->
+    <script>
+      fetch('/ofertas')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('ofertas-container');
+            container.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+
+            data.forEach(oferta => {
+                const ofertaDiv = document.createElement('div');
+                ofertaDiv.classList.add('grid-item');
+                ofertaDiv.innerHTML = `
+                    <div class="image-container">
+                        <img src="${oferta.imagen_producto}" alt="${oferta.Nombre_producto}">
+                        <div class="precio-oferta">$${oferta.Costo}</div> <!-- Cambia coste por Costo -->
+                    </div>
+                    <p>${oferta.Descripcion_Producto}</p>
+                    <a href="${oferta.link_producto}" class="category-btn">Ir a la Oferta</a>
+                `;
+                container.appendChild(ofertaDiv);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
 </body>
 </html>
