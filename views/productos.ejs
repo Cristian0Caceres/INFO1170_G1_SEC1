@@ -69,15 +69,15 @@
             <section class="contenedor_productos">
                 <% if (productos.length > 0) { %>
                     <% productos.forEach(function(producto) { %>
-                        <a class="presentacion-producto" href="">
-                           <div class="contenedor_imagen">
-                            <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
-                           </div>
-                           <div class="contenedor_informacion">
+                        <a class="presentacion-producto" href="/productos/detalle/<%= producto.ID_Producto %>">
+                            <div class="contenedor_imagen">
+                                <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
+                            </div>
+                            <div class="contenedor_informacion">
                                 <h3><%= producto.Nombre_producto %></h3>
                                 <p>Desde: $<%= producto.Precio_Minimo %></p>
-                           </div>
-                        </a>   
+                            </div>
+                        </a>
                     <% }); %>
                 <% } else { %>
                     <p>No se encontraron productos para esta categoría.</p>

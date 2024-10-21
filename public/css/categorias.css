@@ -188,7 +188,7 @@ main {
 .categorias .nombre-categoria:hover {
     background-color: #B08A72; /* Cambiar el color de fondo cuando el mouse pase por encima */
     color: #ffffff; /* Cambiar el color del texto */
-    transform: scale(1.05); /* Aumentar ligeramente el tamaño */
+    transform: scale(1.005); /* Aumentar ligeramente el tamaño */
     transition: all 0.2s ease; /* Hacer que el cambio sea suave */
 
 }
