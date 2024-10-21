@@ -43,6 +43,16 @@ app.use('/', tiendasRouter);
 const productos_adminRouter = require('./routes/productos_admin');
 app.use('/productos_admin', productos_adminRouter);
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.isLoggedIn) {
+    next();
+  } else {
+    res.redirect('/auth/login');
+  }
+};
+
+app.use(isAuthenticated);
+
 // Configuración del servidor
 app.listen(3000, function(){
     console.log("El servidor está escuchando en http://localhost:3000");

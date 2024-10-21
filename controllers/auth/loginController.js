@@ -32,6 +32,7 @@ const login = (req, res) => {
 
             if (isMatch) {
                 // Si las contraseñas coinciden, iniciar sesión y redirigir
+                req.session.isLoggedIn = true;
                 req.session.usuario = usuario;
                 return res.redirect(usuario.correo_Usuario === 'caciquedelahorro@gmail.com' ? '/html/admin_home.html' : '/index.html');
             } else {

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/tienda_selesc.css">
     <title>Selección de Tiendas</title>
-    <script src="/js/tienda_selec.js"></script>
+    <script src="../public/js/tienda_selec.js"></script>
 </head>
 <body>
     <header>
@@ -29,9 +29,15 @@
                 <a href="/tiendas">
                     <img src="/img/tienda.png" alt="Tienda">
                 </a>
-                <a href="/auth/login">
-                    <img src="/img/iniciar-sesion.png" alt="Iniciar Sesión">
-                </a>    
+                <% if (isLoggedIn) { %>
+                    <a href="/auth/logout">
+                      <img src="../img/cerrar-sesion.png" alt="Cerrar Sesión">
+                    </a>
+                  <% } else { %>
+                    <a href="html/login.html">
+                      <img src="../img/iniciar-sesion.png" alt="Iniciar Sesión">
+                    </a>
+                <% } %> 
             </div>
         </section>
     </header> 

@@ -12,8 +12,14 @@ router.get('/tiendas', (req, res) => {
         }
 
         // Renderizar la página EJS y pasar los proveedores como datos
-        res.render('tiendas', { proveedores: results });
+        res.render('tiendas', { proveedores: results, isLoggedIn: req.session.isLoggedIn });
     });
+});
+
+// Ruta para cerrar sesión
+router.get('/auth/logout', (req, res) => {
+    req.session.isLoggedIn = false;
+    res.redirect('/tiendas');
 });
 
 module.exports = router;
