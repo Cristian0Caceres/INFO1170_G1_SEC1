@@ -157,3 +157,20 @@ footer {
     color: white;
     margin-top: 20px;
 }
+
+/* Adaptabilidad a varias resoluciones */
+@media (max-width: 768px) {
+    nav a {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    #searchInput {
+        width: 100%; /* Ocupa todo el ancho en pantallas más pequeñas */
+    }
+
+    table, th, td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

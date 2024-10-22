@@ -73,6 +73,7 @@ exports.responderConsulta = (req, res) => {
 // Eliminar consulta de la base de datos
 exports.eliminarConsulta = (req, res) => {
     const consultaId = req.params.idConsulta;
+    console.log('ID de la consulta a eliminar:', consultaId);  // Para verificar que el ID llega correctamente
 
     const query = 'DELETE FROM consulta WHERE ID_Consulta = ?';
 
@@ -81,6 +82,6 @@ exports.eliminarConsulta = (req, res) => {
             console.error('Error al eliminar la consulta:', error);
             return res.status(500).send('Error al eliminar la consulta.');
         }
-        res.redirect('/helper-zone'); // Redirige a la lista de consultas después de eliminar
+        res.status(200).send('Consulta eliminada correctamente');
     });
 };

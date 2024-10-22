@@ -43,14 +43,14 @@ app.use('/', tiendasRouter);
 const productos_adminRouter = require('./routes/productos_admin');
 app.use('/productos_admin', productos_adminRouter);
 
-// **Nueva ruta para el formulario de contacto**
-const contactoRouter = require('./routes/consultar');  // Usando el archivo de rutas consultar.js para el contacto
-app.use('/', contactoRouter);  // Registrar la ruta para el contacto
+const contactoRouter = require('./routes/consultar');  
+app.use('/', contactoRouter);  
 
-// Otras rutas que ya tienes configuradas...
 const helperRoutes = require('./routes/helper');
 app.use('/', helperRoutes);
 
+const promocionRouter = require('./routes/promocion');
+app.use('/', promocionRouter);  
 
 // Configuración del servidor
 app.listen(3000, function(){

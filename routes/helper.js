@@ -8,7 +8,7 @@ router.get('/helper-zone', helperController.obtenerConsultas);
 // Ruta para enviar la respuesta de una consulta
 router.post('/responder-consulta/:idConsulta', helperController.responderConsulta);
 
-// Nueva ruta para eliminar una consulta
-router.post('/eliminar-consulta/:idConsulta', helperController.eliminarConsulta);
+// Ruta para eliminar una consulta (usando DELETE)
+router.delete('/eliminar-consulta/:idConsulta', helperController.eliminarConsulta);
 
 module.exports = router;
