@@ -20,7 +20,7 @@ exports.enviarFormularioContacto = (req, res) => {
             service: 'gmail',
             auth: {
                 user: 'caciquedelahorro@gmail.com',
-                pass: 'hkli jqbb xbwx tkal',
+                pass: 'hkli jqbb xbwx tkal', // Cambiar por tus credenciales de Gmail
             }
         });
 
@@ -55,7 +55,7 @@ exports.enviarFormularioContacto = (req, res) => {
             console.log('Correo enviado al administrador:', info.response);
         });
 
-        // Redirigir al usuario después de enviar el formulario
-        res.send('Su consulta fue enviada con éxito.');
+        // Redirigir al usuario después de enviar el formulario a index.html
+        res.redirect('/index.html');  // Redirige al archivo index.html en lugar de mostrar un mensaje
     });
 };
