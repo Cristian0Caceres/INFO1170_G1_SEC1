@@ -4,25 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/vista_producto.css">
-    <title><%= producto.Nombre_Producto %></title>
-    <script>
-        // Función que realiza la búsqueda
-        function realizarBusqueda() {
-            let query = document.getElementById("searchInput").value;
-            if (query) {
-                alert("Buscando: " + query);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
-            let searchInput = document.getElementById("searchInput");
-            searchInput.addEventListener("keydown", function(event) {
-                if (event.key === "Enter") {
-                    realizarBusqueda();
-                }
-            });
-        });
-    </script>
+    <title><%= producto[0].Nombre_producto %></title> <!-- Usamos el primer producto para el título -->
 </head>
 <body>
     <header>
@@ -40,52 +22,51 @@
                 <a href="/categorias">
                     <img src="/img/categorias.png" alt="Categorías">
                 </a>
-                <a href="../../html/Carrito.html">
+                <a href="/carrito">
                     <img src="/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
                 <a href="/tiendas">
                     <img src="/img/tienda.png" alt="Tienda">
                 </a>
-                <% if (session.usuario) { %>
-                    <a href="/auth/logout">
-                        <img src="/img/cerrar-sesion.png" alt="Cerrar Sesión">
-                    </a>
-                  <% } else { %>
-                    <a href="/html/login.html">
-                        <img src="/img/iniciar-sesion.png" alt="Iniciar Sesión">
-                    </a>
-                  <% } %>  
+                <a href="/auth/login">
+                    <img src="/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                </a>    
             </div>
         </section>
     </header> 
 
     <main>
         <section class="principal">
+            <!-- Información del producto -->
             <div class="column producto">
                 <div class="column imagen">
-                    <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_Producto %>" style="width:50%; height:auto;">
+                    <img src="<%= producto[0].imagen_producto %>" alt="<%= producto[0].Nombre_producto %>" style="width:50%; height:auto;">
                 </div>
                 <div class="column informacion">
-                    <h1><%= producto.Nombre_Producto %></h1>
-                    <p><%= producto.Descripcion_Producto %></p>
+                    <h1><%= producto[0].Nombre_producto %></h1>
+                    <p><%= producto[0].Descripcion_Producto %></p>
                 </div>
             </div>
 
+            <!-- Precios de los proveedores -->
             <div class="column segundo-apartado">
                 <div class="precios">
                     <div class="column titulo">
                         <h1>Precios</h1>
                     </div>
                     <div class="column productos">
-                        <div class="producto-item">
-                            <div class="producto-tienda"><%= producto.Nombre_Tienda %></div>
+                        <!-- Recorremos cada proveedor y mostramos su precio -->
+                        <% producto.forEach(function(detalle) { %>
+                        <a class="producto-item" href="">
+                            <div class="producto-tienda"><%= detalle.Nombre_Proveedor %></div>
                             <div class="producto-precios">
-                                <p>Precio: $<%= producto.Precio %></p>
+                                <p>Precio: $<%= detalle.Precio %></p>
                             </div>
                             <div class="producto-carrito">
                                 <img src="/img/carrito-de-compras.png" alt="Añadir al carrito">
                             </div>
-                        </div>
+                        </a>
+                        <% }); %>
                     </div>
                 </div>
             </div>

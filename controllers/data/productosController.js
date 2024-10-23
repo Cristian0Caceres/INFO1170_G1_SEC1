@@ -19,7 +19,7 @@ const mostrarProductosPorCategoria = (req, res) => {
         }
 
         // Renderizar la vista con los productos y el ID de la categoría
-        res.render('productos', { productos, idCategoria, session: req.session });
+        res.render('productos', { productos, idCategoria });
     });
 };
 
@@ -43,7 +43,7 @@ const mostrarDetalleProducto = (req, res) => {
 
         if (resultados.length > 0) {
             const producto = resultados[0]; // Obtener el primer resultado
-            res.render('vista_producto', { producto, session: req.session }); // Renderizar la vista con los detalles del producto
+            res.render('vista_producto', { producto }); // Renderizar la vista con los detalles del producto
         } else {
             res.status(404).send('Producto no encontrado.');
         }

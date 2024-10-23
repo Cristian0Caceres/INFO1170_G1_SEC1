@@ -146,6 +146,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-left: 20px;
 }
 
 .categorias .img-categoria{
@@ -159,6 +160,13 @@ main {
     align-items: center;
 
 }
+.categorias .img-categoria:hover {
+    background-color: #A35248; /* Cambiar el color de fondo cuando el mouse pase por encima */
+    transform: scale(1.01); /* Aumentar ligeramente el tamaño */
+    transition: all 0.2s ease; /* Hacer que el cambio sea suave */
+}
+
+
 .img-categoria div img{
     width: 50%;
 }
@@ -174,10 +182,19 @@ main {
     font-size: 1.5rem;
     border-radius: 50px 0 0 50PX;
     font-family: lemon;
+
 }
 
+.categorias .nombre-categoria:hover {
+    background-color: #B08A72; /* Cambiar el color de fondo cuando el mouse pase por encima */
+    color: #ffffff; /* Cambiar el color del texto */
+    transform: scale(1.05); /* Aumentar ligeramente el tamaño */
+    transition: all 0.2s ease; /* Hacer que el cambio sea suave */
+
+}
 .nombre-categoria h2{
     color: #000000;
+    font-size: 100%;   
     text-decoration: none;
     font-family: Lemon;
 }
