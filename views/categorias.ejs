@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/categorias.css">
+    <title>Vista Producto</title>
+    <script>
+        function realizarBusqueda() {
+            let query = document.getElementById("searchInput").value;
+            if (query) {
+                alert("Buscando: " + query);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") {
+                    realizarBusqueda();
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="../img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="../img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <a href="/categorias">
+                    <img src="../img/categorias.png" alt="Categorias">
+                </a>
+                <a href="../html/Carrito.html">
+                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="/tiendas">
+                    <img src="../img/tienda.png" alt="Tienda">
+                </a>
+                <% if (session.usuario) { %>
+                    <a href="/auth/logout">
+                        <img src="../img/cerrar-sesion.png" alt="Cerrar Sesión">
+                    </a>
+                  <% } else { %>
+                    <a href="html/login.html">
+                        <img src="../img/iniciar-sesion.png" alt="Iniciar Sesión">
+                    </a>
+                  <% } %>
+            </div>
+        </section>
+    </header>   
+
+    <main>
+        <section class="principal">
+            <section class="titulo">
+                <div class="nombre-titulo">
+                    <h1>Categorías</h1>
+                </div>
+            </section>
+            <section class="segundo-apartado">
+                <% if (categorias.length > 0) { %>
+                    <% categorias.forEach(categoria => { %>
+                        <section class='categorias'>
+                            <a class='img-categoria' href='/productos/<%= categoria.ID_Categoria %>'>
+                                <div>
+                                    <img src='' alt='Imagen de <%= categoria.Descripcion_Categoria %>'>
+                                </div>
+                            </a>
+                            <a class='nombre-categoria' href='/productos/<%= categoria.ID_Categoria %>'>
+                                <div>
+                                    <h2><%= categoria.Nombre_Categoria %></h2>
+                                </div>
+                            </a>
+                        </section>
+                    <% }) %>
+                <% } else { %>
+                    <p>No se encontraron categorías.</p>
+                <% } %>
+            </section>                   
+        </section>
+    </main>
+
+    <footer>
+        <img src="/img/logoECDA.png" alt="Logo de la empresa">
+        <p>&copy; Derechos Reservados</p>
+        <nav>
+            <a href="/">Ir al Inicio</a>
+        </nav>
+    </footer>
+</body>
+</html>

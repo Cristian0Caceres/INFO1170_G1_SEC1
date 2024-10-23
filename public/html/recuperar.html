@@ -39,20 +39,20 @@
                 </button>
             </div>
             <div class="icons">
-                <a href="../html/categorias.php">
+                <a href="/categorias">
                     <img src="../img/categorias.png" alt="Categorias">
                 </a>
                 <a href="../html/Carrito.html">
                     <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="../html/selec_tienda.php">
+                <a href="/tiendas">
                     <img src="../img/tienda.png" alt="Tienda">
                 <a href="../html/login.html">
                     <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
-    </header>
+    </header>   
 
     <main>
         <div class="recuperar">
@@ -62,7 +62,7 @@
             <div class="datos">
                 <h3>¿Olvidaste tu Contraseña?</h3>
                 <p>por favor ingresa tu correo asociado a tu cuenta</p>
-                <form action="../php/correo.php" method="POST">
+                <form action="/auth/recuperar" method="POST">
                     <input type="email" id="email" placeholder="Email" name="correo" required>
                     <button type="submit">Recuperar Contraseña</button>
                 </form>
