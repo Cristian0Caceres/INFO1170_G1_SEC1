@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Promoción</title>
+    <link rel="stylesheet" href="../css/helper.css">
+</head>
+<body>
+    <header>
+        <h1>Enviar Promoción</h1>
+    </header>
+    <nav>
+        <a href="../html/admin_home.html">Inicio</a>
+        <a href="/productos_admin">Productos</a>
+        <a href="/usuarios">Usuarios</a>
+        <a href="/helper-zone">Helper Zone</a>
+        <a href="/enviar-promocion">Promocion</a>
+        <a href="../../index.html">Salir</a>
+    </nav>
+    <main>
+        <button id="enviarPromocionBtn">Enviar Promoción</button>
+    </main>
+
+    <footer>
+        <p>&copy; Derechos Reservados</p>
+    </footer>
+
+    <script>
+        document.getElementById('enviarPromocionBtn').addEventListener('click', function () {
+            fetch('/enviar-promocion', {
+                method: 'POST'
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Promoción enviada correctamente a todos los usuarios.');
+                } else {
+                    alert('Error al enviar la promoción.');
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud:', error);
+                alert('Error al enviar la promoción.');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -43,6 +43,15 @@ app.use('/', tiendasRouter);
 const productos_adminRouter = require('./routes/productos_admin');
 app.use('/productos_admin', productos_adminRouter);
 
+const contactoRouter = require('./routes/consultar');  
+app.use('/', contactoRouter);  
+
+const helperRoutes = require('./routes/helper');
+app.use('/', helperRoutes);
+
+const promocionRouter = require('./routes/promocion');
+app.use('/', promocionRouter);  
+
 const isAuthenticated = (req, res, next) => {
   if (req.session.isLoggedIn) {
     next();

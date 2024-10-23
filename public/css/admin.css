@@ -1,10 +1,11 @@
 /* Estilos generales */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f0e5d8;
     margin: 0;
     padding: 0;
     color: #3f2a21;
+    line-height: 1.6;
 }
 
 /* Encabezado */
@@ -14,6 +15,7 @@ header {
     padding: 20px;
     text-align: center;
     border-bottom: 4px solid #b47461;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Navegación */
@@ -23,6 +25,7 @@ nav {
     background-color: #b47461;
     padding: 15px;
     border-bottom: 2px solid #d58b72;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 nav a {
@@ -31,54 +34,82 @@ nav a {
     font-weight: bold;
     margin: 0 15px;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 12px;
     background-color: #e8c0ab;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 nav a:hover {
     background-color: #d58b72;
+    transform: scale(1.05);
 }
 
 /* Sección principal */
 section {
-    padding: 40px;
+    padding: 50px 20px;
 }
 
 h2 {
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
     color: #3f2a21;
+    margin-bottom: 20px;
 }
 
 p {
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto 30px auto; /* Asegura que mantenga espacio por debajo */
+}
+
+/* Contenedor de divs */
+.section-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Añadir espacio entre los div */
+    justify-content: space-around; /* Alinear los divs */
+}
+
+.section-container div {
+    flex: 1 1 calc(30% - 40px); /* Mantener el tamaño adecuado para los div */
+    min-width: 280px; /* Asegura que no se reduzcan demasiado */
+    background-color: #f5d6c6;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section-container div:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Tarjetas de administración */
 .admin-section {
     display: flex;
     justify-content: space-around;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 .admin-card {
     background-color: #f5d6c6;
-    border-radius: 15px;
+    border-radius: 20px;
     padding: 30px;
     text-align: center;
     width: 30%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .admin-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .admin-card h3 {
-    font-size: 22px;
+    font-size: 24px;
     color: #3f2a21;
     margin-bottom: 20px;
 }
@@ -92,13 +123,13 @@ p {
 /* Estilos para el botón en las tarjetas */
 .admin-card a {
     display: inline-block;
-    padding: 12px 25px;
+    padding: 14px 30px;
     background-color: #d58b72;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 .admin-card a:hover {
@@ -109,30 +140,31 @@ p {
 .button {
     display: inline-block;
     margin: 20px auto;
-    padding: 12px 25px;
+    padding: 14px 30px;
     background-color: #d58b72;
     color: white;
     text-decoration: none;
-    border: 2px solid #d58b72; /* Borde del botón */
-    border-radius: 8px;
+    border: 2px solid #d58b72;
+    border-radius: 10px;
     font-weight: bold;
-    transition: background-color 0.3s, border-color 0.3s; /* Agregar transición para el borde */
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
 }
 
 .button:hover {
     background-color: #b47461;
-    border-color: #b47461; /* Cambia el color del borde al hacer hover */
+    border-color: #b47461;
+    transform: scale(1.05);
 }
 
 /* Estilos para la tabla de productos y usuarios */
 .user-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .user-table th, .user-table td {
-    padding: 12px 15px;
+    padding: 15px;
     border: 1px solid #ddd;
     text-align: center;
 }
@@ -154,6 +186,7 @@ p {
     color: #d58b72;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 .user-table a:hover {
@@ -168,14 +201,14 @@ p {
 }
 
 .search-input {
-    padding: 10px 20px;
+    padding: 12px 25px;
     width: 300px;
     border: 2px solid #d58b72;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 16px;
     background-color: #f5d6c6;
     color: #3f2a21;
-    transition: border-color 0.3s, background-color 0.3s;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .search-input:focus {
@@ -185,51 +218,33 @@ p {
 }
 
 .search-button {
-    padding: 10px 20px;
+    padding: 12px 25px;
     background-color: #d58b72;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
     margin-left: 10px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .search-button:hover {
     background-color: #b47461;
-}
-
-/* Alineación de la barra de búsqueda con el botón */
-.search-container form {
-    display: inline-block;
-    margin-top: 10px;
-}
-
-/* Nueva sección: Descripción del producto en la tabla */
-.user-table .description {
-    text-align: left;
-    padding: 12px;
-    font-size: 14px;
-    color: #5a3e35;
-}
-
-/* Nueva sección: Imágenes en la tabla */
-.user-table .product-image {
-    padding: 10px;
-}
-
-.user-table .product-image img {
-    max-width: 100px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
 }
 
 /* Asegurar que las columnas de descripción e imagen se alineen correctamente */
 .user-table td.description {
-    width: 30%; /* Ajusta según el espacio disponible */
+    width: 30%;
 }
 
 .user-table td.product-image {
-    width: 10%; /* Ajusta según el tamaño de las imágenes */
+    width: 10%;
+}
+
+.user-table .product-image img {
+    max-width: 100px;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
 }
