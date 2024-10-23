@@ -57,7 +57,7 @@
                     <div class="column productos">
                         <!-- Recorremos cada proveedor y mostramos su precio -->
                         <% producto.forEach(function(detalle) { %>
-                        <div class="producto-item">
+                        <a class="producto-item" href="">
                             <div class="producto-tienda"><%= detalle.Nombre_Proveedor %></div>
                             <div class="producto-precios">
                                 <p>Precio: $<%= detalle.Precio %></p>
@@ -65,7 +65,7 @@
                             <div class="producto-carrito">
                                 <img src="/img/carrito-de-compras.png" alt="Añadir al carrito">
                             </div>
-                        </div>
+                        </a>
                         <% }); %>
                     </div>
                 </div>

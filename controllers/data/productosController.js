@@ -5,11 +5,12 @@ const mostrarProductosPorCategoria = (req, res) => {
     const idCategoria = req.params.id_categoria; // Obtener el ID de la categoría de los parámetros
 
     const sql = `
-        SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(pr.Costo) AS Precio_Minimo
+        SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(pr.Costo) AS Precio_Minimo, c.Nombre_Categoria
         FROM producto p
         JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
+        JOIN categoria c ON p.ID_Categoria = c.ID_Categoria
         WHERE p.ID_Categoria = ?
-        GROUP BY  p.Nombre_producto, p.imagen_producto
+        GROUP BY  p.Nombre_producto, p.imagen_producto, c.Nombre_Categoria
         ORDER BY Precio_Minimo ASC
     `;
 
@@ -19,10 +20,16 @@ const mostrarProductosPorCategoria = (req, res) => {
             return res.status(500).send('Error al obtener productos.');
         }
 
-        // Renderizar la vista con los productos y el ID de la categoría
-        res.render('productos', { productos, idCategoria });
+        if (productos.length > 0) {
+            // Renderizar la vista con los productos y el nombre de la categoría
+            const nombreCategoria = productos[0].Nombre_Categoria;
+            res.render('productos', { productos, idCategoria, nombreCategoria });
+        } else {
+            res.status(404).send('No se encontraron productos para esta categoría.');
+        }
     });
 };
+
 
 
 // Función para obtener detalles del producto por ID
