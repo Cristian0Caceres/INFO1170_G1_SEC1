@@ -52,6 +52,15 @@ app.use('/', helperRoutes);
 const promocionRouter = require('./routes/promocion');
 app.use('/', promocionRouter);  
 
+const jumboRouter = require('./routes/jumbo'); // Cambia esto a jumbo.js
+app.use('/', jumboRouter); // Asegúrate de que esta línea esté presente
+
+const unimarcRouter = require('./routes/unimarc'); // Rutas para Unimarc
+app.use('/', unimarcRouter);
+
+const ofertasRouter = require('./routes/ofertas');
+app.use('/', ofertasRouter); // Asegúrate de que esta línea esté presente
+
 const isAuthenticated = (req, res, next) => {
   if (req.session.isLoggedIn) {
     next();

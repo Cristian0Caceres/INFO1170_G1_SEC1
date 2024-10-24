@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/productos-categoria.css">
-    <title>Lista de Productos - Categoría <%= idCategoria %></title>
+    <title>Lista de Productos - Categoría <%= nombreCategoria %></title>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -57,7 +57,7 @@
     <main>
         <!-- Sección flotante para la categoría -->
         <a class="nombre-categoria" href="/categorias">
-            <h1>Productos de la Categoría: <%= idCategoria %></h1>
+            <h1><%= nombreCategoria %></h1>
         </a>
 
         <section class="productos">
@@ -69,15 +69,15 @@
             <section class="contenedor_productos">
                 <% if (productos.length > 0) { %>
                     <% productos.forEach(function(producto) { %>
-                        <a class="presentacion-producto" href="">
-                           <div class="contenedor_imagen">
-                            <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
-                           </div>
-                           <div class="contenedor_informacion">
+                        <a class="presentacion-producto" href="/productos/detalle/<%= producto.ID_Producto %>">
+                            <div class="contenedor_imagen">
+                                <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
+                            </div>
+                            <div class="contenedor_informacion">
                                 <h3><%= producto.Nombre_producto %></h3>
                                 <p>Desde: $<%= producto.Precio_Minimo %></p>
-                           </div>
-                        </a>   
+                            </div>
+                        </a>
                     <% }); %>
                 <% } else { %>
                     <p>No se encontraron productos para esta categoría.</p>

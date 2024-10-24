@@ -9,18 +9,17 @@
 </head>
 <body>
     <header>
-        <!-- Pop-out de confirmación -->
         <div id="productSuggestion" class="popup" style="display: none;">
-            <div class="popup-content">
-                <span class="close" onclick="closePopup()">&times;</span>
-                <div class="logo-popup">
-                    <img src="/public/img/logoECDA.png" alt="Logo">
-                </div>
-                <p>¿Quieres agregar este producto de otra tienda donde está más económico?</p>
-                <button id="yesBtn" onclick="showAlternative()">Sí</button>
-                <button id="noBtn" onclick="closePopup()">No</button>
-            </div>
+    <div class="popup-content">
+        <span class="close" onclick="closePopup()">&times;</span>
+        <div class="logo-popup">
+            <img src="/public/img/logoECDA.png" alt="Logo">
         </div>
+        <p>¿Quieres cambiar a este producto?</p>
+        <button id="yesBtn">Sí</button>
+        <button id="noBtn" onclick="closePopup()">No</button>
+    </div>
+</div>
         <section class="barra-superior">
             <div class="logo">
                 <img src="../img/logoECDA.png" alt="Logo">
@@ -32,13 +31,13 @@
                 </button>
             </div>
             <div class="icons">
-                <a href="/categorias">
+                <a href="../html/categorias.php">
                     <img src="../img/categorias.png" alt="Categorias">
                 </a>
                 <a href="../html/Carrito.html">
                     <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="/tiendas">
+                <a href="../html/selec_tienda.php">
                     <img src="../img/tienda.png" alt="Tienda">
                 </a>
                 <a href="../html/login.html">
@@ -49,116 +48,225 @@
     </header>   
 
     <main>
-        <div class="tienda-container"> <!-- Contenedor gigante para Tienda 1 -->
+        <div class="tienda-container">
             <div class="nombre-tienda">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Logo_Jumbo_Cencosud.png" alt="Jumbo" class="icono-tienda">
                 <h2>Jumbo</h2>
             </div>
-            <div class="productos-container">
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="../img/Asiento.jpg" alt="Producto 1">
-                        <span class="tooltip">Asiento Al Vacío: Un corte premium de carne.</span>
-                    </div>
-                    <p>Asiento Al Vacío</p>
-                    <p class="precio">$13.690</p>
-                    
-                    <button class="agregar-btn" onclick="addProductToCart('Asiento Al Vacío')">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="https://jumbo.vtexassets.com/arquivos/ids/619369/Palta-fuerte-malla-1-kg.jpg?v=638089616188170000" alt="Paltas">
-                        <span class="tooltip">Palta: Fruta rica en grasas saludables.</span>
-                    </div>
-                    <p>1Kg Palta</p>
-                    <p class="precio">$6.000</p>
-                    <button class="agregar-btn" onclick="addProductToCart('Kilo (Palta)')">Agregar al carrito</button>
-
-                </div>
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="https://jumbo.vtexassets.com/arquivos/ids/643299/Harina-sin-polvo-de-hornear-1-Kg.jpg?v=638163242392470000" alt="Harina">
-                        <span class="tooltip">Harina: Harina sin polvos de hornear.</span>
-                    </div>
-                    <p>Harina 1Kg</p>
-                    <p class="precio normal">$990</p>
-                    <p class="precio oferta">$800</p>
-                    <button class="agregar-btn" onclick="addToCart('Harina 1Kg', 800)">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="https://jumbo.vtexassets.com/arquivos/ids/470635/Azucar-bolsa-15-kg.jpg?v=637800399572970000" alt="Azúcar">
-                        <span class="tooltip">Azúcar: Azúcar granulada.</span>
-                    </div>
-                    <p>Azúcar 1Kg</p>
-                    <p class="precio normal">$1.200</p>
-                    <p class="precio oferta">$1.000</p>
-                    <button class="agregar-btn" onclick="addToCart('Azúcar 1Kg', 1000)">Agregar al carrito</button>
-                </div>
+            <div class="productos-container" id="productos-container-jumbo">
+                <!-- Los productos de Jumbo se cargarán aquí -->
             </div>
         </div>
-        
-        <div class="tienda-container"> <!-- Contenedor gigante para Tienda 2 -->
+
+        <div class="tienda-container">
             <div class="nombre-tienda">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Unimarc_logo.svg" alt="Unimarc" class="icono-tienda">
                 <h2>Unimarc</h2>
             </div>
-            <div class="productos-container">
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="../img/Leche Colun.jpg" alt="Leche Colun">
-                        <span class="tooltip">Leche Colun: Producto lácteo fresco.</span>
-                    </div>
-                    <p>Leche Colun</p>
-                    <p class="precio normal">$1.380</p>
-                    <p class="precio oferta">$1.200</p>
-                    <button class="agregar-btn" onclick="addToCart('Leche Colun', 1200)">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="../img/Platanos.jpg" alt="Plátano granel 500 g">
-                        <span class="tooltip">Plátano granel: Ideal para tu desayuno.</span>
-                    </div>
-                    <p>Plátano granel 500 g</p>
-                    <p class="precio normal">$725</p>
-                    <p class="precio oferta">$580</p>
-                    <button class="agregar-btn" onclick="addToCart('Plátano 500g', 580)">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="https://unimarc.vtexassets.com/arquivos/ids/234663/000000000000613457-UN-01.jpg?v=638249443426300000" alt="Cereal">
-                        <span class="tooltip">Cereal: Rico en fibra y nutritivo.</span>
-                    </div>
-                    <p>Cereal Integral 500g</p>
-                    <p class="precio normal">$2.300</p>
-                    <p class="precio oferta">$2.000</p>
-                    <button class="agregar-btn" onclick="addToCart('Cereal Integral 500g', 2000)">Agregar al carrito</button>
-                </div>
-                <div class="producto">
-                    <div class="image-container">
-                        <img src="https://unimarc.vtexassets.com/arquivos/ids/190777/000000000000052658-UN-01.jpg?v=637142660895130000" alt="Mantequilla">
-                        <span class="tooltip">Mantequilla: Ideal para cocinar y untar.</span>
-                    </div>
-                    <p>Mantequilla 250g</p>
-                    <p class="precio ">$1.950</p>
-                   
-                    <button class="agregar-btn" onclick="addProductToCart('Mantequilla 250g')">Agregar al carrito</button>
-
-                </div>
+            <div class="productos-container" id="productos-container-unimarc">
+                <!-- Los productos de Unimarc se cargarán aquí -->
             </div>
         </div>
 
         <h2 class="carrito-titulo">Carrito</h2>
         <ul id="cart-items"></ul>
         <p>Total: $<span id="total">0</span></p>
-    </main> <!-- Fin del contenedor principal -->
+    </main>
 
     <footer>
         <img src="../img/logoECDA.png" alt="Logo">
         <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
-        <a href="../index.html" class="inicio-btn">Ir a Inicio</a> <!-- Botón de ir a inicio -->
+        <a href="../index.html" class="inicio-btn">Ir a Inicio</a>
     </footer>
 
-    <script src="../js/carrito.js"></script> <!-- Enlace al archivo JS -->
+    <script src="../js/carrito.js"></script> <!-- Asegúrate de que esta ruta es correcta -->
+    <script>
+        const carrito = {}; // Objeto para almacenar productos y sus cantidades
+    
+        // Cambia las URL a las correctas para tu entorno
+        fetch('/jumbo') // Cambia esta URL
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const jumboContainer = document.getElementById('productos-container-jumbo');
+                jumboContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+    
+                data.forEach(oferta => {
+                    const ofertaDiv = document.createElement('div');
+                    ofertaDiv.classList.add('producto');
+                    ofertaDiv.innerHTML = `
+                        <div class="image-container">
+                            <img src="${oferta.imagen_producto}" alt="${oferta.Nombre_producto}">
+                            <div class="precio-oferta" data-precio="${oferta.Costo}">$${oferta.Costo}</div>
+                        </div>
+                        <p>${oferta.Descripcion_Producto}</p>
+                        <a href="${oferta.link_producto}" class="category-btn">Ir a la Oferta</a>
+                        <button class="agregar-carrito">Agregar al Carrito</button>
+                        <button class="buscar-alternativa" data-nombre="${oferta.Nombre_producto}">Buscar Alternativa</button>
+                    `;
+                    jumboContainer.appendChild(ofertaDiv);
+                });
+    
+                // Manejar el evento de agregar al carrito
+                manejarEventosAgregarCarrito(jumboContainer);
+                manejarEventosBuscarAlternativa(jumboContainer);
+            })
+            .catch(error => console.error('Error en la carga de jumbo:', error));
+    
+        fetch('/unimarc') // Cambia esta URL
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const unimarcContainer = document.getElementById('productos-container-unimarc');
+                unimarcContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+    
+                data.forEach(oferta => {
+                    const ofertaDiv = document.createElement('div');
+                    ofertaDiv.classList.add('producto');
+                    ofertaDiv.innerHTML = `
+                        <div class="image-container">
+                            <img src="${oferta.imagen_producto}" alt="${oferta.Nombre_producto}">
+                            <div class="precio-oferta" data-precio="${oferta.Costo}">$${oferta.Costo}</div>
+                        </div>
+                        <p>${oferta.Descripcion_Producto}</p>
+                        <a href="${oferta.link_producto}" class="category-btn">Ir a la Oferta</a>
+                        <button class="agregar-carrito">Agregar al Carrito</button>
+                        <button class="buscar-alternativa" data-nombre="${oferta.Nombre_producto}">Buscar Alternativa</button>
+                    `;
+    
+                    unimarcContainer.appendChild(ofertaDiv);
+                });
+    
+                // Manejar el evento de agregar al carrito
+                manejarEventosAgregarCarrito(unimarcContainer);
+                manejarEventosBuscarAlternativa(unimarcContainer);
+            })
+            .catch(error => console.error('Error en la carga de unimarc:', error));
+    
+        // Función para manejar el evento de agregar al carrito
+        function manejarEventosAgregarCarrito(container) {
+            const botonesAgregar = container.querySelectorAll('.agregar-carrito');
+    
+            botonesAgregar.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    const ofertaDiv = boton.closest('.producto'); // Selecciona el contenedor del producto
+                    const precioDiv = ofertaDiv.querySelector('.precio-oferta'); // Busca el div del precio dentro del contenedor del producto
+    
+                    if (precioDiv) {
+                        const precio = parseFloat(precioDiv.getAttribute('data-precio').trim()); // Asegúrate de que esto sea un número
+                        const nombre = ofertaDiv.querySelector('p').textContent; // Obtener el nombre del producto
+    
+                        if (!isNaN(precio)) { // Verifica que el precio es un número
+                            // Agregar o actualizar el producto en el carrito
+                            if (!carrito[nombre]) {
+                                carrito[nombre] = { precio: precio, cantidad: 1 }; // Agrega el producto con cantidad 1
+                            } else {
+                                carrito[nombre].cantidad++; // Incrementa la cantidad si ya existe
+                            }
+                            alert(`${nombre} agregado al carrito. Cantidad: ${carrito[nombre].cantidad}`);
+                            updateCart(); // Actualizar el carrito al agregar
+                        } else {
+                            alert(`Error: El precio no es válido. Valor recibido: ${precioDiv.getAttribute('data-precio')}`);
+                        }
+                    } else {
+                        console.error('No se encontró el div del precio.');
+                    }
+                });
+            });
+        }
+    
+        // Nueva función para manejar el evento de buscar alternativas
+        function manejarEventosBuscarAlternativa(container) {
+            const botonesBuscar = container.querySelectorAll('.buscar-alternativa');
+    
+            botonesBuscar.forEach(boton => {
+                boton.addEventListener('click', () => {
+                    const nombreProducto = boton.getAttribute('data-nombre'); // Obtener el nombre del producto
+                    console.log('Nombre del producto:', nombreProducto); // Imprime el nombre para verificar
+                    
+    
+                    fetch(`/buscarAlternativa?nombre=${encodeURIComponent(nombreProducto)}`) // URL de búsqueda
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`HTTP error! status: ${response.status}`);
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.alternativa) {
+                                showAlternative(data.alternativa); // Mostrar la alternativa
+                            } else {
+                                alert('No se encontraron alternativas más baratas.');
+                            }
+                        })
+                        .catch(error => console.error('Error al buscar alternativa:', error));
+                });
+            });
+        }
+    
+        // Función para mostrar la oferta alternativa
+        function showAlternative(alternativa) {
+            const suggestionContent = document.getElementById('suggestionContent');
+            suggestionContent.innerHTML = `
+                <h3>Alternativa más barata:</h3>
+                <div class="image-container">
+                    <img src="${alternativa.imagen_producto}" alt="${alternativa.Nombre_producto}">
+                    <div class="precio-oferta" data-precio="${alternativa.Costo}">$${alternativa.Costo}</div>
+                </div>
+                <p>${alternativa.Descripcion_Producto}</p>
+                <a href="${alternativa.link_producto}" class="category-btn">Ir a la Oferta</a>
+            `;
+            document.getElementById('productSuggestion').style.display = 'block'; // Mostrar el popup
+        }
+    
+        // Función para cerrar el popup
+        function closePopup() {
+            document.getElementById('productSuggestion').style.display = 'none';
+        }
+    
+        // Función para actualizar el carrito
+        function updateCart() {
+            const cartItems = document.getElementById('cart-items');
+            const totalDisplay = document.getElementById('total');
+            cartItems.innerHTML = ''; // Limpiar la lista de productos en el carrito
+            let total = 0;
+    
+            Object.keys(carrito).forEach(productName => {
+                const item = carrito[productName];
+                total += item.precio * item.cantidad; // Calcular el total basado en la cantidad
+                const li = document.createElement('li');
+                li.textContent = `${productName}: $${item.precio} (Cantidad: ${item.cantidad})`;
+    
+                // Botón para eliminar el producto del carrito
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Eliminar';
+                removeButton.addEventListener('click', () => {
+                    delete carrito[productName]; // Elimina el producto del carrito
+                    updateCart(); // Actualiza el carrito después de eliminar
+                });
+                li.appendChild(removeButton);
+                cartItems.appendChild(li);
+            });
+    
+            totalDisplay.textContent = total.toFixed(2); // Mostrar total con dos decimales
+        }
+    
+        // Función de búsqueda (simulada)
+        function realizarBusqueda() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            // Aquí puedes implementar la lógica de búsqueda si es necesario
+            alert(`Buscando: ${query}`);
+        }
+    </script>
+    
+    
 </body>
 </html>

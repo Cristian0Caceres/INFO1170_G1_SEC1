@@ -124,19 +124,26 @@ main {
     font-family: lemon;
 }
 
-.boton-enviar button{
+.boton-enviar button {
     display: flex;
-    background-color: #C5705D;
-    color: white;
+    background-color: #C5705D; /* Un tono morado más suave */
+    color: #FFFFFF;
     font-size: 1rem;
     font-family: lemon;
     cursor: pointer;
     border-radius: 10px;
-    border: 2px solid black;
+    border: 2px solid #C5705D; /* A juego con el fondo */
     flex-direction: column-reverse;
     justify-content: center;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.7rem 1.5rem; /* Ajusta el padding para más espacio */
+    transition: background-color 0.3s, transform 0.2s; /* Efecto de transición */
+}
+
+.boton-enviar button:hover {
+    background-color: #C5705D; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    border-color: #C5705D; /* A juego con el fondo al hacer hover */
 }
 
 .boton-enviar img{
@@ -192,21 +199,28 @@ main {
     align-items: center;
 }
 
-.tiendas .tienda{
+.tiendas .tienda {
     background-color: #C5705D;
     display: flex;
     width: 10rem;
     height: 5rem;
     margin: 1%;
     border-radius: 10px;
-    border-color: black;
-    border: 2px solid black;
+    border: 2px solid #C5705D;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     font-family: lemon;
     color: white;
+    transition: background-color 0.3s, transform 0.2s; /* Efecto de transición */
 }
+
+.tiendas .tienda:hover {
+    background-color: #A44A3F; /* Color más oscuro al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    border-color: #A44A3F; /* A juego con el fondo al hacer hover */
+}
+
 
 /* Oculta la checkbox original */
 .tiendas .tienda input[type="checkbox"] {

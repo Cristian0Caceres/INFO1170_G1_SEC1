@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../conex'); // Asegúrate de que la ruta a tu conexión sea correcta
+const connection = require('../config/db'); // Asegúrate de que la ruta a tu conexión sea correcta
 
 router.get('/ofertas', (req, res) => {
     const query = `
