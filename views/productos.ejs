@@ -7,13 +7,14 @@
     <title>Lista de Productos - Categoría <%= nombreCategoria %></title>
     <script>
         // Función que realiza la búsqueda
-        function realizarBusqueda() {
-            let query = document.getElementById("searchInput").value;
-            if (query) {
-                alert("Buscando: " + query); // Puedes reemplazar el alert por la lógica de búsqueda
-            }
-        }
-
+     function realizarBusqueda() {
+        let query = document.getElementById("searchInput").value;
+        if (query) {
+        // Redirige a la ruta de búsqueda con el término ingresado
+            window.location.href = `/productos/buscar?q=${encodeURIComponent(query)}`;
+    }
+}
+    
         // Detectar cuando se presiona Enter en el campo de búsqueda
         document.addEventListener("DOMContentLoaded", function() {
             let searchInput = document.getElementById("searchInput");
@@ -23,7 +24,7 @@
                 }
             });
         });
-    </script>
+    </script>    
 </head>
 <body>
     <header>
@@ -79,7 +80,7 @@
                             </div>
                         </a>
                     <% }); %>
-                <% } else { %>
+                <% } else { %>  
                     <p>No se encontraron productos para esta categoría.</p>
                 <% } %>
                               

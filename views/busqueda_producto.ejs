@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/busqueda_producto.css">
+    <title>Resultados de Búsqueda para "<%= termino %>"</title>
+</head>
+<body>
+    <header>
+        <!-- Aquí puedes incluir tu barra de navegación o header común -->
+    </header>
+
+    <main>
+        <h1>Resultados de búsqueda para "<%= termino %>"</h1>
+
+        <% if (productos.length > 0) { %>
+            <section class="resultados">
+                <% productos.forEach(function(producto) { %>
+                    <div class="producto-item">
+                        <a href="/productos/detalle/<%= producto.ID_Producto %>">
+                            <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
+                            <h2><%= producto.Nombre_producto %></h2>
+                            <p>Desde: $<%= producto.Precio_Minimo %></p>
+                        </a>
+                    </div>
+                <% }); %>
+            </section>
+        <% } else { %>
+            <p>No se encontraron productos que coincidan con "<%= termino %>".</p>
+        <% } %>
+    </main>
+
+    <footer>
+        <!-- Aquí puedes incluir el footer común de tu sitio -->
+    </footer>
+</body>
+</html>

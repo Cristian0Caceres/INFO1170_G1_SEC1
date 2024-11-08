@@ -61,4 +61,26 @@ const mostrarDetalleProducto = (req, res) => {
 
 
 
-module.exports = { mostrarProductosPorCategoria, mostrarDetalleProducto };
+const buscarProductoPorNombre = (req, res) => {
+    const termino = req.query.q; // Obtenemos el término de búsqueda desde la URL
+
+    const sql = `
+        SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(p.Costo) AS Precio_Minimo
+        FROM producto p
+        JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
+        WHERE p.Nombre_producto LIKE ?
+        GROUP BY  p.Nombre_producto, p.imagen_producto
+    `;
+
+    connection.query(sql, [`%${termino}%`], (error, productos) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).send('Error al realizar la búsqueda de productos.');
+        }
+
+        // Renderizar la vista de resultados de búsqueda con los productos encontrados
+        res.render('busqueda_producto', { productos, termino });
+    });
+};
+
+module.exports = { mostrarProductosPorCategoria, mostrarDetalleProducto, buscarProductoPorNombre };
