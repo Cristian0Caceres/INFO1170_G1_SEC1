@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="/css/categorias.css">
     <title>Categorias</title>
     <script>
+        // Función que realiza la búsqueda
         function realizarBusqueda() {
             let query = document.getElementById("searchInput").value;
             if (query) {
-                alert("Buscando: " + query);
+                // Redirige a la ruta de búsqueda con el término ingresado
+                window.location.href = `/productos/buscar?q=${encodeURIComponent(query)}`;
             }
         }
-
+    
+        // Detectar cuando se presiona Enter en el campo de búsqueda
         document.addEventListener("DOMContentLoaded", function() {
             let searchInput = document.getElementById("searchInput");
             searchInput.addEventListener("keydown", function(event) {
@@ -22,6 +25,7 @@
             });
         });
     </script>
+    
 </head>
 <body>
     <header>
