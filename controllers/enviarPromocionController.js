@@ -1,7 +1,9 @@
 const nodemailer = require('nodemailer');
-const db = require('../config/db'); // Asegúrate de que la conexión a la base de datos esté configurada
+const db = require('../config/db'); // Conexión a la base de datos
 
 exports.enviarPromocion = (req, res) => {
+    const { subject, message } = req.body;
+
     const query = 'SELECT correo_Usuario FROM usuario';  // Selecciona todos los correos de los usuarios
 
     db.query(query, (error, resultados) => {
@@ -17,30 +19,27 @@ exports.enviarPromocion = (req, res) => {
             service: 'gmail',
             auth: {
                 user: 'caciquedelahorro@gmail.com',
-                pass: 'hkli jqbb xbwx tkal', // Cambia a tus credenciales reales
+                pass: 'hkli jqbb xbwx tkal', // Credenciales de correo
             }
         });
 
-        // Configura el contenido del correo
+        // Configura el contenido del correo usando los datos personalizados del formulario
         const mailOptions = {
-            from: 'caciquedelahorro@gmail.com',  // Correo del remitente
-            to: emails,                          // Correos de los usuarios
-            subject: '¡Gran Descuento en Productos!',
-            text: 'Oye! te espera un descuento por aqui!',  // Mensaje del correo
+            from: 'caciquedelahorro@gmail.com',   // Remitente
+            to: emails,                           // Correos de los usuarios
+            subject: subject || 'Promoción Especial',
+            text: message || 'Tenemos una promoción especial para ti en El Cacique del Ahorro.',  // Mensaje de texto
             attachments: [
                 {
-                    // Ruta a la imagen Carne.jpg dentro de public/img
-                    filename: 'Carne.jpg',    // Nombre del archivo adjunto
-                    path: './public/img/Carne.jpg', // Ruta a la imagen en tu proyecto
-                    cid: 'carne@imagen'       // Identificador único para la imagen si deseas incrustarla en el HTML
+                    filename: 'Carne.jpg',            // Nombre del archivo adjunto
+                    path: './public/img/Carne.jpg',   // Ruta de la imagen en el proyecto
+                    cid: 'carne@imagen'               // Identificador único para incrustar en HTML
                 }
             ],
             html: `
-                <p>¡Hola!</p>
-                <p>HAY UN GRAN DESCUENTO EN EL PRODUCTO: Carne.</p>
+                <p>${message || '¡Hola! Tenemos una oferta especial para ti en El Cacique del Ahorro.'}</p>
                 <img src="cid:carne@imagen" alt="Descuento en productos" />
-                <p>Que esperas para entrar a el cacique del ahorro y cotizar?.</p>
-            `  // Contenido del correo en HTML con la imagen incrustada
+            `  // Contenido HTML
         };
 
         // Envía el correo

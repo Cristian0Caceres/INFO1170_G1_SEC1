@@ -4,10 +4,10 @@ const enviarPromocionController = require('../controllers/enviarPromocionControl
 
 // Ruta GET para renderizar la vista enviarPromocion.ejs
 router.get('/enviar-promocion', (req, res) => {
-    res.render('enviarPromocion');  // Renderiza la vista enviarPromocion.ejs
+    res.render('enviarPromocion');
 });
 
-// Ruta POST para enviar la promoción
+// Ruta POST para enviar la promoción con datos personalizados
 router.post('/enviar-promocion', enviarPromocionController.enviarPromocion);
 
 module.exports = router;

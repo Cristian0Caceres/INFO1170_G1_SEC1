@@ -15,11 +15,20 @@
         <a href="/productos_admin">Productos</a>
         <a href="/usuarios">Usuarios</a>
         <a href="/helper-zone">Helper Zone</a>
-        <a href="/enviar-promocion">Promocion</a>
+        <a href="/enviar-promocion">Promoción</a>
         <a href="../../index.html">Salir</a>
     </nav>
     <main>
-        <button id="enviarPromocionBtn">Enviar Promoción</button>
+        <!-- Formulario para modificar el contenido de la promoción -->
+        <form id="promocionForm">
+            <label for="subject">Asunto:</label>
+            <input type="text" id="subject" name="subject" value="¡Gran Descuento en Productos!">
+            
+            <label for="message">Mensaje:</label>
+            <textarea id="message" name="message" rows="5">Oye! te espera un descuento por aquí!</textarea>
+            
+            <button type="button" id="enviarPromocionBtn">Enviar Promoción</button>
+        </form>
     </main>
 
     <footer>
@@ -28,8 +37,15 @@
 
     <script>
         document.getElementById('enviarPromocionBtn').addEventListener('click', function () {
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
             fetch('/enviar-promocion', {
-                method: 'POST'
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ subject, message })
             })
             .then(response => {
                 if (response.ok) {

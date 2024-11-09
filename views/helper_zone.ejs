@@ -58,10 +58,6 @@
                                     <p>Pendiente de respuesta</p>
                                 <% } %>
                             </td>
-                            <td>
-                                <!-- Botón para eliminar la consulta -->
-                                <!-- onclick="eliminarConsulta(<%= consulta.ID_Consulta %>)">Eliminar</button-->
-                            </td>
                         </tr>
                     <% }); %>
                 <% } else { %>
@@ -78,26 +74,5 @@
     </footer>
     
     <script src="../js/helperz.js"></script>
-    
-    <!--script>
-        function eliminarConsulta(idConsulta) {
-            console.log('Eliminando consulta con ID:', idConsulta);  // Verifica que el ID se está enviando
-            fetch(`/eliminar-consulta/${idConsulta}`, {
-                method: 'DELETE'
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Consulta eliminada correctamente');
-                    location.reload(); // Recargar la página para mostrar la lista actualizada
-                } else {
-                    alert('Error al eliminar la consulta');
-                }
-            })
-            .catch(error => {
-                console.error('Error en la eliminación:', error);
-                alert('Error al eliminar la consulta');
-            });
-        }
-    </script-->
 </body>
 </html>

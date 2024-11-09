@@ -120,11 +120,6 @@ textarea::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento */
 }
 
-textarea.addEventListener('input', function () {
-    this.style.height = 'auto'; /* Reinicia la altura */
-    this.style.height = (this.scrollHeight) + 'px'; /* Ajusta la altura dinámicamente */
-});
-
 button {
     background-color: #2d8659; /* Verde medio */
     color: white;
@@ -137,40 +132,4 @@ button {
 
 button:hover {
     background-color: #1e5e3d; /* Verde oscuro */
-}
-
-/* Mensajes */
-p {
-    margin: 0;
-    font-size: 14px;
-}
-
-em {
-    color: #1e5e3d; /* Texto en verde oscuro */
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 10px;
-    background-color: #2d8659; /* Verde medio */
-    color: white;
-    margin-top: 20px;
-}
-
-/* Adaptabilidad a varias resoluciones */
-@media (max-width: 768px) {
-    nav a {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-
-    #searchInput {
-        width: 100%; /* Ocupa todo el ancho en pantallas más pequeñas */
-    }
-
-    table, th, td {
-        font-size: 14px;
-        padding: 8px;
-    }
 }

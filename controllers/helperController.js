@@ -73,7 +73,6 @@ exports.responderConsulta = (req, res) => {
 // Eliminar consulta de la base de datos
 exports.eliminarConsulta = (req, res) => {
     const consultaId = req.params.idConsulta;
-    console.log('ID de la consulta a eliminar:', consultaId);  // Para verificar que el ID llega correctamente
 
     const query = 'DELETE FROM consulta WHERE ID_Consulta = ?';
 
