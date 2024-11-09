@@ -50,20 +50,20 @@ main {
     padding: 20px;
 }
 
-/* Input de búsqueda */
-#searchInput {
-    width: 30%;
-    padding: 12px;
-    margin-bottom: 20px;
+/* Selección de categoría, campo de búsqueda, y campos de entrada de texto */
+#categorySelect, #searchInput, #product, #subject {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
     border: 2px solid #2d8659;
     border-radius: 8px;
     font-size: 16px;
-    outline: none;
 }
 
-#searchInput:focus {
+#categorySelect:focus, #searchInput:focus, #product:focus, #subject:focus {
     border-color: #1e5e3d;
     box-shadow: 0 0 5px rgba(30, 94, 61, 0.5);
+    outline: none;
 }
 
 /* Tabla */
@@ -120,16 +120,28 @@ textarea::-webkit-scrollbar {
     display: none; /* Oculta la barra de desplazamiento */
 }
 
-button {
+/* Botón de enviar promoción */
+button, #enviarPromocionBtn {
     background-color: #2d8659; /* Verde medio */
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
 }
 
-button:hover {
+button:hover, #enviarPromocionBtn:hover {
     background-color: #1e5e3d; /* Verde oscuro */
+    transform: scale(1.05);
+}
+
+/* Imagen del producto en la promoción */
+#productInfo img {
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 2px solid #2d8659;
+    max-width: 100%; /* Ajuste responsivo */
+    height: auto; /* Mantener proporciones */
 }

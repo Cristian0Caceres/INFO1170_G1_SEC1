@@ -19,8 +19,32 @@
         <a href="../../index.html">Salir</a>
     </nav>
     <main>
-        <!-- Formulario para modificar el contenido de la promoción -->
         <form id="promocionForm">
+            <label for="categorySelect">Selecciona una Categoría:</label>
+            <select id="categorySelect">
+                <option value="">Todas las Categorías</option>
+                <% categorias.forEach(categoria => { %>
+                    <option value="<%= categoria.ID_Categoria %>"><%= categoria.Nombre_Categoria %></option>
+                <% }); %>
+            </select>
+
+            <label for="searchInput">Buscar Producto:</label>
+            <input type="text" id="searchInput" placeholder="Escribe el nombre del producto...">
+
+            <label for="product">Selecciona el Producto:</label>
+            <select id="product" name="product">
+                <% productos.forEach(producto => { %>
+                    <option data-category="<%= producto.ID_Categoria %>" value="<%= producto.ID_Producto %>">
+                        <%= producto.Nombre_producto %> - $<%= producto.Costo %>
+                    </option>
+                <% }); %>
+            </select>
+
+            <div id="productInfo">
+                <img id="productImage" src="" alt="Imagen del producto" width="150" height="150" style="object-fit: cover;">
+                <p id="productPrice"></p>
+            </div>
+            
             <label for="subject">Asunto:</label>
             <input type="text" id="subject" name="subject" value="¡Gran Descuento en Productos!">
             
@@ -36,16 +60,54 @@
     </footer>
 
     <script>
+        const products = <%- JSON.stringify(productos) %>;
+        const productImage = document.getElementById('productImage');
+        const productPrice = document.getElementById('productPrice');
+        const productSelect = document.getElementById('product');
+        const searchInput = document.getElementById('searchInput');
+        const categorySelect = document.getElementById('categorySelect');
+
+        // Actualiza la vista de producto cuando se selecciona uno nuevo
+        productSelect.addEventListener('change', function () {
+            const selectedProduct = products.find(p => p.ID_Producto == this.value);
+            if (selectedProduct) {
+                productImage.src = selectedProduct.imagen_producto;
+                productPrice.innerText = `Precio: $${selectedProduct.Costo}`;
+            }
+        });
+
+        // Filtro en tiempo real al escribir en el campo de búsqueda
+        searchInput.addEventListener('input', function () {
+            const searchTerm = this.value.toLowerCase();
+            for (const option of productSelect.options) {
+                const productName = option.textContent.toLowerCase();
+                option.style.display = productName.includes(searchTerm) ? '' : 'none';
+            }
+        });
+
+        // Filtra productos según la categoría seleccionada
+        categorySelect.addEventListener('change', function () {
+            const selectedCategory = this.value;
+            for (const option of productSelect.options) {
+                const optionCategory = option.getAttribute('data-category');
+                option.style.display = !selectedCategory || optionCategory === selectedCategory ? '' : 'none';
+            }
+            // Reinicia el filtro de búsqueda al cambiar la categoría
+            searchInput.value = '';
+        });
+
+        // Envía los datos del formulario
         document.getElementById('enviarPromocionBtn').addEventListener('click', function () {
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
+            const productId = document.getElementById('product').value;
 
             fetch('/enviar-promocion', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ subject, message })
+                body: JSON.stringify({ subject, message, productId })
             })
             .then(response => {
                 if (response.ok) {

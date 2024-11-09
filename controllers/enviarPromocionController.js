@@ -2,11 +2,12 @@ const nodemailer = require('nodemailer');
 const db = require('../config/db'); // Conexión a la base de datos
 
 exports.enviarPromocion = (req, res) => {
-    const { subject, message } = req.body;
+    const { subject, message, productId } = req.body;
 
-    const query = 'SELECT correo_Usuario FROM usuario';  // Selecciona todos los correos de los usuarios
+    const queryCorreos = 'SELECT correo_Usuario FROM usuario';
+    const queryProducto = 'SELECT Nombre_producto, Costo, imagen_producto FROM producto WHERE ID_Producto = ?';
 
-    db.query(query, (error, resultados) => {
+    db.query(queryCorreos, (error, resultados) => {
         if (error) {
             console.error('Error al obtener los correos:', error);
             return res.status(500).send('Error al obtener los correos.');
@@ -14,43 +15,51 @@ exports.enviarPromocion = (req, res) => {
 
         const emails = resultados.map(usuario => usuario.correo_Usuario);
 
-        // Configura el transporte para enviar correos
-        const transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: 'caciquedelahorro@gmail.com',
-                pass: 'hkli jqbb xbwx tkal', // Credenciales de correo
+        db.query(queryProducto, [productId], (error, productoRes) => {
+            if (error || productoRes.length === 0) {
+                console.error('Error al obtener el producto:', error);
+                return res.status(500).send('Error al obtener el producto.');
             }
-        });
 
-        // Configura el contenido del correo usando los datos personalizados del formulario
-        const mailOptions = {
-            from: 'caciquedelahorro@gmail.com',   // Remitente
-            to: emails,                           // Correos de los usuarios
-            subject: subject || 'Promoción Especial',
-            text: message || 'Tenemos una promoción especial para ti en El Cacique del Ahorro.',  // Mensaje de texto
-            attachments: [
-                {
-                    filename: 'Carne.jpg',            // Nombre del archivo adjunto
-                    path: './public/img/Carne.jpg',   // Ruta de la imagen en el proyecto
-                    cid: 'carne@imagen'               // Identificador único para incrustar en HTML
+            const producto = productoRes[0];
+
+            const transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: 'caciquedelahorro@gmail.com',
+                    pass: 'hkli jqbb xbwx tkal',
                 }
-            ],
-            html: `
-                <p>${message || '¡Hola! Tenemos una oferta especial para ti en El Cacique del Ahorro.'}</p>
-                <img src="cid:carne@imagen" alt="Descuento en productos" />
-            `  // Contenido HTML
-        };
+            });
 
-        // Envía el correo
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error al enviar el correo:', error);
-                return res.status(500).send('Error al enviar el correo.');
-            }
+            const mailOptions = {
+                from: 'caciquedelahorro@gmail.com',
+                to: emails,
+                subject: subject || 'Promoción Especial',
+                text: message || 'Tenemos una promoción especial para ti en El Cacique del Ahorro.',
+                attachments: [
+                    {
+                        filename: producto.Nombre_producto,
+                        path: producto.imagen_producto,
+                        cid: 'producto@imagen'
+                    }
+                ],
+                html: `
+                    <p>${message}</p>
+                    <p>Producto en promoción: <strong>${producto.Nombre_producto}</strong> - $${producto.Costo}</p>
+                    <!-- Imagen con estilo en línea para tamaño máximo controlado -->
+                    <img src="cid:producto@imagen" alt="Imagen del producto" style="max-width: 60px; height: auto;">
+                `
+            };
 
-            console.log('Correo enviado: ' + info.response);
-            res.redirect('/helper-zone');
+            transporter.sendMail(mailOptions, (error, info) => {
+                if (error) {
+                    console.error('Error al enviar el correo:', error);
+                    return res.status(500).send('Error al enviar el correo.');
+                }
+
+                console.log('Correo enviado: ' + info.response);
+                res.redirect('/helper-zone');
+            });
         });
     });
 };
