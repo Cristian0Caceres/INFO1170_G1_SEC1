@@ -19,8 +19,17 @@ async function scrapeAndCapture() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'test'
+        database: 'bd' // Asegúrate de que la base de datos 'test' esté creada
     });
+
+    // Mapeo de categorías de URL a ID_Categoria
+    const categoryMapping = {
+        'lacteos': 1,
+        'despensa': 2,
+        'frutas-y-verduras': 3,
+        'carniceria': 4,
+        'vinos-cervezas-y-licores': 5
+    };
 
     for (let i = 0; i < urls.length; i++) {
         const url = urls[i];
@@ -29,7 +38,9 @@ async function scrapeAndCapture() {
 
         try {
             await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-            const category = path.basename(url);
+            const category = path.basename(url); // Obtener la categoría de la URL
+            const categoryId = categoryMapping[category]; // Mapeo de categoría a ID_Categoria
+
             let pageIndex = 1;
             const totalPages = await page.evaluate(() => {
                 const pages = document.querySelectorAll('.select-page-dropdown-item');
@@ -63,27 +74,38 @@ async function scrapeAndCapture() {
                 for (const item of data) {
                     if (item.name && item.price && item.link && item.img) {
                         try {
+                            // Limpiar el precio para convertirlo a número, manejando decimales
+                            const price = parseFloat(item.price.replace(/[^\d,.-]/g, '').replace(',', '.'));
+                            
+                            if (isNaN(price)) {
+                                console.error(`Precio no válido para el producto: ${item.name}`);
+                                continue;
+                            }
+
                             // Comprobar si el producto ya existe
                             const [rows] = await connection.execute(
                                 'SELECT * FROM Producto WHERE Nombre_producto = ? AND link_producto = ?',
                                 [item.name, item.link]
                             );
+                            
                             if (rows.length > 0) {
                                 // Si el producto existe, actualizar los datos
                                 await connection.execute(
-                                    'UPDATE Producto SET Precio_producto = ?, Categoria_producto = ?, IMG_producto = ? WHERE Nombre_producto = ? AND link_producto = ?',
-                                    [parseInt(item.price.replace(/\D/g, '')), category, item.img, item.name, item.link]
+                                    'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ?, ID_Proveedor = ? WHERE Nombre_producto = ? AND link_producto = ?',
+                                    [price, categoryId, item.img, item.name, item.link, 1]
                                 );
+                                console.log(`Producto actualizado: ${item.name}`);
                             } else {
                                 // Si el producto no existe, insertar los datos nuevos
                                 await connection.execute(
-                                    'INSERT INTO Producto (Nombre_producto, link_producto, Precio_producto, Categoria_producto, IMG_producto) VALUES (?, ?, ?, ?, ?)',
-                                    [item.name, item.link, parseInt(item.price.replace(/\D/g, '')), category, item.img]
+                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto, ID_Proveedor) VALUES (?, ?, ?, ?, ?, ?)',
+                                    [item.name, item.link, price, categoryId, item.img, 1]
                                 );
+                                console.log(`Producto insertado: ${item.name}`);
                             }
                         } catch (dbError) {
                             console.error('Database Error:', dbError);
-                            continue; // Si hay un error, pasar a la siguiente iteración del bucle
+                            continue; // Si hay un error en la base de datos, pasa al siguiente producto
                         }
                     }
                 }
@@ -96,7 +118,7 @@ async function scrapeAndCapture() {
                     }, pageIndex);
 
                     if (nextPageExists) {
-                        await Promise.all([
+                        await Promise.all([ 
                             page.waitForNavigation({ waitUntil: 'networkidle2' }),
                             page.evaluate((index) => {
                                 document.querySelectorAll('.select-page-dropdown-item')[index].click();
@@ -110,9 +132,9 @@ async function scrapeAndCapture() {
             }
 
         } catch (error) {
-            
-            await page.clconsole.error('Error:', error);
-        } finally { await page.close(); ;
+            console.error('Error al procesar la página:', error);
+        } finally {
+            await page.close();
         }
     }
 
