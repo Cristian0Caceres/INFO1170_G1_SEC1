@@ -145,3 +145,30 @@ button:hover, #enviarPromocionBtn:hover {
     max-width: 100%; /* Ajuste responsivo */
     height: auto; /* Mantener proporciones */
 }
+
+/* Estilos para paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 1px solid #1e5e3d;
+    border-radius: 5px;
+    color: #1e5e3d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pagination a.active {
+    background-color: #2d8659;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #73c495;
+    color: white;
+}

@@ -10,20 +10,42 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Obtener todos los datos de la tabla "consulta"
+// Obtener datos de consultas con paginación
 exports.obtenerConsultas = (req, res) => {
-    const query = 'SELECT * FROM consulta';
-    
-    db.query(query, (error, resultados) => {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+    const offset = (page - 1) * limit;
+
+    const queryCount = 'SELECT COUNT(*) AS total FROM consulta';
+    const queryConsultas = 'SELECT * FROM consulta LIMIT ? OFFSET ?';
+
+    // Consultar el total de registros para calcular el número de páginas
+    db.query(queryCount, (error, countResult) => {
         if (error) {
-            console.error('Error al obtener los datos:', error);
-            return res.status(500).send('Error al obtener los datos.');
+            console.error('Error al contar las consultas:', error);
+            return res.status(500).send('Error al contar las consultas.');
         }
-        
-        // Renderizar la página con las consultas obtenidas
-        res.render('helper_zone', { consultas: resultados });
+
+        const totalConsultas = countResult[0].total;
+        const totalPages = Math.ceil(totalConsultas / limit);
+
+        // Consultar las consultas con límite y desplazamiento
+        db.query(queryConsultas, [limit, offset], (error, consultas) => {
+            if (error) {
+                console.error('Error al obtener las consultas:', error);
+                return res.status(500).send('Error al obtener las consultas.');
+            }
+
+            res.render('helper_zone', {
+                consultas,
+                currentPage: page,
+                totalPages
+            });
+        });
     });
 };
+
+// Resto de funciones de responderConsulta y eliminarConsulta...
 
 // Insertar respuesta en la columna "Respuesta_Cacique" y enviar correo al usuario
 exports.responderConsulta = (req, res) => {

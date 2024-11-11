@@ -15,7 +15,7 @@
         <a href="/productos_admin">Productos</a>
         <a href="/usuarios">Usuarios</a>
         <a href="/helper-zone">Helper Zone</a>
-        <a href="/enviar-promocion">Promocion</a>
+        <a href="/enviar-promocion">Promoción</a>
         <a href="../../index.html">Salir</a>
     </nav>
     <main>
@@ -48,7 +48,7 @@
                                     <form action="/responder-consulta/<%= consulta.ID_Consulta %>" method="POST">
                                         <textarea name="respuesta" placeholder="Escribe la respuesta"></textarea>
                                         <button type="submit">Responder</button>
-                                    </form>                                    
+                                    </form>
                                 <% } %>
                             </td>
                             <td>
@@ -67,6 +67,19 @@
                 <% } %>
             </tbody>
         </table>
+
+        <!-- Controles de paginación -->
+        <div class="pagination">
+            <% if (currentPage > 1) { %>
+                <a href="?page=<%= currentPage - 1 %>">Anterior</a>
+            <% } %>
+            <% for (let i = 1; i <= totalPages; i++) { %>
+                <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
+            <% } %>
+            <% if (currentPage < totalPages) { %>
+                <a href="?page=<%= currentPage + 1 %>">Siguiente</a>
+            <% } %>
+        </div>
     </main>
     
     <footer>
