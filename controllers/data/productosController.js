@@ -10,7 +10,7 @@ const mostrarProductosPorCategoria = (req, res) => {
         JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
         JOIN categoria c ON p.ID_Categoria = c.ID_Categoria
         WHERE p.ID_Categoria = ?
-        GROUP BY  p.Nombre_producto, p.imagen_producto, c.Nombre_Categoria
+        GROUP BY  p.Nombre_producto, c.Nombre_Categoria
         ORDER BY Precio_Minimo ASC
     `;
 
@@ -37,9 +37,9 @@ const mostrarDetalleProducto = (req, res) => {
     const idProducto = req.params.id_producto; // Obtener el ID del producto de los parámetros
 
     const sql = `
-        SELECT p.Nombre_producto, p.Descripcion_Producto, p.imagen_producto, pr.Costo AS Precio, t.Nombre_Proveedor
+        SELECT p.Nombre_producto, p.Descripcion_Producto, p.imagen_producto, p.link_producto, p.Costo AS Precio, t.Nombre_Proveedor
         FROM producto p
-        JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
+        JOIN proveedor_producto pr ON p.ID_Producto_Proveedor = pr.ID_Producto_Proveedor
         JOIN proveedor t ON pr.ID_Proveedor = t.ID_Proveedor
         WHERE p.Nombre_producto = (SELECT Nombre_producto FROM producto WHERE ID_Producto = ?)
     `;

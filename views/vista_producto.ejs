@@ -79,7 +79,7 @@
                     <div class="column productos">
                         <!-- Recorremos cada proveedor y mostramos su precio -->
                         <% producto.forEach(function(detalle) { %>
-                        <a class="producto-item" href="">
+                        <a class="producto-item" href="<%= detalle.link_producto %>" target="_blank">
                             <div class="producto-tienda"><%= detalle.Nombre_Proveedor %></div>
                             <div class="producto-precios">
                                 <p>Precio: $<%= detalle.Precio %></p>
