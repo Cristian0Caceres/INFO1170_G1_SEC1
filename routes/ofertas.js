@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const connection = require('../config/db'); // Asegúrate de que la ruta a tu conexión sea correcta
 
-router.get('/ofertas', (req, res) => {
+router.get('/', (req, res) => {
     const query = `
         SELECT p.*
         FROM producto p

@@ -3,7 +3,7 @@ const router = express.Router();
 const contactoController = require('../controllers/contactoController');
 
 // Ruta para mostrar el formulario de contacto
-router.get('/contacto', (req, res) => {
+router.get('/', (req, res) => {
     res.render('contacto');
 });
 

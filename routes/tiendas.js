@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../config/db'); // Conexión a la base de datos
 
 // Ruta para obtener la lista de proveedores
-router.get('/tiendas', (req, res) => {
+router.get('/', (req, res) => {
     const sql = 'SELECT ID_Proveedor, Nombre_Proveedor FROM proveedor';
 
     db.query(sql, (err, results) => {
@@ -19,7 +19,7 @@ router.get('/tiendas', (req, res) => {
 // Ruta para cerrar sesión
 router.get('/auth/logout', (req, res) => {
     req.session.isLoggedIn = false;
-    res.redirect('/tiendas');
+    res.redirect('/');
 });
 
 module.exports = router;
