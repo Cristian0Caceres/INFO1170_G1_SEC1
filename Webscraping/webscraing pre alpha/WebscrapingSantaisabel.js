@@ -19,7 +19,7 @@ async function scrapeAndCapture() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'test'
+        database: 'bd'
     });
 
     for (let i = 0; i < urls.length; i++) {
@@ -71,13 +71,13 @@ async function scrapeAndCapture() {
                             if (rows.length > 0) {
                                 // Si el producto existe, actualizar los datos
                                 await connection.execute(
-                                    'UPDATE Producto SET Precio_producto = ?, Categoria_producto = ?, IMG_producto = ? WHERE Nombre_producto = ? AND link_producto = ?',
-                                    [parseInt(item.price.replace(/\D/g, '')), category, item.img, item.name, item.link]
+                                    'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ? = ? WHERE Nombre_producto = ? AND link_producto = ?',
+                                    [parseInt(item.price.replace(/\D/g, '')), category, item.img, null, item.name, item.link]
                                 );
                             } else {
                                 // Si el producto no existe, insertar los datos nuevos
                                 await connection.execute(
-                                    'INSERT INTO Producto (Nombre_producto, link_producto, Precio_producto, Categoria_producto, IMG_producto) VALUES (?, ?, ?, ?, ?)',
+                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, ?, ?, ?)',
                                     [item.name, item.link, parseInt(item.price.replace(/\D/g, '')), category, item.img]
                                 );
                             }
