@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="../css/contacto.css">
+</head>
+<body>
+
+    <!-- Header de la página -->
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="../img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="../img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <a href="../html/categorias.php">
+                    <img src="../img/categorias.png" alt="Categorias">
+                </a>
+                <a href="../html/Carrito.html">
+                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="../html/selec_tienda.php">
+                    <img src="../img/tienda.png" alt="Tienda">
+                </a>
+                <a href="../html/login.html">
+                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                </a>    
+            </div>
+        </section>
+    </header>
+
+    <!-- Formulario de contacto -->
+    <main>
+        <div class="contact-form">
+            <h2>Contacto</h2>
+            <form action="/enviar-contacto" method="post">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" placeholder="Escribe tu nombre" required>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Escribe tu email" required>
+            
+                <label for="subject">Asunto:</label>
+                <input type="text" id="subject" name="subject" placeholder="Escribe el asunto" required>
+            
+                <label for="message">Mensaje:</label>
+                <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí" required></textarea>
+            
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <p>&copy; Derechos Reservados</p>
+        <nav>
+            <a href="/contacto">Ir a contacto</a>
+            <a href="../html/legal.html">Ir al legal</a>
+            <a href="../index.html">Ir al Inicio</a>
+        </nav>
+    </footer>
+
+</body>
+</html>

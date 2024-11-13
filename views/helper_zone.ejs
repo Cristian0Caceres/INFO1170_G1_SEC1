@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helper Zone - Consultas de Contacto</title>
+    <link rel="stylesheet" href="../css/helper.css">
+</head>
+<body>
+    <header>
+        <h1>Helper Zone</h1>
+    </header>
+    <nav>
+        <a href="../html/admin_home.html">Inicio</a>
+        <a href="/productos_admin">Productos</a>
+        <a href="/usuarios">Usuarios</a>
+        <a href="/helper-zone">Helper Zone</a>
+        <a href="/enviar-promocion">Promocion</a>
+        <a href="../../index.html">Salir</a>
+    </nav>
+    <main>
+        <input type="text" id="searchInput" placeholder="Buscar por ID o Nombre de Usuario">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID Consulta</th>
+                    <th>Nombre Usuario</th>
+                    <th>Correo Usuario</th>
+                    <th>Asunto</th>
+                    <th>Mensaje</th>
+                    <th>Respuesta</th>
+                    <th>Estado</th>
+                </tr>
+            </thead>
+            <tbody id="consultaTable">
+                <% if (consultas.length > 0) { %>
+                    <% consultas.forEach(consulta => { %>
+                        <tr>
+                            <td><%= consulta.ID_Consulta %></td>
+                            <td><%= consulta.Nombre_Usuario %></td>
+                            <td><%= consulta.correo_Usuario %></td>
+                            <td><%= consulta.Asunto %></td>
+                            <td><%= consulta.Mensaje_Usuario %></td>
+                            <td>
+                                <% if (consulta.Respuesta_Cacique) { %>
+                                    <p><%= consulta.Respuesta_Cacique %></p>
+                                <% } else { %>
+                                    <form action="/responder-consulta/<%= consulta.ID_Consulta %>" method="POST">
+                                        <textarea name="respuesta" placeholder="Escribe la respuesta"></textarea>
+                                        <button type="submit">Responder</button>
+                                    </form>                                    
+                                <% } %>
+                            </td>
+                            <td>
+                                <% if (consulta.Respuesta_Cacique) { %>
+                                    <p>Respondida</p>
+                                <% } else { %>
+                                    <p>Pendiente de respuesta</p>
+                                <% } %>
+                            </td>
+                            <td>
+                                <!-- Botón para eliminar la consulta -->
+                                <!-- onclick="eliminarConsulta(<%= consulta.ID_Consulta %>)">Eliminar</button-->
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="7">No hay consultas registradas.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </main>
+    
+    <footer>
+        <p>&copy; Derechos Reservados</p>
+    </footer>
+    
+    <script src="../js/helperz.js"></script>
+    
+    <!--script>
+        function eliminarConsulta(idConsulta) {
+            console.log('Eliminando consulta con ID:', idConsulta);  // Verifica que el ID se está enviando
+            fetch(`/eliminar-consulta/${idConsulta}`, {
+                method: 'DELETE'
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('Consulta eliminada correctamente');
+                    location.reload(); // Recargar la página para mostrar la lista actualizada
+                } else {
+                    alert('Error al eliminar la consulta');
+                }
+            })
+            .catch(error => {
+                console.error('Error en la eliminación:', error);
+                alert('Error al eliminar la consulta');
+            });
+        }
+    </script-->
+</body>
+</html>

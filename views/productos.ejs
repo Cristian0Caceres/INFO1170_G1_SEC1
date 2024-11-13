@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/productos.css">
-    <title>Lista de Productos - Categoría <%= idCategoria %></title>
+    <link rel="stylesheet" href="/css/productos-categoria.css">
+    <title>Lista de Productos - Categoría <%= nombreCategoria %></title>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -41,30 +41,24 @@
                 <a href="/categorias">
                     <img src="/img/categorias.png" alt="Categorías">
                 </a>
-                <a href="../html/Carrito.html">
+                <a href="/carrito">
                     <img src="/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="/tiendas">
+                <a href="/tienda">
                     <img src="/img/tienda.png" alt="Tienda">
                 </a>
-                <% if (session.usuario) { %>
-                    <a href="/auth/logout">
-                        <img src="../img/cerrar-sesion.png" alt="Cerrar Sesión">
-                    </a>
-                  <% } else { %>
-                    <a href="/html/login.html">
-                        <img src="../img/iniciar-sesion.png" alt="Iniciar Sesión">
-                    </a>
-                  <% } %>
+                <a href="/auth/login">
+                    <img src="/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                </a>    
             </div>
         </section>
     </header>
 
     <main>
         <!-- Sección flotante para la categoría -->
-        <section class="nombre-categoria">
-            <h1>Productos de la Categoría: <%= idCategoria %></h1>
-        </section>
+        <a class="nombre-categoria" href="/categorias">
+            <h1><%= nombreCategoria %></h1>
+        </a>
 
         <section class="productos">
             <section class="encabezado">
@@ -72,24 +66,23 @@
                     <h2>Lista de Productos</h2>
                 </div>
             </section>
-
-            <section class="presentacion-producto">
-                <!-- Comprobar si hay productos -->
+            <section class="contenedor_productos">
                 <% if (productos.length > 0) { %>
                     <% productos.forEach(function(producto) { %>
-                        <section class="producto">
-                            <div class="imagen-producto">
-                                <a href="/productos/detalle/<%= producto.ID_Producto %>"> <!-- Enlace al detalle del producto -->
-                                    <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_Producto %>">
-                                    <h3><%= producto.Nombre_Producto %></h3>
-                                    <p>Desde: $<%= producto.Precio_Minimo %></p>
-                                </a>
+                        <a class="presentacion-producto" href="/productos/detalle/<%= producto.ID_Producto %>">
+                            <div class="contenedor_imagen">
+                                <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
                             </div>
-                        </section>
+                            <div class="contenedor_informacion">
+                                <h3><%= producto.Nombre_producto %></h3>
+                                <p>Desde: $<%= producto.Precio_Minimo %></p>
+                            </div>
+                        </a>
                     <% }); %>
                 <% } else { %>
                     <p>No se encontraron productos para esta categoría.</p>
                 <% } %>
+                              
             </section>
         </section>
     </main>
