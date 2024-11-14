@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información y Condiciones de Servicio</title>
-    <link rel="stylesheet" href="../css/legal.css"> <!-- Enlace al nuevo CSS -->
-    <link rel="stylesheet" href="../css/login.css"> <!-- Importar estilos de login.css -->
+    <link rel="stylesheet" href="../public/css/legal.css"> <!-- Enlace al nuevo CSS -->
+    <link rel="stylesheet" href="../public/css/login.css"> <!-- Importar estilos de login.css -->
     <script>
         function toggleSection(sectionId, button) {
             const section = document.getElementById(sectionId);
@@ -25,26 +25,26 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="../img/logoECDA.png" alt="Logo">
+                <img src="../public/img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="../img/buscar.png" alt="Buscar">
+                    <img src="../public/img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
-                <a href="../html/categorias.php">
-                    <img src="../img/categorias.png" alt="Categorias">
+                <a href="/categorias">
+                    <img src="../public/img/categorias.png" alt="Categorias">
                 </a>
-                <a href="../html/Carrito.html">
-                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                <a href="/carrito">
+                    <img src="../public/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="../html/selec_tienda.php">
-                    <img src="../img/tienda.png" alt="Tienda">
+                <a href="/tiendas">
+                    <img src="../public/img/tienda.png" alt="Tienda">
                 </a>
-                <a href="../html/login.html">
-                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                <a href="/login">
+                    <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
@@ -146,12 +146,12 @@
     </main>
 
     <footer>
-        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <img src="../public/img/logoECDA.png" alt="Logo de la empresa" >
         <p>&copy; Derechos Reservados</p>
         <nav>
             <a href="/contacto">Ir a contacto</a>
-            <a href="../html/legal.html">Ir al legal</a>
-            <a href="../index.html">Ir al Inicio</a>
+            <a href="/legal">Ir al legal</a>
+            <a href="/">Ir al Inicio</a>
         </nav>
     </footer>
 </body>

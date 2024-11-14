@@ -16,12 +16,6 @@
                         }
                     });
                 });
-           
-        
-        
-        
-        
-        
                 let total = 0;
         
         const productos = {

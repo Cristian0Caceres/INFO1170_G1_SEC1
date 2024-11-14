@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio de Sesion</title>
-    <link rel="stylesheet" href="../css/login.css">
-    <script src="../js/log.js" defer></script>
+    <link rel="stylesheet" href="../public/css/login.css">
+    <script src="../public/js/log.js" defer></script>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -30,25 +30,25 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="../img/logoECDA.png" alt="Logo">
+                <img src="../public/img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="../img/buscar.png" alt="Buscar">
+                    <img src="../public/img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
                 <a href="/categorias">
-                    <img src="../img/categorias.png" alt="Categorias">
+                    <img src="../public/img/categorias.png" alt="Categorias">
                 </a>
-                <a href="../html/Carrito.html">
-                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                <a href="/carrito">
+                    <img src="../public/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
                 <a href="/tiendas">
-                    <img src="../img/tienda.png" alt="Tienda">
-                <a href="../html/login.html">
-                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                    <img src="../public/img/tienda.png" alt="Tienda">
+                <a href="/login">
+                    <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
@@ -68,17 +68,17 @@
                     <input type="password" id="password" placeholder="Contraseña" required value="" name="password">
                     <button type="submit"><b>Iniciar Sesion</b></button>
                 </form>
-                <a href="recuperar.html">¿olvidaste tu contraseña?</a>
-                <a href="register.html">Registrarse</a>
+                <a href="/recuperar">¿olvidaste tu contraseña?</a>
+                <a href="/register">Registrarse</a>
             </div>  
         </div>
     </main>
 
     <footer>
-        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <img src="../public/img/logoECDA.png" alt="Logo de la empresa" >
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="../index.html">Ir al Inicio</a>
+            <a href="/">Ir al Inicio</a>
         </nav>
     </footer>
 

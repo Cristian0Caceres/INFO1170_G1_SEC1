@@ -30,6 +30,47 @@ app.get('/', (req, res) => {
   res.render('index');
 });
 
+// Ruta para la vista de admin
+app.get('/admin', (req, res) => {
+  res.render('admin_home');
+});
+
+app.get('/carrito', (req, res) => {
+  res.render('carrito');
+});
+
+app.get('/login', (req, res) => {
+  res.render('login');
+});
+
+app.get('/register', (req, res) => {
+  res.render('register');
+});
+
+app.get('/recuperar', (req, res) => {
+  res.render('recuperar');
+});
+
+app.get('/confirmacion', (req, res) => {
+  res.render('confirmacion');
+});
+
+app.get('/cambio', (req, res) => {
+  res.render('cambio');
+});
+
+app.get('/legal', (req, res) => {
+  res.render('legal');
+});
+
+app.get('/helper', (req, res) => {
+  res.render('helper_home');
+});
+
+app.get('/simulador', (req, res) => {
+  res.render('Test_simulador');
+});
+
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
