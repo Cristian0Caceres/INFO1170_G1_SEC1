@@ -19,7 +19,7 @@ async function scrapeAndCapture() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'bd'
+        database: 'bd_pruebaws'
     });
 
     for (let i = 0; i < urls.length; i++) {
@@ -77,7 +77,7 @@ async function scrapeAndCapture() {
                             } else {
                                 // Si el producto no existe, insertar los datos nuevos
                                 await connection.execute(
-                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, ?, ?, ?)',
+                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, ?, ?)',
                                     [item.name, item.link, parseInt(item.price.replace(/\D/g, '')), category, item.img]
                                 );
                             }
