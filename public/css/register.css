@@ -1,3 +1,4 @@
+/* Reseteo */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +10,7 @@ body, html {
     padding: 0;
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #1E1E1E; /* Fondo oscuro para asemejarse al login */
+    background-color: #F8EDE3
 }
 
 header {
@@ -29,6 +30,16 @@ header {
     align-items: center;
     justify-content: flex-start; 
     padding-left: 2%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .logo img {
@@ -51,6 +62,12 @@ header {
     outline: none;
     border-radius: 30px; 
     padding-left: 2%;
+    transition: width 0.4s ease, background-color 0.3s ease;
+}
+
+.search-bar input:focus {
+    width: 90%;
+    background-color: #dcd6f0;
 }
 
 .search-bar button {
@@ -60,6 +77,11 @@ header {
     background: none;
     cursor: pointer;
     padding-left: 4px;
+    transition: transform 0.3s ease;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1);
 }
 
 .search-bar button img {
@@ -79,6 +101,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: center; 
+    transition: transform 0.3s ease;
+}
+
+.icons a:hover {
+    transform: scale(1.1);
 }
 
 .icons a img {
@@ -92,6 +119,7 @@ main {
     flex-direction: column;
     background-color: #F8EDE3;
     padding: 2%;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .registrarse {
@@ -104,6 +132,21 @@ main {
     border-radius: 15px; /* Bordes redondeados más grandes */
     padding: 2rem; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra para darle un efecto más similar a la imagen */
+    animation: bounceIn 0.8s ease-out;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 .registrarse h1 {
@@ -125,6 +168,7 @@ main {
     border-radius: 15px;
     padding: 2rem; 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
 }
 
 .datos h2 {
@@ -157,6 +201,12 @@ main {
     color: rgb(0, 0, 0);
     border: 1px solid #000000; 
     border-radius: 8px; 
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.datos form input:focus {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
 }
 
 .datos form input::placeholder {
@@ -172,10 +222,12 @@ main {
     border-radius: 25px;
     cursor: pointer;
     border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .datos form button:hover {
     background-color: #FF7F00;
+    transform: scale(1.05);
 }
 
 .datos a {
@@ -184,6 +236,7 @@ main {
     justify-content: center;
     text-decoration: none; 
     color: #000000;
+    transition: color 0.3s ease;
 }
 
 .datos a:hover {
