@@ -46,7 +46,7 @@
                 <a href="/tiendas">
                     <img src="../public/img/tienda.png" alt="Tienda">
                 </a>
-                <% if (session.usuario) { %>
+                <% if (isLoggedIn) { %>
                     <a href="/auth/logout">
                         <img src="../public/img/cerrar-sesion.png" alt="Cerrar Sesión">
                     </a>

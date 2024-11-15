@@ -18,6 +18,17 @@ app.use(session({
     cookie: { secure: false }
 }));
 
+const isAuthenticated = (req, res, next) => {
+  if (req.session.isLoggedIn) {
+    res.locals.isLoggedIn = true;
+  } else {
+    res.locals.isLoggedIn = false;
+  }
+  next();
+};
+
+app.use(isAuthenticated);
+
 // Middleware para leer datos del formulario
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -26,48 +37,84 @@ app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Usar las rutas
-app.get('/', (req, res) => {
+app.get('/', isAuthenticated, (req, res) => {
   res.render('index');
 });
 
 // Ruta para la vista de admin
 app.get('/admin', (req, res) => {
-  res.render('admin_home');
+  if (res.locals.isLoggedIn) {
+    // El usuario está autenticado, mostrar la página de admin
+    res.render('admin');
+  } else {
+    // El usuario no está autenticado, mostrar un mensaje de error
+    res.render('error', { message: 'Debes estar autenticado para acceder a esta página' });
+  }
 });
 
-app.get('/carrito', (req, res) => {
+app.get('/carrito', isAuthenticated, (req, res) => {
   res.render('carrito');
 });
 
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get('/login', isAuthenticated, (req, res) => {
+  if (res.locals.isLoggedIn) {
+    // El usuario está autenticado, no mostrar la página 
+    res.render('index');
+  } else {
+    // El usuario no está autenticado, dejar acceder a inciar sesion
+    res.render('login');
+  }
 });
 
-app.get('/register', (req, res) => {
-  res.render('register');
+app.get('/register', isAuthenticated, (req, res) => {
+  if (res.locals.isLoggedIn) {
+    // El usuario está autenticado, no mostrar la página 
+    res.render('index');
+  } else {
+    // El usuario no está autenticado, dejar acceder a inciar sesion
+    res.render('login');
+  }
 });
 
-app.get('/recuperar', (req, res) => {
-  res.render('recuperar');
+app.get('/recuperar', isAuthenticated, (req, res) => {
+  if (res.locals.isLoggedIn) {
+    // El usuario está autenticado, no mostrar la página 
+    res.render('index');
+  } else {
+    // El usuario no está autenticado, dejar acceder a inciar sesion
+    res.render('login');
+  }
 });
 
-app.get('/confirmacion', (req, res) => {
-  res.render('confirmacion');
+app.get('/confirmacion', isAuthenticated, (req, res) => {
+  if (res.locals.isLoggedIn) {
+    // El usuario está autenticado, no mostrar la página 
+    res.render('index');
+  } else {
+    // El usuario no está autenticado, dejar acceder a inciar sesion
+    res.render('login');
+  }
 });
 
-app.get('/cambio', (req, res) => {
-  res.render('cambio');
+app.get('/cambio', isAuthenticated, (req, res) => {
+  if (res.locals.isLoggedIn) {
+    // El usuario está autenticado, no mostrar la página 
+    res.render('index');
+  } else {
+    // El usuario no está autenticado, dejar acceder a inciar sesion
+    res.render('login');
+  }
 });
 
-app.get('/legal', (req, res) => {
+app.get('/legal', isAuthenticated, (req, res) => {
   res.render('legal');
 });
 
-app.get('/helper', (req, res) => {
+app.get('/helper', isAuthenticated, (req, res) => {
   res.render('helper_home');
 });
 
-app.get('/simulador', (req, res) => {
+app.get('/simulador', isAuthenticated, (req, res) => {
   res.render('Test_simulador');
 });
 
@@ -106,16 +153,6 @@ app.use('/unimarc', unimarcRouter);
 
 const ofertasRouter = require('./routes/ofertas');
 app.use('/ofertas', ofertasRouter);
-
-const isAuthenticated = (req, res, next) => {
-  if (req.session.isLoggedIn) {
-    next();
-  } else {
-    res.redirect('/auth/login');
-  }
-};
-
-app.use(isAuthenticated);
 
 // Configuración del servidor
 app.listen(3000, function(){

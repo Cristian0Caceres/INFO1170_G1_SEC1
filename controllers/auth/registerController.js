@@ -6,7 +6,7 @@ const registerUser = (req, res) => {
 
     // Validar que la contraseña y la confirmación coincidan
     if (contrasena !== confirmacion_contrasena) {
-        return res.redirect('/html/register.html?error=contrasenas_no_coinciden');
+        return res.render('register', { error: 'contrasenas_no_coinciden' });
     }
 
     // Verificar si el correo ya existe en la base de datos
@@ -18,7 +18,7 @@ const registerUser = (req, res) => {
         }
 
         if (results.length > 0) {
-            return res.redirect('/html/register.html?error=correo_existente');
+            return res.render('register', { error: 'correo_existente' });
         }
 
         // Si el correo no existe, generar el hash de la contraseña
@@ -26,7 +26,7 @@ const registerUser = (req, res) => {
         bcrypt.hash(contrasena, saltRounds, (err, hash) => {
             if (err) {
                 console.error('Error al hashear la contraseña: ' + err.stack);
-                return res.redirect('/html/register.html?error=no_exitoso');
+                return res.render('register', { error: 'no_exitoso' });
             }
 
             // Insertar el nuevo usuario con la contraseña hasheada
@@ -34,11 +34,11 @@ const registerUser = (req, res) => {
             db.query(insertUserQuery, [nombre, correo, hash], (err, result) => {
                 if (err) {
                     console.error('Error en la consulta: ' + err.stack);
-                    return res.redirect('/html/register.html?error=no_exitoso');
+                    return res.render('register', { error: 'no_exitoso' });
                 }
 
                 // Registro exitoso
-                return res.redirect('/html/login.html?registro=exitoso');
+                return res.render('login', { error: 'exitoso' });
             });
         });
     });

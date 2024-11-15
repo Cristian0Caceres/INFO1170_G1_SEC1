@@ -18,7 +18,7 @@ const login = (req, res) => {
         }
 
         if (results.length === 0) {
-            return res.redirect('/html/login.html?error=credenciales_invalidas');
+            return res.render('login', { error: 'credenciales_invalidas' });
         }
 
         const usuario = results[0];
@@ -34,10 +34,10 @@ const login = (req, res) => {
                 // Si las contraseñas coinciden, iniciar sesión y redirigir
                 req.session.isLoggedIn = true;
                 req.session.usuario = usuario;
-                return res.redirect(usuario.correo_Usuario === 'caciquedelahorro@gmail.com' ? '/html/admin_home.html' : '/index.html');
+                return res.redirect(usuario.correo_Usuario === 'caciquedelahorro@gmail.com' ? '/admin' : '/');
             } else {
                 // Si las contraseñas no coinciden, redirigir con un error
-                return res.redirect('/html/login.html?error=credenciales_invalidas');
+                return res.render('login', { error: 'credenciales_invalidas' });
             }
         });
     });

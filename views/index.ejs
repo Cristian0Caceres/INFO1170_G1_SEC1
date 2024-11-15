@@ -31,9 +31,16 @@
                 </a>
                 <a href="/tiendas">
                     <img src="../public/img/tienda.png" alt="Tienda">
-                <a href="html/login.html">
-                    <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesion">
-                </a>    
+                </a>
+                <% if (isLoggedIn) { %>
+                    <a href="/auth/logout">
+                        <img src="../public/img/cerrar-sesion.png" alt="Cerrar Sesión">
+                    </a>
+                  <% } else { %>
+                    <a href="/login">
+                        <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                    </a>
+                  <% } %>
             </div>
         </section>
     </header>
