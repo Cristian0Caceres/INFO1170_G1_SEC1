@@ -5,9 +5,9 @@ const mostrarProductosPorCategoria = (req, res) => {
     const idCategoria = req.params.id_categoria; // Obtener el ID de la categoría de los parámetros
 
     const sql = `
-        SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(pr.Costo) AS Precio_Minimo, c.Nombre_Categoria
+        SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(p.Costo) AS Precio_Minimo, c.Nombre_Categoria
         FROM producto p
-        JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
+        JOIN proveedor pr ON p.ID_Proveedor = pr.ID_Proveedor
         JOIN categoria c ON p.ID_Categoria = c.ID_Categoria
         WHERE p.ID_Categoria = ?
         GROUP BY  p.Nombre_producto, c.Nombre_Categoria
@@ -39,8 +39,7 @@ const mostrarDetalleProducto = (req, res) => {
     const sql = `
         SELECT p.Nombre_producto, p.Descripcion_Producto, p.imagen_producto, p.link_producto, p.Costo AS Precio, t.Nombre_Proveedor
         FROM producto p
-        JOIN proveedor_producto pr ON p.ID_Producto_Proveedor = pr.ID_Producto_Proveedor
-        JOIN proveedor t ON pr.ID_Proveedor = t.ID_Proveedor
+        JOIN proveedor t ON p.ID_Proveedor = t.ID_Proveedor
         WHERE p.Nombre_producto = (SELECT Nombre_producto FROM producto WHERE ID_Producto = ?)
     `;
 
@@ -67,7 +66,6 @@ const buscarProductoPorNombre = (req, res) => {
     const sql = `
         SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(p.Costo) AS Precio_Minimo
         FROM producto p
-        JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
         WHERE p.Nombre_producto LIKE ?
         GROUP BY  p.Nombre_producto, p.imagen_producto
     `;
