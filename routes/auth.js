@@ -11,7 +11,7 @@ const { logout } = require('../controllers/auth/logoutController');
 // Ruta GET para el login
 const appDir = path.dirname(require.main.filename);
 router.get('/login', (req, res) => {
-  res.sendFile(path.join(appDir, 'public/index.html'));
+  res.sendFile(path.join(appDir, '/'));
 });
 
 // Ruta POST para el login
