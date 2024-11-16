@@ -4,88 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Helper Zone - Consultas de Contacto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/helper.css">
 </head>
 <body>
-    <header>
+    <header class="bg-success text-white text-center py-4 border-bottom border-dark">
         <h1>Helper Zone</h1>
     </header>
-    <nav>
-        <a href="../html/admin_home.html">Inicio</a>
-        <a href="/productos_admin">Productos</a>
-        <a href="/usuarios">Usuarios</a>
-        <a href="/helper-zone">Helper Zone</a>
-        <a href="/enviar-promocion">Promoción</a>
-        <a href="../../index.html">Salir</a>
-    </nav>
-    <main>
-        <input type="text" id="searchInput" placeholder="Buscar por ID o Nombre de Usuario">
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>ID Consulta</th>
-                    <th>Nombre Usuario</th>
-                    <th>Correo Usuario</th>
-                    <th>Asunto</th>
-                    <th>Mensaje</th>
-                    <th>Respuesta</th>
-                    <th>Estado</th>
-                </tr>
-            </thead>
-            <tbody id="consultaTable">
-                <% if (consultas.length > 0) { %>
-                    <% consultas.forEach(consulta => { %>
-                        <tr>
-                            <td><%= consulta.ID_Consulta %></td>
-                            <td><%= consulta.Nombre_Usuario %></td>
-                            <td><%= consulta.correo_Usuario %></td>
-                            <td><%= consulta.Asunto %></td>
-                            <td><%= consulta.Mensaje_Usuario %></td>
-                            <td>
-                                <% if (consulta.Respuesta_Cacique) { %>
-                                    <p><%= consulta.Respuesta_Cacique %></p>
-                                <% } else { %>
-                                    <form action="/responder-consulta/<%= consulta.ID_Consulta %>" method="POST">
-                                        <textarea name="respuesta" placeholder="Escribe la respuesta"></textarea>
-                                        <button type="submit">Responder</button>
-                                    </form>
-                                <% } %>
-                            </td>
-                            <td>
-                                <% if (consulta.Respuesta_Cacique) { %>
-                                    <p>Respondida</p>
-                                <% } else { %>
-                                    <p>Pendiente de respuesta</p>
-                                <% } %>
-                            </td>
-                        </tr>
-                    <% }); %>
-                <% } else { %>
-                    <tr>
-                        <td colspan="7">No hay consultas registradas.</td>
-                    </tr>
-                <% } %>
-            </tbody>
-        </table>
-
-        <!-- Controles de paginación -->
-        <div class="pagination">
-            <% if (currentPage > 1) { %>
-                <a href="?page=<%= currentPage - 1 %>">Anterior</a>
-            <% } %>
-            <% for (let i = 1; i <= totalPages; i++) { %>
-                <a href="?page=<%= i %>" class="<%= i === currentPage ? 'active' : '' %>"><%= i %></a>
-            <% } %>
-            <% if (currentPage < totalPages) { %>
-                <a href="?page=<%= currentPage + 1 %>">Siguiente</a>
-            <% } %>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="../html/admin_home.html">Inicio</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/productos_admin">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/helper-zone">Helper Zone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/enviar-promocion">Promoción</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.html">Salir</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
+    <main class="container my-4">
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar por ID o Nombre de Usuario">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-success">
+                    <tr>
+                        <th>ID Consulta</th>
+                        <th>Nombre Usuario</th>
+                        <th>Correo Usuario</th>
+                        <th>Asunto</th>
+                        <th>Mensaje</th>
+                        <th>Respuesta</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="consultaTable">
+                    <% if (consultas.length > 0) { %>
+                        <% consultas.forEach(consulta => { %>
+                            <tr>
+                                <td><%= consulta.ID_Consulta %></td>
+                                <td><%= consulta.Nombre_Usuario %></td>
+                                <td><%= consulta.correo_Usuario %></td>
+                                <td><%= consulta.Asunto %></td>
+                                <td><%= consulta.Mensaje_Usuario %></td>
+                                <td>
+                                    <% if (consulta.Respuesta_Cacique) { %>
+                                        <p><%= consulta.Respuesta_Cacique %></p>
+                                    <% } else { %>
+                                        <form action="/responder-consulta/<%= consulta.ID_Consulta %>" method="POST">
+                                            <textarea name="respuesta" class="form-control mb-2" placeholder="Escribe la respuesta"></textarea>
+                                            <button type="submit" class="btn btn-success">Responder</button>
+                                        </form>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <% if (consulta.Respuesta_Cacique) { %>
+                                        <span class="badge bg-success">Respondida</span>
+                                    <% } else { %>
+                                        <span class="badge bg-warning text-dark">Pendiente de respuesta</span>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="7" class="text-center">No hay consultas registradas.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <!-- Controles de paginación -->
+        <nav class="d-flex justify-content-center">
+            <ul class="pagination">
+                <% if (currentPage > 1) { %>
+                    <li class="page-item"><a class="page-link" href="?page=<%= currentPage - 1 %>">Anterior</a></li>
+                <% } %>
+                <% for (let i = 1; i <= totalPages; i++) { %>
+                    <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                        <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                    </li>
+                <% } %>
+                <% if (currentPage < totalPages) { %>
+                    <li class="page-item"><a class="page-link" href="?page=<%= currentPage + 1 %>">Siguiente</a></li>
+                <% } %>
+            </ul>
+        </nav>
     </main>
-    
-    <footer>
+    <footer class="bg-dark text-white text-center py-3">
         <p>&copy; Derechos Reservados</p>
     </footer>
-    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../js/helperz.js"></script>
 </body>
 </html>
