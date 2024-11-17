@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos - Cacique del Ahorro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/admin.css">
     <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
 </head>
@@ -11,64 +13,85 @@
 <header>
     <h1>Lista de Productos - Cacique del Ahorro</h1>
 </header>
-<nav>
-    <a href="/admin">Inicio</a>
-    <a href="/productos_admin">Productos</a>
-    <a href="/usuarios">Usuarios</a>
-    <a href="/helper-zone">Helper Zone</a>
-    <a href="/enviar-promocion">Promocion</a>
-    <a href="/">Salir</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/admin">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/productos_admin">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="/helper-zone">Helper Zone</a></li>
+                <li class="nav-item"><a class="nav-link" href="/enviar-promocion">Promoción</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Salir</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<section>
-    <h2>Productos Registrados</h2>
-    <p>A continuación, se muestra la lista de productos registrados en el sistema:</p>
+<section class="container my-4">
+    <h2 class="text-center mb-3">Productos Registrados</h2>
+    <p class="text-center">A continuación, se muestra la lista de productos registrados en el sistema:</p>
 
-    <div class="search-container">
-        <form method="GET" action="/productos_admin">
-            <input type="text" name="search" class="search-input" placeholder="Buscar producto por nombre...">
-            <button type="submit" class="search-button">Buscar</button>
+    <!-- Barra de búsqueda -->
+    <div class="search-container mb-4">
+        <form method="GET" action="/productos_admin" class="d-flex justify-content-center">
+            <input type="text" name="search" class="form-control me-2" placeholder="Buscar producto por nombre...">
+            <button type="submit" class="btn btn-primary">Buscar</button>
         </form>
     </div>
 
-    <table class="user-table">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Categoría</th>
-                <th>Precio</th>
-                <th>Proveedor</th>
-                <th>Descripción</th>
-                <th>Imagen</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% if (productos.length > 0) { %>
-                <% productos.forEach(producto => { %>
+    <!-- Tabla de productos -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Proveedor</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (productos.length > 0) { %>
+                    <% productos.forEach(producto => { %>
+                        <tr>
+                            <td><%= producto.id %></td>
+                            <td><%= producto.name %></td>
+                            <td><%= producto.category %></td>
+                            <td>$<%= producto.price.toFixed(2) %></td>
+                            <td><%= producto.provider %></td>
+                            <td><%= producto.description %></td>
+                            <td>
+                                <img src="<%= producto.image %>" alt="<%= producto.name %>" class="img-thumbnail" style="max-width: 100px;">
+                            </td>
+                            <td>
+                                <a href="/productos_admin/editar?id=<%= producto.id %>" class="btn btn-sm btn-warning">Editar</a>
+                                <a href="/productos_admin/eliminar?id=<%= producto.id %>" class="btn btn-sm btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
                     <tr>
-                        <td><%= producto.id %></td>
-                        <td><%= producto.name %></td>
-                        <td><%= producto.category %></td>
-                        <td>$<%= producto.price.toFixed(2) %></td>
-                        <td><%= producto.provider %></td>
-                        <td><%= producto.description %></td>
-                        <td><img src="<%= producto.image %>" alt="<%= producto.name %>" style="width:100px;"></td>
-                        <td>
-                            <a href="/productos_admin/editar?id=<%= producto.id %>">Editar</a> | 
-                            <a href="/productos_admin/eliminar?id=<%= producto.id %>">Eliminar</a>
-                        </td>
+                        <td colspan="8" class="text-center">No se encontraron productos</td>
                     </tr>
-                <% }); %>
-            <% } else { %>
-                <tr><td colspan="8">No se encontraron productos</td></tr>
-            <% } %>
-        </tbody>
-    </table>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
 </section>
-<footer>
+
+<footer class="bg-dark text-white text-center py-3">
     <p>&copy; Derechos Reservados</p>
 </footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

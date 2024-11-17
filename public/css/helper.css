@@ -21,28 +21,37 @@ h1 {
 }
 
 /* Navegación */
-nav {
+.navbar {
     display: flex;
     justify-content: center;
     background-color: #1e5e3d; /* Verde oscuro */
     padding: 15px;
     border-bottom: 2px solid #2d8659; /* Verde medio */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
-nav a {
+.navbar a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    margin: 0 15px;
+    margin: 0 10px;
     padding: 10px 20px;
-    border-radius: 8px;
+    border-radius: 20px; /* Bordes completamente redondeados */
     background-color: #73c495; /* Verde claro */
-    transition: background-color 0.3s, transform 0.2s ease-in-out;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
-nav a:hover {
+.navbar a:hover {
     background-color: #2d8659; /* Verde medio */
     transform: scale(1.05); /* Efecto de hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Mayor sombra al hover */
+}
+
+.navbar a.active {
+    background-color: #1e5e3d; /* Verde oscuro */
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
 }
 
 /* Sección principal */
@@ -171,4 +180,12 @@ button:hover, #enviarPromocionBtn:hover {
 .pagination a:hover {
     background-color: #73c495;
     color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #1e5e3d;
+    color: white;
+    text-align: center;
+    padding: 15px;
 }

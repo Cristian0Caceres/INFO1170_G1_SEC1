@@ -56,6 +56,6 @@ exports.enviarFormularioContacto = (req, res) => {
         });
 
         // Redirigir al usuario después de enviar el formulario a index.html
-        res.redirect('/index.html');  // Redirige al archivo index.html en lugar de mostrar un mensaje
+        res.redirect('/');  // Redirige al archivo index.html en lugar de mostrar un mensaje
     });
 };

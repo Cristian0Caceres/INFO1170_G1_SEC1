@@ -110,10 +110,6 @@ app.get('/legal', isAuthenticated, (req, res) => {
   res.render('legal');
 });
 
-app.get('/helper', isAuthenticated, (req, res) => {
-  res.render('helper_home');
-});
-
 app.get('/simulador', isAuthenticated, (req, res) => {
   res.render('Test_simulador');
 });
