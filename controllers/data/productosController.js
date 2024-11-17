@@ -5,11 +5,13 @@ const mostrarProductosPorCategoria = (req, res) => {
     const idCategoria = req.params.id_categoria; // Obtener el ID de la categoría de los parámetros
 
     const sql = `
-        SELECT p.ID_Producto, p.Nombre_producto, MIN(pr.coste) as Precio_Minimo, p.imagen_producto
+        SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(pr.Costo) AS Precio_Minimo, c.Nombre_Categoria
         FROM producto p
-        JOIN precios pr ON p.ID_Producto = pr.ID_Productos
+        JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
+        JOIN categoria c ON p.ID_Categoria = c.ID_Categoria
         WHERE p.ID_Categoria = ?
-        GROUP BY p.ID_Producto, p.Nombre_producto, p.imagen_producto
+        GROUP BY  p.Nombre_producto, p.imagen_producto, c.Nombre_Categoria
+        ORDER BY Precio_Minimo ASC
     `;
 
     connection.query(sql, [idCategoria], (error, productos) => {
@@ -18,21 +20,28 @@ const mostrarProductosPorCategoria = (req, res) => {
             return res.status(500).send('Error al obtener productos.');
         }
 
-        // Renderizar la vista con los productos y el ID de la categoría
-        res.render('productos', { productos, idCategoria });
+        if (productos.length > 0) {
+            // Renderizar la vista con los productos y el nombre de la categoría
+            const nombreCategoria = productos[0].Nombre_Categoria;
+            res.render('productos', { productos, idCategoria, nombreCategoria });
+        } else {
+            res.status(404).send('No se encontraron productos para esta categoría.');
+        }
     });
 };
+
+
 
 // Función para obtener detalles del producto por ID
 const mostrarDetalleProducto = (req, res) => {
     const idProducto = req.params.id_producto; // Obtener el ID del producto de los parámetros
 
     const sql = `
-        SELECT p.Nombre_producto, p.Descripcion_Producto, p.imagen_producto, pr.coste AS Precio, t.Nombre_Proveedor
+        SELECT p.Nombre_producto, p.Descripcion_Producto, p.imagen_producto, pr.Costo AS Precio, t.Nombre_Proveedor
         FROM producto p
-        JOIN precios pr ON p.ID_Producto = pr.ID_Productos
-        JOIN proveedor t ON p.ID_Proveedor = t.ID_Proveedor
-        WHERE p.ID_Producto = ?
+        JOIN proveedor_producto pr ON p.ID_Producto = pr.ID_Producto_Proveedor
+        JOIN proveedor t ON pr.ID_Proveedor = t.ID_Proveedor
+        WHERE p.Nombre_producto = (SELECT Nombre_producto FROM producto WHERE ID_Producto = ?)
     `;
 
     connection.query(sql, [idProducto], (error, resultados) => {
@@ -42,12 +51,14 @@ const mostrarDetalleProducto = (req, res) => {
         }
 
         if (resultados.length > 0) {
-            const producto = resultados[0]; // Obtener el primer resultado
-            res.render('vista_producto', { producto }); // Renderizar la vista con los detalles del producto
+            res.render('vista_producto', { producto: resultados }); // Enviar todos los resultados como un array
         } else {
             res.status(404).send('Producto no encontrado.');
         }
     });
 };
+
+
+
 
 module.exports = { mostrarProductosPorCategoria, mostrarDetalleProducto };

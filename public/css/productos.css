@@ -105,21 +105,11 @@ main {
     justify-content: center;
     padding: 1%;
     color: rgb(0, 0, 0);
+    font-size: 80%;
     position: absolute;
     top: 11%; /* Ajusta la posición de la categoría */
     left: 1px;
     z-index: 1; /* Asegura que quede encima de los productos */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-}
-
-.nombre-categoria:hover {
-    transform: scale(1.05); /* Aumenta el tamaño ligeramente cuando se hace hover */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Agrega una sombra al hacer hover */
-}
-
-
-.nombre-categoria h1{
-    font-size: 150%;
 }
 
 .productos {
@@ -139,7 +129,7 @@ main {
     height: 15%;
     justify-content: center;    
     align-items: center;
-    
+
 }
 
 .encabezado .titulo{
@@ -153,64 +143,56 @@ main {
     border-radius: 50px;
     font-family: lemon;
 }
-.productos .contenedor_productos {
+
+.presentacion-producto{
     display: flex;
-    justify-self: center;
-    width: 90%;
-    height: 80%;
-    flex-wrap: wrap;
-    overflow-y: auto; /* Permitir el scroll vertical */
-    scrollbar-width: thin; /* Ajustar el tamaño del scrollbar */
-    scrollbar-color: darkgrey lightgrey; /* Personalizar el color del scrollbar */
+    width: 100%;
+    height: 85%;
+    justify-content: center;
+    align-items: center;
 }
 
-.presentacion-producto {
+.presentacion-producto .producto {
+    display: flex;
+    width: 90%;
+    height: 90%;
+    flex-wrap: wrap;
+    justify-content: left;
+    overflow-y: auto; /* Añade scroll vertical si hay más elementos */
+    overflow-x: hidden; /* Evita el scroll horizontal innecesario */
+    padding-right: 10px; /* Espacio para que el scroll no cubra el contenido */
+}
+
+.producto div {
     border-radius: 10px;
     background-color: #C5705D;
     width: 200px;
     height: 280px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 45px;
-    margin-bottom: 10px;
     margin-top: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-}
-
-.presentacion-producto:hover {
-    transform: scale(1.05); /* Aumenta el tamaño ligeramente */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Agrega una sombra para el efecto de elevación */
-}
-
-
-.presentacion-producto .contenedor_imagen{
-    background-color: #d6b8a5;
-    display: flex;
-    justify-self: center;
-    align-self: center;
-    justify-content: center;
-    align-items: center;
-    width: 190px;
-    height: 190px;
-}
-
-.contenedor_imagen img{
-    width: 100%;
-    height: 100%;
-}
-
-.contenedor_informacion{
+    margin-right: 30px;
+    margin-bottom: 20px;
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
-    width: 190px;
-    height: 70px;
     justify-content: center;
 }
 
+.producto div img{
+    background: #F8EDE3;
+    width: 186px;
+    height: 186px;
+    display: flex;
+    align-self: center;
+    margin: 5%;
+}
 
+.producto div p{
+    color: #F8EDE3;
+    font-size: 100%;
+    font-family: lemon;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
 footer {
     background-color: #D0B8A8;

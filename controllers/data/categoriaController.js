@@ -11,7 +11,7 @@ const obtenerCategorias = (req, res) => {
         }
 
         // Renderizar la vista con las categorías
-        res.render('categorias', { categorias }); 
+        res.render('categorias', { categorias, session: req.session }); 
     });
 };
 

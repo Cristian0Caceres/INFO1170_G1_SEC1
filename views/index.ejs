@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.2">
+    <title>Cacique del Ahorro</title>
+    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="../public/img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="../public/img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <a href="/categorias">
+                    <img src="../public/img/categorias.png" alt="Categorias">
+                </a>
+                <a href="/carrito">
+                    <img src="../public/img/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="/tiendas">
+                    <img src="../public/img/tienda.png" alt="Tienda">
+                </a>
+                <% if (isLoggedIn) { %>
+                    <a href="/auth/logout">
+                        <img src="../public/img/cerrar-sesion.png" alt="Cerrar Sesión">
+                    </a>
+                  <% } else { %>
+                    <a href="/login">
+                        <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                    </a>
+                  <% } %>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <div class="ofertas-container">
+            <section class="mejores-ofertas">
+                <h2>Mejores Ofertas</h2>
+                <div class="grid-container" id="ofertas-container">
+                    <!-- Las ofertas se agregarán aquí mediante JavaScript -->
+                </div>
+            </section>
+        </div>
+
+        <div class="categorias-container">
+            <hr class="section-divider">
+            <section class="popular-categories">
+                <h2>Categorías Populares</h2>
+                <div class="category-grid" id="categoryGrid">
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="https://thefoodtech.com/wp-content/uploads/2020/05/carne-de-res.jpg" alt="Carne">
+                        </div>
+                        <h3>Carne</h3>
+                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
+                    </div>
+                    
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="https://www.semana.com/resizer/v2/3WMDMSJ3KBH3ZK4CUPJ224AZYM.jpg?auth=af34ecfacec9f9e3b9d0874d936e52a438da3595b9eceb922c165aff6bec85f4&smart=true&quality=75&width=1280&height=720" alt="Frutas">
+                        </div>
+                        <h3>Frutas</h3>
+                        <a href="categorias.html" class="category-btn">Ver Más</a>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="https://s2.abcstatics.com/abc/www/multimedia/bienestar/2024/04/30/verduras-pocas-calorias-R3Vfbjx9Nok0nxp9QObH7xH-1200x840@diario_abc.jpg" alt="Verduras">
+                        </div>
+                        <h3>Verduras</h3>
+                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small/public/articulos/productos-lacteos.jpg" alt="Lácteos">
+                        </div>
+                        <h3>Lácteos</h3>
+                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="https://a.storyblok.com/f/120479/6d797da1b3/mitos-pan-1.jpg" alt="Pan">
+                        </div>
+                        <h3>Pan</h3>
+                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="https://www.aquasushi.cl/wp-content/uploads/aqua-botellas-coca.jpg" alt="Bebidas">
+                        </div>
+                        <h3>Bebidas</h3>
+                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                    </div>
+                    <div class="category-item">
+                        <div class="category-image">
+                            <img src="https://cablevey.com/wp-content/uploads/2020/11/The-Complete-Guide-on-Snack-Foods.jpg" alt="Snacks">
+                        </div>
+                        <h3>Snacks</h3>
+                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                    </div>
+                </div>
+            
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <img src="../public/img/logoECDA.png" alt="Logo">
+        <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
+        <nav>
+            <a href="/contacto">Ir a contacto</a>
+            <a href="/legal">Ir al legal</a>
+        </nav>
+        <a href="/" class="inicio-btn">Ir a Inicio</a>
+    </footer>
+
+    
+    <script>
+      fetch('/ofertas')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('ofertas-container');
+            container.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+
+            data.forEach(oferta => {
+                const ofertaDiv = document.createElement('div');
+                ofertaDiv.classList.add('grid-item');
+                ofertaDiv.innerHTML = `
+                    <div class="image-container">
+                        <img src="${oferta.imagen_producto}" alt="${oferta.Nombre_producto}">
+                        <div class="precio-oferta">$${oferta.Costo}</div> <!-- Cambia coste por Costo -->
+                    </div>
+                    <p>${oferta.Descripcion_Producto}</p>
+                    <a href="${oferta.link_producto}" class="category-btn">Ir a la Oferta</a>
+                `;
+                container.appendChild(ofertaDiv);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>

@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
-    <link rel="stylesheet" href="../css/register.css">
-    <script src="../js/reg.js" defer></script>
+    <link rel="stylesheet" href="../public/css/register.css">
+    <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
+    <script src="../public/js/reg.js" defer></script>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -29,29 +30,29 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="../img/logoECDA.png" alt="Logo">
+                <img src="../public/img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="../img/buscar.png" alt="Buscar">
+                    <img src="../public/img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
-                <a href="../html/categorias.php">
-                    <img src="../img/categorias.png" alt="Categorias">
+                <a href="/categorias">
+                    <img src="../public/img/categorias.png" alt="Categorias">
                 </a>
-                <a href="../html/Carrito.html">
-                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                <a href="/carrito">
+                    <img src="../public/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="../html/selec_tienda.php">
-                    <img src="../img/tienda.png" alt="Tienda">
-                <a href="../html/login.html">
-                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                <a href="/tiendas">
+                    <img src="../public/img/tienda.png" alt="Tienda">
+                <a href="/login">
+                    <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
-    </header>
+    </header>   
 
     <main>
         <div class="registrarse">
@@ -60,7 +61,7 @@
             <!-- seccion de ingreso de datos -->
             <div class="datos">
                 <h2>Bienvenido a Cacique del Ahorro</h2>
-                <p>Por favor ingresa tus datos para crear tu cuenta</p>
+                <p>por favor ingresa tus datos para crear tu cuenta</p>
 
                 <!-- formulario para los datos-->
                 <form action="/auth/register" method="POST" id="registroForm">
@@ -70,17 +71,17 @@
                     <input type="password" id="confirm_password" placeholder="Confirma tu Contraseña" required name="confirmacion_contrasena" value="">
                     <button type="submit">Crear cuenta</button>
                 </form>
-                <a href="login.html">Iniciar Sesion</a>
+                <a href="/login">Iniciar Sesion</a>
             </div>
 
         </div>
     </main>
 
     <footer>
-        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <img src="../public/img/logoECDA.png" alt="Logo de la empresa" >
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="../index.html">Ir al Inicio</a>
+            <a href="/index">Ir al Inicio</a>
         </nav>
     </footer>
 </body>

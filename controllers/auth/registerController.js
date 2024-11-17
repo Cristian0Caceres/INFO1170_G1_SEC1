@@ -1,11 +1,12 @@
 const db = require('../../config/db'); // Importar la conexión a la base de datos
+const bcrypt = require('bcrypt');
 
 const registerUser = (req, res) => {
     const { nombre, correo, contrasena, confirmacion_contrasena } = req.body;
 
     // Validar que la contraseña y la confirmación coincidan
     if (contrasena !== confirmacion_contrasena) {
-        return res.redirect('/html/register.html?error=contrasenas_no_coinciden');
+        return res.render('register', { error: 'contrasenas_no_coinciden' });
     }
 
     // Verificar si el correo ya existe en la base de datos
@@ -17,19 +18,28 @@ const registerUser = (req, res) => {
         }
 
         if (results.length > 0) {
-            return res.redirect('/html/register.html?error=correo_existente');
+            return res.render('register', { error: 'correo_existente' });
         }
 
-        // Si no existe el correo, insertar el nuevo usuario
-        const insertUserQuery = 'INSERT INTO Usuario (Nombre_Usuario, correo_Usuario, Contrasena_Usuario) VALUES (?, ?, ?)';
-        db.query(insertUserQuery, [nombre, correo, contrasena], (err, result) => {
+        // Si el correo no existe, generar el hash de la contraseña
+        const saltRounds = 7; // valor de hash usado
+        bcrypt.hash(contrasena, saltRounds, (err, hash) => {
             if (err) {
-                console.error('Error en la consulta: ' + err.stack);
-                return res.redirect('/html/register.html?error=no_exitoso');
+                console.error('Error al hashear la contraseña: ' + err.stack);
+                return res.render('register', { error: 'no_exitoso' });
             }
 
-            // Registro exitoso
-            return res.redirect('/html/login.html?registro=exitoso');
+            // Insertar el nuevo usuario con la contraseña hasheada
+            const insertUserQuery = 'INSERT INTO Usuario (Nombre_Usuario, correo_Usuario, Contrasena_Usuario) VALUES (?, ?, ?)';
+            db.query(insertUserQuery, [nombre, correo, hash], (err, result) => {
+                if (err) {
+                    console.error('Error en la consulta: ' + err.stack);
+                    return res.render('register', { error: 'no_exitoso' });
+                }
+
+                // Registro exitoso
+                return res.render('login', { error: 'exitoso' });
+            });
         });
     });
 };

@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar</title>
-    <link rel="stylesheet" href="../css/recuperar.css">
-    <script src="../js/rec.js" defer></script>
+    <link rel="stylesheet" href="../public/css/recuperar.css">
+    <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
+    <script src="../public/js/rec.js" defer></script>
     <script>
         // Función que realiza la búsqueda
         function realizarBusqueda() {
@@ -30,53 +31,54 @@
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="../img/logoECDA.png" alt="Logo">
+                <img src="../public/img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="../img/buscar.png" alt="Buscar">
+                    <img src="../public/img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
-                <a href="../html/categorias.php">
-                    <img src="../img/categorias.png" alt="Categorias">
+                <a href="/categorias">
+                    <img src="../public/img/categorias.png" alt="Categorias">
                 </a>
-                <a href="../html/Carrito.html">
-                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                <a href="/carrito">
+                    <img src="../public/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
-                <a href="../html/selec_tienda.php">
-                    <img src="../img/tienda.png" alt="Tienda">
-                <a href="../html/login.html">
-                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                <a href="/tiendas">
+                    <img src="../public/img/tienda.png" alt="Tienda">
+                <a href="/login">
+                    <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesion">
                 </a>    
             </div>
         </section>
-    </header>
+    </header>   
 
     <main>
         <div class="recuperar">
-            <h1>Recuperación</h1>
+            <h1>Recuperar Contraseña</h1>
 
             <!-- seccion de ingreso de datos -->
             <div class="datos">
                 <h3>¿Olvidaste tu Contraseña?</h3>
-                <p>Por favor ingresa tu correo asociado a tu cuenta</p>
-                <form action="../php/correo.php" method="POST">
+                <p>por favor ingresa tu correo asociado a tu cuenta</p>
+                <form action="/auth/recuperar" method="POST">
                     <input type="email" id="email" placeholder="Email" name="correo" required>
                     <button type="submit">Recuperar Contraseña</button>
                 </form>
-                <a href="login.html">Inicio de Sesion</a> <a href="register.html">Registrarse</a>
+                <a href="/login">Inicio de Sesion</a>
+                <a href="/register">Registrarse</a>
             </div>
 
         </div>
     </main>
 
     <footer>
-        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <img src="../public/img/logoECDA.png" alt="Logo de la empresa" >
         <p>&copy; Derechos Reservados</p>
         <nav>
-            <a href="../index.html">Ir al Inicio</a>
+            <a href="/">Ir al Inicio</a>
         </nav>
     </footer>
 </body>
