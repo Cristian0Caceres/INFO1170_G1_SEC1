@@ -22,36 +22,23 @@ h1 {
 
 /* Navegación */
 .navbar {
-    display: flex;
-    justify-content: center;
-    background-color: #1e5e3d; /* Verde oscuro */
-    padding: 15px;
-    border-bottom: 2px solid #2d8659; /* Verde medio */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    background-color: #1e5e3d !important; /* Color de fondo del navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
-.navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 10px;
-    padding: 10px 20px;
-    border-radius: 20px; /* Bordes completamente redondeados */
-    background-color: #73c495; /* Verde claro */
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+.navbar .nav-link {
+    color: white !important; /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+    margin: 0 5px; /* Margen entre los enlaces */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 12px; /* Bordes redondeados */
+    background-color: #2d8659; /* Fondo de los enlaces */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones */
 }
 
-.navbar a:hover {
-    background-color: #2d8659; /* Verde medio */
-    transform: scale(1.05); /* Efecto de hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Mayor sombra al hover */
-}
-
-.navbar a.active {
-    background-color: #1e5e3d; /* Verde oscuro */
-    color: white;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+.navbar .nav-link:hover {
+    background-color: #1e4d2b !important; /* Color al pasar el cursor */
+    transform: scale(1.05); /* Efecto de agrandamiento */
 }
 
 /* Sección principal */

@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel - Suplementos Alimenticios</title>
-    <link rel="stylesheet" href="../public/css/admin.css"> <!-- Agregar un 1 en el nombre para prueba de CSS -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/admin.css">
     <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
 </head>
 <body>
@@ -13,41 +15,92 @@
     <h1>Panel de Administración - Cacique del Ahorro</h1>
 </header>
 
-<nav>
-    <a href="/admin">Inicio</a>
-    <a href="/productos_admin">Productos</a>
-    <a href="/usuarios">Usuarios</a>
-    <a href="/helper-zone">Helper Zone</a>
-    <a href="/enviar-promocion">Promocion</a>
-    <a href="/">Salir</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/admin">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/productos_admin">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="/helper-zone">Helper Zone</a></li>
+                <li class="nav-item"><a class="nav-link" href="/enviar-promocion">Promoción</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Salir</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<section>
-    <h2>Bienvenido al Panel de Administración</h2>
-    <p>Zona de gestión principal.</p>
+<section class="container my-5">
+    <h2 class="text-center mb-4">Bienvenido al Panel de Administración</h2>
+    <p class="text-center">Zona de gestión principal.</p>
 
-    <div class="admin-section">
-        <div class="admin-card">
-            <h3>Gestión de Productos</h3>
-            <p>Administra los productos disponibles.</p>
-            <a href="/productos_admin">Ir a Productos</a>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">Gestión de Productos</h3>
+                    <p class="card-text">Administra los productos disponibles.</p>
+                    <a href="/productos_admin" class="btn btn-primary">Ir a Productos</a>
+                </div>
+            </div>
         </div>
-        <div class="admin-card">
-            <h3>Gestión de Usuarios</h3>
-            <p>Administra los usuarios registrados.</p>
-            <a href="/usuarios">Ir a Usuarios</a> 
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">Gestión de Usuarios</h3>
+                    <p class="card-text">Administra los usuarios registrados.</p>
+                    <a href="/usuarios" class="btn btn-primary">Ir a Usuarios</a>
+                </div>
+            </div>
         </div>
-        <div class="admin-card">
-            <h3>Helper Zone</h3>
-            <p>Administra las consultas realizadas</p>
-            <a href="helper_home.html">Ir a Helper Home</a>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">Helper Zone</h3>
+                    <p class="card-text">Administra las consultas realizadas.</p>
+                    <a href="/helper-zone" class="btn btn-primary">Ir a Helper Zone</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">Promocion</h3>
+                    <p class="card-text">Crea una promocion.</p>
+                    <a href="/enviar-promocion" class="btn btn-primary">Ir a Promocion</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">Legal</h3>
+                    <p class="card-text">Mira las configuraciones actuales de Legal.</p>
+                    <a href="/legal" class="btn btn-primary">Ir a Legal</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h3 class="card-title">Contacto</h3>
+                    <p class="card-text">Mira las configuraciones actuales de Contacto.</p>
+                    <a href="/contacto" class="btn btn-primary">Ir a Contacto</a>
+                </div>
+            </div>
         </div>
         
     </div>
 </section>
-<footer>
+
+<footer class="bg-dark text-white text-center py-3">
     <p>&copy; Derechos Reservados</p>
 </footer>
 
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
