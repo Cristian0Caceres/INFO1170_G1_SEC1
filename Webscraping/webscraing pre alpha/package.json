@@ -1,17 +1,26 @@
 {
-  "name": "webscraing-pre-alpha",
+  "name": "info1170_g1_sec1",
   "version": "1.0.0",
-  "main": "Webscraper.js",
+  "description": "",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "mysql2": "^3.11.3",
-    "puppeteer": "^23.5.3"
+    "bcrypt": "^5.1.1",
+    "ejs": "^3.1.10",
+    "express": "^4.21.0",
+    "express-session": "^1.18.1",
+    "info1170_g1_sec1": "file:",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.4",
+    "nodemailer": "^6.9.15",
+    "puppeteer": "^23.7.1"
   }
 }

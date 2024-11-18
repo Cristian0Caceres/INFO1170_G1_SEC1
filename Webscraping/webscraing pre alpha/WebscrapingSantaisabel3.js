@@ -15,8 +15,7 @@ const getCategoryId = (categoryName) => {
 
 async function scrapeAndCapture() {
     const urls = [
-        'https://www.santaisabel.cl/lacteos',
-        'https://www.santaisabel.cl/despensa'
+        'https://www.santaisabel.cl/vinos-cervezas-y-licores'
     ];
 
     const browser = await puppeteer.launch({
