@@ -206,3 +206,5 @@ function actualizarCarrito() {
 
 // Llama a la función para cargar productos al cargar la página
 window.onload = cargarProductosEnPagina;
+
+// 17

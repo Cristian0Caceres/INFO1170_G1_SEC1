@@ -26,7 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 const ofertasRouter = require('./routes/ofertas');
 app.use('/', ofertasRouter); // Asegúrate de que esta línea esté presente
 
-// Otros routers...
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
