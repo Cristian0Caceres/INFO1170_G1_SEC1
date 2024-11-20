@@ -1,12 +1,77 @@
-/* Estilos generales */
-body {
+/* NUEVOS DATOS */
+body, html {
+    height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #F8EDE3;
     margin: 0;
-    padding: 0;
-    color: #3f2a21;
+    background-color: #F8EDE3;
+    overflow-y: auto; /* Permite el scroll vertical si es necesario */
 }
 
+.barra-superior {
+    background-color: #d6b8a5;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); / Efecto al pasar el mouse /
+    opacity: 0.8;
+}
+
+.search-bar .input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 30px; 
+    background-color: #E8DEF8; 
+    overflow: hidden; 
+    height: 38px; 
+}
+
+.search-bar input {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    background-color: transparent; 
+    padding-left: 15px; 
+    height: 100%; 
+}
+
+.search-bar .btn {
+    background: none; 
+    border: none; 
+    padding: 0 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.search-bar button img {
+    height: 20px; 
+    width: 20px; 
+    object-fit: contain; 
+}
+
+.search-bar button:hover {
+    transform: scale(1.1); 
+}
+
+.icons a img {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.icons a img:hover {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+/* NUEVOS DATOS */
 /* Contenedor principal */
 .container {
     display: flex; /* Usar flexbox para alinear botones y contenido */
