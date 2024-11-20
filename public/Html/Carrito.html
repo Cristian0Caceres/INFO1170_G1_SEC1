@@ -52,11 +52,11 @@
     <main>
         <div class="tienda-container">
             <div class="nombre-tienda">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Logo_Jumbo_Cencosud.png" alt="Jumbo" class="icono-tienda">
-                <h2>Jumbo</h2>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Logo_Santa_Isabel_Cencosud_transparente.svg/1200px-Logo_Santa_Isabel_Cencosud_transparente.svg.png" alt="santaisabel" class="icono-tienda">
+                <h2>Santa Isabel</h2>
             </div>
-            <div class="productos-container" id="productos-container-jumbo">
-                <!-- Los productos de Jumbo se cargarán aquí -->
+            <div class="productos-container" id="productos-container-santaisabel">
+                <!-- Los productos de santaisabel se cargarán aquí -->
             </div>
         </div>
 
@@ -113,6 +113,8 @@
                     <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
+            
+
         </div>
     </footer>
 
@@ -121,7 +123,7 @@
         const carrito = {}; // Objeto para almacenar productos y sus cantidades
     
         // Cambia las URL a las correctas para tu entorno
-        fetch('/jumbo') // Cambia esta URL
+        fetch('/santaisabel') // Cambia esta URL
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -129,8 +131,8 @@
                 return response.json();
             })
             .then(data => {
-                const jumboContainer = document.getElementById('productos-container-jumbo');
-                jumboContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+                const santaisabelContainer = document.getElementById('productos-container-santaisabel');
+                santaisabelContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
     
                 data.forEach(oferta => {
                     const ofertaDiv = document.createElement('div');
@@ -140,19 +142,19 @@
                             <img src="${oferta.imagen_producto}" alt="${oferta.Nombre_producto}">
                             <div class="precio-oferta" data-precio="${oferta.Costo}">$${oferta.Costo}</div>
                         </div>
-                        <p>${oferta.Descripcion_Producto}</p>
+                        <p>${oferta.Nombre_producto}</p>
                         <a href="${oferta.link_producto}" class="category-btn">Ir a la Oferta</a>
                         <button class="agregar-carrito">Agregar al Carrito</button>
                         <button class="buscar-alternativa" data-nombre="${oferta.Nombre_producto}">Buscar Alternativa</button>
                     `;
-                    jumboContainer.appendChild(ofertaDiv);
+                    santaisabelContainer.appendChild(ofertaDiv);
                 });
     
                 // Manejar el evento de agregar al carrito
-                manejarEventosAgregarCarrito(jumboContainer);
-                manejarEventosBuscarAlternativa(jumboContainer);
+                manejarEventosAgregarCarrito(santaisabelContainer);
+                manejarEventosBuscarAlternativa(santaisabelContainer);
             })
-            .catch(error => console.error('Error en la carga de jumbo:', error));
+            .catch(error => console.error('Error en la carga de santaisabel:', error));
     
         fetch('/unimarc') // Cambia esta URL
             .then(response => {

@@ -89,7 +89,27 @@ header {
 .eliminar-btn:hover {
     background-color: #49454F; /* Cambio de color al hacer hover */
 }
+/* General para nombres y precios */
+.product-name,
+.product-price {
+  font-family: 'Roboto', sans-serif; /* Cambia por la fuente que prefieras */
+  font-weight: 300; /* Variante ligera para minimalismo */
+  margin: 0;
+}
 
+/* Estilo específico para nombres */
+.product-name {
+  font-size: 1.2rem; /* Tamaño moderado */
+  color: #333; /* Gris oscuro */
+  text-transform: capitalize; /* Primera letra en mayúscula */
+}
+
+/* Estilo específico para precios */
+.product-price {
+  font-size: 1.1rem; /* Un poco más pequeño que el nombre */
+  color: #666; /* Gris medio */
+  font-weight: 400; /* Resalta ligeramente */
+}
 .search-bar button {
     width: 5%;
     height: 80%;
@@ -290,6 +310,7 @@ button:hover {
 }
 .agregar-btn {
     background-color: #8786D9; /* Cambia este color por el que desees */
+    margin-right: 10px; /* Espaciado horizontal entre los botones */
     color: rgb(0, 0, 0); /* Color del texto */
     padding: 10px 15px; /* Espaciado interno */
     border-radius: 10px; /* Esquinas redondeadas */
@@ -299,7 +320,7 @@ button:hover {
 }
 
 .agregar-btn:hover {
-    background-color: #49454F; /* Cambia este color para el efecto hover */
+    background-color: #301757; /* Cambia este color para el efecto hover */
 }
 /* Estilo para el precio normal */
 .precio.normal {
@@ -330,11 +351,21 @@ button:hover {
     background-color: #49454F; /* Cambia este color para el efecto hover */
 }
 
-/* Estilos para el carrito */
-#cart-items {
-    
-    list-style-type: none; /* Sin viñetas en la lista */
-    padding: 0;
+/* Estilo general para los productos en el carrito */
+#cart-items li {
+    font-family: 'Arial', sans-serif; /* Cambia por la tipografía que prefieras */  
+    font-size: 1.2rem; /* Tamaño adecuado para el texto */
+    line-height: 1.5;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd; /* Separador entre los productos */
+}
+#total {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 20px;
+    text-align: right;
 }
 
 
