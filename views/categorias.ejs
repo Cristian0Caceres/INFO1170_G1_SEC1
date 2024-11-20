@@ -13,24 +13,22 @@
             <div class="row align-items-center">
                 <div class="col-2 logo">
                     <a href="/">
-                        <img src="../img/logoECDA.png" alt="Logo">
+                        <img src="../img/logoECDA.png" alt="Logo" title="Ir al Inicio">
                     </a>
                 </div>
                 <div class="col-8 search-bar">
                     <div class="input-group">
                         <input type="text" id="searchInput" placeholder="Buscar..." class="form-control">
-                        <button class="btn" onclick="realizarBusqueda()">
+                        <button class="btn" onclick="realizarBusqueda()" title="Buscar...">
                             <img src="../img/buscar.png" alt="Buscar" class="img-buscar">
                         </button>
                     </div>
-                </div>
-                
-                                     
+                </div>                                    
                 <div class="col-2 d-flex justify-content-around icons">
-                    <a href="/categorias"><img src="../img/categorias.png" alt="Categorias"></a>
-                    <a href="../html/Carrito.html"><img src="../img/carrito-de-compras.png" alt="Carrito de Compras"></a>
-                    <a href="/tiendas"><img src="../img/tienda.png" alt="Tienda"></a>
-                    <a href="../html/login.html"><img src="../img/iniciar-sesion.png" alt="Iniciar Sesión"></a>
+                    <a href="/categorias"><img src="../img/categorias.png" alt="Categorias" title="Ir a Categorias"></a>
+                    <a href="../html/Carrito.html"><img src="../img/carrito-de-compras.png" alt="Carrito de Compras" title="Ir al Carrito de Presupuesto"></a>
+                    <a href="/tiendas"><img src="../img/tienda.png" alt="Tienda" title="Ir a la Selección de Tiendas"></a>
+                    <a href="../html/login.html"><img src="../img/iniciar-sesion.png" alt="Iniciar Sesión" title="Iniciar Sesión"></a>
                 </div>
             </div>
         </section>
@@ -43,10 +41,10 @@
                 <% if (categorias.length > 0) { %>
                     <% categorias.forEach(categoria => { %>
                         <div class="col-12 mb-3 d-flex align-items-center category-item">
-                            <a class="img-categoria flex-grow-1 me-3" href="/productos/<%= categoria.ID_Categoria %>">
-                                <img src="<%= categoria.img_url %>" alt="Imagen de <%= categoria.Descripcion_Categoria %>" class="img-fluid img-fixed-size">
+                            <a class="img-categoria flex-grow-1 me-3" href="/productos/<%= categoria.ID_Categoria %>" title="Ir a la categoria de <%= categoria.Nombre_Categoria%>">
+                                <img src="<%= categoria.imagen_categoria %>" alt="Imagen de <%= categoria.Descripcion_Categoria %>" class="img-fluid img-fixed-size">
                             </a>
-                            <a class="nombre-categoria text-center" href="/productos/<%= categoria.ID_Categoria %>">
+                            <a class="nombre-categoria text-center" href="/productos/<%= categoria.ID_Categoria %> " title="Ir a la categoria de <%= categoria.Nombre_Categoria%>">
                                 <h2><%= categoria.Nombre_Categoria %></h2>
                             </a>
                         </div>

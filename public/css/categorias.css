@@ -12,6 +12,7 @@ body, html {
 
 .barra-superior {
     background-color: #d6b8a5;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
 .logo img {
@@ -101,67 +102,107 @@ body, html {
 
 .img-categoria {
     background-color: #C5705D;
-    width: 65%; /* Ocupa el 65% del espacio de la fila */
-    height: 100px; /* Altura fija para coincidir con el nombre */
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 100px; /* Altura fija */
     border-radius: 10px;
-    transition: transform 0.2s ease;
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none; /* Eliminar el subrayado */
+    overflow: hidden; /* Asegura que las imágenes no se desborden */
+    transition: transform 0.2s ease, filter 0.2s ease; /* Transición para agrandamiento */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
+.img-categoria img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 100%; /* La imagen ocupa toda la altura del contenedor */
+    object-fit: cover; /* Ajusta la imagen para que cubra todo el área, recortándola si es necesario */
+    border-radius: 10px; /* Asegura que los bordes redondeados también apliquen a la imagen */
+    transition: filter 0.2s ease-in-out; /* Transición suave para el filtro */
+}
+
+/* Efecto al pasar el mouse sobre el contenedor */
 .img-categoria:hover {
-    transform: scale(1.02);
+    transform: scale(1.006); /* Agranda ligeramente el contenedor */
 }
 
-.img-fixed-size {
-    max-height: 100%; /* Ajusta la altura máxima */
-    max-width: 100%; /* Ajusta el ancho máximo */
-    object-fit: cover;
-}
 
 .nombre-categoria {
     background-color: #D0B8A8;
-    padding: 1rem;
+    padding: 1rem;  
     border-radius: 50px 0 0 50px;
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-family: "Lemon", sans-serif;
     color: #000;
     width: 25%; /* Ancho fijo */
     height: 100px; /* Altura fija para igualar con img-categoria */
     text-align: center;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    transition: transform 0.2s ease; /* Solo se agranda */
     text-decoration: none; /* Eliminar el subrayado */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow-wrap: break-word; /* Permite que el texto se ajuste dentro del contenedor */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
 }
 
+/* Efecto de hover en el nombre */
 .nombre-categoria:hover {
-    background-color: #B08A72;
-    color: #fff;
+    transform: scale(1.05); /* Efecto de agrandamiento */
 }
 
-.nombre-categoria h2 {
-    font-size: 1.2vw; /* Tamaño de fuente responsive */
-    text-decoration: none; /* Eliminar el subrayado */
-    text-align: center;
-}
-
+/* Ajustes generales para pantallas pequeñas */
 @media (max-width: 768px) {
-    /* Ajuste de tamaños en pantallas pequeñas */
-    .nombre-categoria h2 {
-        font-size: 3vw; /* Tamaño de fuente más pequeño para pantallas pequeñas */
+    .icons a img {
+        height: 24px; /* Ajusta la altura de los iconos */
+        width: 24px; /* Asegura proporción */
     }
 
-    .img-categoria {
-        width: 100%; /* Acomoda la imagen en el contenedor */
+    .productos {
+        width: 95%; /* Ocupa casi todo el ancho */
     }
 
     .nombre-categoria {
-        width: 100%; /* Acomoda el nombre en el contenedor */
+        font-size: 1rem; /* Reduce el tamaño de la fuente */
+        width: auto; /* Ajusta automáticamente el ancho */
+        height: auto; /* Ajusta automáticamente la altura */
+        padding: 5px 10px; /* Espaciado interno reducido */
+        border-radius: 20px; /* Reduce los bordes redondeados */
+    }
+
+    .nombre-categoria h1 {
+        font-size: 1rem; /* Tamaño más pequeño para el texto */
+        text-align: center;
+    }
+
+    .presentacion-producto {
+        width: 45%; /* Reduce el ancho de las tarjetas para ajustarse */
+        margin-bottom: 20px; /* Agrega espacio entre las filas */
+    }
+
+    .contenedor_informacion h3 {
+        font-size: 0.9rem; /* Ajusta el tamaño de la fuente del título */
+    }
+
+    .contenedor_informacion p {
+        font-size: 0.8rem; /* Ajusta el tamaño del precio */
+    }
+}
+
+/* Ajustes para pantallas extremadamente pequeñas */
+@media (max-width: 480px) {
+    .icons a img {
+        height: 20px; /* Ajusta los iconos aún más */
+        width: 20px;
+    }
+
+    .presentacion-producto {
+        width: 90%; /* Cada tarjeta ocupa casi todo el ancho */
+    }
+
+    .contenedor_imagen img {
+        object-fit: contain; /* Asegura que la imagen no se deforme */
     }
 }
 
