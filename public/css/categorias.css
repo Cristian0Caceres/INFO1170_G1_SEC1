@@ -16,29 +16,67 @@ body, html {
 
 .logo img {
     height: 50px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); /* Efecto al pasar el mouse */
+    opacity: 0.8;
+}
+
+/* Campo de entrada de búsqueda con bordes circulares */
+.search-bar .input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 30px; /* Bordes redondeados en todo el grupo */
+    background-color: #E8DEF8; /* Fondo común */
+    overflow: hidden; /* Para asegurar que el botón y el campo compartan el borde */
+    height: 38px; /* Altura reducida */
 }
 
 .search-bar input {
-    background-color: #E8DEF8;
-    border-radius: 30px;
-    padding-left: 15px;
-    width: 100%;
+    flex: 1; /* Ocupa todo el espacio restante */
+    border: none; /* Sin borde */
+    outline: none; /* Sin borde de enfoque */
+    background-color: transparent; /* Fondo transparente */
+    padding-left: 15px; /* Espaciado interno */
+    height: 100%; /* Altura completa */
+}
+
+/* Botón de búsqueda dentro del campo */
+.search-bar .btn {
+    background: none; /* Fondo transparente */
+    border: none; /* Sin bordes */
+    padding: 0 10px; /* Espaciado interno */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; /* Efecto suave al pasar el mouse */
+}
+
+/* Imagen dentro del botón */
+.search-bar button img {
+    height: 20px; /* Altura de la lupa ajustada */
+    width: 20px; /* Ancho de la lupa ajustado */
+    object-fit: contain; /* Ajusta la imagen para que no se deforme */
+}
+
+/* Efecto al pasar el mouse sobre el botón */
+.search-bar button:hover {
+    transform: scale(1.1); /* Aumenta ligeramente */
 }
 
 .icons a img {
     height: 30px;
     cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave */
 }
 
-header .icons a img, header .logo img {
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Transición suave para la escala y opacidad */
+.icons a img:hover {
+    transform: scale(1.1); /* Efecto de aumento */
+    opacity: 0.8; /* Opacidad reducida */
 }
-
-header .icons a img:hover, header .logo img:hover {
-    transform: scale(1.1); /* Aumenta ligeramente el tamaño */
-    opacity: 0.8; /* Baja un poco la opacidad */
-}
-
 
 .principal {
     background-color: #DFD3C3;
@@ -78,7 +116,8 @@ header .icons a img:hover, header .logo img:hover {
 }
 
 .img-fixed-size {
-    max-height: 80%; /* Ajusta el tamaño máximo de la imagen */
+    max-height: 100%; /* Ajusta la altura máxima */
+    max-width: 100%; /* Ajusta el ancho máximo */
     object-fit: cover;
 }
 
