@@ -15,54 +15,46 @@ h2 {
 
 /* Estilo para el formulario */
 form {
-    max-width: 600px;
-    margin: 0 auto;
     background-color: #f5d6c6;
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-label {
-    display: block;
-    margin-bottom: 8px;
+form .form-label {
     font-weight: bold;
+    color: #3f2a21;
 }
 
-input[type="text"],
-input[type="number"],
-input[type="email"], /* Añadido para campos de email */
-textarea, /* Añadido para el textarea */
-select {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
+form .form-control {
     border: 1px solid #d58b72;
     border-radius: 5px;
     background-color: white;
-    font-size: 16px; /* Aumentado para mayor legibilidad */
-    color: #3f2a21; /* Color del texto */
+    font-size: 16px;
+    color: #3f2a21;
+    transition: transform 0.3s ease;
 }
 
-textarea {
-    resize: vertical; 
-    height: 100px; 
+form .form-control:focus {
+    border-color: #b47461;
+    box-shadow: 0 0 5px rgba(181, 116, 97, 0.5);
+    transform: scale(1.02);
 }
 
 button {
     background-color: #d58b72;
     color: white;
     border: none;
-    padding: 12px 20px; /* Aumentado para mayor tamaño de botón */
+    padding: 12px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s;
-    width: 100%; /* Hacer que el botón ocupe todo el ancho del formulario */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
 }
 
 button:hover {
     background-color: #b47461;
+    transform: scale(1.05);
 }
 
 /* Estilo para la tabla */
@@ -90,7 +82,6 @@ td {
 td a {
     color: #d58b72;
     text-decoration: none;
-    margin: 0 5px;
     font-weight: bold;
 }
 
@@ -117,16 +108,8 @@ tr:hover td {
 @media (max-width: 768px) {
     form {
         padding: 15px;
-        width: 100%;
     }
 
-    input[type="text"],
-    input[type="number"],
-    textarea,
-    select {
-        width: 100%;
-    }
-    
     button {
         padding: 10px 0;
     }

@@ -17,14 +17,11 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="/admin">Inicio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/admin">Inicio</a></li>
                 <li class="nav-item"><a class="nav-link" href="/productos_admin">Productos</a></li>
-                <li class="nav-item"><a class="nav-link active" href="/usuarios">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
                 <li class="nav-item"><a class="nav-link" href="/helper-zone">Helper Zone</a></li>
                 <li class="nav-item"><a class="nav-link" href="/enviar-promocion">Promoción</a></li>
                 <li class="nav-item"><a class="nav-link" href="/">Salir</a></li>
@@ -69,6 +66,17 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Paginación -->
+    <nav aria-label="Paginación de usuarios">
+        <ul class="pagination justify-content-center">
+            <% for (let i = 1; i <= totalPaginas; i++) { %>
+                <li class="page-item <%= i === paginaActual ? 'active' : '' %>">
+                    <a class="page-link" href="/usuarios?page=<%= i %>"><%= i %></a>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
 </section>
 
 <footer class="bg-dark text-white text-center py-3">

@@ -1,30 +1,52 @@
 const db = require('../../config/db');
 
-// Buscar productos
+// Buscar productos con paginación
 const buscarProductos = (req, res) => {
     const search = req.query.search || '';
-    let sql = `SELECT producto.ID_Producto AS id, 
-                      producto.Nombre_producto AS name, 
-                      producto.Descripcion_Producto AS description, 
-                      producto.imagen_producto AS image, 
-                      producto.Costo AS price,  -- Campo actualizado a Costo
-                      categoria.Nombre_Categoria AS category, 
-                      proveedor.Nombre_Proveedor AS provider
-               FROM producto
-               JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
-               JOIN proveedor ON producto.ID_Proveedor = proveedor.ID_Proveedor`;
+    const limite = 20; // Máximo de productos por página
+    const pagina = parseInt(req.query.page) || 1; // Página actual
+    const offset = (pagina - 1) * limite; // Desplazamiento para la paginación
 
-    if (search) {
-        sql += ` WHERE producto.Nombre_producto LIKE ?`;
-    }
+    // Contar total de productos
+    const sqlContar = `SELECT COUNT(*) AS total 
+                       FROM producto 
+                       WHERE Nombre_producto LIKE ?`;
 
-    sql += ` ORDER BY producto.Nombre_producto, producto.Costo DESC`;  // Ordenar por Costo
-
-    db.query(sql, [`%${search}%`], (error, results) => {
+    db.query(sqlContar, [`%${search}%`], (error, resultados) => {
         if (error) {
-            return res.status(500).send(error);
+            return res.status(500).send('Error al contar productos');
         }
-        res.render('lista_productos', { productos: results, search });
+
+        const totalProductos = resultados[0].total;
+        const totalPaginas = Math.ceil(totalProductos / limite);
+
+        // Obtener productos con límite y desplazamiento
+        let sqlProductos = `SELECT producto.ID_Producto AS id, 
+                                   producto.Nombre_producto AS name, 
+                                   producto.Descripcion_Producto AS description, 
+                                   producto.imagen_producto AS image, 
+                                   producto.Costo AS price, 
+                                   categoria.Nombre_Categoria AS category, 
+                                   proveedor.Nombre_Proveedor AS provider
+                            FROM producto
+                            JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
+                            JOIN proveedor ON producto.ID_Proveedor = proveedor.ID_Proveedor
+                            WHERE producto.Nombre_producto LIKE ?
+                            ORDER BY producto.Nombre_producto, producto.Costo DESC
+                            LIMIT ? OFFSET ?`;
+
+        db.query(sqlProductos, [`%${search}%`, limite, offset], (error, productos) => {
+            if (error) {
+                return res.status(500).send('Error al obtener productos');
+            }
+
+            res.render('lista_productos', {
+                productos,
+                search,
+                paginaActual: pagina,
+                totalPaginas
+            });
+        });
     });
 };
 

@@ -1,12 +1,32 @@
 const db = require('../../config/db');
 
-// Mostrar la lista de usuarios
+// Mostrar la lista de usuarios con paginación
 exports.mostrarUsuarios = (req, res) => {
-    db.query('SELECT ID_Usuario, Nombre_Usuario, correo_Usuario FROM usuario', (error, resultados) => {
+    const limite = 10; // Usuarios por página
+    const pagina = parseInt(req.query.page) || 1; // Página actual
+    const offset = (pagina - 1) * limite; // Desplazamiento
+
+    // Obtener el número total de usuarios
+    db.query('SELECT COUNT(*) AS total FROM usuario', (error, resultados) => {
         if (error) {
-            return res.status(500).send('Error al obtener usuarios');
+            return res.status(500).send('Error al obtener la cantidad de usuarios');
         }
-        res.render('vista_usuarios', { usuarios: resultados });
+
+        const totalUsuarios = resultados[0].total;
+        const totalPaginas = Math.ceil(totalUsuarios / limite);
+
+        // Obtener los usuarios para la página actual
+        db.query('SELECT ID_Usuario, Nombre_Usuario, correo_Usuario FROM usuario LIMIT ? OFFSET ?', [limite, offset], (error, usuarios) => {
+            if (error) {
+                return res.status(500).send('Error al obtener usuarios');
+            }
+
+            res.render('vista_usuarios', {
+                usuarios,
+                paginaActual: pagina,
+                totalPaginas
+            });
+        });
     });
 };
 
