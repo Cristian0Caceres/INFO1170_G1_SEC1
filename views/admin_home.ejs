@@ -19,7 +19,7 @@
     <a href="/usuarios">Usuarios</a>
     <a href="/helper-zone">Helper Zone</a>
     <a href="/enviar-promocion">Promocion</a>
-    <a href="/">Salir</a>
+    <a href="/auth/logout">Salir</a>
 </nav>
 
 <section>
@@ -40,7 +40,7 @@
         <div class="admin-card">
             <h3>Helper Zone</h3>
             <p>Administra las consultas realizadas</p>
-            <a href="helper_home.html">Ir a Helper Home</a>
+            <a href="/helper-zone">Ir a Helper Home</a>
         </div>
         
     </div>
@@ -48,6 +48,10 @@
 <footer>
     <p>&copy; Derechos Reservados</p>
 </footer>
+
+<% if (typeof mensaje !== 'undefined') { %>
+    <script>alert("<%= mensaje %>");</script>
+<% } %>
 
 </body>
 </html>

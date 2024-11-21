@@ -45,10 +45,10 @@ app.get('/', isAuthenticated, (req, res) => {
 app.get('/admin', (req, res) => {
   if (res.locals.isLoggedIn) {
     // El usuario está autenticado, mostrar la página de admin
-    res.render('admin');
+    res.render('admin_home');
   } else {
     // El usuario no está autenticado, mostrar un mensaje de error
-    res.render('error', { message: 'Debes estar autenticado para acceder a esta página' });
+    res.render('index');
   }
 });
 
@@ -72,7 +72,7 @@ app.get('/register', isAuthenticated, (req, res) => {
     res.render('index');
   } else {
     // El usuario no está autenticado, dejar acceder a inciar sesion
-    res.render('login');
+    res.render('register');
   }
 });
 
@@ -82,7 +82,7 @@ app.get('/recuperar', isAuthenticated, (req, res) => {
     res.render('index');
   } else {
     // El usuario no está autenticado, dejar acceder a inciar sesion
-    res.render('login');
+    res.render('recuperar');
   }
 });
 
@@ -92,7 +92,7 @@ app.get('/confirmacion', isAuthenticated, (req, res) => {
     res.render('index');
   } else {
     // El usuario no está autenticado, dejar acceder a inciar sesion
-    res.render('login');
+    res.render('confirmacion');
   }
 });
 
@@ -102,7 +102,7 @@ app.get('/cambio', isAuthenticated, (req, res) => {
     res.render('index');
   } else {
     // El usuario no está autenticado, dejar acceder a inciar sesion
-    res.render('login');
+    res.render('cambio');
   }
 });
 

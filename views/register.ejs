@@ -84,5 +84,10 @@
             <a href="/index">Ir al Inicio</a>
         </nav>
     </footer>
+
+    <% if (typeof mensaje !== 'undefined') { %>
+        <script>alert("<%= mensaje %>");</script>
+    <% } %>
+
 </body>
 </html>
