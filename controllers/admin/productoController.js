@@ -3,7 +3,7 @@ const db = require('../../config/db');
 // Buscar productos con paginación
 const buscarProductos = (req, res) => {
     const search = req.query.search || '';
-    const limite = 20; // Máximo de productos por página
+    const limite = 100; // Máximo de productos por página
     const pagina = parseInt(req.query.page) || 1; // Página actual
     const offset = (pagina - 1) * limite; // Desplazamiento para la paginación
 
