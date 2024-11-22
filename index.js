@@ -140,10 +140,10 @@ const contactoRouter = require('./routes/consultar');
 app.use('/', contactoRouter);  
 
 const helperRoutes = require('./routes/helper');
-app.use('/helper-zone', helperRoutes);
+app.use('/', helperRoutes);
 
 const promocionRouter = require('./routes/promocion');
-app.use('/enviar-promocion', promocionRouter);  
+app.use('/', promocionRouter);  
 
 const jumboRouter = require('./routes/jumbo'); 
 app.use('/jumbo', jumboRouter); 
