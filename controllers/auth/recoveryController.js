@@ -21,14 +21,14 @@ const recuperarContrasena = (req, res) => {
 
         // Si el correo no se encuentra en la base de datos
         if (results.length === 0) {
-            return res.render('recuperar', { error: 'credenciales_invalidas' });
+            return res.render('recuperar', { mensaje: 'correo no valido' });
         }
 
         // Si es un administrador, redirigir con un error
         const admins = ['caciquedelahorro@gmail.com'];
         const usuario = results[0];
         if (admins.includes(usuario.correo_Usuario)) {
-            return res.render('recuperar', { error: 'admin' });
+            return res.render('recuperar', { mensaje: 'correo no valido' });
         }
 
         // Generar el código de recuperación de 5 dígitos
@@ -54,7 +54,7 @@ const recuperarContrasena = (req, res) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 console.error('Error al enviar el correo: ' + error);
-                return res.render('recuperar', { error: 'error' });
+                return res.render('recuperar', { mensaje: 'error' });
             }
 
             // Guardar el código y el correo en la sesión
@@ -62,7 +62,7 @@ const recuperarContrasena = (req, res) => {
             req.session.correo_usuario = correo;
 
             // Redirigir a la página de confirmación
-            return res.render('confirmacion');
+            return res.render('confirmacion', { mensaje: 'correo enviado' });
         });
     });
 };
