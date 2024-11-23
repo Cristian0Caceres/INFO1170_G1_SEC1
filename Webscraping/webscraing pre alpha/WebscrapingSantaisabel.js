@@ -16,7 +16,9 @@ const getCategoryId = (categoryName) => {
 async function scrapeAndCapture() {
     const urls = [
         'https://www.santaisabel.cl/lacteos',
-        'https://www.santaisabel.cl/despensa'
+        'https://www.santaisabel.cl/despensa',
+        'https://www.jumbo.cl/lacteos-y-quesos',
+        'https://www.jumbo.cl/despensa'
     ];
 
     const browser = await puppeteer.launch({
@@ -32,7 +34,7 @@ async function scrapeAndCapture() {
 
     for (const url of urls) {
         const page = await browser.newPage();
-        console.log(`Navegando a la URL: ${url}`);
+        console.log(`Navigating to URL: ${url}`);
 
         try {
             await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
@@ -45,7 +47,8 @@ async function scrapeAndCapture() {
             });
 
             while (pageIndex <= totalPages) {
-                await page.waitForSelector('.product-card', { timeout: 5000 });
+                console.log(`Scraping ${category}, Page ${pageIndex}/${totalPages}`);
+                await page.waitForSelector('.product-card', { timeout: 10000 });
 
                 const data = await page.evaluate(() => {
                     let items = [];

@@ -15,7 +15,8 @@ const getCategoryId = (categoryName) => {
 
 async function scrapeAndCapture() {
     const urls = [
-        'https://www.santaisabel.cl/vinos-cervezas-y-licores'
+        'https://www.santaisabel.cl/vinos-cervezas-y-licores',
+        'https://www.jumbo.cl/vinos-cervezas-y-licores'
     ];
 
     const browser = await puppeteer.launch({
@@ -44,7 +45,7 @@ async function scrapeAndCapture() {
             });
 
             while (pageIndex <= totalPages) {
-                await page.waitForSelector('.product-card', { timeout: 5000 });
+                await page.waitForSelector('.product-card', { timeout: 10000 });
 
                 const data = await page.evaluate(() => {
                     let items = [];

@@ -15,8 +15,10 @@ const getCategoryId = (categoryName) => {
 
 async function scrapeAndCapture() {
     const urls = [
-        'https://www.santaisabel.cl/frutas-y-verduras',
-        'https://www.santaisabel.cl/carniceria'
+        'https://www.jumbo.cl/carniceria',
+        'https://www.santaisabel.cl/carniceria',
+        'https://www.jumbo.cl/frutas-y-verduras',
+        'https://www.santaisabel.cl/frutas-y-verduras'
     ];
 
     const browser = await puppeteer.launch({
@@ -31,15 +33,13 @@ async function scrapeAndCapture() {
     });
 
     for (const url of urls) {
+        const page = await browser.newPage();
+        console.log(`Navigating to URL: ${url}`);
+
         try {
-            const page = await browser.newPage();
-            console.log(`Navegando a la URL: ${url}`);
             await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-            console.log(`Página cargada: ${url}`);
-            
-            const category = path.basename(url); // Obtener la categoría desde el enlace URL
-            const categoryId = getCategoryId(category); // Obtener el ID de la categoría
-            
+            const category = path.basename(url); 
+            const categoryId = getCategoryId(category);
             let pageIndex = 1;
             const totalPages = await page.evaluate(() => {
                 const pages = document.querySelectorAll('.select-page-dropdown-item');
@@ -47,22 +47,22 @@ async function scrapeAndCapture() {
             });
 
             while (pageIndex <= totalPages) {
-                await page.waitForSelector('.product-card', { timeout: 5000 });
-                
-                // Extraer la información necesaria, incluyendo la imagen
+                console.log(`Scraping ${category}, Page ${pageIndex}/${totalPages}`);
+                await page.waitForSelector('.product-card', { timeout: 10000 });
+
                 const data = await page.evaluate(() => {
                     let items = [];
                     document.querySelectorAll('.product-card').forEach(item => {
                         let name = item.querySelector('.product-card-name')?.innerText;
                         let price = item.querySelector('.prices-main-price')?.innerText;
                         let link = item.querySelector('a')?.href;
-                        let img = item.querySelector('img')?.src; // Extraer el link de la imagen
+                        let img = item.querySelector('img')?.src;
                         if (name && price && link && img) {
                             items.push({
                                 name: name,
                                 price: price,
                                 link: link,
-                                img: img // Incluir el link de la imagen en los datos extraídos
+                                img: img
                             });
                         }
                     });
@@ -74,19 +74,16 @@ async function scrapeAndCapture() {
                 for (const item of data) {
                     if (item.name && item.price && item.link && item.img) {
                         try {
-                            // Comprobar si el producto ya existe
                             const [rows] = await connection.execute(
                                 'SELECT * FROM Producto WHERE Nombre_producto = ? AND link_producto = ?',
                                 [item.name, item.link]
                             );
                             if (rows.length > 0) {
-                                // Si el producto existe, actualizar los datos
                                 await connection.execute(
                                     'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ? WHERE Nombre_producto = ? AND link_producto = ?',
                                     [parseInt(item.price.replace(/\D/g, '')), categoryId, item.img, item.name, item.link]
                                 );
                             } else {
-                                // Si el producto no existe, insertar los datos nuevos
                                 await connection.execute(
                                     'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, ?, ?)',
                                     [item.name, item.link, parseInt(item.price.replace(/\D/g, '')), categoryId, item.img]
@@ -99,7 +96,6 @@ async function scrapeAndCapture() {
                     }
                 }
 
-                // Avanzar a la siguiente página si no es la última
                 if (pageIndex < totalPages) {
                     const nextPageExists = await page.evaluate((index) => {
                         const pages = document.querySelectorAll('.select-page-dropdown-item');
@@ -114,15 +110,16 @@ async function scrapeAndCapture() {
                             }, pageIndex)
                         ]);
                     } else {
-                        break; // Si el botón de la siguiente página no existe, salir del bucle
+                        break;
                     }
                 }
                 pageIndex++;
             }
 
-            await page.close();
         } catch (error) {
-            console.error('Error en la URL:', url, error);
+            console.error('Error:', error);
+        } finally {
+            await page.close();
         }
     }
 
