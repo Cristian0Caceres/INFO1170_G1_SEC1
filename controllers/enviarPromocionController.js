@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const db = require('../config/db'); // Conexión a la base de datos
+const fs = require('fs'); // Para verificar la existencia de archivos
 
 exports.enviarPromocion = (req, res) => {
     const { subject, message, productId } = req.body;
@@ -30,6 +31,18 @@ exports.enviarPromocion = (req, res) => {
 
             const producto = productoRes[0];
 
+            // Determinar rutas de los banners en función de la categoría
+            const sanitizedCategory = producto.Nombre_Categoria.replace(/\s+/g, '_').toLowerCase();
+            const headerBanner = `./public/img/${sanitizedCategory}_header.jpg`;
+            const footerBanner = `./public/img/${sanitizedCategory}_footer.jpg`;
+
+            // Verificar si existen los banners, usar los por defecto si no existen
+            const headerExists = fs.existsSync(headerBanner);
+            const footerExists = fs.existsSync(footerBanner);
+
+            const finalHeader = headerExists ? headerBanner : './public/img/default_header.jpg';
+            const finalFooter = footerExists ? footerBanner : './public/img/default_footer.jpg';
+
             const transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {
@@ -42,14 +55,6 @@ exports.enviarPromocion = (req, res) => {
                 from: 'caciquedelahorro@gmail.com',
                 to: emails,
                 subject: subject || 'Promoción Especial',
-                text: message || 'Tenemos una promoción especial para ti en El Cacique del Ahorro.',
-                attachments: [
-                    {
-                        filename: producto.Nombre_producto,
-                        path: producto.imagen_producto,
-                        cid: 'producto@imagen'
-                    }
-                ],
                 html: `
                     <!-- Espacio para Header -->
                     <div style="text-align: center; padding: 10px;">
@@ -77,13 +82,13 @@ exports.enviarPromocion = (req, res) => {
                         cid: 'producto@imagen'
                     },
                     {
-                        filename: 'header.jpg', // Nombre del archivo de encabezado
-                        path: './public/img/header.jpg', // Ruta al banner de encabezado
+                        filename: 'header.jpg',
+                        path: finalHeader,
                         cid: 'header@imagen'
                     },
                     {
-                        filename: 'footer.jpg', // Nombre del archivo de pie de página
-                        path: './public/img/footer.jpg', // Ruta al banner de pie de página
+                        filename: 'footer.jpg',
+                        path: finalFooter,
                         cid: 'footer@imagen'
                     }
                 ]
@@ -96,7 +101,7 @@ exports.enviarPromocion = (req, res) => {
                 }
 
                 console.log('Correo enviado: ' + info.response);
-                res.redirect('/helper-zone');
+                res.redirect('/enviar-promocion');
             });
         });
     });

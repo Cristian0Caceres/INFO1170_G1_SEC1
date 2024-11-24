@@ -33,7 +33,9 @@
                 <select id="categorySelect" class="form-select">
                     <option value="">Todas las Categorías</option>
                     <% categorias.forEach(categoria => { %>
-                        <option value="<%= categoria.ID_Categoria %>"><%= categoria.Nombre_Categoria %></option>
+                        <option value="<%= categoria.Nombre_Categoria.replace(/\s+/g, '_').toLowerCase() %>">
+                            <%= categoria.Nombre_Categoria %>
+                        </option>
                     <% }); %>
                 </select>
             </div>
@@ -63,12 +65,25 @@
             </div>
             <div class="col-md-12">
                 <label for="message" class="form-label">Mensaje:</label>
-                <textarea id="message" name="message" rows="5" class="form-control">Oye! te espera un descuento por aquí!</textarea>
+                <textarea id="message" name="message" rows="5" class="form-control">¡Oye! Te espera un descuento por aquí.</textarea>
             </div>
             <div class="col-12 text-center">
                 <button type="button" id="enviarPromocionBtn" class="btn btn-success">Enviar Promoción</button>
             </div>
         </form>
+
+        <!-- Vista previa del banner -->
+        <div class="row mt-4">
+            <div class="col-md-12 text-center">
+                <h4>Vista previa del Banner</h4>
+                <div>
+                    <img id="headerImage" src="/public/img/default_header.jpg" alt="Header de la categoría" class="img-fluid mb-3">
+                </div>
+                <div>
+                    <img id="footerImage" src="/public/img/default_footer.jpg" alt="Footer de la categoría" class="img-fluid">
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; Derechos Reservados</p>
@@ -77,13 +92,14 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Código JavaScript conservado de tu original
         const products = <%- JSON.stringify(productos) %>;
         const productImage = document.getElementById('productImage');
         const productPrice = document.getElementById('productPrice');
         const productSelect = document.getElementById('product');
         const searchInput = document.getElementById('searchInput');
         const categorySelect = document.getElementById('categorySelect');
+        const headerImage = document.getElementById('headerImage');
+        const footerImage = document.getElementById('footerImage');
 
         productSelect.addEventListener('change', function () {
             const selectedProduct = products.find(p => p.ID_Producto == this.value);
@@ -102,13 +118,26 @@
         });
 
         categorySelect.addEventListener('change', function () {
-            const selectedCategory = this.value;
+            const selectedCategory = this.value.toLowerCase(); // Convertir a minúsculas
+
+            // Actualizar imágenes de los banners
+            headerImage.src = selectedCategory
+                ? `./public/img/${selectedCategory}_header.jpg`
+                : './public/img/default_header.jpg';
+
+            footerImage.src = selectedCategory
+                ? `./public/img/${selectedCategory}_footer.jpg`
+                : './public/img/default_footer.jpg';
+
+            // Filtrar productos
             for (const option of productSelect.options) {
                 const optionCategory = option.getAttribute('data-category');
                 option.style.display = !selectedCategory || optionCategory === selectedCategory ? '' : 'none';
             }
             searchInput.value = '';
         });
+
+
 
         document.getElementById('enviarPromocionBtn').addEventListener('click', function () {
             const subject = document.getElementById('subject').value;

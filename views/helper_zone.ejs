@@ -80,21 +80,36 @@
             </table>
         </div>
         <!-- Controles de paginación -->
+        <!-- Controles de paginación -->
         <nav class="d-flex justify-content-center">
             <ul class="pagination">
+                <!-- Botón "Anterior" -->
                 <% if (currentPage > 1) { %>
-                    <li class="page-item"><a class="page-link" href="?page=<%= currentPage - 1 %>">Anterior</a></li>
-                <% } %>
-                <% for (let i = 1; i <= totalPages; i++) { %>
-                    <li class="page-item <%= i === currentPage ? 'active' : '' %>">
-                        <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+                    <li class="page-item">
+                        <a class="page-link" href="/helper-zone?page=<%= currentPage - 1 %>">&laquo; Anterior</a>
                     </li>
                 <% } %>
+
+                <!-- Páginas con límite de 10 -->
+                <% 
+                    const inicio = Math.max(1, currentPage - 5); 
+                    const fin = Math.min(totalPages, inicio + 9); 
+                %>
+                <% for (let i = inicio; i <= fin; i++) { %>
+                    <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                        <a class="page-link" href="/helper-zone?page=<%= i %>"><%= i %></a>
+                    </li>
+                <% } %>
+
+                <!-- Botón "Siguiente" -->
                 <% if (currentPage < totalPages) { %>
-                    <li class="page-item"><a class="page-link" href="?page=<%= currentPage + 1 %>">Siguiente</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="/helper-zone?page=<%= currentPage + 1 %>">Siguiente &raquo;</a>
+                    </li>
                 <% } %>
             </ul>
         </nav>
+
     </main>
     <footer class="bg-dark text-white text-center py-3">
         <p>&copy; Derechos Reservados</p>

@@ -34,6 +34,14 @@
     <h2 class="text-center mb-3">Usuarios Registrados</h2>
     <p class="text-center">A continuación, se muestra la lista de usuarios registrados en el sistema:</p>
 
+    <!-- Barra de búsqueda -->
+    <div class="search-container mb-4">
+        <form method="GET" action="/usuarios" class="d-flex justify-content-center">
+            <input type="text" name="search" class="form-control me-2" placeholder="Buscar por ID o Nombre..." value="<%= search || '' %>">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
+
     <!-- Tabla de usuarios -->
     <div class="table-responsive">
         <table class="table table-bordered table-hover">
@@ -70,9 +78,30 @@
     <!-- Paginación -->
     <nav aria-label="Paginación de usuarios">
         <ul class="pagination justify-content-center">
-            <% for (let i = 1; i <= totalPaginas; i++) { %>
+            <!-- Botón para ir a la página anterior -->
+            <% if (paginaActual > 1) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/usuarios?page=<%= paginaActual - 1 %>&search=<%= search || '' %>" aria-label="Anterior">
+                        &laquo;
+                    </a>
+                </li>
+            <% } %>
+
+            <!-- Botones de página con límite de 10 -->
+            <% 
+                const inicio = Math.max(1, paginaActual - 5); 
+                const fin = Math.min(totalPaginas, inicio + 9); 
+            %>
+            <% for (let i = inicio; i <= fin; i++) { %>
                 <li class="page-item <%= i === paginaActual ? 'active' : '' %>">
-                    <a class="page-link" href="/usuarios?page=<%= i %>"><%= i %></a>
+                    <a class="page-link" href="/usuarios?page=<%= i %>&search=<%= search || '' %>"><%= i %></a>
+                </li>
+            <% } %>
+
+            <!-- Botón para ir a la página siguiente -->
+            <% if (paginaActual < totalPaginas) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/usuarios?page=<%= paginaActual + 1 %>&search=<%= search || '' %>">Siguiente &raquo;</a>
                 </li>
             <% } %>
         </ul>

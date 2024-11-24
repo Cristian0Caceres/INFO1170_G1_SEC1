@@ -86,9 +86,32 @@
     <!-- Paginación -->
     <nav aria-label="Paginación de productos">
         <ul class="pagination justify-content-center">
-            <% for (let i = 1; i <= totalPaginas; i++) { %>
+            <!-- Botón para ir a la página anterior -->
+            <% if (paginaActual > 1) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/productos_admin?page=<%= paginaActual - 1 %>&search=<%= search %>" aria-label="Anterior">
+                        &laquo;
+                    </a>
+                </li>
+            <% } %>
+
+            <!-- Botones de página con límite de 10 -->
+            <% 
+                const inicio = Math.max(1, paginaActual - 5); 
+                const fin = Math.min(totalPaginas, inicio + 9); 
+            %>
+            <% for (let i = inicio; i <= fin; i++) { %>
                 <li class="page-item <%= i === paginaActual ? 'active' : '' %>">
                     <a class="page-link" href="/productos_admin?page=<%= i %>&search=<%= search %>"><%= i %></a>
+                </li>
+            <% } %>
+
+            <!-- Botón para ir a la página siguiente -->
+            <% if (paginaActual < totalPaginas) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/productos_admin?page=<%= paginaActual + 1 %>&search=<%= search %>">Siguiente &raquo;>
+                        &raquo;
+                    </a>
                 </li>
             <% } %>
         </ul>
