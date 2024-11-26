@@ -25,7 +25,7 @@ const getProviderId = (url) => {
 
 async function scrapeAndCapture() {
     const urls = [
-        'https://www.santaisabel.cl/lacteos',
+        'https://www.santaisabel.cl/lacteos-y-quesos',
         'https://www.jumbo.cl/lacteos-y-quesos'
     ];
 
