@@ -62,11 +62,11 @@
 
         <div class="tienda-container">
             <div class="nombre-tienda">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Unimarc_logo.svg" alt="Unimarc" class="icono-tienda">
-                <h2>Unimarc</h2>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Unimarc_logo.svg" alt="jumbo" class="icono-tienda">
+                <h2>Jumbo</h2>
             </div>
-            <div class="productos-container" id="productos-container-unimarc">
-                <!-- Los productos de Unimarc se cargarán aquí -->
+            <div class="productos-container" id="productos-container-jumbo">
+                <!-- Los productos de jumbo se cargarán aquí -->
             </div>
         </div>
 
@@ -156,7 +156,7 @@
             })
             .catch(error => console.error('Error en la carga de santaisabel:', error));
     
-        fetch('/unimarc') // Cambia esta URL
+        fetch('/jumbo') // Cambia esta URL
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -164,8 +164,8 @@
                 return response.json();
             })
             .then(data => {
-                const unimarcContainer = document.getElementById('productos-container-unimarc');
-                unimarcContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+                const jumboContainer = document.getElementById('productos-container-jumbo');
+                jumboContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
     
                 data.forEach(oferta => {
                     const ofertaDiv = document.createElement('div');
@@ -175,20 +175,20 @@
                             <img src="${oferta.imagen_producto}" alt="${oferta.Nombre_producto}">
                             <div class="precio-oferta" data-precio="${oferta.Costo}">$${oferta.Costo}</div>
                         </div>
-                        <p>${oferta.Descripcion_Producto}</p>
+                        <p>${oferta.Nombre_producto}</p>
                         <a href="${oferta.link_producto}" class="category-btn">Ir a la Oferta</a>
                         <button class="agregar-carrito">Agregar al Carrito</button>
                         <button class="buscar-alternativa" data-nombre="${oferta.Nombre_producto}">Buscar Alternativa</button>
                     `;
     
-                    unimarcContainer.appendChild(ofertaDiv);
+                    jumboContainer.appendChild(ofertaDiv);
                 });
     
                 // Manejar el evento de agregar al carrito
-                manejarEventosAgregarCarrito(unimarcContainer);
-                manejarEventosBuscarAlternativa(unimarcContainer);
+                manejarEventosAgregarCarrito(jumboContainer);
+                manejarEventosBuscarAlternativa(jumboContainer);
             })
-            .catch(error => console.error('Error en la carga de unimarc:', error));
+            .catch(error => console.error('Error en la carga de jumbo:', error));
     
         // Función para manejar el evento de agregar al carrito
         function manejarEventosAgregarCarrito(container) {

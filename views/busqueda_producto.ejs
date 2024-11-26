@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/busqueda_producto.css">
+    <title>Resultados de Búsqueda para "<%= termino %>"</title>
+</head>
+<body>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="/img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="/img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <a href="/categorias">
+                    <img src="/img/categorias.png" alt="Categorías">
+                </a>
+                <a href="/carrito">
+                    <img src="/img/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="/tienda">
+                    <img src="/img/tienda.png" alt="Tienda">
+                </a>
+                <a href="/auth/login">
+                    <img src="/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                </a>    
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="productos">
+            <section class="encabezado">
+                <div class="titulo">
+                    <h2>Resultados de Búsqueda para "<%= termino %>"</h2>
+                </div>
+            </section>
+            <section class="contenedor_productos">
+                <% if (productos.length > 0) { %>
+                    <% productos.forEach(function(producto) { %>
+                        <a class="presentacion-producto" href="/productos/detalle/<%= producto.ID_Producto %>">
+                            <div class="contenedor_imagen">
+                                <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
+                            </div>
+                            <div class="contenedor_informacion">
+                                <h3><%= producto.Nombre_producto %></h3>
+                                <p>Desde: $<%= producto.Precio_Minimo %></p>
+                            </div>
+                        </a>
+                    <% }); %>
+                <% } else { %>  
+                    <p>No se encontraron productos que coincidan con "<%= termino %>".</p>
+                <% } %>             
+            </section>
+        </section>
+    </main>
+
+    <footer>
+        <img src="/img/logoECDA.png" alt="Logo de la empresa">
+        <p>&copy; Derechos Reservados</p>
+        <nav>
+            <a href="/">Ir al Inicio</a>
+        </nav>
+    </footer>
+    <script src="/js/barra_busqueda.js"></script>
+</body>
+</html>

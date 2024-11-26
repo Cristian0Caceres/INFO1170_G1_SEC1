@@ -44,8 +44,8 @@ app.use('/', tiendasRouter);
 const santaisabelRouter = require('./routes/santaisabel'); // Cambia esto a santaisabel.js
 app.use('/', santaisabelRouter); // Asegúrate de que esta línea esté presente
 
-const unimarcRouter = require('./routes/unimarc'); // Rutas para Unimarc
-app.use('/', unimarcRouter);
+const jumboRouter = require('./routes/jumbo'); // Rutas para Jumbo
+app.use('/', jumboRouter);
 
 const buscarAlternativaRouter = require('./routes/buscarAlternativa'); // Asegúrate de que la ruta sea correcta
 app.use('/', buscarAlternativaRouter); // Asegúrate de que esta línea esté presente
