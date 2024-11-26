@@ -3,12 +3,21 @@ body, html {
     font-family: Arial, sans-serif;
     margin: 0;
     background-color: #F8EDE3;
-    overflow-y: auto; /* Permite el scroll vertical si es necesario */
+    overflow-y: auto;
+    display: flex; /* Flexbox para centrar */
+    flex-direction: column; /* Asegura que el header y footer no se vean afectados */
+}
+
+main {
+    display: flex; /* Centrar contenido */
+    flex-grow: 1; /* Ocupa el espacio entre header y footer */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
 }
 
 .barra-superior {
     background-color: #d6b8a5;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .logo img {
@@ -17,72 +26,161 @@ body, html {
 }
 
 .logo img:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
     opacity: 0.8;
 }
 
 .search-bar .input-group {
     display: flex;
     align-items: center;
-    border-radius: 30px; 
-    background-color: #E8DEF8; 
-    overflow: hidden; 
-    height: 38px; 
+    border-radius: 30px;
+    background-color: #E8DEF8;
+    overflow: hidden;
+    height: 38px;
 }
 
 .search-bar input {
-    flex: 1; 
-    border: none; 
-    outline: none; 
-    background-color: transparent; 
-    padding-left: 15px; 
-    height: 100%; 
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding-left: 15px;
+    height: 100%;
 }
 
 .search-bar .btn {
-    background: none; 
-    border: none; 
-    padding: 0 10px; 
+    background: none;
+    border: none;
+    padding: 0 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out; 
+    transition: transform 0.2s ease-in-out;
 }
 
 .search-bar button img {
-    height: 20px; 
-    width: 20px; 
-    object-fit: contain; 
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
 }
 
 .search-bar button:hover {
-    transform: scale(1.1); 
+    transform: scale(1.1);
 }
 
 .icons a img {
     height: 30px;
     cursor: pointer;
-    transition: transform 0.3s ease, opacity 0.3s ease; 
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .icons a img:hover {
-    transform: scale(1.1); 
-    opacity: 0.8; 
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.producto-contenedor {
+    background-color: #DFD3C3;
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%; /* Aprovechar mejor el espacio */
+    margin: auto;
+    min-height: 700px; /* Incrementa la altura mínima */
+    display: flex;
+    justify-content: space-between; /* Mantiene el espacio proporcional */
+}
+
+.producto-imagen-info .imagen {
+    display: flex;
+    width: 90%;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #C5705D;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.producto-imagen-info .imagen img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: contain; /* Mantiene la proporción de las imágenes */
+}
+
+.producto-imagen-info .informacion {
+    background-color: #D0B8A8;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+}
+
+.informacion h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.informacion p {
+    font-size: 1.4rem;
+}
+
+.precios-titulo {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.precios-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 400px; /* Ajuste para mayor espacio */
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .producto-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #C5705D;
+    font-weight: bold;
+    border-radius: 15px;
+    width: 90%; /* Aprovechar mejor el espacio */
+    color: white; /* Cambiar a blanco */
+    text-decoration: none; /* Evitar subrayado */
     transition: transform 0.3s ease, background-color 0.3s ease;
+    margin: auto;
+    gap: 10px; /* Añadir un pequeño espacio entre los elementos */
 }
 
 .producto-item:hover {
-    transform: scale(1.05); /* Agrandar ligeramente */
-    background-color: #333; /* Cambiar a un tono gris oscuro */
+    background-color: #A35248;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* Mantener sin subrayado */
 }
-.producto-item:hover {
-    background-color: #A35248; /* Cambia ligeramente el color */
-    transform: scale(1.02); /* Pequeña ampliación */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+
+.producto-tienda, .producto-precios {
+    background-color: #D0B8A8;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: white; /* Cambiar texto a blanco */
+    flex: 1; /* Asegura que ambos elementos tengan el mismo ancho */
+    max-width: 40%; /* Fijar un ancho máximo coherente */
+}
+
+.producto-carrito {
+    height: 35px;
+    flex-shrink: 0; /* Evita que el icono se reduzca */
 }
 
 /* Footer */
@@ -91,7 +189,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 5vh; /* proporcional a la altura de la ventana */
+    height: 5vh;
 }
 
 footer img {
@@ -103,4 +201,35 @@ footer a {
     margin: 0 1rem;
     text-decoration: none;
     color: rgb(0, 0, 0);
+}
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .producto-contenedor {
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+    }
+
+    .producto-imagen-info .imagen,
+    .producto-imagen-info .informacion,
+    .precios-titulo,
+    .precios-lista {
+        width: 100%;
+    }
+
+    .precios-lista {
+        flex-direction: column;
+    }
+
+    .producto-item {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%; /* Se adapta al ancho */
+    }
+
+    .producto-tienda, .producto-precios {
+        width: 100%;
+        max-width: 100%;
+    }
 }

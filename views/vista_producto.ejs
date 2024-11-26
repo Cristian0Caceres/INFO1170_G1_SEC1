@@ -33,27 +33,26 @@
             </div>
         </section>
     </header>
-    <main class="container my-5 flex-grow-1" style="background-color: #F8EDE3; padding: 40px; border-radius: 10px; width: 98%;">
-        <div class="row p-5 rounded shadow" style="height: auto;">
+    <main class="container my-5 flex-grow-1">
+        <div class="row producto-contenedor">
             <!-- Columna de producto -->
-            <div class="col-md-6 col-12 d-flex flex-column align-items-center mb-4"> <!-- 50% del ancho para el producto -->
-                <div class="imagen border border-dark rounded mb-4 p-2" style="display:flex; width: 85%; background-color: #DFD3C3; align-items: center; justify-content: center;">
+            <div class="col-md-6 col-12 producto-imagen-info">
+                <div class="imagen">
                     <img src="<%= producto[0].imagen_producto %>" alt="<%= producto[0].Nombre_producto %>" class="img-fluid">
                 </div>
-                <div class="informacion rounded p-3 text-center" style="background-color: #D0B8A8; color: white; width: 85%;">
-                    <h1 style="font-size: 2rem; font-weight: bold;"><%= producto[0].Nombre_producto %></h1>
-                    <p style="font-size: 1.4rem;"><%= producto[0].Descripcion_Producto %></p>
+                <div class="informacion">
+                    <h1><%= producto[0].Nombre_producto %></h1>
                 </div>
             </div>
             <!-- Columna de precios -->
-            <div class="col-md-6 col-12"> <!-- Misma anchura para el contenedor -->
-                <h1 class="text-center mb-4" style="font-size: 2.2rem; color: #000000;">Precios</h1>
-                <div class="d-flex flex-column gap-4" style="padding-bottom: 20px; max-height: 300px; overflow-y: auto; overflow-x: hidden;"> <!-- Scroll vertical conservado -->
+            <div class="col-md-6 col-12">
+                <h1 class="precios-titulo">Precios</h1>
+                <div class="precios-lista">
                     <% producto.forEach(function(detalle) { %>
-                    <a class="producto-item d-flex justify-content-between align-items-center p-3 rounded text-light text-decoration-none mx-auto" href="<%= detalle.link_producto %>" target="_blank" style="background-color: #C5705D; font-weight: bold; border-radius: 15px; width: 80%; max-width: 80%; word-wrap: break-word; transition: all 0.3s ease;margin-bottom: 20px;"> <!-- Menor ancho -->
-                        <span class="producto-tienda" style="background-color: #D0B8A8; padding: 10px; border-radius: 10px; font-size: 1.1rem; flex: 1; text-align: center;"> <%= detalle.Nombre_Proveedor %> </span>
-                        <span class="producto-precios" style="font-size: 1.2rem; flex: 1; text-align: center;"> Precio: $<%= detalle.Precio %> </span>
-                        <img src="/img/carrito-de-compras.png" alt="Carrito" class="producto-carrito" style="height: 35px;">
+                    <a class="producto-item" href="<%= detalle.link_producto %>" target="_blank">
+                        <span class="producto-tienda"><%= detalle.Nombre_Proveedor %></span>
+                        <span class="producto-precios">Precio: $<%= detalle.Precio %></span>
+                        <img src="/img/carrito-de-compras.png" alt="Carrito" class="producto-carrito">
                     </a>
                     <% }); %>
                 </div>

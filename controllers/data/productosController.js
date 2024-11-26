@@ -67,7 +67,7 @@ const buscarProductoPorNombre = (req, res) => {
         SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(p.Costo) AS Precio_Minimo
         FROM producto p
         WHERE p.Nombre_producto LIKE ?
-        GROUP BY  p.Nombre_producto, p.imagen_producto
+        GROUP BY  p.Nombre_producto
     `;
 
     connection.query(sql, [`%${termino}%`], (error, productos) => {
