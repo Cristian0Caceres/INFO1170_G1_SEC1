@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enviar Promoción</title>
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../public/css/helper.css">
 </head>
@@ -33,7 +32,7 @@
                 <select id="categorySelect" class="form-select">
                     <option value="">Todas las Categorías</option>
                     <% categorias.forEach(categoria => { %>
-                        <option value="<%= categoria.Nombre_Categoria.replace(/\s+/g, '_').toLowerCase() %>">
+                        <option value="<%= categoria.ID_Categoria %>">
                             <%= categoria.Nombre_Categoria %>
                         </option>
                     <% }); %>
@@ -89,7 +88,6 @@
         <p>&copy; Derechos Reservados</p>
     </footer>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const products = <%- JSON.stringify(productos) %>;
@@ -118,9 +116,8 @@
         });
 
         categorySelect.addEventListener('change', function () {
-            const selectedCategory = this.value.toLowerCase(); // Convertir a minúsculas
+            const selectedCategory = this.value;
 
-            // Actualizar imágenes de los banners
             headerImage.src = selectedCategory
                 ? `./public/img/${selectedCategory}_header.jpg`
                 : './public/img/default_header.jpg';
@@ -129,15 +126,13 @@
                 ? `./public/img/${selectedCategory}_footer.jpg`
                 : './public/img/default_footer.jpg';
 
-            // Filtrar productos
             for (const option of productSelect.options) {
                 const optionCategory = option.getAttribute('data-category');
                 option.style.display = !selectedCategory || optionCategory === selectedCategory ? '' : 'none';
             }
+
             searchInput.value = '';
         });
-
-
 
         document.getElementById('enviarPromocionBtn').addEventListener('click', function () {
             const subject = document.getElementById('subject').value;
