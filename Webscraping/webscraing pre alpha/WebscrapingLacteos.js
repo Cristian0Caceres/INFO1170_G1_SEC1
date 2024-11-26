@@ -17,7 +17,6 @@ async function scrapeAndCapture() {
     const urls = [
         'https://www.santaisabel.cl/lacteos',
         'https://www.jumbo.cl/lacteos-y-quesos'
-
     ];
 
     const browser = await puppeteer.launch({
@@ -73,6 +72,11 @@ async function scrapeAndCapture() {
                 for (const item of data) {
                     if (item.name && item.price && item.link && item.img) {
                         try {
+                            const itemPrice = parseInt(item.price.replace(/\D/g, ''));
+                            if (isNaN(itemPrice)) {
+                                console.error(`Invalid price for item: ${item.name}`);
+                                continue;
+                            }
                             const [rows] = await connection.execute(
                                 'SELECT * FROM Producto WHERE Nombre_producto = ? AND link_producto = ?',
                                 [item.name, item.link]
@@ -80,12 +84,12 @@ async function scrapeAndCapture() {
                             if (rows.length > 0) {
                                 await connection.execute(
                                     'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ? WHERE Nombre_producto = ? AND link_producto = ?',
-                                    [parseInt(item.price.replace(/\D/g, '')), categoryId, item.img, item.name, item.link]
+                                    [itemPrice, categoryId, item.img, item.name, item.link]
                                 );
                             } else {
                                 await connection.execute(
-                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, 1, ?)',
-                                    [item.name, item.link, parseInt(item.price.replace(/\D/g, '')), categoryId, item.img]
+                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, ?, ?)',
+                                    [item.name, item.link, itemPrice, categoryId, item.img]
                                 );
                             }
                         } catch (dbError) {
