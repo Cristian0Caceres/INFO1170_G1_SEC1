@@ -2,13 +2,31 @@ import puppeteer from 'puppeteer';
 import mysql from 'mysql2/promise';
 import path from 'path';
 
+const getCategoryId = (categoryName) => {
+    const categories = {
+        'lacteos': 1,
+        'despensa': 2,
+        'frutas-y-verduras': 3,
+        'carniceria': 4,
+        'vinos-cervezas-y-licores': 5
+    };
+    return categories[categoryName] || null;
+};
+
+const getProviderId = (url) => {
+    if (url.toLowerCase().includes('santaisabel')) {
+        return 1; // Santaisabel
+    } else if (url.toLowerCase().includes('jumbo')) {
+        return 2; // Jumbo
+    }
+    return null; // En caso de que no se encuentre un proveedor
+};
+
+
 async function scrapeAndCapture() {
     const urls = [
-        'https://www.santaisabel.cl/lacteos',
-        'https://www.santaisabel.cl/despensa',
-        'https://www.santaisabel.cl/frutas-y-verduras',
-        'https://www.santaisabel.cl/carniceria',
-        'https://www.santaisabel.cl/vinos-cervezas-y-licores'
+        'https://www.santaisabel.cl/vinos-cervezas-y-licores',
+        'https://www.jumbo.cl/vinos-cervezas-y-licores'
     ];
 
     const browser = await puppeteer.launch({
@@ -19,27 +37,23 @@ async function scrapeAndCapture() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'bd_pruebaws' // Asegúrate de que la base de datos 'test' esté creada
+        database: 'bd_pruebaws2'
     });
 
-    // Mapeo de categorías de URL a ID_Categoria
-    const categoryMapping = {
-        'lacteos': 1,
-        'despensa': 2,
-        'frutas-y-verduras': 3,
-        'carniceria': 4,
-        'vinos-cervezas-y-licores': 5
-    };
-
-    for (let i = 0; i < urls.length; i++) {
-        const url = urls[i];
+    for (const url of urls) {
         const page = await browser.newPage();
-        console.log(`Navegando a la URL: ${url}`);
+        console.log(`Navigating to URL: ${url}`);
 
         try {
             await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-            const category = path.basename(url); // Obtener la categoría de la URL
-            const categoryId = categoryMapping[category]; // Mapeo de categoría a ID_Categoria
+            const category = 5; 
+            const categoryId = 5;
+            const providerId = getProviderId(url); // Obtener el ID del proveedor
+
+            if (!providerId) {
+                console.error(`Proveedor no encontrado para la URL: ${url}`);
+                continue;
+            }
 
             let pageIndex = 1;
             const totalPages = await page.evaluate(() => {
@@ -48,69 +62,60 @@ async function scrapeAndCapture() {
             });
 
             while (pageIndex <= totalPages) {
-                await page.waitForSelector('.product-card', { timeout: 5000 });
+                console.log(`Scraping ${category}, Page ${pageIndex}/${totalPages}`);
+                await page.waitForSelector('.product-card', { timeout: 10000 });
 
-                // Extraer la información necesaria, incluyendo la imagen
                 const data = await page.evaluate(() => {
                     let items = [];
                     document.querySelectorAll('.product-card').forEach(item => {
                         let name = item.querySelector('.product-card-name')?.innerText;
                         let price = item.querySelector('.prices-main-price')?.innerText;
                         let link = item.querySelector('a')?.href;
-                        let img = item.querySelector('img')?.src; // Extraer el link de la imagen
+                        let img = item.querySelector('img')?.src;
                         if (name && price && link && img) {
                             items.push({
                                 name: name,
                                 price: price,
                                 link: link,
-                                img: img // Incluir el link de la imagen en los datos extraídos
+                                img: img
                             });
                         }
                     });
                     return items;
                 });
+
                 console.log(`URL: ${url}, Page ${pageIndex} data:`, data);
 
                 for (const item of data) {
                     if (item.name && item.price && item.link && item.img) {
                         try {
-                            // Limpiar el precio para convertirlo a número, manejando decimales
-                            const price = parseInt(item.price.replace(/\D/g, ''));
-                            
-                            if (isNaN(price)) {
-                                console.error(`Precio no válido para el producto: ${item.name}`);
+                            const itemPrice = parseInt(item.price.replace(/\D/g, ''));
+                            if (isNaN(itemPrice)) {
+                                console.error(`Invalid price for item: ${item.name}`);
                                 continue;
                             }
-
-                            // Comprobar si el producto ya existe
                             const [rows] = await connection.execute(
                                 'SELECT * FROM Producto WHERE Nombre_producto = ? AND link_producto = ?',
                                 [item.name, item.link]
                             );
-                            
                             if (rows.length > 0) {
-                                // Si el producto existe, actualizar los datos
                                 await connection.execute(
                                     'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ?, ID_Proveedor = ? WHERE Nombre_producto = ? AND link_producto = ?',
-                                    [price, categoryId, item.img, item.name, item.link, 2]
+                                    [itemPrice, categoryId, item.img, providerId, item.name, item.link]
                                 );
-                                console.log(`Producto actualizado: ${item.name}`);
                             } else {
-                                // Si el producto no existe, insertar los datos nuevos
                                 await connection.execute(
                                     'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto, ID_Proveedor) VALUES (?, ?, ?, ?, ?, ?)',
-                                    [item.name, item.link, price, categoryId, item.img, 2],
+                                    [item.name, item.link, itemPrice, categoryId, item.img, providerId]
                                 );
-                                console.log(`Producto insertado: ${item.name}`);
                             }
                         } catch (dbError) {
                             console.error('Database Error:', dbError);
-                            continue; // Si hay un error en la base de datos, pasa al siguiente producto
+                            continue;
                         }
                     }
                 }
 
-                // Avanzar a la siguiente página si no es la última
                 if (pageIndex < totalPages) {
                     const nextPageExists = await page.evaluate((index) => {
                         const pages = document.querySelectorAll('.select-page-dropdown-item');
@@ -118,21 +123,21 @@ async function scrapeAndCapture() {
                     }, pageIndex);
 
                     if (nextPageExists) {
-                        await Promise.all([ 
+                        await Promise.all([
                             page.waitForNavigation({ waitUntil: 'networkidle2' }),
                             page.evaluate((index) => {
                                 document.querySelectorAll('.select-page-dropdown-item')[index].click();
                             }, pageIndex)
                         ]);
                     } else {
-                        break; // Si el botón de la siguiente página no existe, salir del bucle
+                        break;
                     }
                 }
                 pageIndex++;
             }
 
         } catch (error) {
-            console.error('Error al procesar la página:', error);
+            console.error('Error:', error);
         } finally {
             await page.close();
         }

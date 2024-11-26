@@ -13,9 +13,20 @@ const getCategoryId = (categoryName) => {
     return categories[categoryName] || null;
 };
 
+const getProviderId = (url) => {
+    if (url.toLowerCase().includes('santaisabel')) {
+        return 1; // Santaisabel
+    } else if (url.toLowerCase().includes('jumbo')) {
+        return 2; // Jumbo
+    }
+    return null; // En caso de que no se encuentre un proveedor
+};
+
+
 async function scrapeAndCapture() {
     const urls = [
-        'https://www.santaisabel.cl/vinos-cervezas-y-licores'
+        'https://www.santaisabel.cl/lacteos',
+        'https://www.jumbo.cl/lacteos-y-quesos'
     ];
 
     const browser = await puppeteer.launch({
@@ -26,17 +37,24 @@ async function scrapeAndCapture() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'bd_pruebaws'
+        database: 'bd_pruebaws2'
     });
 
     for (const url of urls) {
         const page = await browser.newPage();
-        console.log(`Navegando a la URL: ${url}`);
+        console.log(`Navigating to URL: ${url}`);
 
         try {
             await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-            const category = path.basename(url); 
-            const categoryId = getCategoryId(category);
+            const category = 1; 
+            const categoryId = 1;
+            const providerId = getProviderId(url); // Obtener el ID del proveedor
+
+            if (!providerId) {
+                console.error(`Proveedor no encontrado para la URL: ${url}`);
+                continue;
+            }
+
             let pageIndex = 1;
             const totalPages = await page.evaluate(() => {
                 const pages = document.querySelectorAll('.select-page-dropdown-item');
@@ -44,7 +62,8 @@ async function scrapeAndCapture() {
             });
 
             while (pageIndex <= totalPages) {
-                await page.waitForSelector('.product-card', { timeout: 5000 });
+                console.log(`Scraping ${category}, Page ${pageIndex}/${totalPages}`);
+                await page.waitForSelector('.product-card', { timeout: 10000 });
 
                 const data = await page.evaluate(() => {
                     let items = [];
@@ -70,19 +89,24 @@ async function scrapeAndCapture() {
                 for (const item of data) {
                     if (item.name && item.price && item.link && item.img) {
                         try {
+                            const itemPrice = parseInt(item.price.replace(/\D/g, ''));
+                            if (isNaN(itemPrice)) {
+                                console.error(`Invalid price for item: ${item.name}`);
+                                continue;
+                            }
                             const [rows] = await connection.execute(
                                 'SELECT * FROM Producto WHERE Nombre_producto = ? AND link_producto = ?',
                                 [item.name, item.link]
                             );
                             if (rows.length > 0) {
                                 await connection.execute(
-                                    'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ? , ID_Proveedor = 2 WHERE Nombre_producto = ? AND link_producto = ?',
-                                    [parseInt(item.price.replace(/\D/g, '')), categoryId, item.img, item.name, item.link]
+                                    'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ?, ID_Proveedor = ? WHERE Nombre_producto = ? AND link_producto = ?',
+                                    [itemPrice, categoryId, item.img, providerId, item.name, item.link]
                                 );
                             } else {
                                 await connection.execute(
                                     'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto, ID_Proveedor) VALUES (?, ?, ?, ?, ?, ?)',
-                                    [item.name, item.link, parseInt(item.price.replace(/\D/g, '')), categoryId, item.img, 2]
+                                    [item.name, item.link, itemPrice, categoryId, item.img, providerId]
                                 );
                             }
                         } catch (dbError) {
