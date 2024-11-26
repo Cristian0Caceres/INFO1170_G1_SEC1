@@ -84,7 +84,7 @@ async function scrapeAndCapture() {
                                 );
                             } else {
                                 await connection.execute(
-                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, ?, ?)',
+                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto) VALUES (?, ?, ?, 1, ?)',
                                     [item.name, item.link, parseInt(item.price.replace(/\D/g, '')), categoryId, item.img]
                                 );
                             }
