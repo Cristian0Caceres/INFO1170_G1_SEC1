@@ -15,10 +15,8 @@ const getCategoryId = (categoryName) => {
 
 async function scrapeAndCapture() {
     const urls = [
-        'https://www.jumbo.cl/carniceria',
-        'https://www.santaisabel.cl/carniceria',
-        'https://www.jumbo.cl/frutas-y-verduras',
-        'https://www.santaisabel.cl/frutas-y-verduras'
+        'https://www.santaisabel.cl/despensa',
+        'https://www.jumbo.cl/despensa'
     ];
 
     const browser = await puppeteer.launch({

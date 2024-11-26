@@ -2,7 +2,11 @@ import { exec } from 'child_process';
 
 // Definir los archivos a ejecutar
 const scripts = [
-    'Webscraping1'
+    'WebscrapingLacteos.js',
+    'WebscrapingLicores.js',
+    'WebscrapingFrutasyverduras.js',
+    'WebscrapingDespensa.js',
+    'WebscrapingCarniceria.js'
 ];
 
 // Función para ejecutar un archivo de web scraping
