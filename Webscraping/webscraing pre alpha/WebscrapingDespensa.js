@@ -47,7 +47,7 @@ async function scrapeAndCapture() {
         try {
             await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
             const category = 2; 
-            const categoryId = getCategoryId(category);
+            const categoryId = 2;
             const providerId = getProviderId(url); // Obtener el ID del proveedor
 
             if (!providerId) {
