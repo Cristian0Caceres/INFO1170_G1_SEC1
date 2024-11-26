@@ -49,7 +49,7 @@
             <section class="contenedor_productos">
                 <% if (productos.length > 0) { %>
                     <% productos.forEach(function(producto) { %>
-                        <a class="presentacion-producto" href="/productos/detalle/<%= producto.ID_Producto %>">
+                        <a class="presentacion-producto" href="/productos/detalle/<%= producto.ID_Producto %>" title="Entrar a ver el producto: <%= producto.Nombre_producto %>">
                             <div class="contenedor_imagen">
                                 <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
                             </div>
@@ -63,6 +63,21 @@
                     <p>No se encontraron productos para esta categoría.</p>
                 <% } %>
             </section>
+
+            <nav class="pagination">
+                <% if (pagination.currentPage > 1) { %>
+                    <a href="?page=<%= pagination.currentPage - 1 %>&limit=<%= pagination.limit %>" class="prev">Anterior</a>
+                <% } %>
+            
+                <% for (let i = 1; i <= pagination.totalPages; i++) { %>
+                    <a href="?page=<%= i %>&limit=<%= pagination.limit %>" class="<%= i === pagination.currentPage ? 'active' : '' %>"><%= i %></a>
+                <% } %>
+            
+                <% if (pagination.currentPage < pagination.totalPages) { %>
+                    <a href="?page=<%= pagination.currentPage + 1 %>&limit=<%= pagination.limit %>" class="next">Siguiente</a>
+                <% } %>
+            </nav>
+            
         </section>
     </main>
 

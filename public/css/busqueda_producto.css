@@ -2,14 +2,18 @@ body, html {
     height: 100%;
     font-family: Arial, sans-serif;
     margin: 0;
+    display: flex;
+    flex-direction: column; /* Permite al main ocupar el espacio restante */
     background-color: #F8EDE3;
-    overflow-y: auto; /* Permite el scroll vertical si es necesario */
 }
+
+
+
 
 .barra-superior {
     background-color: #d6b8a5;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    margin-bottom: 75px;
+    margin-bottom: 30px;
 }
 
 .logo img {
@@ -72,34 +76,11 @@ body, html {
     opacity: 0.8; 
 }
 
-/* PRODUCTOS */
-.nombre-categoria {
-    background-color: #d6b8a5;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
-    width: 15%;
-    height: 10%;
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    padding: 1%;
-    color: rgb(0, 0, 0);
-    position: relative;
-    top: 20px; /* Ajusta la posición */
-    left: 1px;
-    z-index: 1; /* Asegura que quede encima de los productos */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
-}
-
-.nombre-categoria:hover {
-    transform: scale(1.05); /* Aumenta el tamaño ligeramente cuando se hace hover */
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Agrega una sombra al hacer hover */
-}
-
-.nombre-categoria h1 {
-    font-size: 150%;
+main {
+    flex: 1; /* Permite que el contenido ocupe el espacio restante */
+    display: block; /* Evita el centrado automático */
+    margin-top: 20px; /* Ajusta la distancia desde la barra superior */
+    padding-bottom: 50px; /* Para mantener distancia con el footer */
 }
 
 .productos {
@@ -107,20 +88,16 @@ body, html {
     width: 90%; /* Cambia aquí el ancho */
     padding: 2rem;
     border-radius: 10px;
-    margin: auto;
-    margin-top: -45px;
+    margin: 0 auto; /* Centra el contenido horizontalmente */
 }
-
 
 .encabezado .titulo {
     display: flex;
-    width: auto;
-    height: 60px;
     justify-content: center;
     align-items: center;
     font-size: 2rem;
     font-family: "Lemon", sans-serif;
-    margin-bottom: 20px; /* Mayor separación entre el título y los productos */
+    margin-bottom: 40px; /* Espaciado entre el título y los productos */
 }
 
 .productos .contenedor_productos {
@@ -143,7 +120,6 @@ body, html {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden; /* Evita contenido desbordante */
     padding: 10px; /* Espaciado interno */
-    margin-top: 10px;
 }
 
 .presentacion-producto:hover {
@@ -195,6 +171,34 @@ a {
     text-decoration: none;
 }
 
+.pagination {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se distribuyan en varias filas */
+    justify-content: center; /* Centra las páginas */
+    gap: 10px; /* Espaciado entre las páginas */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #C5705D;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination a:hover {
+    background-color: #A35248;
+    transform: scale(1.05);
+}
+
+.pagination a.active {
+    background-color: #D0B8A8; /* Color para la página activa */
+    pointer-events: none; /* Desactiva clics en la página activa */
+}
+
 /* Ajustes responsivos */
 @media (max-width: 768px) {
     .presentacion-producto {
@@ -210,11 +214,13 @@ a {
 
 /* Footer */
 footer {
+    margin-top: 50px;
     background-color: #D0B8A8;
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 5vh; /* proporcional a la altura de la ventana */
+
 }
 
 footer img {
