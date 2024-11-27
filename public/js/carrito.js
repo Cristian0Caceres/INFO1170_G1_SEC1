@@ -16,6 +16,12 @@
                         }
                     });
                 });
+           
+        
+        
+        
+        
+        
                 let total = 0;
         
         const productos = {
@@ -135,3 +141,70 @@
             const precioOriginal = productos[productoActual][0].precio; 
             addToCart(productoActual, precioOriginal); 
         };
+        
+        import { cargarProductos, addProductToCart, getCartProducts } from '../js/productos.js';
+        
+        // Función para cargar productos en la página
+        function cargarProductosEnPagina() {
+            cargarProductos().then(data => {
+                console.log(data); // Agrega este log para ver los datos
+                const jumboContainer = document.getElementById('productos-container-jumbo');
+                const unimarcContainer = document.getElementById('productos-container-unimarc');
+        
+                jumboContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+                unimarcContainer.innerHTML = ''; // Limpiar el contenedor antes de agregar productos
+        
+                data.forEach(producto => {
+                    const productoDiv = document.createElement('div');
+                    productoDiv.classList.add('producto');
+                    productoDiv.innerHTML = `
+                        <div class="image-container">
+                            <img src="${producto.imagen_producto}" alt="${producto.Nombre_producto}">
+                            <span class="tooltip">${producto.Descripcion_Producto}</span>
+                        </div>
+                        <p>${producto.Nombre_producto}</p>
+                        <p class="precio normal">$${producto.coste}</p>
+                        <button class="agregar-btn" onclick="agregarAlCarrito('${producto.Nombre_producto}', '${producto.coste}')">Agregar al carrito</button>
+                    `;
+                    
+                    // Asegúrate de que el campo 'tienda' esté presente en tus datos
+                    if (producto.tienda === 'Jumbo') {
+                        jumboContainer.appendChild(productoDiv);
+                    } else if (producto.tienda === 'Unimarc') {
+                        unimarcContainer.appendChild(productoDiv);
+                    }
+                });
+            }).catch(error => {
+                console.error('Error cargando productos:', error); // Captura errores
+            });
+        }
+        // Función para agregar un producto al carrito
+        window.agregarAlCarrito = function(nombre, costo) {
+            const producto = { Nombre_producto: nombre, Costo: costo };
+            addProductToCart(producto);
+            actualizarCarrito();
+        }
+        
+        // Función para actualizar el carrito en la interfaz
+        function actualizarCarrito() {
+            const cartItems = getCartProducts();
+            const cartList = document.getElementById('cart-items');
+            const totalElement = document.getElementById('total');
+        
+            cartList.innerHTML = ''; // Limpiar la lista de productos en el carrito
+            let total = 0;
+        
+            cartItems.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.Nombre_producto} - $${item.Costo}`;
+                cartList.appendChild(li);
+                total += parseFloat(item.Costo); // Sumar al total
+            });
+        
+            totalElement.textContent = total.toFixed(2); // Actualizar el total en la interfaz
+        }
+        
+        // Llama a la función para cargar productos al cargar la página
+        window.onload = cargarProductosEnPagina;
+        
+        // 17

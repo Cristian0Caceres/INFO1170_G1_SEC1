@@ -28,7 +28,15 @@
                     <a href="/categorias"><img src="/public/img/categorias.png" alt="Categorias" title="Ir a Categorias"></a>
                     <a href="/carrito"><img src="/public/img/carrito-de-compras.png" alt="Carrito de Compras" title="Ir al Carrito de Presupuesto"></a>
                     <a href="/tiendas"><img src="/public/img/tienda.png" alt="Tienda" title="Ir a la Selección de Tiendas"></a>
-                    <a href="/login"><img src="/public/img/iniciar-sesion.png" alt="Iniciar Sesión" title="Iniciar Sesión"></a>
+                    <% if (isLoggedIn) { %>
+                        <a href="/auth/logout">
+                            <img src="/public/img/cerrar-sesion.png" alt="Cerrar Sesión">
+                        </a>
+                      <% } else { %>
+                        <a href="/login">
+                            <img src="/public/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                        </a>
+                      <% } %>  
                 </div>
             </div>
         </section>
