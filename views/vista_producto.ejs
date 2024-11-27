@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/vista_producto.css">
+    <link rel="stylesheet" href="/public/css/vista_producto.css">
     <title><%= producto[0].Nombre_producto %></title>
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -13,22 +13,22 @@
             <div class="row align-items-center">
                 <div class="col-2 logo">
                     <a href="/">
-                        <img src="/img/logoECDA.png" alt="Logo" title="Ir al Inicio">
+                        <img src="/public/img/logoECDA.png" alt="Logo" title="Ir al Inicio">
                     </a>
                 </div>
                 <div class="col-8 search-bar">
                     <div class="input-group">
                         <input type="text" id="searchInput" placeholder="Buscar..." class="form-control">
                         <button class="btn" onclick="realizarBusqueda()" title="Buscar...">
-                            <img src="/img/buscar.png" alt="Buscar" class="img-buscar">
+                            <img src="/public/img/buscar.png" alt="Buscar" class="img-buscar">
                         </button>
                     </div>
                 </div>
                 <div class="col-2 d-flex justify-content-around icons">
-                    <a href="/categorias"><img src="/img/categorias.png" alt="Categorias" title="Ir a Categorias"></a>
-                    <a href="/carrito"><img src="/img/carrito-de-compras.png" alt="Carrito de Compras" title="Ir al Carrito de Presupuesto"></a>
-                    <a href="/tiendas"><img src="/img/tienda.png" alt="Tienda" title="Ir a la Selección de Tiendas"></a>
-                    <a href="/login"><img src="/img/iniciar-sesion.png" alt="Iniciar Sesión" title="Iniciar Sesión"></a>
+                    <a href="/categorias"><img src="/public/img/categorias.png" alt="Categorias" title="Ir a Categorias"></a>
+                    <a href="/carrito"><img src="/public/img/carrito-de-compras.png" alt="Carrito de Compras" title="Ir al Carrito de Presupuesto"></a>
+                    <a href="/tiendas"><img src="/public/img/tienda.png" alt="Tienda" title="Ir a la Selección de Tiendas"></a>
+                    <a href="/login"><img src="/public/img/iniciar-sesion.png" alt="Iniciar Sesión" title="Iniciar Sesión"></a>
                 </div>
             </div>
         </section>
@@ -52,7 +52,7 @@
                     <a class="producto-item" href="<%= detalle.link_producto %>" target="_blank">
                         <span class="producto-tienda"><%= detalle.Nombre_Proveedor %></span>
                         <span class="producto-precios">Precio: $<%= detalle.Precio %></span>
-                        <img src="/img/carrito-de-compras.png" alt="Carrito" class="producto-carrito">
+                        <img src="/public/img/carrito-de-compras.png" alt="Carrito" class="producto-carrito">
                     </a>
                     <% }); %>
                 </div>
@@ -60,7 +60,7 @@
         </div>
     </main>    
     <footer>
-        <img src="/img/logoECDA.png" alt="Logo de la empresa" class="mb-2">
+        <img src="/public/img/logoECDA.png" alt="Logo de la empresa" class="mb-2">
         <p>&copy; Derechos Reservados</p>
         <nav class="d-flex justify-content-center gap-3">
             <a href="/contacto" class="text-decoration-none">Ir a contacto</a>
@@ -71,6 +71,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/js/barra_busqueda.js"></script>
+    <script src="/public/js/barra_busqueda.js"></script>
 </body>
 </html>

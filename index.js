@@ -148,8 +148,8 @@ app.use('/', promocionRouter);
 const jumboRouter = require('./routes/jumbo'); 
 app.use('/jumbo', jumboRouter); 
 
-const unimarcRouter = require('./routes/unimarc'); 
-app.use('/unimarc', unimarcRouter);
+const santaisabelRouter = require('./routes/santaisabel'); // Cambia esto a santaisabel.js
+app.use('/', santaisabelRouter); 
 
 const ofertasRouter = require('./routes/ofertas');
 app.use('/ofertas', ofertasRouter);

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../public/css/styles.css">
     <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -32,15 +33,6 @@
                 <a href="/tiendas">
                     <img src="../public/img/tienda.png" alt="Tienda">
                 </a>
-                <% if (isLoggedIn) { %>
-                    <a href="/auth/logout">
-                        <img src="../public/img/cerrar-sesion.png" alt="Cerrar Sesión">
-                    </a>
-                  <% } else { %>
-                    <a href="/login">
-                        <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesión">
-                    </a>
-                  <% } %>
             </div>
         </section>
     </header>
@@ -62,52 +54,38 @@
                 <div class="category-grid" id="categoryGrid">
                     <div class="category-item">
                         <div class="category-image">
-                            <img src="https://thefoodtech.com/wp-content/uploads/2020/05/carne-de-res.jpg" alt="Carne">
+                            <img src="https://www.webconsultas.com/sites/default/files/styles/wch_image_schema/public/media/0d/articulos/productos-lacteos.jpg" alt="Lacteos">
                         </div>
-                        <h3>Carne</h3>
+                        <h3>Lacteos</h3>
                         <a href="html/productos-categorias.html" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
                     </div>
                     
                     <div class="category-item">
                         <div class="category-image">
-                            <img src="https://www.semana.com/resizer/v2/3WMDMSJ3KBH3ZK4CUPJ224AZYM.jpg?auth=af34ecfacec9f9e3b9d0874d936e52a438da3595b9eceb922c165aff6bec85f4&smart=true&quality=75&width=1280&height=720" alt="Frutas">
+                            <img src="https://www.ocu.org/-/media/ocu/images/home/alimentacion/alimentos/despensa_bodegon1_800x450.jpg?rev=d1399646-44a6-444a-b614-6e680ee0138c&hash=9FDD84C199DFA9FD6A5A575BBF8317FD" alt="Despensa">
                         </div>
-                        <h3>Frutas</h3>
+                        <h3>Despensa</h3>
                         <a href="categorias.html" class="category-btn">Ver Más</a>
                     </div>
                     <div class="category-item">
                         <div class="category-image">
-                            <img src="https://s2.abcstatics.com/abc/www/multimedia/bienestar/2024/04/30/verduras-pocas-calorias-R3Vfbjx9Nok0nxp9QObH7xH-1200x840@diario_abc.jpg" alt="Verduras">
+                            <img src="https://blog.aepla.es/wp-content/uploads/2023/01/beneficios-saludables-frutas-verduras.jpeg" alt="Frutas y Verduras">
                         </div>
-                        <h3>Verduras</h3>
+                        <h3>Frutas y Verduras</h3>
                         <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
                     </div>
                     <div class="category-item">
                         <div class="category-image">
-                            <img src="https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small/public/articulos/productos-lacteos.jpg" alt="Lácteos">
+                            <img src="https://i.blogs.es/e29fa5/carnes-con-mas-proteinas/500_333.jpeg" alt="Carniceria">
                         </div>
-                        <h3>Lácteos</h3>
+                        <h3>Carniceria</h3>
                         <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
                     </div>
                     <div class="category-item">
                         <div class="category-image">
-                            <img src="https://a.storyblok.com/f/120479/6d797da1b3/mitos-pan-1.jpg" alt="Pan">
+                            <img src="https://blog.laminasyaceros.com/hubfs/Vino-Licor-Diferencias.jpg" alt="Vinos, Cervezas y Licores">
                         </div>
-                        <h3>Pan</h3>
-                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
-                    </div>
-                    <div class="category-item">
-                        <div class="category-image">
-                            <img src="https://www.aquasushi.cl/wp-content/uploads/aqua-botellas-coca.jpg" alt="Bebidas">
-                        </div>
-                        <h3>Bebidas</h3>
-                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
-                    </div>
-                    <div class="category-item">
-                        <div class="category-image">
-                            <img src="https://cablevey.com/wp-content/uploads/2020/11/The-Complete-Guide-on-Snack-Foods.jpg" alt="Snacks">
-                        </div>
-                        <h3>Snacks</h3>
+                        <h3>Vinos, Cervezas y Licores</h3>
                         <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
                     </div>
                 </div>
@@ -117,14 +95,46 @@
     </main>
 
     <footer>
-        <img src="../public/img/logoECDA.png" alt="Logo">
-        <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
-        <nav>
-            <a href="/contacto">Ir a contacto</a>
-            <a href="/legal">Ir al legal</a>
-        </nav>
-        <a href="/" class="inicio-btn">Ir a Inicio</a>
+        <div class="footer-container">
+            <!-- Sección de Logo e Información Básica -->
+            <div class="footer-section about">
+                <img src="../public/img/logoECDA.png" alt="Logo" class="footer-logo">
+                <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
+                <p>Tu fuente confiable para las mejores ofertas y productos.</p>
+            </div>
+            
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/categorias">Categorías</a></li>
+                    <li><a href="/Carrito">Carrito de Compras</a></li>
+                    <li><a href="html/selec_tienda.php">Tienda</a></li>
+                    <li><a href="/login">Iniciar Sesión</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <!-- Sección de Información de Contacto -->
+            <div class="footer-section contact">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Calle del cacique 619, Temuco, Chile</p>
+                <p><i class="fas fa-phone"></i> +56 9 1234 5678</p>
+                <p><i class="fas fa-envelope"></i> contacto@caciquedelahorro.cl</p>
+            </div>
+            
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
+    
 
     
     <script>
@@ -142,7 +152,7 @@
                         <img src="${oferta.imagen_producto}" alt="${oferta.Nombre_producto}">
                         <div class="precio-oferta">$${oferta.Costo}</div> <!-- Cambia coste por Costo -->
                     </div>
-                    <p>${oferta.Descripcion_Producto}</p>
+                    <p>${oferta.Nombre_producto}</p>
                     <a href="${oferta.link_producto}" class="category-btn">Ir a la Oferta</a>
                 `;
                 container.appendChild(ofertaDiv);
