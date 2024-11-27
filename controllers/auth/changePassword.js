@@ -13,14 +13,14 @@ const cambiocontrasena = (req, res) => {
 
         // Verificar que las contraseñas coincidan
         if (contrasena !== confirmarContrasena) {
-            return res.render('cambio', { error: 'contraseñas_no_coinciden' });
+            return res.render('cambio', { mensaje: 'contraseñas no coinciden' });
         }
 
         // Hashear la nueva contraseña antes de actualizarla
         bcrypt.hash(contrasena, 7, (err, hash) => {
             if (err) {
                 console.error('Error al hashear la contraseña:', err);
-                return res.render('cambio', { confirmacion: 'error' });
+                return res.render('cambio', { mensaje: 'error' });
             }
 
             // Actualizar la contraseña hasheada en la base de datos
@@ -28,20 +28,20 @@ const cambiocontrasena = (req, res) => {
             db.query(sql, [hash, correo], (error, results) => {
                 if (error) {
                     console.error('Error al actualizar la contraseña:', error);
-                    return res.render('cambio', { confrimacion: 'error' });
+                    return res.render('cambio', { mensaje: 'error' });
                 }
 
                 // Verificar si se actualizó alguna fila
                 if (results.affectedRows > 0) {
-                    return res.render('login', { confrimacion: 'exitoso' });
+                    return res.render('login', { mensaje: 'cambio de contraseña exitoso' });
                 } else {
-                    return res.render('cambio', { confirmacion: 'usuario_no_encontrado' });
+                    return res.render('cambio', { mensaje: 'usuario no encontrado' });
                 }
             });
         });
     } else {
         // Si no hay correo en la sesión, redirigir a la página de recuperación
-        return res.render('recuperar', { error: 'sesion_expirada' });
+        return res.render('recuperar', { mensaje: 'sesion expirada' });
     }
 };
 

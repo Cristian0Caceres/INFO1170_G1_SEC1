@@ -160,5 +160,9 @@
         })
         .catch(error => console.error('Error:', error));
     </script>
+
+    <% if (typeof mensaje !== 'undefined') { %>
+    <script>alert("<%= mensaje %>");</script>
+    <% } %>
 </body>
 </html>

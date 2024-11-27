@@ -13,11 +13,11 @@ const confirmarCodigo = (req, res) => {
             return res.render('cambio');
         } else {
             // Redirigir de nuevo a la página de recuperación si el código es incorrecto
-            return res.render('recuperar', { error: 'codigo' });
+            return res.render('recuperar', { mensaje: 'codigo incorrecto' });
         }
     } else {
         // Si no hay código en la sesión, redirigir con error
-        return res.render('recuperar', { error: 'sin_codigo' });
+        return res.render('recuperar', { mensaje: 'sin codigo' });
     }
 };
 
