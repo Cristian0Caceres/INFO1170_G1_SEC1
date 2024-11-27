@@ -1,0 +1,235 @@
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Permite al main ocupar el espacio restante */
+    background-color: #F8EDE3;
+}
+
+
+
+
+.barra-superior {
+    background-color: #d6b8a5;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    margin-bottom: 30px;
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); 
+    opacity: 0.8;
+}
+
+.search-bar .input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 30px; 
+    background-color: #E8DEF8; 
+    overflow: hidden; 
+    height: 38px; 
+}
+
+.search-bar input {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    background-color: transparent; 
+    padding-left: 15px; 
+    height: 100%; 
+}
+
+.search-bar .btn {
+    background: none; 
+    border: none; 
+    padding: 0 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.search-bar button img {
+    height: 20px; 
+    width: 20px; 
+    object-fit: contain; 
+}
+
+.search-bar button:hover {
+    transform: scale(1.1); 
+}
+
+.icons a img {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.icons a img:hover {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+
+main {
+    flex: 1; /* Permite que el contenido ocupe el espacio restante */
+    display: block; /* Evita el centrado automático */
+    margin-top: 20px; /* Ajusta la distancia desde la barra superior */
+    padding-bottom: 50px; /* Para mantener distancia con el footer */
+}
+
+.productos {
+    background-color: #DFD3C3;
+    width: 90%; /* Cambia aquí el ancho */
+    padding: 2rem;
+    border-radius: 10px;
+    margin: 0 auto; /* Centra el contenido horizontalmente */
+}
+
+.encabezado .titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-family: "Lemon", sans-serif;
+    margin-bottom: 40px; /* Espaciado entre el título y los productos */
+}
+
+.productos .contenedor_productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.presentacion-producto {
+    border-radius: 10px;
+    background-color: #C5705D;
+    width: calc(23% - 20px); /* Ajuste para que 4 tarjetas quepan por fila */
+    min-width: 220px; /* Tamaño mínimo */
+    height: 340px; /* Ajusta la altura de las tarjetas */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Mejor alineación */
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Evita contenido desbordante */
+    padding: 10px; /* Espaciado interno */
+}
+
+.presentacion-producto:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.presentacion-producto .contenedor_imagen {
+    background-color: #ffffff;
+    width: 90%; /* Ajuste para mejor alineación */
+    height: 70%; /* Incrementa la altura de la imagen */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.contenedor_imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Mantiene la proporción de las imágenes */
+    border-radius: 10px;
+}
+
+.contenedor_informacion {
+    text-align: center;
+    color: #FFF;
+    padding: 10px;
+    font-size: 14px;
+    height: 25%; /* Reduce la altura para compensar el aumento de la imagen */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; /* Distribuye el texto mejor */
+}
+
+.contenedor_informacion h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.contenedor_informacion p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Quitar el subrayado de todos los enlaces */
+a {
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se distribuyan en varias filas */
+    justify-content: center; /* Centra las páginas */
+    gap: 10px; /* Espaciado entre las páginas */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #C5705D;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.pagination a:hover {
+    background-color: #A35248;
+    transform: scale(1.05);
+}
+
+.pagination a.active {
+    background-color: #D0B8A8; /* Color para la página activa */
+    pointer-events: none; /* Desactiva clics en la página activa */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .presentacion-producto {
+        width: 45%; /* Ajuste para pantallas más pequeñas */
+    }
+}
+
+@media (max-width: 480px) {
+    .presentacion-producto {
+        width: 90%; /* Ajuste para pantallas muy pequeñas */
+    }
+}
+
+/* Footer */
+footer {
+    margin-top: 50px;
+    background-color: #D0B8A8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh; /* proporcional a la altura de la ventana */
+
+}
+
+footer img {
+    padding-left: 2%;
+    height: 100%;
+}
+
+footer a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}

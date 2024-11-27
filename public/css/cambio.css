@@ -1,0 +1,236 @@
+/* Reseteo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #1E1E1E; /* Fondo oscuro para asemejarse al login */
+}
+
+/* NUEVOS DATOS */
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #F8EDE3;
+    overflow-y: auto; /* Permite el scroll vertical si es necesario */
+}
+
+.barra-superior {
+    background-color: #d6b8a5;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); / Efecto al pasar el mouse /
+    opacity: 0.8;
+}
+
+.search-bar .input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 30px; 
+    background-color: #E8DEF8; 
+    overflow: hidden; 
+    height: 38px; 
+}
+
+.search-bar input {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    background-color: transparent; 
+    padding-left: 15px; 
+    height: 100%; 
+}
+
+.search-bar .btn {
+    background: none; 
+    border: none; 
+    padding: 0 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.search-bar button img {
+    height: 20px; 
+    width: 20px; 
+    object-fit: contain; 
+}
+
+.search-bar button:hover {
+    transform: scale(1.1); 
+}
+
+.icons a img {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.icons a img:hover {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+/* NUEVOS DATOS */
+
+/* Estilos para la sección principal */
+main {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8EDE3;
+    padding: 2%;
+}
+
+/* Modificación de la sección de confirmación */
+.recuperar {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    background-color: #C5705D;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.recuperar h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding-top: 5%;
+}
+
+.datos {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    background-color: #D0B8A8;
+    margin-top: 5%;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.datos h3 {
+    color: #1500FF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.datos p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3%;
+}
+
+.datos form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos form input {
+    padding: 12px;
+    margin-top: 5%;
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000;
+    border-radius: 8px;
+}
+
+.datos form input::placeholder {
+    color: #000000;
+}
+
+.datos form button {
+    padding: 12px;
+    margin-top: 3%;
+    text-align: center;
+    background-color: #FF8C00;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+}
+
+.datos form button:hover {
+    background-color: #FF7F00;
+}
+
+.datos a {
+    padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
+}
+
+.datos a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #D0B8A8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh; /* proporcional a la altura de la ventana */
+}
+
+footer img {
+    padding-left: 2%;
+    height: 100%;
+}
+
+footer a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .logo, .search-bar, .icons {
+        width: 100%;
+    }
+    .logo {
+        justify-content: center;
+    }
+    .search-bar input, .search-bar button {
+        width: 80%;
+    }
+    .recuperar, .datos {
+        width: 95%;
+    }
+}
+
+@media (max-width: 480px) {
+    .datos form input {
+        padding: 10px;
+    }
+}

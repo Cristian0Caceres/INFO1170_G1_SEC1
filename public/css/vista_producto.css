@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #F8EDE3;
+    overflow-y: auto;
+    display: flex; /* Flexbox para centrar */
+    flex-direction: column; /* Asegura que el header y footer no se vean afectados */
+}
+
+main {
+    display: flex; /* Centrar contenido */
+    flex-grow: 1; /* Ocupa el espacio entre header y footer */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+}
+
+.barra-superior {
+    background-color: #d6b8a5;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.search-bar .input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    background-color: #E8DEF8;
+    overflow: hidden;
+    height: 38px;
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding-left: 15px;
+    height: 100%;
+}
+
+.search-bar .btn {
+    background: none;
+    border: none;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.search-bar button img {
+    height: 20px;
+    width: 20px;
+    object-fit: contain;
+}
+
+.search-bar button:hover {
+    transform: scale(1.1);
+}
+
+.icons a img {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.icons a img:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.producto-contenedor {
+    background-color: #DFD3C3;
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%; /* Aprovechar mejor el espacio */
+    margin: auto;
+    min-height: 700px; /* Incrementa la altura mínima */
+    display: flex;
+    justify-content: space-between; /* Mantiene el espacio proporcional */
+}
+
+.producto-imagen-info .imagen {
+    display: flex;
+    width: 90%;
+    background-color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid #C5705D;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.producto-imagen-info .imagen img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    object-fit: contain; /* Mantiene la proporción de las imágenes */
+}
+
+.producto-imagen-info .informacion {
+    background-color: #D0B8A8;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    text-align: center;
+}
+
+.informacion h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.informacion p {
+    font-size: 1.4rem;
+}
+
+.precios-titulo {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.precios-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 400px; /* Ajuste para mayor espacio */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.producto-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #C5705D;
+    font-weight: bold;
+    border-radius: 15px;
+    width: 90%; /* Aprovechar mejor el espacio */
+    color: white; /* Cambiar a blanco */
+    text-decoration: none; /* Evitar subrayado */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    margin: auto;
+    gap: 10px; /* Añadir un pequeño espacio entre los elementos */
+}
+
+.producto-item:hover {
+    background-color: #A35248;
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none; /* Mantener sin subrayado */
+}
+
+.producto-tienda, .producto-precios {
+    background-color: #D0B8A8;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+    color: white; /* Cambiar texto a blanco */
+    flex: 1; /* Asegura que ambos elementos tengan el mismo ancho */
+    max-width: 40%; /* Fijar un ancho máximo coherente */
+}
+
+.producto-carrito {
+    height: 35px;
+    flex-shrink: 0; /* Evita que el icono se reduzca */
+}
+
+/* Footer Estilos */
+footer {
+    background-color: #D0B8A8;
+    color: #000000;
+    padding: 40px 20px;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'roboto', sans-serif;
+
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin: 20px;
+}
+
+.footer-logo {
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #C5705D;
+    font-family: 'Lemon', sans-serif;
+}
+
+.footer-section p, 
+.footer-section ul, 
+.footer-section a {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #C5705D;
+}
+
+.footer-section.contact p i {
+    margin-right: 10px;
+    color: #C5705D;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #000000;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #C5705D;
+}
+
+footer .inicio-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #C5705D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+footer .inicio-btn:hover {
+    background-color: #A4564A;
+    transform: translateY(-2px);
+}
+/* Media Queries para pantallas pequeñas */
+@media (max-width: 768px) {
+    .producto-contenedor {
+        flex-direction: column;
+        align-items: center;
+        min-height: auto;
+    }
+
+    .producto-imagen-info .imagen,
+    .producto-imagen-info .informacion,
+    .precios-titulo,
+    .precios-lista {
+        width: 100%;
+    }
+
+    .precios-lista {
+        flex-direction: column;
+    }
+
+    .producto-item {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%; /* Se adapta al ancho */
+    }
+
+    .producto-tienda, .producto-precios {
+        width: 100%;
+        max-width: 100%;
+    }
+}

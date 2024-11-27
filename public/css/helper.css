@@ -1,0 +1,178 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e6f4ea; /* Fondo verde claro */
+    margin: 0;
+    padding: 0;
+    color: #1e4d2b; /* Verde oscuro */
+}
+
+/* Encabezado */
+header {
+    background-color: #2d8659; /* Verde medio */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 4px solid #1e5e3d; /* Verde más oscuro */
+}
+
+h1 {
+    margin: 0;
+}
+
+/* Navegación */
+.navbar {
+    background-color: #1e5e3d !important; /* Color de fondo del navbar */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+.navbar .nav-link {
+    color: white !important; /* Color del texto */
+    font-weight: bold; /* Texto en negrita */
+    margin: 0 5px; /* Margen entre los enlaces */
+    padding: 10px 15px; /* Espaciado interno */
+    border-radius: 12px; /* Bordes redondeados */
+    background-color: #2d8659; /* Fondo de los enlaces */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transiciones */
+}
+
+.navbar .nav-link:hover {
+    background-color: #1e4d2b !important; /* Color al pasar el cursor */
+    transform: scale(1.05); /* Efecto de agrandamiento */
+}
+
+/* Sección principal */
+main {
+    padding: 20px;
+}
+
+/* Selección de categoría, campo de búsqueda, y campos de entrada de texto */
+#categorySelect, #searchInput, #product, #subject {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #2d8659;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+#categorySelect:focus, #searchInput:focus, #product:focus, #subject:focus {
+    border-color: #1e5e3d;
+    box-shadow: 0 0 5px rgba(30, 94, 61, 0.5);
+    outline: none;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff; /* Fondo blanco para la tabla */
+}
+
+table, th, td {
+    border: 1px solid #1e5e3d; /* Borde verde oscuro */
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2d8659; /* Verde medio para encabezados */
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Filas pares en gris claro */
+}
+
+tr:hover {
+    background-color: #d1e7dd; /* Efecto hover para las filas */
+}
+
+/* Botones y formularios */
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #1e5e3d;
+    background-color: #f9f9f9;
+    resize: none;
+    font-family: inherit;
+    color: #1e4d2b;
+    overflow: hidden; /* Oculta el desbordamiento */
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #FF8C00;
+}
+
+textarea {
+    box-sizing: border-box;
+    overflow-y: auto;
+    resize: none; /* Deshabilita el redimensionamiento manual */
+}
+
+textarea::-webkit-scrollbar {
+    display: none; /* Oculta la barra de desplazamiento */
+}
+
+/* Botón de enviar promoción */
+button, #enviarPromocionBtn {
+    background-color: #2d8659; /* Verde medio */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+button:hover, #enviarPromocionBtn:hover {
+    background-color: #1e5e3d; /* Verde oscuro */
+    transform: scale(1.05);
+}
+
+/* Imagen del producto en la promoción */
+#productInfo img {
+    border-radius: 8px;
+    margin-top: 10px;
+    border: 2px solid #2d8659;
+    max-width: 100%; /* Ajuste responsivo */
+    height: auto; /* Mantener proporciones */
+}
+
+/* Estilos para paginación */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 5px;
+    padding: 8px 12px;
+    border: 1px solid #1e5e3d;
+    border-radius: 5px;
+    color: #1e5e3d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pagination a.active {
+    background-color: #2d8659;
+    color: white;
+}
+
+.pagination a:hover {
+    background-color: #73c495;
+    color: white;
+}
+
+/* Footer */
+footer {
+    background-color: #1e5e3d;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}

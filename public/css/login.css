@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Lemon&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
+/* Reseteo */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #F8EDE3
+}
+
+/* NUEVOS DATOS */
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #F8EDE3;
+    overflow-y: auto; /* Permite el scroll vertical si es necesario */
+}
+
+.barra-superior {
+    background-color: #d6b8a5;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); 
+    opacity: 0.8;
+}
+
+.search-bar .input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 30px; 
+    background-color: #E8DEF8; 
+    overflow: hidden; 
+    height: 38px; 
+}
+
+.search-bar input {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    background-color: transparent; 
+    padding-left: 15px; 
+    height: 100%; 
+}
+
+.search-bar .btn {
+    background: none; 
+    border: none; 
+    padding: 0 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.search-bar button img {
+    height: 20px; 
+    width: 20px; 
+    object-fit: contain; 
+}
+
+.search-bar button:hover {
+    transform: scale(1.1); 
+}
+
+.icons a img {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.icons a img:hover {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+/* NUEVOS DATOS */
+/* Estilos para la sección principal */
+main {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F8EDE3;
+    padding: 2%;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Modificación de la sección de inicio de sesión */
+.inicio-sesion {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 400px; /* Ajusté a 400px para que sea más pequeño */
+    height: auto;
+    background-color: #C5705D;
+    border-radius: 15px; /* Bordes redondeados más grandes */
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Sombra para darle un efecto más similar a la imagen */
+    animation: bounceIn 0.8s ease-out;
+}
+
+/* Animación de bounce-in */
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    60% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.inicio-sesion h1 {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 5%;
+    color: white;
+}
+
+/* Modificación de la sección de datos (email, contraseña, etc.) */
+.datos {
+    position: relative;
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+    background-color: #D0B8A8;
+    margin-top: 5%;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.datos h2 {
+    color: #1500FF;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 5%;
+}
+
+.datos p {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    padding-top: 3%;
+}
+
+.datos form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.datos form input {
+    padding: 12px;
+    margin-top: 5%;
+    text-align: center;
+    width: 100%;
+    background-color: #ffffff; /* Fondo oscuro para inputs */
+    color: rgb(0, 0, 0);
+    border: 1px solid #000000; /* Borde oscuro */
+    border-radius: 8px; /* Bordes más redondeados */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.datos form input:focus {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+.datos form input::placeholder {
+    color: #000000; /* Color placeholder */
+}
+
+.datos form button {
+    padding: 12px;
+    margin-top: 3%;
+    text-align: center;
+    background-color: #FF8C00; /* Color del botón */
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.datos form button:hover {
+    background-color: #FF7F00;
+    transform: scale(1.05);
+}
+
+.datos a {
+    padding-top: 3%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: #000000;
+    transition: color 0.3s ease;
+}
+
+.datos a:hover {
+    color: white;
+    text-decoration: underline; 
+}
+
+/* Footer Estilos */
+footer {
+    background-color: #D0B8A8;
+    color: #000000;
+    padding: 40px 20px;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'roboto', sans-serif;
+
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    margin: 20px;
+}
+
+.footer-logo {
+    width: 100px;
+    margin-bottom: 15px;
+}
+
+.footer-section h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #C5705D;
+    font-family: 'Lemon', sans-serif;
+}
+
+.footer-section p, 
+.footer-section ul, 
+.footer-section a {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: #000000;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #C5705D;
+}
+
+.footer-section.contact p i {
+    margin-right: 10px;
+    color: #C5705D;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    color: #000000;
+    font-size: 20px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #C5705D;
+}
+
+footer .inicio-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #C5705D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+footer .inicio-btn:hover {
+    background-color: #A4564A;
+    transform: translateY(-2px);
+}
+/* Media Queries */
+@media (max-width: 768px) {
+    .logo, .search-bar, .icons {
+        width: 100%; 
+    }
+    .logo {
+        justify-content: center; 
+    }
+    .search-bar input, .search-bar button {
+        width: 80%; 
+    }
+    .inicio-sesion, .datos {
+        width: 95%; 
+    }
+}
+
+@media (max-width: 480px) {
+    .datos form input {
+        padding: 10px;
+    }
+}

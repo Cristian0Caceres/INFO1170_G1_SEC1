@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Productos - Cacique del Ahorro</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/admin.css">
+    <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
+</head>
+<body>
+<header>
+    <h1>Lista de Productos - Cacique del Ahorro</h1>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="/admin">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="/productos_admin">Productos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+                <li class="nav-item"><a class="nav-link" href="/helper-zone">Helper Zone</a></li>
+                <li class="nav-item"><a class="nav-link" href="/enviar-promocion">Promoción</a></li>
+                <li class="nav-item"><a class="nav-link" href="/">Salir</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="container my-4">
+    <h2 class="text-center mb-3">Productos Registrados</h2>
+    <p class="text-center">A continuación, se muestra la lista de productos registrados en el sistema:</p>
+
+    <!-- Barra de búsqueda -->
+    <div class="search-container mb-4">
+        <form method="GET" action="/productos_admin" class="d-flex justify-content-center">
+            <input type="text" name="search" class="form-control me-2" placeholder="Buscar producto por nombre..." value="<%= search %>">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    </div>
+
+    <!-- Tabla de productos -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Proveedor</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (productos.length > 0) { %>
+                    <% productos.forEach(producto => { %>
+                        <tr>
+                            <td><%= producto.id %></td>
+                            <td><%= producto.name %></td>
+                            <td><%= producto.category %></td>
+                            <td>$<%= producto.price %></td>
+                            <td><%= producto.provider %></td>
+                            <td><%= producto.description %></td>
+                            <td>
+                                <img src="<%= producto.image %>" alt="<%= producto.name %>" class="img-thumbnail" style="max-width: 100px;">
+                            </td>
+                            <td>
+                                <a href="/productos_admin/editar?id=<%= producto.id %>" class="btn btn-sm btn-warning">Editar</a>
+                                <a href="/productos_admin/eliminar?id=<%= producto.id %>" class="btn btn-sm btn-danger">Eliminar</a>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="8" class="text-center">No se encontraron productos</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Paginación -->
+    <nav aria-label="Paginación de productos">
+        <ul class="pagination justify-content-center">
+            <!-- Botón para ir a la página anterior -->
+            <% if (paginaActual > 1) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/productos_admin?page=<%= paginaActual - 1 %>&search=<%= search %>" aria-label="Anterior">
+                        &laquo;
+                    </a>
+                </li>
+            <% } %>
+
+            <!-- Botones de página con límite de 10 -->
+            <% 
+                const inicio = Math.max(1, paginaActual - 5); 
+                const fin = Math.min(totalPaginas, inicio + 9); 
+            %>
+            <% for (let i = inicio; i <= fin; i++) { %>
+                <li class="page-item <%= i === paginaActual ? 'active' : '' %>">
+                    <a class="page-link" href="/productos_admin?page=<%= i %>&search=<%= search %>"><%= i %></a>
+                </li>
+            <% } %>
+
+            <!-- Botón para ir a la página siguiente -->
+            <% if (paginaActual < totalPaginas) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/productos_admin?page=<%= paginaActual + 1 %>&search=<%= search %>">Siguiente &raquo;>
+                        &raquo;
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </nav>
+</section>
+
+<footer class="bg-dark text-white text-center py-3">
+    <p>&copy; Derechos Reservados</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/editar_productos.css">
+    <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <h2>Editar Producto</h2>
+    </header>
+    
+    <section class="container my-5">
+        <form method="post" action="/productos_admin/editar" class="card shadow p-4">
+            <input type="hidden" name="id" value="<%= producto.id %>">
+            
+            <!-- Campo Nombre -->
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" name="nombre" value="<%= producto.Nombre_producto %>" class="form-control" required>
+            </div>
+
+            <!-- Selección de Categoría -->
+            <div class="mb-3">
+                <label for="categoria" class="form-label">Categoría:</label>
+                <select name="categoria" class="form-select" required>
+                    <option value="">Seleccionar categoría</option>
+                    <% categorias.forEach(categoria => { %>
+                        <option value="<%= categoria.ID_Categoria %>" <%= categoria.ID_Categoria == producto.ID_Categoria ? 'selected' : '' %>><%= categoria.Nombre_Categoria %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Selección de Proveedor -->
+            <div class="mb-3">
+                <label for="proveedor" class="form-label">Proveedor:</label>
+                <select name="proveedor" class="form-select" required>
+                    <option value="">Seleccionar proveedor</option>
+                    <% proveedores.forEach(proveedor => { %>
+                        <option value="<%= proveedor.ID_Proveedor %>" <%= proveedor.ID_Proveedor == producto.ID_Proveedor ? 'selected' : '' %>><%= proveedor.Nombre_Proveedor %></option>
+                    <% }); %>
+                </select>
+            </div>
+
+            <!-- Campo Precio -->
+            <div class="mb-3">
+                <label for="precio" class="form-label">Precio:</label>
+                <input type="number" name="precio" value="<%= producto.Costo %>" class="form-control" required>
+            </div>
+
+            <!-- Campo Descripción -->
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripción:</label>
+                <textarea name="descripcion" class="form-control" rows="4" required><%= producto.Descripcion_Producto %></textarea>
+            </div>
+
+            <!-- Campo Imagen -->
+            <div class="mb-3">
+                <label for="imagen" class="form-label">Imagen (URL):</label>
+                <input type="text" name="imagen" value="<%= producto.imagen_producto %>" class="form-control" required>
+            </div>
+
+            <!-- Botón de envío -->
+            <div class="text-center">
+                <button type="submit">Actualizar</button>
+            </div>
+        </form>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

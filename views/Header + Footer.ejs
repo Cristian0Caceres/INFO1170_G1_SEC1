@@ -1,0 +1,135 @@
+<header>
+    <section class="barra-superior container-fluid">
+        <div class="row align-items-center">
+            <div class="col-2 logo">
+                <a href="/">
+                    <img src="../public/img/logoECDA.png" alt="Logo" title="Ir al Inicio">
+                </a>
+            </div>
+            <div class="col-8 search-bar">
+                <div class="input-group">
+                    <input type="text" id="searchInput" placeholder="Buscar..." class="form-control">
+                    <button class="btn" onclick="realizarBusqueda()" title="Buscar...">
+                        <img src="../public/img/buscar.png" alt="Buscar" class="img-buscar">
+                    </button>
+                </div>
+            </div>
+            <div class="col-2 d-flex justify-content-around icons">
+                <a href="/categorias"><img src="../public/img/categorias.png" alt="Categorias" title="Ir a Categorias"></a>
+                <a href="/carrito"><img src="../public/img/carrito-de-compras.png" alt="Carrito de Compras" title="Ir al Carrito de Presupuesto"></a>
+                <a href="/tiendas"><img src="../public/img/tienda.png" alt="Tienda" title="Ir a la Selección de Tiendas"></a>
+                <a href="/login"><img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesión" title="Iniciar Sesión"></a>
+            </div>
+        </div>
+    </section>
+</header>
+
+<footer>
+    <img src="../public/img/logoECDA.png" alt="Logo de la empresa" class="mb-2">
+    <p>&copy; Derechos Reservados</p>
+    <nav class="d-flex justify-content-center gap-3">
+        <a href="/contacto" class="text-decoration-none">Ir a contacto</a>
+        <a href="/legal" class="text-decoration-none">Ir al legal</a>
+        <a href="/" class="text-decoration-none">Ir al Inicio</a>
+    </nav>
+</footer>
+
+CSS:
+
+/* NUEVOS DATOS */
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #F8EDE3;
+    overflow-y: auto; /* Permite el scroll vertical si es necesario */
+}
+
+.barra-superior {
+    background-color: #d6b8a5;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.logo img {
+    height: 50px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1); / Efecto al pasar el mouse /
+    opacity: 0.8;
+}
+
+.search-bar .input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 30px; 
+    background-color: #E8DEF8; 
+    overflow: hidden; 
+    height: 38px; 
+}
+
+.search-bar input {
+    flex: 1; 
+    border: none; 
+    outline: none; 
+    background-color: transparent; 
+    padding-left: 15px; 
+    height: 100%; 
+}
+
+.search-bar .btn {
+    background: none; 
+    border: none; 
+    padding: 0 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out; 
+}
+
+.search-bar button img {
+    height: 20px; 
+    width: 20px; 
+    object-fit: contain; 
+}
+
+.search-bar button:hover {
+    transform: scale(1.1); 
+}
+
+.icons a img {
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease; 
+}
+
+.icons a img:hover {
+    transform: scale(1.1); 
+    opacity: 0.8; 
+}
+/* NUEVOS DATOS */
+
+
+fOOTER:
+
+/* Footer */
+footer {
+    background-color: #D0B8A8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 5vh; /* proporcional a la altura de la ventana */
+}
+
+footer img {
+    padding-left: 2%;
+    height: 100%;
+}
+
+footer a {
+    margin: 0 1rem;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}

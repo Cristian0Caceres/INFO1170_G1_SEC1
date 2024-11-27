@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helper Zone - Consultas de Contacto</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../public/css/helper.css">
+</head>
+<body>
+    <header class="bg-success text-white text-center py-4 border-bottom border-dark">
+        <h1>Helper Zone</h1>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/admin">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/productos_admin">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/usuarios">Usuarios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/helper-zone">Helper Zone</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/enviar-promocion">Promoción</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Salir</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="container my-4">
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar por ID o Nombre de Usuario">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="table-success">
+                    <tr>
+                        <th>ID Consulta</th>
+                        <th>Nombre Usuario</th>
+                        <th>Correo Usuario</th>
+                        <th>Asunto</th>
+                        <th>Mensaje</th>
+                        <th>Respuesta</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="consultaTable">
+                    <% if (consultas.length > 0) { %>
+                        <% consultas.forEach(consulta => { %>
+                            <tr>
+                                <td><%= consulta.ID_Consulta %></td>
+                                <td><%= consulta.Nombre_Usuario %></td>
+                                <td><%= consulta.correo_Usuario %></td>
+                                <td><%= consulta.Asunto %></td>
+                                <td><%= consulta.Mensaje_Usuario %></td>
+                                <td>
+                                    <% if (consulta.Respuesta_Cacique) { %>
+                                        <p><%= consulta.Respuesta_Cacique %></p>
+                                    <% } else { %>
+                                        <form action="/responder-consulta/<%= consulta.ID_Consulta %>" method="POST">
+                                            <textarea name="respuesta" class="form-control mb-2" placeholder="Escribe la respuesta"></textarea>
+                                            <button type="submit" class="btn btn-success">Responder</button>
+                                        </form>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <% if (consulta.Respuesta_Cacique) { %>
+                                        <span class="badge bg-success">Respondida</span>
+                                    <% } else { %>
+                                        <span class="badge bg-warning text-dark">Pendiente de respuesta</span>
+                                    <% } %>
+                                </td>
+                            </tr>
+                        <% }); %>
+                    <% } else { %>
+                        <tr>
+                            <td colspan="7" class="text-center">No hay consultas registradas.</td>
+                        </tr>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+        <!-- Controles de paginación -->
+        <!-- Controles de paginación -->
+        <nav class="d-flex justify-content-center">
+            <ul class="pagination">
+                <!-- Botón "Anterior" -->
+                <% if (currentPage > 1) { %>
+                    <li class="page-item">
+                        <a class="page-link" href="/helper-zone?page=<%= currentPage - 1 %>">&laquo; Anterior</a>
+                    </li>
+                <% } %>
+
+                <!-- Páginas con límite de 10 -->
+                <% 
+                    const inicio = Math.max(1, currentPage - 5); 
+                    const fin = Math.min(totalPages, inicio + 9); 
+                %>
+                <% for (let i = inicio; i <= fin; i++) { %>
+                    <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+                        <a class="page-link" href="/helper-zone?page=<%= i %>"><%= i %></a>
+                    </li>
+                <% } %>
+
+                <!-- Botón "Siguiente" -->
+                <% if (currentPage < totalPages) { %>
+                    <li class="page-item">
+                        <a class="page-link" href="/helper-zone?page=<%= currentPage + 1 %>">Siguiente &raquo;</a>
+                    </li>
+                <% } %>
+            </ul>
+        </nav>
+
+    </main>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; Derechos Reservados</p>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/helperz.js"></script>
+</body>
+</html>
