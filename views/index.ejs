@@ -66,7 +66,7 @@
                             <img src="https://www.webconsultas.com/sites/default/files/styles/wch_image_schema/public/media/0d/articulos/productos-lacteos.jpg" alt="Lacteos">
                         </div>
                         <h3>Lacteos</h3>
-                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
+                        <a href="/productos/1" class="category-btn">Ver Más</a> <!-- Botón con clase category-btn -->
                     </div>
                     
                     <div class="category-item">
@@ -74,28 +74,28 @@
                             <img src="https://www.ocu.org/-/media/ocu/images/home/alimentacion/alimentos/despensa_bodegon1_800x450.jpg?rev=d1399646-44a6-444a-b614-6e680ee0138c&hash=9FDD84C199DFA9FD6A5A575BBF8317FD" alt="Despensa">
                         </div>
                         <h3>Despensa</h3>
-                        <a href="categorias.html" class="category-btn">Ver Más</a>
+                        <a href="/productos/2" class="category-btn">Ver Más</a>
                     </div>
                     <div class="category-item">
                         <div class="category-image">
                             <img src="https://blog.aepla.es/wp-content/uploads/2023/01/beneficios-saludables-frutas-verduras.jpeg" alt="Frutas y Verduras">
                         </div>
                         <h3>Frutas y Verduras</h3>
-                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                        <a href="/productos/3" class="category-btn">Ver Más</a>
                     </div>
                     <div class="category-item">
                         <div class="category-image">
                             <img src="https://i.blogs.es/e29fa5/carnes-con-mas-proteinas/500_333.jpeg" alt="Carniceria">
                         </div>
                         <h3>Carniceria</h3>
-                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                        <a href="/productos/4" class="category-btn">Ver Más</a>
                     </div>
                     <div class="category-item">
                         <div class="category-image">
                             <img src="https://blog.laminasyaceros.com/hubfs/Vino-Licor-Diferencias.jpg" alt="Vinos, Cervezas y Licores">
                         </div>
                         <h3>Vinos, Cervezas y Licores</h3>
-                        <a href="html/productos-categorias.html" class="category-btn">Ver Más</a>
+                        <a href="/productos/5" class="category-btn">Ver Más</a>
                     </div>
                 </div>
             
@@ -119,8 +119,9 @@
                     <li><a href="/">Inicio</a></li>
                     <li><a href="/categorias">Categorías</a></li>
                     <li><a href="/Carrito">Carrito de Compras</a></li>
-                    <li><a href="html/selec_tienda.php">Tienda</a></li>
+                    <li><a href="/tiendas">Tiendas</a></li>
                     <li><a href="/login">Iniciar Sesión</a></li>
+                    <li><a href="/legal">legal</a></li>
                     <li><a href="/contacto">Contacto</a></li>
                 </ul>
             </div>
@@ -173,5 +174,6 @@
     <% if (typeof mensaje !== 'undefined') { %>
     <script>alert("<%= mensaje %>");</script>
     <% } %>
+    <script src="../public/js/barra_busqueda.js"></script>
 </body>
 </html>

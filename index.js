@@ -146,7 +146,7 @@ const promocionRouter = require('./routes/promocion');
 app.use('/', promocionRouter);  
 
 const jumboRouter = require('./routes/jumbo'); 
-app.use('/jumbo', jumboRouter); 
+app.use('/', jumboRouter); 
 
 const santaisabelRouter = require('./routes/santaisabel'); // Cambia esto a santaisabel.js
 app.use('/', santaisabelRouter); 

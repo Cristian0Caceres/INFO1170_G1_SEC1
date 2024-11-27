@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="/public/css/vista_producto.css">
     <title><%= producto[0].Nombre_producto %></title>
@@ -68,13 +69,45 @@
         </div>
     </main>    
     <footer>
-        <img src="/public/img/logoECDA.png" alt="Logo de la empresa" class="mb-2">
-        <p>&copy; Derechos Reservados</p>
-        <nav class="d-flex justify-content-center gap-3">
-            <a href="/contacto" class="text-decoration-none">Ir a contacto</a>
-            <a href="/legal" class="text-decoration-none">Ir al legal</a>
-            <a href="/" class="text-decoration-none">Ir al Inicio</a>
-        </nav>
+        <div class="footer-container">
+            <!-- Sección de Logo e Información Básica -->
+            <div class="footer-section about">
+                <img src="/public/img/logoECDA.png" alt="Logo" class="footer-logo">
+                <p>© 2024 Cacique del Ahorro. Todos los derechos reservados.</p>
+                <p>Tu fuente confiable para las mejores ofertas y productos.</p>
+            </div>
+            
+            <!-- Sección de Enlaces Rápidos -->
+            <div class="footer-section links">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/categorias">Categorías</a></li>
+                    <li><a href="/Carrito">Carrito de Compras</a></li>
+                    <li><a href="/tiendas">Tiendas</a></li>
+                    <li><a href="/login">Iniciar Sesión</a></li>
+                    <li><a href="/legal">legal</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
+                </ul>
+            </div>
+            
+            <!-- Sección de Información de Contacto -->
+            <div class="footer-section contact">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Calle del cacique 619, Temuco, Chile</p>
+                <p><i class="fas fa-phone"></i> +56 9 1234 5678</p>
+                <p><i class="fas fa-envelope"></i> contacto@caciquedelahorro.cl</p>
+            </div>
+            
+            <!-- Sección de Redes Sociales -->
+            <div class="footer-section social">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
