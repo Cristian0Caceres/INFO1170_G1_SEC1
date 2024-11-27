@@ -173,13 +173,19 @@ h2 {
 }
 
 .popular-categories {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 80px;
+    margin-bottom: 80px;
     overflow: hidden;
     position: relative;
-    max-width: 90%; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centra el contenedor */
+    max-width: 72%;  /* Aumentamos el ancho máximo al 90% */
+    width: 72%;  /* O puedes usar un ancho fijo si prefieres */
+    margin: 0 auto;  /* Centra el contenedor */
+    display: flex;
+    flex-wrap: wrap;  /* Permite que los elementos se acomoden en varias filas */
+    justify-content: center;  /* Centra los elementos en el eje horizontal */
+    gap: 20px;  /* Espacio entre los productos */
 }
+
 
 .category-grid {
     display: flex;
@@ -332,14 +338,7 @@ h2 {
 }
 
 /* Estilos principales */
-.popular-categories {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    overflow: hidden;
-    position: relative;
-    max-width: 90%;
-    margin: 0 auto;
-}
+
 
 .category-grid {
     display: flex;
@@ -392,7 +391,7 @@ h2 {
 
 .categorias-populares .categoria {
     min-width: 200px; /* Ajusta el ancho mínimo según sea necesario */
-    margin-right: 10px; /* Espaciado entre categorías */
+    margin-right: 30px; /* Espaciado entre categorías */
     transition: transform 0.5s ease; /* Transición suave para el movimiento */
 }
 

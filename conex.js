@@ -4,7 +4,7 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',        // Cambia si tu usuario es diferente
     password: '',        // Cambia si tienes una contraseña
-    database: 'bd_pruebaws'      // Cambia al nombre de tu base de datos
+    database: 'bd_definitiva'      // Cambia al nombre de tu base de datos
 });
 
 db.connect((err) => {
