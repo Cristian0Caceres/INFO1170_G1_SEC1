@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas de Juegos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reseñas de Juegos</h1>
+        <button onclick="fetchData()">Mostrar Reseñas</button>
+        <table id="reviewTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Juego</th>
+                    <th>Usuario</th>
+                    <th>Mensaje</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        async function fetchData() {
+            try {
+                const response = await fetch('consulta.php', {
+                    method: 'GET',
+                    headers: {
+                        'Cache-Control': 'no-cache'
+                    }
+                });
+                if (!response.ok) {
+                    throw new Error('Error al obtener los datos');
+                }
+                const data = await response.json();
+                const tableBody = document.querySelector('#reviewTable tbody');
+                tableBody.innerHTML = ''; // Limpiar la tabla antes de agregar nuevos datos
+
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${row.ID_Review}</td>
+                        <td>${row.ID_Game}</td>
+                        <td>${row.ID_Usser}</td>
+                        <td>${row.message}</td>
+                        <td>${row.RATE}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        }
+    </script>
+</body>
+</html>

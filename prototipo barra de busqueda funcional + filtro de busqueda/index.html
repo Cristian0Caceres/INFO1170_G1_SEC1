@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Búsqueda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Buscar..." oninput="search()">
+        <select id="category-filter" onchange="search()">
+            <option value="">Todas las categorías</option>
+            <option value="vegetales">Vegetales</option>
+            <option value="carnes">Carnes</option>
+            <option value="lácteos">Lácteos</option>
+            <option value="otros">Otros</option>
+        </select>
+        <button onclick="search()">Buscar</button>
+    </div>
+    <div id="results"></div>
+    <script src="scriptss1.js"></script>
+</body>
+</html>

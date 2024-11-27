@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Compras</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Lista de Compras</h1>
+    <div class="input-group">
+        <input type="text" id="itemInput" placeholder="Añadir un nuevo ítem">
+        <select id="categorySelect">
+            <option value="General">General</option>
+            <option value="Frutas">Frutas</option>
+            <option value="Verduras">Verduras</option>
+            <option value="Lácteos">Lácteos</option>
+        </select>
+        <button onclick="addItem()">Añadir</button>
+    </div>
+    <button onclick="clearList()">Limpiar Lista</button>
+    <ul id="shoppingList"></ul>
+    <script src="scriptss1.js"></script>
+</body>
+</html>
