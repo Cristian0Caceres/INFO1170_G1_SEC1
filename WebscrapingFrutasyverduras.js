@@ -37,7 +37,7 @@ async function scrapeAndCapture() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'bd_pruebaws2'
+        database: 'bd'
     });
 
     for (const url of urls) {
