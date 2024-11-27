@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/busqueda_producto.css">
+    <title>Búsqueda: <%= termino %></title>   
+</head>
+<body>
+    <header>
+        <section class="barra-superior container-fluid">
+            <div class="row align-items-center">
+                <div class="col-2 logo">
+                    <a href="/">
+                        <img src="/img/logoECDA.png" alt="Logo" title="Ir al Inicio">
+                    </a>
+                </div>
+                <div class="col-8 search-bar">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" placeholder="Buscar..." class="form-control">
+                        <button class="btn" onclick="realizarBusqueda()" title="Buscar...">
+                            <img src="/img/buscar.png" alt="Buscar" class="img-buscar">
+                        </button>
+                    </div>
+                </div>
+                <div class="col-2 d-flex justify-content-around icons">
+                    <a href="/categorias"><img src="/img/categorias.png" alt="Categorias" title="Ir a Categorias"></a>
+                    <a href="/carrito"><img src="/img/carrito-de-compras.png" alt="Carrito de Compras" title="Ir al Carrito de Presupuesto"></a>
+                    <a href="/tiendas"><img src="/img/tienda.png" alt="Tienda" title="Ir a la Selección de Tiendas"></a>
+                    <a href="/login"><img src="/img/iniciar-sesion.png" alt="Iniciar Sesión" title="Iniciar Sesión"></a>
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <!-- Sección para mostrar los productos encontrados -->
+        <section class="productos">
+            <section class="encabezado">
+                <div class="titulo">
+                    <h2>Resultados para: <%= termino %></h2>
+                </div>
+            </section>
+            <section class="contenedor_productos">
+                <% if (productos.length > 0) { %>
+                    <% productos.forEach(function(producto) { %>
+                        <a class="presentacion-producto" href="/productos/detalle/<%= producto.ID_Producto %>">
+                            <div class="contenedor_imagen">
+                                <img src="<%= producto.imagen_producto %>" alt="<%= producto.Nombre_producto %>">
+                            </div>
+                            <div class="contenedor_informacion">
+                                <h3><%= producto.Nombre_producto %></h3>
+                                <p>Desde: $<%= producto.Precio_Minimo %></p>
+                            </div>
+                        </a>
+                    <% }); %>
+                <% } else { %>  
+                    <p>No se encontraron productos para la búsqueda: "<%= termino %>".</p>
+                <% } %>
+            </section>
+
+            <!-- Paginador -->
+            <% if (pagination.totalPages > 1) { %>
+                <nav class="pagination">
+                    <% if (pagination.currentPage > 1) { %>
+                        <a href="?q=<%= termino %>&page=<%= pagination.currentPage - 1 %>&limit=<%= pagination.limit %>" class="prev">Anterior</a>
+                    <% } %>
+                    
+                    <% for (let i = 1; i <= pagination.totalPages; i++) { %>
+                        <a href="?q=<%= termino %>&page=<%= i %>&limit=<%= pagination.limit %>" class="<%= pagination.currentPage === i ? 'active' : '' %>"><%= i %></a>
+                    <% } %>
+                    
+                    <% if (pagination.currentPage < pagination.totalPages) { %>
+                        <a href="?q=<%= termino %>&page=<%= pagination.currentPage + 1 %>&limit=<%= pagination.limit %>" class="next">Siguiente</a>
+                    <% } %>
+                </nav>
+            <% } %>
+        </section>
+    </main>
+
+    <footer>
+        <img src="/img/logoECDA.png" alt="Logo de la empresa" class="mb-2">
+        <p>&copy; Derechos Reservados</p>
+        <nav class="d-flex justify-content-center gap-3">
+            <a href="/contacto" class="text-decoration-none">Ir a contacto</a>
+            <a href="/legal" class="text-decoration-none">Ir al legal</a>
+            <a href="/" class="text-decoration-none">Ir al Inicio</a>
+        </nav>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/barra_busqueda.js"></script>
+</body>
+</html>

@@ -3,89 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/vista_producto.css">
-    <link rel="icon" href="/public/img/ico.ico" type="image/x-icon">
-    <title><%= producto[0].Nombre_producto %></title> <!-- Usamos el primer producto para el título -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/vista_producto.css">
+    <title><%= producto[0].Nombre_producto %></title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
-        <section class="barra-superior">
-            <div class="logo">
-                <img src="/public/img/logoECDA.png" alt="Logo">
-            </div>
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Buscar...">
-                <button onclick="realizarBusqueda()">
-                    <img src="/public/img/buscar.png" alt="Buscar">
-                </button>
-            </div>
-            <div class="icons">
-                <a href="/categorias">
-                    <img src="/public/img/categorias.png" alt="Categorías">
-                </a>
-                <a href="/carrito">
-                    <img src="/public/img/carrito-de-compras.png" alt="Carrito de Compras">
-                </a>
-                <a href="/tiendas">
-                    <img src="/public/img/tienda.png" alt="Tienda">
-                </a>
-                <% if (isLoggedIn) { %>
-                    <a href="/auth/logout">
-                        <img src="/public/img/cerrar-sesion.png" alt="Cerrar Sesión">
+        <section class="barra-superior container-fluid">
+            <div class="row align-items-center">
+                <div class="col-2 logo">
+                    <a href="/">
+                        <img src="/img/logoECDA.png" alt="Logo" title="Ir al Inicio">
                     </a>
-                  <% } else { %>
-                    <a href="/login">
-                        <img src="/public/img/iniciar-sesion.png" alt="Iniciar Sesión">
-                    </a>
-                  <% } %> 
+                </div>
+                <div class="col-8 search-bar">
+                    <div class="input-group">
+                        <input type="text" id="searchInput" placeholder="Buscar..." class="form-control">
+                        <button class="btn" onclick="realizarBusqueda()" title="Buscar...">
+                            <img src="/img/buscar.png" alt="Buscar" class="img-buscar">
+                        </button>
+                    </div>
+                </div>
+                <div class="col-2 d-flex justify-content-around icons">
+                    <a href="/categorias"><img src="/img/categorias.png" alt="Categorias" title="Ir a Categorias"></a>
+                    <a href="/carrito"><img src="/img/carrito-de-compras.png" alt="Carrito de Compras" title="Ir al Carrito de Presupuesto"></a>
+                    <a href="/tiendas"><img src="/img/tienda.png" alt="Tienda" title="Ir a la Selección de Tiendas"></a>
+                    <a href="/login"><img src="/img/iniciar-sesion.png" alt="Iniciar Sesión" title="Iniciar Sesión"></a>
+                </div>
             </div>
         </section>
-    </header> 
-
-    <main>
-        <section class="principal">
-            <!-- Información del producto -->
-            <div class="column producto">
-                <div class="column imagen">
-                    <img src="<%= producto[0].imagen_producto %>" alt="<%= producto[0].Nombre_producto %>" style="width:50%; height:auto;">
+    </header>
+    <main class="container my-5 flex-grow-1">
+        <div class="row producto-contenedor">
+            <!-- Columna de producto -->
+            <div class="col-md-6 col-12 producto-imagen-info">
+                <div class="imagen">
+                    <img src="<%= producto[0].imagen_producto %>" alt="<%= producto[0].Nombre_producto %>" class="img-fluid">
                 </div>
-                <div class="column informacion">
+                <div class="informacion">
                     <h1><%= producto[0].Nombre_producto %></h1>
-                    <p><%= producto[0].Descripcion_Producto %></p>
                 </div>
             </div>
-
-            <!-- Precios de los proveedores -->
-            <div class="column segundo-apartado">
-                <div class="precios">
-                    <div class="column titulo">
-                        <h1>Precios</h1>
-                    </div>
-                    <div class="column productos">
-                        <!-- Recorremos cada proveedor y mostramos su precio -->
-                        <% producto.forEach(function(detalle) { %>
-                        <a class="producto-item" href="">
-                            <div class="producto-tienda"><%= detalle.Nombre_Proveedor %></div>
-                            <div class="producto-precios">
-                                <p>Precio: $<%= detalle.Precio %></p>
-                            </div>
-                            <div class="producto-carrito">
-                                <img src="/public/img/carrito-de-compras.png" alt="Añadir al carrito">
-                            </div>
-                        </a>
-                        <% }); %>
-                    </div>
+            <!-- Columna de precios -->
+            <div class="col-md-6 col-12">
+                <h1 class="precios-titulo">Precios</h1>
+                <div class="precios-lista">
+                    <% producto.forEach(function(detalle) { %>
+                    <a class="producto-item" href="<%= detalle.link_producto %>" target="_blank">
+                        <span class="producto-tienda"><%= detalle.Nombre_Proveedor %></span>
+                        <span class="producto-precios">Precio: $<%= detalle.Precio %></span>
+                        <img src="/img/carrito-de-compras.png" alt="Carrito" class="producto-carrito">
+                    </a>
+                    <% }); %>
                 </div>
             </div>
-        </section>
-    </main>
-
+        </div>
+    </main>    
     <footer>
-        <img src="/public/img/logoECDA.png" alt="Logo de la empresa">
+        <img src="/img/logoECDA.png" alt="Logo de la empresa" class="mb-2">
         <p>&copy; Derechos Reservados</p>
-        <nav>
-            <a href="/">Ir al Inicio</a>
+        <nav class="d-flex justify-content-center gap-3">
+            <a href="/contacto" class="text-decoration-none">Ir a contacto</a>
+            <a href="/legal" class="text-decoration-none">Ir al legal</a>
+            <a href="/" class="text-decoration-none">Ir al Inicio</a>
         </nav>
     </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/barra_busqueda.js"></script>
 </body>
 </html>

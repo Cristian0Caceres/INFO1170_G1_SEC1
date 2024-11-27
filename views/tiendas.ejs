@@ -3,42 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../public/css/tienda_selesc.css">
-    <link rel="icon" href="../public/img/ico.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/tienda_selesc.css">
     <title>Selección de Tiendas</title>
-    <script src="../public/js/tienda_selec.js"></script>
+    <script src="/js/tienda_selec.js"></script>
 </head>
 <body>
     <header>
         <section class="barra-superior">
             <div class="logo">
-                <img src="../public/img/logoECDA.png" alt="Logo">
+                <img src="/img/logoECDA.png" alt="Logo">
             </div>
             <div class="search-bar">
                 <input type="text" id="searchInput" placeholder="Buscar...">
                 <button onclick="realizarBusqueda()">
-                    <img src="../public/img/buscar.png" alt="Buscar">
+                    <img src="/img/buscar.png" alt="Buscar">
                 </button>
             </div>
             <div class="icons">
                 <a href="/categorias">
-                    <img src="../public/img/categorias.png" alt="Categorías">
+                    <img src="/img/categorias.png" alt="Categorías">
                 </a>
-                <a href="carrito">
-                    <img src="../public/img/carrito-de-compras.png" alt="Carrito de Compras">
+                <a href="../html/Carrito.html">
+                    <img src="/img/carrito-de-compras.png" alt="Carrito de Compras">
                 </a>
                 <a href="/tiendas">
-                    <img src="../public/img/tienda.png" alt="Tienda">
+                    <img src="/img/tienda.png" alt="Tienda">
                 </a>
-                <% if (isLoggedIn) { %>
-                    <a href="/auth/logout">
-                        <img src="../public/img/cerrar-sesion.png" alt="Cerrar Sesión">
-                    </a>
-                  <% } else { %>
-                    <a href="/login">
-                        <img src="../public/img/iniciar-sesion.png" alt="Iniciar Sesión">
-                    </a>
-                  <% } %>
+                <a href="/auth/login">
+                    <img src="/img/iniciar-sesion.png" alt="Iniciar Sesión">
+                </a>    
             </div>
         </section>
     </header> 
@@ -48,7 +41,7 @@
             <section class="encabezado">
                 <div class="boton-enviar">
                     <button onclick="obtenerTiendasSeleccionadas()">Guardar Selección
-                        <img src="../public/img/save-info.png" alt="Guardar">
+                        <img src="/img/save-info.png" alt="Guardar">
                     </button>
                 </div>
                 <div class="titulo">
@@ -81,11 +74,12 @@
     </main>
 
     <footer>
-        <img src="../public/img/logoECDA.png" alt="Logo de la empresa">
+        <img src="/img/logoECDA.png" alt="Logo de la empresa">
         <p>&copy; Derechos Reservados</p>
         <nav>
             <a href="/">Ir al Inicio</a>
         </nav>
     </footer>
+    <script src="/js/barra_busqueda.js"></script>
 </body>
 </html>

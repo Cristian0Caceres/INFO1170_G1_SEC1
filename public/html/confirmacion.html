@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar</title>
+    <link rel="stylesheet" href="../css/confirmacion.css">
+    <script src="../js/confirm.js" defer></script>
+    <script>
+        // Función que realiza la búsqueda
+        function realizarBusqueda() {
+            let query = document.getElementById("searchInput").value;
+            if (query) {
+                alert("Buscando: " + query); // Aquí puedes reemplazar el alert por la lógica de búsqueda que prefieras
+            }
+        }
+
+        // Detectar cuando se presiona Enter en el campo de búsqueda
+        document.addEventListener("DOMContentLoaded", function() {
+            let searchInput = document.getElementById("searchInput");
+            searchInput.addEventListener("keydown", function(event) {
+                if (event.key === "Enter") { // Verificar si la tecla presionada es Enter
+                    realizarBusqueda(); // Llamar a la función de búsqueda
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <section class="barra-superior">
+            <div class="logo">
+                <img src="../img/logoECDA.png" alt="Logo">
+            </div>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Buscar...">
+                <button onclick="realizarBusqueda()">
+                    <img src="../img/buscar.png" alt="Buscar">
+                </button>
+            </div>
+            <div class="icons">
+                <a href="/categorias">
+                    <img src="../img/categorias.png" alt="Categorias">
+                </a>
+                <a href="../html/Carrito.html">
+                    <img src="../img/carrito-de-compras.png" alt="Carrito de Compras">
+                </a>
+                <a href="/tiendas">
+                    <img src="../img/tienda.png" alt="Tienda">
+                <a href="../html/login.html">
+                    <img src="../img/iniciar-sesion.png" alt="Iniciar Sesion">
+                </a>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <div class="recuperar">
+            <h1>Recuperar Contraseña</h1>
+
+            <!-- seccion de ingreso de datos -->
+            <div class="datos">
+                <h3>Correo Enviado</h3>
+                <p>por favor ingresa el codigo que se te ha enviado al correo</p>
+                <form action="../php/confirm.php" method="POST">
+                    <div class="num">
+                        <input type="number" id="numero1" min="1" max="9" value="" required name="numero1">
+                        <input type="number" id="numero2" min="0" max="9" value="" required name="numero2">
+                        <input type="number" id="numero3" min="0" max="9" value="" required name="numero3">
+                        <input type="number" id="numero4" min="0" max="9" value="" required name="numero4">
+                        <input type="number" id="numero5" min="0" max="9" value="" required name="numero5">
+                    </div>
+                    <button type="submit">Recuperar Contraseña</button>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <img src="../img/logoECDA.png" alt="Logo de la empresa" >
+        <p>&copy; Derechos Reservados</p>
+        <nav>
+            <a href="../index.html">Ir al Inicio</a>
+        </nav>
+    </footer>
+
+</body>
+</html>
