@@ -37,7 +37,7 @@ async function scrapeAndCapture() {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'bd'
+        database: 'a2024_vmatus'
     });
 
     for (const url of urls) {
@@ -95,17 +95,17 @@ async function scrapeAndCapture() {
                                 continue;
                             }
                             const [rows] = await connection.execute(
-                                'SELECT * FROM Producto WHERE Nombre_producto = ? AND link_producto = ?',
+                                'SELECT * FROM info1170_Producto WHERE Nombre_producto = ? AND link_producto = ?',
                                 [item.name, item.link]
                             );
                             if (rows.length > 0) {
                                 await connection.execute(
-                                    'UPDATE Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ?, ID_Proveedor = ? WHERE Nombre_producto = ? AND link_producto = ?',
+                                    'UPDATE info1170_Producto SET Costo = ?, ID_Categoria = ?, imagen_producto = ?, ID_Proveedor = ? WHERE Nombre_producto = ? AND link_producto = ?',
                                     [itemPrice, categoryId, item.img, providerId, item.name, item.link]
                                 );
                             } else {
                                 await connection.execute(
-                                    'INSERT INTO Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto, ID_Proveedor) VALUES (?, ?, ?, ?, ?, ?)',
+                                    'INSERT INTO info1170_Producto (Nombre_producto, link_producto, Costo, ID_Categoria, imagen_producto, ID_Proveedor) VALUES (?, ?, ?, ?, ?, ?)',
                                     [item.name, item.link, itemPrice, categoryId, item.img, providerId]
                                 );
                             }
