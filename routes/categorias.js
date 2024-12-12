@@ -1,8 +1,9 @@
-const express = require('express');
+// ./routes/categorias.js
+import express from 'express';  // Usamos `import`
 const router = express.Router();
-const { obtenerCategorias } = require('../controllers/data/categoriaController');
+import { obtenerCategorias } from '../controllers/data/categoriaController.js';  // También usamos `import`
 
 // Ruta para obtener categorías
 router.get('/', obtenerCategorias);
 
-module.exports = router;
+export default router;  // Exportación predeterminada

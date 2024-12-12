@@ -1,19 +1,19 @@
-const express = require('express');
-const router = express.Router();
-const productosController = require('../controllers/data/productosController');
+import express from 'express';
+import { buscarProductoPorNombre, mostrarDetalleProducto, mostrarProductosPorCategoria } from '../controllers/data/productosController.js';
 
-router.get('/buscar', productosController.buscarProductoPorNombre);
+const router = express.Router();
+
+router.get('/buscar', buscarProductoPorNombre);
 
 // Ruta para obtener detalles del producto por ID
-router.get('/detalle/:id_producto', productosController.mostrarDetalleProducto);
+router.get('/detalle/:id_producto', mostrarDetalleProducto);
 
 // Ruta para obtener productos por ID de categoría
-router.get('/:id_categoria', productosController.mostrarProductosPorCategoria);
+router.get('/:id_categoria', mostrarProductosPorCategoria);
 
 // Ruta base para /productos
 router.get('/', (req, res) => {
     res.status(404).send('Por favor, selecciona una categoría.'); // Mensaje informativo
 });
 
-
-module.exports = router;
+export default router;

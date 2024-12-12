@@ -1,12 +1,33 @@
-const express = require('express');
-const path = require('path');
-const session = require('express-session');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import session from 'express-session';
+import { exec } from 'child_process';
+
 const app = express();
 
-// Configuración del motor de plantillas EJS
-app.set('view engine', 'ejs');
+// ---------------------------------------------------------------------------------------
+app.post('/admin/run-scraping', (req, res) => {
+    exec('node WebscrapingMaster.js', (error, stdout, stderr) => {
+        if (error) {
+            console.error('Error ejecutando scraping:', error);
+            res.status(500).send({ message: 'Error ejecutando scraping.' });
+            return;
+        }
+        if (stderr) {
+            console.error('Scraping stderr:', stderr);
+        }
+        console.log('Scraping stdout:', stdout);
+        res.send({ message: 'Scraping completado.' });
+    });
+});
 
-// Asegurarse de que la carpeta "views" esté configurada correctamente
+// ---------------------------------------------------------------------------------------
+
+// Configuración del motor de plantillas EJS
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -20,11 +41,7 @@ app.use(session({
 
 // Middleware de autenticación
 const isAuthenticated = (req, res, next) => {
-    if (req.session.isLoggedIn) {
-        res.locals.isLoggedIn = true;
-    } else {
-        res.locals.isLoggedIn = false;
-    }
+    res.locals.isLoggedIn = !!req.session.isLoggedIn;
     next();
 };
 
@@ -38,123 +55,54 @@ app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Rutas existentes
-app.get('/', isAuthenticated, (req, res) => {
-    res.render('index');
-});
+app.get('/', (req, res) => res.render('index'));
 
-// Ruta para la vista de admin
 app.get('/admin', (req, res) => {
     if (res.locals.isLoggedIn) {
-      // El usuario está autenticado, mostrar la página de admin
-      res.render('admin_home');
+        res.render('admin_home');
     } else {
-      // El usuario no está autenticado, mostrar un mensaje de error
-      res.render('index');
-    }
-  });
-
-app.get('/carrito', isAuthenticated, (req, res) => {
-    res.render('carrito');
-});
-
-app.get('/login', isAuthenticated, (req, res) => {
-    if (res.locals.isLoggedIn) {
         res.render('index');
-    } else {
-        res.render('login');
     }
 });
 
-app.get('/register', isAuthenticated, (req, res) => {
-    if (res.locals.isLoggedIn) {
-      // El usuario está autenticado, no mostrar la página 
-      res.render('index');
-    } else {
-      // El usuario no está autenticado, dejar acceder a inciar sesion
-      res.render('register');
-    }
-});
-  
-app.get('/recuperar', isAuthenticated, (req, res) => {
-    if (res.locals.isLoggedIn) {
-      // El usuario está autenticado, no mostrar la página 
-      res.render('index');
-    } else {
-      // El usuario no está autenticado, dejar acceder a inciar sesion
-      res.render('recuperar');
-    }
-});
-  
-app.get('/confirmacion', isAuthenticated, (req, res) => {
-    if (res.locals.isLoggedIn) {
-      // El usuario está autenticado, no mostrar la página 
-      res.render('index');
-    } else {
-      // El usuario no está autenticado, dejar acceder a inciar sesion
-      res.render('confirmacion');
-    }
-});
-  
-app.get('/cambio', isAuthenticated, (req, res) => {
-    if (res.locals.isLoggedIn) {
-      // El usuario está autenticado, no mostrar la página 
-      res.render('index');
-    } else {
-      // El usuario no está autenticado, dejar acceder a inciar sesion
-      res.render('cambio');
-    }
-});
-
-app.get('/legal', isAuthenticated, (req, res) => {
-    res.render('legal');
-  });
-  
-app.get('/helper', isAuthenticated, (req, res) => {
-    res.render('helper_home');
-});
-  
-app.get('/simulador', isAuthenticated, (req, res) => {
-    res.render('Test_simulador');
-});
+app.get('/carrito', (req, res) => res.render('carrito'));
+app.get('/login', (req, res) => res.render(res.locals.isLoggedIn ? 'index' : 'login'));
+app.get('/register', (req, res) => res.render(res.locals.isLoggedIn ? 'index' : 'register'));
+app.get('/recuperar', (req, res) => res.render(res.locals.isLoggedIn ? 'index' : 'recuperar'));
+app.get('/confirmacion', (req, res) => res.render(res.locals.isLoggedIn ? 'index' : 'confirmacion'));
+app.get('/cambio', (req, res) => res.render(res.locals.isLoggedIn ? 'index' : 'cambio'));
+app.get('/legal', (req, res) => res.render('legal'));
+app.get('/helper', (req, res) => res.render('helper_home'));
+app.get('/simulador', (req, res) => res.render('Test_simulador'));
 
 // Importar rutas
-const authRoutes = require('./routes/auth');
+import authRoutes from './routes/auth.js';
+import categoriasRoutes from './routes/categorias.js';
+import productosRouter from './routes/productos.js';
+import usuariosRoutes from './routes/usuarios.js';
+import tiendasRouter from './routes/tiendas.js';
+import productosAdminRouter from './routes/productos_admin.js';
+import contactoRouter from './routes/consultar.js';
+import helperRoutes from './routes/helper.js';
+import promocionRouter from './routes/promocion.js';
+import jumboRouter from './routes/jumbo.js';
+import santaisabelRouter from './routes/santaisabel.js';
+import ofertasRouter from './routes/ofertas.js';
+
 app.use('/auth', authRoutes);
-
-const categoriasRoutes = require('./routes/categorias');
 app.use('/categorias', categoriasRoutes);
-
-const productosRouter = require('./routes/productos');
 app.use('/productos', productosRouter);
-
-const usuariosRoutes = require('./routes/usuarios'); 
-app.use('/usuarios', usuariosRoutes); 
-
-const tiendasRouter = require('./routes/tiendas');
+app.use('/usuarios', usuariosRoutes);
 app.use('/tiendas', tiendasRouter);
-
-const productos_adminRouter = require('./routes/productos_admin');
-app.use('/productos_admin', productos_adminRouter);
-
-const contactoRouter = require('./routes/consultar');  
-app.use('/', contactoRouter);  
-
-const helperRoutes = require('./routes/helper');
+app.use('/productos_admin', productosAdminRouter);
+app.use('/', contactoRouter);
 app.use('/', helperRoutes);
-
-const promocionRouter = require('./routes/promocion');
-app.use('/', promocionRouter);  
-
-const jumboRouter = require('./routes/jumbo'); 
-app.use('/', jumboRouter); 
-
-const santaisabelRouter = require('./routes/santaisabel'); // Cambia esto a santaisabel.js
-app.use('/', santaisabelRouter); 
-
-const ofertasRouter = require('./routes/ofertas');
+app.use('/', promocionRouter);
+app.use('/', jumboRouter);
+app.use('/', santaisabelRouter);
 app.use('/ofertas', ofertasRouter);
 
 // Configuración del servidor
-app.listen(3000, function() {
+app.listen(3000, () => {
     console.log("El servidor está escuchando en http://localhost:3000");
 });

@@ -1,10 +1,11 @@
-const express = require('express');
+import express from 'express';
+import db from '../config/db.js'; // Asegúrate de que la ruta sea correcta para la conexión
+
 const router = express.Router();
-const db = require('../config/db'); // Conexión a la base de datos
 
 // Ruta para obtener la lista de proveedores
 router.get('/', (req, res) => {
-    const sql = 'SELECT ID_Proveedor, Nombre_Proveedor FROM proveedor';
+    const sql = 'SELECT ID_Proveedor, Nombre_Proveedor FROM info1170_proveedor';
 
     db.query(sql, (err, results) => {
         if (err) {
@@ -22,4 +23,4 @@ router.get('/auth/logout', (req, res) => {
     res.redirect('/');
 });
 
-module.exports = router;
+export default router;

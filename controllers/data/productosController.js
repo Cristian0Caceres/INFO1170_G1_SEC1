@@ -1,6 +1,7 @@
-const connection = require('../../config/db');
+import connection from '../../config/db.js';  // Asegúrate de que la conexión a la base de datos también use ESModules
 
-const mostrarProductosPorCategoria = (req, res) => {
+// Función para mostrar productos por categoría con paginación
+export const mostrarProductosPorCategoria = (req, res) => {
     const idCategoria = req.params.id_categoria; // Obtener el ID de la categoría de los parámetros
     const page = parseInt(req.query.page) || 1; // Página actual
     const limit = parseInt(req.query.limit) || 80; // Límite de productos por página (por defecto 80)
@@ -8,9 +9,9 @@ const mostrarProductosPorCategoria = (req, res) => {
 
     const sqlProductos = `
         SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(p.Costo) AS Precio_Minimo, c.Nombre_Categoria
-        FROM producto p
-        JOIN proveedor pr ON p.ID_Proveedor = pr.ID_Proveedor
-        JOIN categoria c ON p.ID_Categoria = c.ID_Categoria
+        FROM info1170_producto p
+        JOIN info1170_proveedor pr ON p.ID_Proveedor = pr.ID_Proveedor
+        JOIN info1170_categoria c ON p.ID_Categoria = c.ID_Categoria
         WHERE p.ID_Categoria = ?
         GROUP BY p.Nombre_producto, c.Nombre_Categoria
         ORDER BY Precio_Minimo ASC
@@ -19,7 +20,7 @@ const mostrarProductosPorCategoria = (req, res) => {
 
     const sqlTotal = `
         SELECT COUNT(*) AS total
-        FROM producto
+        FROM info1170_producto
         WHERE ID_Categoria = ?
     `;
 
@@ -62,14 +63,14 @@ const mostrarProductosPorCategoria = (req, res) => {
 };
 
 // Función para obtener detalles del producto por ID
-const mostrarDetalleProducto = (req, res) => {
+export const mostrarDetalleProducto = (req, res) => {
     const idProducto = req.params.id_producto;
 
     const sql = `
         SELECT p.Nombre_producto, p.Descripcion_Producto, p.imagen_producto, p.link_producto, p.Costo AS Precio, t.Nombre_Proveedor
-        FROM producto p
-        JOIN proveedor t ON p.ID_Proveedor = t.ID_Proveedor
-        WHERE p.Nombre_producto = (SELECT Nombre_producto FROM producto WHERE ID_Producto = ?)
+        FROM info1170_producto p
+        JOIN info1170_proveedor t ON p.ID_Proveedor = t.ID_Proveedor
+        WHERE p.Nombre_producto = (SELECT Nombre_producto FROM info1170_producto WHERE ID_Producto = ?)
     `;
 
     connection.query(sql, [idProducto], (error, resultados) => {
@@ -87,7 +88,7 @@ const mostrarDetalleProducto = (req, res) => {
 };
 
 // Función para buscar productos por nombre con paginación
-const buscarProductoPorNombre = (req, res) => {
+export const buscarProductoPorNombre = (req, res) => {
     const termino = req.query.q || ''; // Término de búsqueda
     const page = parseInt(req.query.page) || 1; // Página actual
     const limit = parseInt(req.query.limit) || 80; // Productos por página
@@ -95,7 +96,7 @@ const buscarProductoPorNombre = (req, res) => {
 
     const sqlProductos = `
         SELECT p.ID_Producto, p.Nombre_producto, p.imagen_producto, MIN(p.Costo) AS Precio_Minimo
-        FROM producto p
+        FROM info1170_producto p
         WHERE p.Nombre_producto LIKE ?
         GROUP BY p.Nombre_producto
         ORDER BY Precio_Minimo ASC
@@ -104,7 +105,7 @@ const buscarProductoPorNombre = (req, res) => {
 
     const sqlTotal = `
         SELECT COUNT(*) AS total
-        FROM producto
+        FROM info1170_producto
         WHERE Nombre_producto LIKE ?
     `;
 
@@ -137,11 +138,4 @@ const buscarProductoPorNombre = (req, res) => {
             });
         });
     });
-};
-
-
-module.exports = {
-    mostrarProductosPorCategoria,
-    mostrarDetalleProducto,
-    buscarProductoPorNombre,
 };

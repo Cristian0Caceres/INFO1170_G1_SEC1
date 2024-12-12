@@ -1,6 +1,8 @@
-const express = require('express');
+// ./routes/consulta.js
+import express from 'express';  // Usa `import` en lugar de `require`
+import { enviarFormularioContacto } from '../controllers/contactoController.js';  // Usa `import` también
+
 const router = express.Router();
-const contactoController = require('../controllers/contactoController');
 
 // Ruta para mostrar el formulario de contacto
 router.get('/contacto', (req, res) => {
@@ -8,6 +10,6 @@ router.get('/contacto', (req, res) => {
 });
 
 // Ruta para manejar el envío del formulario
-router.post('/enviar-contacto', contactoController.enviarFormularioContacto);
+router.post('/enviar-contacto', enviarFormularioContacto);
 
-module.exports = router;
+export default router;  // Usa `export default` en lugar de `module.exports`

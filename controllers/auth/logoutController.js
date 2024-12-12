@@ -8,4 +8,4 @@ const logout = (req, res) => {
   });
 };
 
-module.exports = { logout };
+export { logout };

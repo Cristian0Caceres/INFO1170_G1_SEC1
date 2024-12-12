@@ -1,5 +1,5 @@
-const db = require('../../config/db'); // Importar la conexión a la base de datos
-const bcrypt = require('bcrypt'); // Importar bcrypt
+import db from '../../config/db.js'; // Importar la conexión a la base de datos
+import bcrypt from 'bcrypt'; // Importar bcrypt
 
 // Controlador para manejar el login
 const login = (req, res) => {
@@ -9,7 +9,7 @@ const login = (req, res) => {
         return res.status(400).send('Faltan datos en el formulario');
     }
 
-    const query = 'SELECT * FROM Usuario WHERE correo_Usuario = ?';
+    const query = 'SELECT * FROM info1170_Usuario WHERE correo_Usuario = ?';
     
     db.query(query, [correo], (err, results) => {
         if (err) {
@@ -18,7 +18,7 @@ const login = (req, res) => {
         }
 
         if (results.length === 0) {
-            return res.render('login', { mensaje: 'credenciales invalidas' });
+            return res.render('login', { mensaje: 'Credenciales inválidas' });
         }
 
         const usuario = results[0];
@@ -37,10 +37,11 @@ const login = (req, res) => {
                 return res.render(usuario.correo_Usuario === 'caciquedelahorro@gmail.com' ? 'admin_home' : 'index', { mensaje: 'Sesión iniciada correctamente' });
             } else {
                 // Si las contraseñas no coinciden, redirigir con un error
-                return res.render('login', { mensaje: 'contrasenas no coinciden' });	
+                return res.render('login', { mensaje: 'Las contraseñas no coinciden' });	
             }
         });
     });
 };
 
-module.exports = { login };
+// Exportar el controlador usando ES6
+export { login };

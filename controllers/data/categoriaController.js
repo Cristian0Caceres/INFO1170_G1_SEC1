@@ -1,8 +1,9 @@
-const connection = require('../../config/db'); // Importar la conexión a la base de datos
+// Importación de la conexión con la base de datos
+import connection from '../../config/db.js'; // Usamos `import` en lugar de `require`
 
 // Función para obtener categorías
 const obtenerCategorias = (req, res) => {
-    const sql = 'SELECT ID_Categoria, Nombre_Categoria, Descripcion_Categoria, imagen_categoria FROM categoria'; // Incluye el ID de la categoría
+    const sql = 'SELECT ID_Categoria, Nombre_Categoria, Descripcion_Categoria, imagen_categoria FROM info1170_categoria';
 
     connection.query(sql, (error, categorias) => {
         if (error) {
@@ -11,9 +12,8 @@ const obtenerCategorias = (req, res) => {
         }
 
         // Renderizar la vista con las categorías
-        res.render('categorias', { categorias }); 
+        res.render('categorias', { categorias });
     });
 };
 
-
-module.exports = { obtenerCategorias };
+export { obtenerCategorias }; // Usamos export en lugar de module.exports

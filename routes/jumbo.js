@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';  // Usar import en lugar de require
+import connection from '../config/db.js';  // Usar import y asegúrate de que 'db.js' usa export default
+
 const router = express.Router();
-const connection = require('../config/db'); // Asegúrate de que la ruta a tu conexión sea correcta
 
 router.get('/jumbo', (req, res) => {
     const query = `
@@ -8,13 +9,11 @@ router.get('/jumbo', (req, res) => {
        FROM (
         SELECT p.*, 
            ROW_NUMBER() OVER (PARTITION BY p.ID_Categoria ORDER BY p.ID_Producto ASC) AS row_num
-        FROM producto p
-        JOIN proveedor pr ON p.ID_Proveedor = pr.ID_Proveedor
+        FROM info1170_producto p
+        JOIN info1170_proveedor pr ON p.ID_Proveedor = pr.ID_Proveedor
         WHERE pr.Nombre_Proveedor = 'Jumbo'
         ) subquery
         WHERE subquery.row_num <= 10;
-
-
     `;
 
     connection.query(query, (error, results) => {
@@ -27,4 +26,4 @@ router.get('/jumbo', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;  // Cambiar module.exports por export default

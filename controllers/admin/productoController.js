@@ -1,4 +1,4 @@
-const db = require('../../config/db');
+import db from '../../config/db.js';  // Asegúrate de que tu db esté utilizando exportación de ESModules
 
 // Buscar productos con paginación
 const buscarProductos = (req, res) => {
@@ -9,7 +9,7 @@ const buscarProductos = (req, res) => {
 
     // Contar total de productos
     const sqlContar = `SELECT COUNT(*) AS total 
-                       FROM producto 
+                       FROM info1170_producto 
                        WHERE Nombre_producto LIKE ?`;
 
     db.query(sqlContar, [`%${search}%`], (error, resultados) => {
@@ -21,18 +21,18 @@ const buscarProductos = (req, res) => {
         const totalPaginas = Math.ceil(totalProductos / limite);
 
         // Obtener productos con límite y desplazamiento
-        let sqlProductos = `SELECT producto.ID_Producto AS id, 
-                                   producto.Nombre_producto AS name, 
-                                   producto.Descripcion_Producto AS description, 
-                                   producto.imagen_producto AS image, 
-                                   producto.Costo AS price, 
-                                   categoria.Nombre_Categoria AS category, 
-                                   proveedor.Nombre_Proveedor AS provider
-                            FROM producto
-                            JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
-                            JOIN proveedor ON producto.ID_Proveedor = proveedor.ID_Proveedor
-                            WHERE producto.Nombre_producto LIKE ?
-                            ORDER BY producto.Nombre_producto, producto.Costo DESC
+        let sqlProductos = `SELECT info1170_producto.ID_Producto AS id, 
+                                   info1170_producto.Nombre_producto AS name, 
+                                   info1170_producto.Descripcion_Producto AS description, 
+                                   info1170_producto.imagen_producto AS image, 
+                                   info1170_producto.Costo AS price, 
+                                   info1170_categoria.Nombre_Categoria AS category, 
+                                   info1170_proveedor.Nombre_Proveedor AS provider
+                            FROM info1170_producto
+                            JOIN info1170_categoria ON info1170_producto.ID_Categoria = info1170_categoria.ID_Categoria
+                            JOIN info1170_proveedor ON info1170_producto.ID_Proveedor = info1170_proveedor.ID_Proveedor
+                            WHERE info1170_producto.Nombre_producto LIKE ?
+                            ORDER BY info1170_producto.Nombre_producto, info1170_producto.Costo DESC
                             LIMIT ? OFFSET ?`;
 
         db.query(sqlProductos, [`%${search}%`, limite, offset], (error, productos) => {
@@ -50,20 +50,20 @@ const buscarProductos = (req, res) => {
     });
 };
 
-// Editar producto 
+// Editar producto
 const editarProducto = (req, res) => {
     const id = req.query.id;
 
-    const sql = `SELECT producto.ID_Producto AS id, 
-                        producto.Nombre_producto AS Nombre_producto, 
-                        producto.Descripcion_Producto AS Descripcion_Producto, 
-                        producto.imagen_producto AS imagen_producto, 
-                        categoria.ID_Categoria AS ID_Categoria, 
-                        proveedor.ID_Proveedor AS ID_Proveedor 
-                 FROM producto
-                 JOIN categoria ON producto.ID_Categoria = categoria.ID_Categoria
-                 JOIN proveedor ON producto.ID_Proveedor = proveedor.ID_Proveedor
-                 WHERE producto.ID_Producto = ?`;
+    const sql = `SELECT info1170_producto.ID_Producto AS id, 
+                        info1170_producto.Nombre_producto AS Nombre_producto, 
+                        info1170_producto.Descripcion_Producto AS Descripcion_Producto, 
+                        info1170_producto.imagen_producto AS imagen_producto, 
+                        info1170_categoria.ID_Categoria AS ID_Categoria, 
+                        info1170_proveedor.ID_Proveedor AS ID_Proveedor 
+                 FROM info1170_producto
+                 JOIN info1170_categoria ON info1170_producto.ID_Categoria = info1170_categoria.ID_Categoria
+                 JOIN info1170_proveedor ON info1170_producto.ID_Proveedor = info1170_proveedor.ID_Proveedor
+                 WHERE info1170_producto.ID_Producto = ?`;
 
     db.query(sql, [id], (error, results) => {
         if (error) {
@@ -73,8 +73,8 @@ const editarProducto = (req, res) => {
         if (results.length > 0) {
             const producto = results[0];
             // Obtener las categorías y proveedores para mostrarlos en el formulario
-            const sqlCategorias = `SELECT * FROM categoria`;
-            const sqlProveedores = `SELECT * FROM proveedor`;
+            const sqlCategorias = `SELECT * FROM info1170_categoria`;
+            const sqlProveedores = `SELECT * FROM info1170_proveedor`;
 
             db.query(sqlCategorias, (errorCategorias, categorias) => {
                 if (errorCategorias) {
@@ -96,7 +96,7 @@ const editarProducto = (req, res) => {
     });
 };
 
-// Actualizar producto 
+// Actualizar producto
 const actualizarProducto = (req, res) => {
     const { id, nombre, categoria, proveedor, precio, descripcion, imagen } = req.body;
 
@@ -104,7 +104,7 @@ const actualizarProducto = (req, res) => {
         return res.status(400).send("La descripción no puede estar vacía.");
     }
 
-    const sqlProducto = `UPDATE producto 
+    const sqlProducto = `UPDATE info1170_producto 
                          SET Nombre_producto = ?, ID_Categoria = ?, ID_Proveedor = ?, 
                              Descripcion_Producto = ?, imagen_producto = ? 
                          WHERE ID_Producto = ?`;
@@ -114,7 +114,7 @@ const actualizarProducto = (req, res) => {
             return res.status(500).send(error);
         }
 
-        const sqlPrecio = `UPDATE producto 
+        const sqlPrecio = `UPDATE info1170_producto 
                            SET Costo = ? 
                            WHERE ID_Producto = ?`;
 
@@ -132,7 +132,7 @@ const eliminarProducto = (req, res) => {
     const id_producto = req.query.id;
 
     // Primero eliminar de la tabla lista_de_compra
-    const sqlEliminarCompra = `DELETE FROM lista_de_compra WHERE ID_Producto = ?`;
+    const sqlEliminarCompra = `DELETE FROM info1170_lista_de_compra WHERE ID_Producto = ?`;
     
     db.query(sqlEliminarCompra, [id_producto], (error) => {
         if (error) {
@@ -140,7 +140,7 @@ const eliminarProducto = (req, res) => {
         }
 
         // Finalmente eliminar de la tabla producto
-        const sqlEliminarProducto = `DELETE FROM producto WHERE ID_Producto = ?`;
+        const sqlEliminarProducto = `DELETE FROM info1170_producto WHERE ID_Producto = ?`;
         
         db.query(sqlEliminarProducto, [id_producto], (error) => {
             if (error) {
@@ -155,7 +155,7 @@ const eliminarProducto = (req, res) => {
 const agregarProducto = (req, res) => {
     const { nombre, categoria, proveedor, precio, descripcion, imagen } = req.body;
 
-    const sqlProducto = `INSERT INTO producto (Nombre_producto, ID_Categoria, ID_Proveedor, 
+    const sqlProducto = `INSERT INTO info1170_producto (Nombre_producto, ID_Categoria, ID_Proveedor, 
                                                Descripcion_Producto, imagen_producto, Costo) 
                          VALUES (?, ?, ?, ?, ?, ?)`;
 
@@ -167,7 +167,9 @@ const agregarProducto = (req, res) => {
     });
 };
 
-module.exports = {
+
+// Exportar un objeto por defecto
+export default {
     buscarProductos,
     editarProducto,
     actualizarProducto,

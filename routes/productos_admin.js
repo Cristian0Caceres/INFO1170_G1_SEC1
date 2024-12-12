@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';  // Cambiar a import
+import productoController from '../controllers/admin/productoController.js';  // Cambiar a import con extensión .js
+
 const router = express.Router();
-const productoController = require('../controllers/admin/productoController');
 
 // Ruta para listar productos
 router.get('/', productoController.buscarProductos); // Lista de productos
@@ -17,4 +18,4 @@ router.get('/eliminar', productoController.eliminarProducto); // Eliminar produc
 // Ruta para agregar nuevo producto
 router.post('/agregar', productoController.agregarProducto); // Agregar nuevo producto
 
-module.exports = router;
+export default router;  // Cambiar module.exports por export default

@@ -1,12 +1,13 @@
-const express = require('express');
+import express from 'express';
+import enviarPromocionController from '../controllers/enviarPromocionController.js';
+import db from '../config/db.js'; // Conexión a la base de datos
+
 const router = express.Router();
-const enviarPromocionController = require('../controllers/enviarPromocionController');
-const db = require('../config/db'); // Conexión a la base de datos
 
 // Ruta GET para renderizar la vista enviarPromocion.ejs
 router.get('/enviar-promocion', (req, res) => {
-    const queryProductos = 'SELECT ID_Producto, Nombre_producto, Costo, imagen_producto, ID_Categoria FROM producto';
-    const queryCategorias = 'SELECT ID_Categoria, Nombre_Categoria FROM categoria';
+    const queryProductos = 'SELECT ID_Producto, Nombre_producto, Costo, imagen_producto, ID_Categoria FROM info1170_producto';
+    const queryCategorias = 'SELECT ID_Categoria, Nombre_Categoria FROM info1170_categoria';
 
     db.query(queryCategorias, (errorCategorias, categorias) => {
         if (errorCategorias) {
@@ -28,4 +29,4 @@ router.get('/enviar-promocion', (req, res) => {
 // Ruta POST para enviar la promoción con datos personalizados
 router.post('/enviar-promocion', enviarPromocionController.enviarPromocion);
 
-module.exports = router;
+export default router;

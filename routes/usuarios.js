@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
+import usuarioController from '../controllers/admin/usuarioController.js';
+
 const router = express.Router();
-const usuarioController = require('../controllers/admin/usuarioController');
 
 // Ruta para listar los usuarios
 router.get('/', usuarioController.mostrarUsuarios);
@@ -14,4 +15,4 @@ router.post('/actualizar', usuarioController.actualizarUsuario);
 // Ruta para eliminar un usuario
 router.get('/eliminar/:id', usuarioController.eliminarUsuario);
 
-module.exports = router;
+export default router;

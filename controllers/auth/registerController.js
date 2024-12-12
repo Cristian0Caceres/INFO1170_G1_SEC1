@@ -1,5 +1,5 @@
-const db = require('../../config/db'); // Importar la conexión a la base de datos
-const bcrypt = require('bcrypt');
+import db from '../../config/db.js'; // Asegúrate de que el archivo db.js esté exportado como ESModule
+import bcrypt from 'bcrypt';
 
 const registerUser = (req, res) => {
     const { nombre, correo, contrasena, confirmacion_contrasena } = req.body;
@@ -10,7 +10,7 @@ const registerUser = (req, res) => {
     }
 
     // Verificar si el correo ya existe en la base de datos
-    const checkEmailQuery = 'SELECT * FROM Usuario WHERE correo_Usuario = ?';
+    const checkEmailQuery = 'SELECT * FROM info1170_Usuario WHERE correo_Usuario = ?';
     db.query(checkEmailQuery, [correo], (err, results) => {
         if (err) {
             console.error('Error en la consulta: ' + err.stack);
@@ -30,7 +30,7 @@ const registerUser = (req, res) => {
             }
 
             // Insertar el nuevo usuario con la contraseña hasheada
-            const insertUserQuery = 'INSERT INTO Usuario (Nombre_Usuario, correo_Usuario, Contrasena_Usuario) VALUES (?, ?, ?)';
+            const insertUserQuery = 'INSERT INTO info1170_Usuario (Nombre_Usuario, correo_Usuario, Contrasena_Usuario) VALUES (?, ?, ?)';
             db.query(insertUserQuery, [nombre, correo, hash], (err, result) => {
                 if (err) {
                     console.error('Error en la consulta: ' + err.stack);
@@ -44,4 +44,4 @@ const registerUser = (req, res) => {
     });
 };
 
-module.exports = { registerUser };
+export { registerUser };  // Exportación usando ESModule

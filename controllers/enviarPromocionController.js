@@ -1,17 +1,18 @@
-const nodemailer = require('nodemailer');
-const db = require('../config/db'); // Conexión a la base de datos
-const fs = require('fs'); // Para verificar la existencia de archivos
+import nodemailer from 'nodemailer';
+import db from '../config/db.js'; // Conexión a la base de datos
+import fs from 'fs'; // Para verificar la existencia de archivos
+import exp from 'constants';
 
-exports.enviarPromocion = (req, res) => {
+const enviarPromocion = (req, res) => {
     const { subject, message, productId } = req.body;
 
-    const queryCorreos = 'SELECT correo_Usuario FROM usuario';
+    const queryCorreos = 'SELECT correo_Usuario FROM info1170_usuario';
     const queryProducto = `
         SELECT p.Nombre_producto, p.Costo, p.imagen_producto, p.Descripcion_Producto,
                c.Nombre_Categoria, pr.Nombre_Proveedor
-        FROM producto p
-        JOIN categoria c ON p.ID_Categoria = c.ID_Categoria
-        JOIN proveedor pr ON p.ID_Proveedor = pr.ID_Proveedor
+        FROM info1170_producto p
+        JOIN info1170_categoria c ON p.ID_Categoria = c.ID_Categoria
+        JOIN info1170_proveedor pr ON p.ID_Proveedor = pr.ID_Proveedor
         WHERE p.ID_Producto = ?
     `;
 
@@ -106,3 +107,5 @@ exports.enviarPromocion = (req, res) => {
         });
     });
 };
+
+export default {enviarPromocion}

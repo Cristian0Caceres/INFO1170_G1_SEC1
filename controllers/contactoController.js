@@ -1,12 +1,13 @@
-const db = require('../config/db');
-const nodemailer = require('nodemailer');
+// controllers/contactoController.js
+import db from '../config/db.js';  // Asegúrate de usar import para la conexión a la DB
+import nodemailer from 'nodemailer';  // Usa import para nodemailer
 
 // Ruta para manejar el envío del formulario de contacto
-exports.enviarFormularioContacto = (req, res) => {
+export const enviarFormularioContacto = (req, res) => {
     const { name, email, subject, message } = req.body;
 
     // Inserción en la tabla consulta
-    const query = 'INSERT INTO consulta (Nombre_Usuario, correo_Usuario, Asunto, Mensaje_Usuario) VALUES (?, ?, ?, ?)';
+    const query = 'INSERT INTO info1170_consulta (Nombre_Usuario, correo_Usuario, Asunto, Mensaje_Usuario) VALUES (?, ?, ?, ?)';
     const values = [name, email, subject, message];
 
     db.query(query, values, (error, resultados) => {

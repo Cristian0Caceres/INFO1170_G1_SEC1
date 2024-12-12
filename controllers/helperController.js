@@ -1,17 +1,17 @@
-const db = require('../config/db');
-const nodemailer = require('nodemailer');
+import db from '../config/db.js';  // Usar import en lugar de require
+import nodemailer from 'nodemailer';  // Usar import en lugar de require
 
 // Configurar NodeMailer
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'caciquedelahorro@gmail.com',
-        pass: 'hkli jqbb xbwx tkal',
+        pass: 'hkli jqbb xbwx tkal',  // Reemplaza con tus credenciales
     }
 });
 
 // Obtener datos de consultas con paginación
-exports.obtenerConsultas = (req, res) => {
+export const obtenerConsultas = (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const limit = 10;
     const offset = (page - 1) * limit;
@@ -45,10 +45,8 @@ exports.obtenerConsultas = (req, res) => {
     });
 };
 
-// Resto de funciones de responderConsulta y eliminarConsulta...
-
-// Insertar respuesta en la columna "Respuesta_Cacique" y enviar correo al usuario
-exports.responderConsulta = (req, res) => {
+// Responder consulta
+export const responderConsulta = (req, res) => {
     const { respuesta } = req.body;
     const consultaId = req.params.idConsulta;
 
@@ -74,7 +72,7 @@ exports.responderConsulta = (req, res) => {
 
             // Enviar correo al usuario
             const mailOptions = {
-                from: 'caciquedelahorro@gmail.com', 
+                from: 'caciquedelahorro@gmail.com',
                 to: consulta.correo_Usuario, // Email del usuario que hizo la consulta
                 subject: 'Respuesta a tu consulta',
                 text: `Hola ${consulta.Nombre_Usuario},\n\nGracias por tu consulta. Aquí está nuestra respuesta:\n\n${respuesta}\n\nSaludos,\nEl Cacique del Ahorro.`
@@ -92,8 +90,8 @@ exports.responderConsulta = (req, res) => {
     });
 };
 
-// Eliminar consulta de la base de datos
-exports.eliminarConsulta = (req, res) => {
+// Eliminar consulta
+export const eliminarConsulta = (req, res) => {
     const consultaId = req.params.idConsulta;
 
     const query = 'DELETE FROM consulta WHERE ID_Consulta = ?';

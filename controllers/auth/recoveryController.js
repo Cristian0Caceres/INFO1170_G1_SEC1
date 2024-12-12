@@ -1,5 +1,5 @@
-const db = require('../../config/db'); 
-const nodemailer = require('nodemailer');  // Nodemailer para enviar correos
+import db from '../../config/db.js';  // Asegúrate de que el archivo db.js esté exportado como ESModule
+import nodemailer from 'nodemailer';  // Nodemailer para enviar correos
 
 // Controlador para manejar la recuperación de contraseña
 const recuperarContrasena = (req, res) => {
@@ -11,7 +11,7 @@ const recuperarContrasena = (req, res) => {
     }
 
     // Consulta para verificar si el correo existe
-    const query = 'SELECT * FROM Usuario WHERE correo_Usuario = ?';
+    const query = 'SELECT * FROM info1170_Usuario WHERE correo_Usuario = ?';
 
     db.query(query, [correo], (err, results) => {
         if (err) {
@@ -67,4 +67,4 @@ const recuperarContrasena = (req, res) => {
     });
 };
 
-module.exports = { recuperarContrasena };
+export { recuperarContrasena };  // Exportación usando ESModule

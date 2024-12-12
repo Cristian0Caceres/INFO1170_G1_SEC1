@@ -1,9 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../../config/db'); 
-const bcrypt = require('bcrypt'); // Importar bcrypt
+import express from 'express';
+import db from '../../config/db.js'; 
+import bcrypt from 'bcrypt'; // Importar bcrypt
 
-const cambiocontrasena = (req, res) => {
+const router = express.Router();
+
+export const cambiocontrasena = (req, res) => {
     const correo = req.session.correo_usuario;
 
     if (correo) {
@@ -24,7 +25,7 @@ const cambiocontrasena = (req, res) => {
             }
 
             // Actualizar la contraseña hasheada en la base de datos
-            const sql = 'UPDATE Usuario SET Contrasena_Usuario = ? WHERE correo_Usuario = ?';
+            const sql = 'UPDATE info1170_Usuario SET Contrasena_Usuario = ? WHERE correo_Usuario = ?';
             db.query(sql, [hash, correo], (error, results) => {
                 if (error) {
                     console.error('Error al actualizar la contraseña:', error);
@@ -44,5 +45,3 @@ const cambiocontrasena = (req, res) => {
         return res.render('recuperar', { mensaje: 'sesion expirada' });
     }
 };
-
-module.exports = { cambiocontrasena };

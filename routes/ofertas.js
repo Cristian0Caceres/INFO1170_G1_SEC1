@@ -1,14 +1,15 @@
-const express = require('express');
+import express from 'express';  // Usar import en lugar de require
+import connection from '../config/db.js';  // Usar import y asegúrate de que 'db.js' usa export default
+
 const router = express.Router();
-const connection = require('../config/db'); // Asegúrate de que la ruta a tu conexión sea correcta
 
 router.get('/', (req, res) => {
     const query = `
         SELECT p.*
-        FROM producto p
+        FROM info1170_producto p
         INNER JOIN (
             SELECT p.ID_Categoria, p.Nombre_producto, MIN(p.Costo) AS minCosto
-            FROM producto p
+            FROM info1170_producto p
             WHERE p.Costo >= 1000
             AND p.ID_Proveedor IN (1, 2)  -- Solo para tiendas con ID 1 y 2
             AND p.ID_Categoria IN (1, 2, 3, 4, 5)  -- Solo para categorías con ID 1, 2, 3, 4, 5
@@ -44,4 +45,4 @@ router.get('/', (req, res) => {
     });
 });
 
-module.exports = router;
+export default router;  // Cambiar module.exports por export default
