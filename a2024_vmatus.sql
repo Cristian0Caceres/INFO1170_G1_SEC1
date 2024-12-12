@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-11-2024 a las 03:23:42
+-- Tiempo de generación: 12-12-2024 a las 22:52:34
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.1.25
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,16 +18,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bd_pruebaws2`
+-- Base de datos: `a2024_vmatus`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `categoria`
+-- Estructura de tabla para la tabla `info1170_categoria`
 --
 
-CREATE TABLE `categoria` (
+CREATE TABLE `info1170_categoria` (
   `ID_Categoria` int(11) NOT NULL,
   `Nombre_Categoria` char(60) DEFAULT NULL,
   `Descripcion_Categoria` text DEFAULT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `categoria`
+-- Volcado de datos para la tabla `info1170_categoria`
 --
 
-INSERT INTO `categoria` (`ID_Categoria`, `Nombre_Categoria`, `Descripcion_Categoria`, `imagen_categoria`) VALUES
+INSERT INTO `info1170_categoria` (`ID_Categoria`, `Nombre_Categoria`, `Descripcion_Categoria`, `imagen_categoria`) VALUES
 (1, 'Lacteos', NULL, 'https://www.nestle-contigo.co/sites/default/files/2020-05/La%CC%81cteos_%20nutricio%CC%81n%20para%20todos%20los%20gustos%201900x650_0.jpg'),
 (2, 'Despensa', NULL, 'https://i.ibb.co/fNvTCYk/Designer-2.png'),
 (3, 'Frutas y Verduras', NULL, 'https://www.shutterstock.com/image-photo/large-collection-fruits-vegetables-berries-260nw-2404051649.jpg'),
@@ -48,10 +48,10 @@ INSERT INTO `categoria` (`ID_Categoria`, `Nombre_Categoria`, `Descripcion_Catego
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `consulta`
+-- Estructura de tabla para la tabla `info1170_consulta`
 --
 
-CREATE TABLE `consulta` (
+CREATE TABLE `info1170_consulta` (
   `ID_Consulta` int(11) NOT NULL,
   `ID_Usuario` int(11) DEFAULT NULL,
   `Nombre_Usuario` varchar(60) DEFAULT NULL,
@@ -64,10 +64,10 @@ CREATE TABLE `consulta` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `lista_de_compra`
+-- Estructura de tabla para la tabla `info1170_lista_de_compra`
 --
 
-CREATE TABLE `lista_de_compra` (
+CREATE TABLE `info1170_lista_de_compra` (
   `ID_Lista_De_Compras` int(11) NOT NULL,
   `ID_Producto` int(11) DEFAULT NULL,
   `ID_Usuario` int(11) DEFAULT NULL
@@ -76,10 +76,10 @@ CREATE TABLE `lista_de_compra` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `producto`
+-- Estructura de tabla para la tabla `info1170_producto`
 --
 
-CREATE TABLE `producto` (
+CREATE TABLE `info1170_producto` (
   `ID_Producto` int(11) NOT NULL,
   `ID_Proveedor` int(11) DEFAULT NULL,
   `ID_Categoria` int(11) DEFAULT NULL,
@@ -92,93 +92,90 @@ CREATE TABLE `producto` (
   `Fecha` date DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `producto`
---
-
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `proveedor`
+-- Estructura de tabla para la tabla `info1170_proveedor`
 --
 
-CREATE TABLE `proveedor` (
+CREATE TABLE `info1170_proveedor` (
   `ID_Proveedor` int(11) NOT NULL,
   `Nombre_Proveedor` char(60) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `proveedor`
+-- Volcado de datos para la tabla `info1170_proveedor`
 --
 
-INSERT INTO `proveedor` (`ID_Proveedor`, `Nombre_Proveedor`) VALUES
+INSERT INTO `info1170_proveedor` (`ID_Proveedor`, `Nombre_Proveedor`) VALUES
 (1, 'Santa Isabel'),
 (2, 'Jumbo');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `info1170_usuario`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `info1170_usuario` (
   `ID_Usuario` int(11) NOT NULL,
   `Nombre_Usuario` varchar(60) DEFAULT NULL,
   `correo_Usuario` varchar(120) DEFAULT NULL,
   `Contrasena_Usuario` varchar(255) DEFAULT NULL,
-  `Rol` ENUM('admin', 'usuario') DEFAULT 'usuario'
+  `Rol` enum('admin','usuario') DEFAULT 'usuario'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuario`
+-- Volcado de datos para la tabla `info1170_usuario`
 --
 
-INSERT INTO `usuario` (`Nombre_Usuario`, `correo_Usuario`, `Contrasena_Usuario`, `Rol`) VALUES 
-('Admin', 'caciquedelahorro@gmail.com', '$2b$07$lww7y1Vz7DQA1NeoWLzjduYRiq0Yi8eMF7VY0K0RYZ53o4/9SEBpG', 'admin');
+INSERT INTO `info1170_usuario` (`ID_Usuario`, `Nombre_Usuario`, `correo_Usuario`, `Contrasena_Usuario`, `Rol`) VALUES
+(1, 'Cacique', 'caciquedelahorro@gmail.com', '$2b$07$lww7y1Vz7DQA1NeoWLzjduYRiq0Yi8eMF7VY0K0RYZ53o4/9SEBpG', 'admin'),
+(2, 'Admin', 'caciquedelahorro@gmail.com', '$2b$07$lww7y1Vz7DQA1NeoWLzjduYRiq0Yi8eMF7VY0K0RYZ53o4/9SEBpG', 'admin'),
+(3, 'Vicente', 'vicentematus.games@gmail.com', '$2b$07$fTttoGyZ5w603rB05aeqP.2tRYhtpLSDsFZVRxJ6k6N2Co/.YKWO.', 'usuario');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `categoria`
+-- Indices de la tabla `info1170_categoria`
 --
-ALTER TABLE `categoria`
+ALTER TABLE `info1170_categoria`
   ADD PRIMARY KEY (`ID_Categoria`);
 
 --
--- Indices de la tabla `consulta`
+-- Indices de la tabla `info1170_consulta`
 --
-ALTER TABLE `consulta`
+ALTER TABLE `info1170_consulta`
   ADD PRIMARY KEY (`ID_Consulta`),
   ADD KEY `ID_Usuario` (`ID_Usuario`);
 
 --
--- Indices de la tabla `lista_de_compra`
+-- Indices de la tabla `info1170_lista_de_compra`
 --
-ALTER TABLE `lista_de_compra`
+ALTER TABLE `info1170_lista_de_compra`
   ADD PRIMARY KEY (`ID_Lista_De_Compras`),
   ADD KEY `ID_Producto` (`ID_Producto`);
 
 --
--- Indices de la tabla `producto`
+-- Indices de la tabla `info1170_producto`
 --
-ALTER TABLE `producto`
+ALTER TABLE `info1170_producto`
   ADD PRIMARY KEY (`ID_Producto`),
   ADD KEY `ID_Categoria` (`ID_Categoria`),
   ADD KEY `ID_Proveedor` (`ID_Proveedor`);
 
 --
--- Indices de la tabla `proveedor`
+-- Indices de la tabla `info1170_proveedor`
 --
-ALTER TABLE `proveedor`
+ALTER TABLE `info1170_proveedor`
   ADD PRIMARY KEY (`ID_Proveedor`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `info1170_usuario`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `info1170_usuario`
   ADD PRIMARY KEY (`ID_Usuario`);
 
 --
@@ -186,63 +183,40 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `categoria`
+-- AUTO_INCREMENT de la tabla `info1170_categoria`
 --
-ALTER TABLE `categoria`
+ALTER TABLE `info1170_categoria`
   MODIFY `ID_Categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `consulta`
+-- AUTO_INCREMENT de la tabla `info1170_consulta`
 --
-ALTER TABLE `consulta`
+ALTER TABLE `info1170_consulta`
   MODIFY `ID_Consulta` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `lista_de_compra`
+-- AUTO_INCREMENT de la tabla `info1170_lista_de_compra`
 --
-ALTER TABLE `lista_de_compra`
+ALTER TABLE `info1170_lista_de_compra`
   MODIFY `ID_Lista_De_Compras` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `producto`
+-- AUTO_INCREMENT de la tabla `info1170_producto`
 --
-ALTER TABLE `producto`
-  MODIFY `ID_Producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9062;
+ALTER TABLE `info1170_producto`
+  MODIFY `ID_Producto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `proveedor`
+-- AUTO_INCREMENT de la tabla `info1170_proveedor`
 --
-ALTER TABLE `proveedor`
+ALTER TABLE `info1170_proveedor`
   MODIFY `ID_Proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT de la tabla `info1170_usuario`
 --
-ALTER TABLE `usuario`
-  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `consulta`
---
-ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`ID_Usuario`) REFERENCES `usuario` (`ID_Usuario`);
-
---
--- Filtros para la tabla `lista_de_compra`
---
-ALTER TABLE `lista_de_compra`
-  ADD CONSTRAINT `lista_de_compra_ibfk_1` FOREIGN KEY (`ID_Producto`) REFERENCES `producto` (`ID_Producto`);
-
---
--- Filtros para la tabla `producto`
---
-ALTER TABLE `producto`
-  ADD CONSTRAINT `producto_ibfk_1` FOREIGN KEY (`ID_Categoria`) REFERENCES `categoria` (`ID_Categoria`),
-  ADD CONSTRAINT `producto_ibfk_2` FOREIGN KEY (`ID_Proveedor`) REFERENCES `proveedor` (`ID_Proveedor`);
+ALTER TABLE `info1170_usuario`
+  MODIFY `ID_Usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
